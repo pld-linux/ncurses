@@ -21,7 +21,7 @@ Patch4:		ftp://ftp.clark.net/pub/dickey/ncurses/5.0/%{name}-%{version}-19991106.
 Patch5:		ncurses-libyx-lat.patch
 Patch6:		ncurses-xterm_fix.patch
 BuildRequires:	sharutils, patch, bash, gawk, sed, gzip
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_includedir	%{_prefix}/include/ncurses
 
