@@ -1,5 +1,6 @@
---- ncurses-5.0/misc/terminfo.src.xtermchanges	Fri Jun  2 17:51:22 2000
-+++ ncurses-5.0/misc/terminfo.src	Fri Jun  2 19:03:23 2000
+diff -Nru ncurses-5.2/misc/terminfo.src ncurses-5.2.new/misc/terminfo.src
+--- ncurses-5.2/misc/terminfo.src	Wed Nov  8 01:51:59 2000
++++ ncurses-5.2.new/misc/terminfo.src	Wed Nov  8 02:57:15 2000
 @@ -391,8 +391,8 @@
  
  # This is better than klone+color, it doesn't assume white-on-black as the
@@ -10,7 +11,7 @@
  	colors#8, ncv#3, pairs#64, 
  	op=\E[39;49m, setab=\E[4%p1%dm, setaf=\E[3%p1%dm, 
  
-@@ -2394,170 +2394,321 @@
+@@ -2484,217 +2484,321 @@
  	rmir=\E[4l, rmkx=\E[?1l\E>, rmso=\E[m, rmul=\E[m, 
  	sgr0=\E[m, smam=\E[?7h, smir=\E[4h, smkx=\E[?1h\E=, 
  	smso=\E[7m, smul=\E[4m, 
@@ -70,7 +71,7 @@
 -	kslt=\E[4~, meml=\El, memu=\Em, rc=\E8, rev=\E[7m, ri=\EM, 
 -	rmacs=^O, rmcup=\E[2J\E[?47l\E8, rmir=\E[4l, 
 -	rmkx=\E[?1l\E>, rmso=\E[m, rmul=\E[m, 
--	rs2=\E7\E[r\E[m\E[?7h\E[?1;3;4;6l\E[4l\E8\E>, sc=\E7, 
+-	rs2=\E7\E[r\E8\E[m\E[?7h\E[?1;3;4;6l\E[4l\E>, sc=\E7, 
 -	sgr0=\E[m, smacs=^N, smcup=\E7\E[?47h, smir=\E[4h, 
 -	smkx=\E[?1h\E=, smso=\E[7m, smul=\E[4m, tbc=\E[3g, 
 -	u6=\E[%i%d;%dR, u7=\E[6n, u8=\E[?1;2c, u9=\E[c, 
@@ -103,7 +104,7 @@
 -	memu=\Em, rc=\E8, rev=\E[7m, ri=\EM, rmacs=^O, rmam=\E[?7l, 
 -	rmcup=\E[2J\E[?47l\E8, rmir=\E[4l, rmkx=\E[?1l\E>, 
 -	rmso=\E[27m, rmul=\E[24m, rs1=^O, 
--	rs2=\E7\E[r\E[m\E[?7h\E[?1;3;4;6l\E[4l\E8\E>, sc=\E7, 
+-	rs2=\E7\E[r\E8\E[m\E[?7h\E[?1;3;4;6l\E[4l\E>, sc=\E7, 
 -	setb=\E[4%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m, 
 -	setf=\E[3%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m, 
 -	sgr=\E[0%?%p1%p6%|%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;m%?%p9%t\016%e\017%;, 
@@ -130,7 +131,7 @@
 -	sgr=\E[0%?%p1%p6%|%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;%?%p7%t;8%;m%?%p9%t\016%e\017%;, 
 -	smcup=\E[?1048h\E[?1047h, use=xterm-xf86-v33, 
 -
--# This beta version will probably be released in XFree86 4.0.
+-# This version was released in XFree86 4.0.
 -xterm-xf86-v40|xterm terminal emulator (XFree86 4.0 Window System), 
 -	npc, 
 -	kDC=\E[3;5~, kEND=\EO5F, kHOM=\EO5H, kIC=\E[2;5~, 
@@ -151,7 +152,54 @@
 -	smcup=\E[?1049h, use=xterm-xf86-v333, 
 -
 -xterm-xfree86|xterm-new|xterm terminal emulator (XFree86 4.0 Window System), 
--	use=xterm-xf86-v40, 
+-	npc, 
+-	kDC=\E[3;5~, kEND=\EO5F, kHOM=\EO5H, kIC=\E[2;5~, 
+-	kLFT=\EO5D, kNXT=\E[6;5~, kPRV=\E[5;5~, kRIT=\EO5C, 
+-	kb2=\EOE, kcbt=\E[Z, kcub1=\EOD, kcud1=\EOB, kcuf1=\EOC, 
+-	kcuu1=\EOA, kend=\EOF, kent=\EOM, kf1=\EOP, kf10=\E[21~, 
+-	kf11=\E[23~, kf12=\E[24~, kf13=\EO2P, kf14=\EO2Q, 
+-	kf15=\EO2R, kf16=\EO2S, kf17=\E[15;2~, kf18=\E[17;2~, 
+-	kf19=\E[18;2~, kf2=\EOQ, kf20=\E[19;2~, kf21=\E[20;2~, 
+-	kf22=\E[21;2~, kf23=\E[23;2~, kf24=\E[24;2~, kf25=\EO5P, 
+-	kf26=\EO5Q, kf27=\EO5R, kf28=\EO5S, kf29=\E[15;5~, 
+-	kf3=\EOR, kf30=\E[17;5~, kf31=\E[18;5~, kf32=\E[19;5~, 
+-	kf33=\E[20;5~, kf34=\E[21;5~, kf35=\E[23;5~, 
+-	kf36=\E[24;5~, kf37=\EO6P, kf38=\EO6Q, kf39=\EO6R, 
+-	kf4=\EOS, kf40=\EO6S, kf41=\E[15;6~, kf42=\E[17;6~, 
+-	kf43=\E[18;6~, kf44=\E[19;6~, kf45=\E[20;6~, 
+-	kf46=\E[21;6~, kf47=\E[23;6~, kf48=\E[24;6~, kf5=\E[15~, 
+-	kf6=\E[17~, kf7=\E[18~, kf8=\E[19~, kf9=\E[20~, khome=\EOH, 
+-	kich1=\E[2~, kmous=\E[M, knp=\E[6~, kpp=\E[5~, 
+-	use=xterm-basic, 
+-#
+-# This chunk is used for building the VT220/Sun/PC keyboard variants.
+-xterm-basic|xterm terminal emulator - common (XFree86), 
+-	am, bce, km, mc5i, mir, msgr, xenl, 
+-	colors#8, cols#80, it#8, lines#24, pairs#64, 
+-	acsc=``aaffggiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~, 
+-	bel=^G, blink=\E[5m, bold=\E[1m, cbt=\E[Z, civis=\E[?25l, 
+-	clear=\E[H\E[2J, cnorm=\E[?25h, cr=^M, 
+-	csr=\E[%i%p1%d;%p2%dr, cub=\E[%p1%dD, cub1=^H, 
+-	cud=\E[%p1%dB, cud1=^J, cuf=\E[%p1%dC, cuf1=\E[C, 
+-	cup=\E[%i%p1%d;%p2%dH, cuu=\E[%p1%dA, cuu1=\E[A, 
+-	dch=\E[%p1%dP, dch1=\E[P, dl=\E[%p1%dM, dl1=\E[M, 
+-	ech=\E[%p1%dX, ed=\E[J, el=\E[K, el1=\E[1K, enacs=\E(B\E)0, 
+-	flash=\E[?5h$<100/>\E[?5l, home=\E[H, hpa=\E[%i%p1%dG, 
+-	ht=^I, hts=\EH, ich=\E[%p1%d@, il=\E[%p1%dL, il1=\E[L, 
+-	ind=^J, invis=\E[8m, is2=\E[!p\E[?3;4l\E[4l\E>, kbs=^H, 
+-	kdch1=\E[3~, mc0=\E[i, mc4=\E[4i, mc5=\E[5i, meml=\El, 
+-	memu=\Em, op=\E[39;49m, rc=\E8, rev=\E[7m, ri=\EM, rmacs=^O, 
+-	rmam=\E[?7l, rmcup=\E[?1049l, rmir=\E[4l, rmkx=\E[?1l\E>, 
+-	rmso=\E[27m, rmul=\E[24m, rs1=\Ec, 
+-	rs2=\E[!p\E[?3;4l\E[4l\E>, sc=\E7, setab=\E[4%p1%dm, 
+-	setaf=\E[3%p1%dm, 
+-	setb=\E[4%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m, 
+-	setf=\E[3%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m, 
+-	sgr=\E[0%?%p6%|%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;%?%p7%t;8%;m%?%p9%t\016%e\017%;, 
+-	sgr0=\E[m\017, smacs=^N, smam=\E[?7h, smcup=\E[?1049h, 
+-	smir=\E[4h, smkx=\E[?1h\E=, smso=\E[7m, smul=\E[4m, 
+-	tbc=\E[3g, u6=\E[%i%d;%dR, u7=\E[6n, u8=\E[?1;2c, u9=\E[c, 
+-	vpa=\E[%i%p1%dd, 
 -
 -# From: David J. MacKenzie <djm@va.pubnix.com>, 14 Nov 1997
 -xterm-xi|xterm on XI Graphics Accelerated X under BSD/OS 3.1, 
@@ -159,25 +207,23 @@
 -
 -# This is one of the variants of XFree86 3.3 xterm, updated for 4.0 (T.Dickey)
 -xterm-16color|xterm with 16 colors like aixterm, 
--	colors#16, pairs#256, 
+-	colors#16, ncv#32, pairs#256, 
 -	setab=\E[%?%p1%{8}%<%t%p1%{40}%+%e%p1%{92}%+%;%dm, 
 -	setaf=\E[%?%p1%{8}%<%t%p1%{30}%+%e%p1%{82}%+%;%dm, 
 -	setb=%p1%{8}%/%{6}%*%{4}%+\E[%d%p1%{8}%m%Pa%?%ga%{1}%=%t4%e%ga%{3}%=%t6%e%ga%{4}%=%t1%e%ga%{6}%=%t3%e%ga%d%;m, 
 -	setf=%p1%{8}%/%{6}%*%{3}%+\E[%d%p1%{8}%m%Pa%?%ga%{1}%=%t4%e%ga%{3}%=%t6%e%ga%{4}%=%t1%e%ga%{6}%=%t3%e%ga%d%;m, 
--	use=xterm-xf86-v40, 
+-	use=xterm-xfree86, 
 -
 -# These variants of XFree86 3.9.16 xterm are built as a configure option.
 -xterm-256color|xterm with 256 colors, 
 -	ccc, 
--	colors#256, pairs#256, 
+-	colors#256, ncv#32, pairs#256, 
 -	initc=\E]4;%p1%d;rgb\:%p2%{255}%*%{1000}%/%2.2X/%p3%{255}%*%{1000}%/%2.2X/%p4%{255}%*%{1000}%/%2.2X\E\\, 
 -	setab=\E[48;5;%p1%dm, setaf=\E[38;5;%p1%dm, 
 -	setb=\E[48;5;%p1%dm, setf=\E[38;5;%p1%dm, 
 -	use=xterm-xfree86, 
 -xterm-88color|xterm with 88 colors, 
 -	colors#88, pairs#88, use=xterm-256color, 
--
--# This is another variant, for XFree86 4.0 xterm (T.Dickey)
 +# XFree86 updates/notes/new entries (including xterm-8bit, xterm-16color)
 +# - Thomas E. Dickey <dickey@clark.net>
 +#
@@ -394,7 +440,8 @@
 +	  kbs=^H,
 +	  kdch1=\E[3~,
 +	  use=xterm-xfree86,
-+
+ 
+-# This is another variant, for XFree86 4.0 xterm (T.Dickey)
 +#
 +# The xterm-xfree86 description has all of the features, but is not completely+ # compatible with vt220.  If you are using a Sun or PC keyboard, set the
 +# sunKeyboard resource to true:
@@ -496,7 +543,7 @@
  # This is an 8-bit version of xterm, which emulates DEC vt220 with ANSI color.
  # To use it, your decTerminalID resource must be set to 200 or above.
  #
-@@ -2566,102 +2717,339 @@
+@@ -2703,122 +2807,339 @@
  #	SS3	\E O	\217
  #	CSI	\E [	\233
  #
@@ -517,7 +564,7 @@
 -	invis=\2338m, 
 -	is2=\E7\E G\233r\233m\233?7h\233?1;3;4;6l\2334l\E8\E>, 
 -	ka1=\217w, ka3=\217u, kb2=\217y, kbeg=\217E, kbs=^H, 
--	kc1=\217q, kc3=\217s, kcub1=\217D, kcud1=\217B, 
+-	kc1=\217q, kc3=\217s, kcbt=\233Z, kcub1=\217D, kcud1=\217B, 
 -	kcuf1=\217C, kcuu1=\217A, kdch1=\2333~, kend=\2334~, 
 -	kent=\217M, kf1=\23311~, kf10=\23321~, kf11=\23323~, 
 -	kf12=\23324~, kf13=\23325~, kf14=\23326~, kf15=\23328~, 
@@ -530,11 +577,11 @@
 -	ri=\215, rmacs=^O, rmam=\233?7l, rmcup=\233?1049l, 
 -	rmir=\2334l, rmkx=\233?1l\E>, rmso=\23327m, rmul=\23324m, 
 -	rs1=\Ec, 
--	rs2=\E7\E[62"p\E G\233r\233m\233?7h\233?1;3;4;6l\2334l\E8\E>, 
+-	rs2=\E[62"p\E G\E7\233r\E8\233m\233?7h\233?1;3;4;6l\2334l\E>, 
 -	sc=\E7, setab=\2334%p1%dm, setaf=\2333%p1%dm, 
 -	setb=\2334%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m, 
 -	setf=\2333%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m, 
--	sgr=\2330%?%p1%p6%|%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;%?%p7%t;8%;m%?%p9%t\016%e\017%;, 
+-	sgr=\2330%?%p6%|%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;%?%p7%t;8%;m%?%p9%t\016%e\017%;, 
 -	sgr0=\233m^O, smacs=^N, smam=\233?7h, smcup=\233?1049h, 
 -	smir=\2334h, smkx=\233?1h\E=, smso=\2337m, smul=\2334m, 
 -	tbc=\2333g, u6=\233[%i%d;%dR, u7=\E[6n, u8=\233[?1;2c, 
@@ -544,18 +591,38 @@
 -	kclr=\EJ, kcub1=\ED, kcud1=\EB, kcuf1=\EC, kcuu1=\EA, 
 -	kdch1=\EP, kend=\EF, kf1=\Ep, kf2=\Eq, kf3=\Er, kf4=\Es, 
 -	kf5=\Et, kf6=\Eu, kf7=\Ev, kf8=\Ew, khome=\Eh, kich1=\EQ, 
--	knp=\ES, kpp=\ET, use=xterm-xfree86, 
+-	knp=\ES, kpp=\ET, use=xterm-basic, 
 -
+-xterm-sco|XFree86 xterm with SCO function keys, 
+-	kcub1=\E[D, kcud1=\E[B, kcuf1=\E[C, kcuu1=\E[A, kend=\E[F, 
+-	kf1=\E[M, kf10=\E[V, kf11=\E[W, kf12=\E[X, kf13=\E[Y, 
+-	kf15=\E[a, kf16=\E[b, kf17=\E[c, kf18=\E[d, kf19=\E[e, 
+-	kf2=\E[N, kf20=\E[f, kf21=\E[g, kf22=\E[h, kf23=\E[i, 
+-	kf24=\E[j, kf25=\E[k, kf26=\E[l, kf27=\E[m, kf28=\E[n, 
+-	kf29=\E[o, kf3=\E[O, kf30=\E[p, kf31=\E[q, kf32=\E[r, 
+-	kf33=\E[s, kf34=\E[t, kf35=\E[u, kf4=\E[P, kf5=\E[Q, 
+-	kf6=\E[R, kf7=\E[S, kf8=\E[T, kf9=\E[U, khome=\E[H, 
+-	kich1=\E[L, knp=\E[G, kpp=\E[I, use=xterm-basic, 
+-
+-# The xterm-xfree86 description has all of the features, but is not completely
+-# compatible with vt220.  If you are using a Sun or PC keyboard, set the
+-# sunKeyboard resource to true:
+-#	+ maps the editing keypad
+-#	+ interprets control-function-key as a second array of keys, so a
+-#	  12-fkey keyboard can support vt220's 20-fkeys.
+-#	+ maps numeric keypad "+" to ",".
+-#	+ uses DEC-style control sequences for the application keypad.
+-#	  
 -xterm-vt220|XFree86 xterm emulating vt220, 
--	ka1=\EOw, ka3=\EOy, kbeg=\EOu, kbs=^H, kc1=\EOq, kc3=\EOs, 
--	kcub1=\EOD, kcud1=\EOB, kcuf1=\EOC, kcuu1=\EOA, 
--	kdch1=\E[3~, kend=\E[4~, kent=\EOM, kf1=\EOP, kf10=\E[21~, 
--	kf11=\E[23~, kf12=\E[24~, kf13=\E[25~, kf14=\E[26~, 
--	kf15=\E[28~, kf16=\E[29~, kf17=\E[31~, kf18=\E[32~, 
--	kf19=\E[33~, kf2=\EOQ, kf20=\E[34~, kf3=\EOR, kf4=\EOS, 
--	kf5=\E[15~, kf6=\E[17~, kf7=\E[18~, kf8=\E[19~, kf9=\E[20~, 
--	khome=\E[1~, kich1=\E[2~, kmous=\E[M, knp=\E[6~, kpp=\E[5~, 
--	use=xterm-xfree86, 
+-	ka1=\EOw, ka3=\EOy, kbeg=\EOu, kc1=\EOq, kc3=\EOs, kcbt=\E[Z, 
+-	kcub1=\EOD, kcud1=\EOB, kcuf1=\EOC, kcuu1=\EOA, kend=\E[4~, 
+-	kent=\EOM, kf1=\EOP, kf10=\E[21~, kf11=\E[23~, kf12=\E[24~, 
+-	kf13=\E[25~, kf14=\E[26~, kf15=\E[28~, kf16=\E[29~, 
+-	kf17=\E[31~, kf18=\E[32~, kf19=\E[33~, kf2=\EOQ, 
+-	kf20=\E[34~, kf3=\EOR, kf4=\EOS, kf5=\E[15~, kf6=\E[17~, 
+-	kf7=\E[18~, kf8=\E[19~, kf9=\E[20~, khome=\E[1~, 
+-	kich1=\E[2~, kmous=\E[M, knp=\E[6~, kpp=\E[5~, 
+-	use=xterm-basic, 
 -
 -xterm-vt52|XFree86 xterm emulating dec vt52, 
 -	cols#80, it#8, lines#24, 
@@ -932,7 +999,7 @@
  # (kterm: this had extension capabilities ":KJ:TY=ascii:" -- esr)
  # (kterm should not invoke DEC Graphics as the alternate character set
  #  -- Kenji Rikitake)
-@@ -2710,18 +3096,6 @@
+@@ -2869,18 +3190,6 @@
  	smcup=\E[?1;41s\E[?1;41h\E=, smir=\E[4h, smso=\E[7m, 
  	smul=\E[4m, use=ecma+color, 
  
@@ -951,10 +1018,11 @@
  # this describes the alpha-version of Gnome terminal shipped with Redhat 6.0
  gnome|Gnome terminal, 
  	bce, 
-@@ -2823,15 +3197,6 @@
+@@ -3023,15 +3332,6 @@
+ 	setb=\E[4%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m, 
  	setf=\E[3%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m, 
  	use=xtermm, 
- 
+-
 -# From: David J. MacKenzie <djm@va.pubnix.com> 20 Apr 1995
 -# Here's a termcap entry I've been using for xterm_color, which comes
 -# with BSD/OS 2.0, and the X11R6 contrib tape too I think.  Besides the
@@ -963,18 +1031,6 @@
 -xterm-pcolor|xterm with color used for highlights and status line, 
 -	bold=\E[1m\E[43m, rev=\E[7m\E[34m, smso=\E[7m\E[31m, 
 -	smul=\E[4m\E[42m, use=xterm+sl, use=xterm-r6, 
--
+ 
  # HP ships this, except for the pb#9600 which was merged in from BSD termcap.
  # (hpterm: added empty <acsc>, we have no idea what ACS chars look like --esr)
- hpterm|X-hpterm|hp X11 terminal emulator, 
-@@ -2986,8 +3351,9 @@
- #      G0   (bool)  Terminal can deal with ISO 2022  font  selection sequences.
- #      AX   (bool)  Does  understand ANSI set default fg/bg color
- #                   (\E[39m / \E[49m).
-+# G0 is part of the screen definition, but unknown.
- screen|VT 100/ANSI X3.64 virtual terminal, 
--	OTbs, OTpt, am, km, mir, msgr, xenl, G0, 
-+	OTbs, OTpt, am, km, mir, msgr, xenl,
- 	colors#8, cols#80, it#8, lines#24, pairs#64, 
- 	acsc=++\,\,--..00``aaffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~, 
- 	bel=^G, blink=\E[5m, bold=\E[1m, cbt=\E[Z, civis=\E[?25l, 
