@@ -21,14 +21,13 @@ Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
 # Source0-md5:	069c8880072060373290a4fefff43520
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
-Patch0:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040214.patch.gz
-Patch1:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040221.patch.gz
-Patch2:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040228.patch.gz
-Patch3:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040306.patch.gz
-Patch4:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040313.patch.gz
-Patch5:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040320.patch.gz
-Patch6:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040327.patch.gz
-Patch7:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040328.patch.gz
+Patch0:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040424-patch.sh.bz2
+Patch1:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040501.patch.gz
+Patch2:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040508.patch.gz
+Patch3:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040516.patch.gz
+Patch4:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040522.patch.gz
+Patch5:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040529.patch.gz
+Patch6:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040605.patch.gz
 Patch13:	%{name}-screen_hpa_fix.patch
 Patch14:	%{name}-xterm_hpa_fix.patch
 Patch15:	%{name}-rxvt.patch
@@ -267,12 +266,20 @@ Requires:	%{name}-devel = %{version}-%{release}
 This package includes the header files and libraries necessary to
 develop applications that use Ada95 ncurses.
 
+%description ada-devel -l pl
+Ten pakiet zawiera pliki nag³ówkowe i biblioteki potrzebne do
+tworzenia aplikacji u¿ywaj±cych ncurses w jêzyku Ada95.
+
 %prep
-%setup  -q
-%patch0 -p1
+%setup -q
+bzcat %{PATCH0} > patch.sh
+sh patch.sh
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
 %patch13 -p1
 %patch14 -p1
 #%patch15 -p1
