@@ -17,7 +17,7 @@ Source4:     term.7.pl
 Patch0:      ncurses-rh.patch
 Patch1:      ncurses-setuid.patch
 Patch2:      ncurses-arm.patch
-BuildRoot:   /tmp/%{name}-%{version}-root
+BuildRoot:	/tmp/%{name}-%{version}-root
 BuildPrereq: sharutils, patch, bash, gawk, sed, gzip
 
 %description
