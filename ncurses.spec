@@ -150,7 +150,7 @@ sh %{SOURCE1}
 %patch2 -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS -g -DPURE_TERMINFO" LDFLAGS="-s" \
+CFLAGS="$RPM_OPT_FLAGS -DPURE_TERMINFO" LDFLAGS="-s" \
 ./configure %{_target_platform} \
 	--prefix=%{_prefix} \
 	--includedir=%{_includedir}/ncurses \
