@@ -5,10 +5,11 @@ Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	5.2
-Release:	1
+Release:	2
 License:	Distributable
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -65,6 +66,7 @@ Summary:	Additional ncurses libraries
 Summary(pl):	Dodatkowe biblioteki ncurses
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Requires:	%{name} = %{version}
@@ -176,7 +178,7 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 %patch5 -p1
 
 %build
-CFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS} -DPURE_TERMINFO"
+CFLAGS="%{?debug:-O0 -g}%{!?debug:%{!?debug:%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O0 -g}}%{?debug:-O0 -g}} -DPURE_TERMINFO"
 %configure \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
@@ -232,6 +234,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_datadir}/terminfo/l/linux*
 %{_datadir}/terminfo/s/screen
+%{_datadir}/terminfo/s/screen-w
 %{_datadir}/terminfo/v/vt100
 %{_datadir}/terminfo/v/vt220
 %{_datadir}/terminfo/v/vt220-8
@@ -257,16 +260,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/terminfo/l/lisaterm
 %{_datadir}/terminfo/l/lisaterm-w
 %{_datadir}/terminfo/l/liswb
-/usr/share/terminfo/s/s[4bioptuvwy]*
-/usr/share/terminfo/s/sc410
-/usr/share/terminfo/s/sc415
-/usr/share/terminfo/s/scanset
-/usr/share/terminfo/s/scoansi
-/usr/share/terminfo/s/screen-w
-/usr/share/terminfo/s/screen2
-/usr/share/terminfo/s/screen3
-/usr/share/terminfo/s/screwpoint
-/usr/share/terminfo/s/scrhp
+%{_datadir}/terminfo/s/s[4bioptuvwy]*
+%{_datadir}/terminfo/s/sc410
+%{_datadir}/terminfo/s/sc415
+%{_datadir}/terminfo/s/scanset
+%{_datadir}/terminfo/s/scoansi
+%{_datadir}/terminfo/s/screen-w
+%{_datadir}/terminfo/s/screen2
+%{_datadir}/terminfo/s/screen3
+%{_datadir}/terminfo/s/screwpoint
+%{_datadir}/terminfo/s/scrhp
 %{_datadir}/terminfo/v/v[235aceikpr]*
 %{_datadir}/terminfo/v/vt-61
 %{_datadir}/terminfo/v/vt100-am
