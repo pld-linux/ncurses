@@ -295,16 +295,14 @@ ln -sf ../../lib/libncurses.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
-gzip -9nf README ANNOUNCE c++/{README-first,NEWS,PROBLEMS,demo.cc}
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %post   ext -p /sbin/ldconfig
 %postun ext -p /sbin/ldconfig
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
@@ -426,7 +424,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc {README,ANNOUNCE}.gz
+%doc README ANNOUNCE
 %doc doc/html/ncurses-intro.html
 %attr(755,root,root) %{_libdir}/lib*.so
 %dir %{_includedir}
@@ -454,7 +452,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{!?_without_cxx:1}
 %files c++-devel
 %defattr(644,root,root,755)
-%doc c++/{demo.cc,README-first,NEWS,PROBLEMS}.gz
+%doc c++/{demo.cc,README-first,NEWS,PROBLEMS}
 %{_includedir}/cursesapp.h
 %{_includedir}/cursesf.h
 %{_includedir}/cursesm.h
