@@ -1,6 +1,5 @@
 # --without cxx	- do not build C++ ncurses bindings and demo programs
-#		  (use this is neccessary for build ncurses linked with
-#		  uClibc).
+#		  (this is neccessary to build ncurses linked with uClibc).
 
 Summary:	curses terminal control library
 Summary(de):	curses-Terminal-Control-Library
@@ -11,7 +10,7 @@ Summary(pt_BR):	Biblioteca de controle de terminal curses
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	5.2
-Release:	26
+Release:	27
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -28,9 +27,8 @@ Patch7:		%{name}-meta.patch
 Patch8:		%{name}-ac_hack.patch
 Patch9:		%{name}-xterm-home-end.patch
 Patch10:	%{name}-mouse_trafo-warning.patch
-BuildRequires:	sharutils
-BuildRequires:	sed
 %{!?_without_cxx:BuildRequires:	libstdc++-devel}
+BuildRequires:	sharutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libncurses5
 
@@ -247,10 +245,8 @@ ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.*.* $RPM_BUILD_ROOT/lib
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.*.* $RPM_BUILD_ROOT/lib
 ln -sf ../../lib/libtinfo.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
-ln -sf ../../lib/libtinfo.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.5
 ln -sf ../../lib/libncurses.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libcurses.so
 ln -sf ../../lib/libncurses.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
-ln -sf ../../lib/libncurses.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libncurses.so.5
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
@@ -300,9 +296,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files ext
 %defattr(644,root,root,755)
-%{_libdir}/libform.so.*.*
-%{_libdir}/libpanel.so.*.*
-%{_libdir}/libmenu.so.*.*
+%attr(755,root,root) %{_libdir}/libform.so.*.*
+%attr(755,root,root) %{_libdir}/libpanel.so.*.*
+%attr(755,root,root) %{_libdir}/libmenu.so.*.*
 
 %files -n terminfo
 %defattr(644,root,root,755)
@@ -388,7 +384,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc {README,ANNOUNCE}.gz
 %doc doc/html/ncurses-intro.html
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(755,root,root) %{_libdir}/lib*.so.*
 %dir %{_includedir}
 %{_includedir}/curses.h
 %{_includedir}/eti.h
