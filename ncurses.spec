@@ -14,24 +14,28 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.4
-Release:	0.1
+Release:	0.2
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
 # Source0-md5:	069c8880072060373290a4fefff43520
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
-Patch0:		%{name}-rh.patch
-Patch1:		%{name}-libyx-lat.patch
-Patch3:		%{name}-screen_hpa_fix.patch
-Patch4:		%{name}-xterm-color.patch
-Patch5:		%{name}-xterm_hpa_fix.patch
-Patch6:		%{name}-rxvt.patch
-Patch7:		%{name}-meta.patch
-Patch8:		%{name}-ac_hack.patch
-Patch9:		%{name}-xterm-home-end.patch
-Patch10:	%{name}-mouse_trafo-warning.patch
-Patch11:	%{name}-gnome-terminal.patch
+Patch0:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040214.patch.gz
+Patch1:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040221.patch.gz
+Patch2:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040228.patch.gz
+Patch3:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040306.patch.gz
+Patch10:	%{name}-rh.patch
+Patch11:	%{name}-libyx-lat.patch
+Patch13:	%{name}-screen_hpa_fix.patch
+Patch14:	%{name}-xterm-color.patch
+Patch15:	%{name}-xterm_hpa_fix.patch
+Patch16:	%{name}-rxvt.patch
+Patch17:	%{name}-meta.patch
+Patch18:	%{name}-ac_hack.patch
+Patch19:	%{name}-xterm-home-end.patch
+Patch20:	%{name}-mouse_trafo-warning.patch
+Patch21:	%{name}-gnome-terminal.patch
 %{?with_cxx:BuildRequires:	libstdc++-devel}
 BuildRequires:	automake
 BuildRequires:	sharutils
@@ -255,15 +259,19 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 %setup  -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 %patch3 -p1
-#%patch4 -p1
-%patch5 -p1
-#%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch13 -p1
+#%patch14 -p1
+%patch15 -p1
+#%patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
 
 %build
 unset TERMINFO || :
@@ -351,88 +359,19 @@ rm -rf $RPM_BUILD_ROOT
 %files -n terminfo
 %defattr(644,root,root,755)
 %{_datadir}/terminfo/[1-9ALMNPQXa-ce-km-rt-uwz]
-%{_datadir}/terminfo/d/d[1-tw]*
-%{_datadir}/terminfo/l/l[afnpu]*
-%{_datadir}/terminfo/l/lisa
-%{_datadir}/terminfo/l/lisaterm
-%{_datadir}/terminfo/l/lisaterm-w
-%{_datadir}/terminfo/l/liswb
-%{_datadir}/terminfo/s/s[4bioptuvwy]*
-%{_datadir}/terminfo/s/sc410
-%{_datadir}/terminfo/s/sc415
-%{_datadir}/terminfo/s/scanset
-%{_datadir}/terminfo/s/sco*
-%{_datadir}/terminfo/s/screwpoint
-%{_datadir}/terminfo/s/scrhp
-%{_datadir}/terminfo/v/v[235aceikprs]*
-%{_datadir}/terminfo/v/vt-61
-%{_datadir}/terminfo/v/vt100-am
-%{_datadir}/terminfo/v/vt100-bm
-%{_datadir}/terminfo/v/vt100-bm-o
-%{_datadir}/terminfo/v/vt100-bot-s
-%{_datadir}/terminfo/v/vt100nam
-%{_datadir}/terminfo/v/vt100-nam
-%{_datadir}/terminfo/v/vt100-nam-w
-%{_datadir}/terminfo/v/vt100-nav
-%{_datadir}/terminfo/v/vt100-nav-w
-%{_datadir}/terminfo/v/vt100-s
-%{_datadir}/terminfo/v/vt100-s-bot
-%{_datadir}/terminfo/v/vt100-s-top
-%{_datadir}/terminfo/v/vt100-top-s
-%{_datadir}/terminfo/v/vt100-vb
-%{_datadir}/terminfo/v/vt100-w
-%{_datadir}/terminfo/v/vt100-w-am
-%{_datadir}/terminfo/v/vt100-w-nam
-%{_datadir}/terminfo/v/vt100-w-nav
-%{_datadir}/terminfo/v/vt102
-%{_datadir}/terminfo/v/vt102-nsgr
-%{_datadir}/terminfo/v/vt102-w
-%{_datadir}/terminfo/v/vt125
-%{_datadir}/terminfo/v/vt131
-%{_datadir}/terminfo/v/vt132
-%{_datadir}/terminfo/v/vt200
-%{_datadir}/terminfo/v/vt200-8
-%{_datadir}/terminfo/v/vt200-8bit
-%{_datadir}/terminfo/v/vt200-js
-%{_datadir}/terminfo/v/vt200-old
-%{_datadir}/terminfo/v/vt200-w
-%{_datadir}/terminfo/v/vt220-8bit
-%{_datadir}/terminfo/v/vt220d
-%{_datadir}/terminfo/v/vt220-js
-%{_datadir}/terminfo/v/vt220-nam
-%{_datadir}/terminfo/v/vt220-old
-%{_datadir}/terminfo/v/vt220-w
-%{_datadir}/terminfo/v/vt300
-%{_datadir}/terminfo/v/vt300-nam
-%{_datadir}/terminfo/v/vt300-w
-%{_datadir}/terminfo/v/vt300-w-nam
-%{_datadir}/terminfo/v/vt320
-%{_datadir}/terminfo/v/vt320-k3
-%{_datadir}/terminfo/v/vt320-k311
-%{_datadir}/terminfo/v/vt320nam
-%{_datadir}/terminfo/v/vt320-nam
-%{_datadir}/terminfo/v/vt320-w
-%{_datadir}/terminfo/v/vt320-w-nam
-%{_datadir}/terminfo/v/vt330
-%{_datadir}/terminfo/v/vt340
-%{_datadir}/terminfo/v/vt400
-%{_datadir}/terminfo/v/vt400-24
-%{_datadir}/terminfo/v/vt420
-%{_datadir}/terminfo/v/vt420f
-%{_datadir}/terminfo/v/vt420pc
-%{_datadir}/terminfo/v/vt420pcdos
-%{_datadir}/terminfo/v/vt50
-%{_datadir}/terminfo/v/vt50h
-%{_datadir}/terminfo/v/vt510
-%{_datadir}/terminfo/v/vt510pc
-%{_datadir}/terminfo/v/vt510pcdos
-%{_datadir}/terminfo/v/vt520
-%{_datadir}/terminfo/v/vt525
-%{_datadir}/terminfo/v/vt61
-%{_datadir}/terminfo/v/vt61.5
-%{_datadir}/terminfo/v/vv100
-%{_datadir}/terminfo/x/x[168delnw]*
-%{_datadir}/terminfo/x/xtalk
+%{_datadir}/terminfo/d/*
+%{_datadir}/terminfo/l/*
+%{_datadir}/terminfo/s/*
+%{_datadir}/terminfo/v/*
+%{_datadir}/terminfo/x/*
+%exclude %{_datadir}/terminfo/d/dumb
+%exclude %{_datadir}/terminfo/l/linux*
+%exclude %{_datadir}/terminfo/s/screen*
+%exclude %{_datadir}/terminfo/v/vt100
+%exclude %{_datadir}/terminfo/v/vt220
+%exclude %{_datadir}/terminfo/v/vt220-8
+%exclude %{_datadir}/terminfo/v/vt52
+%exclude %{_datadir}/terminfo/x/xterm*
 
 %files devel
 %defattr(644,root,root,755)
