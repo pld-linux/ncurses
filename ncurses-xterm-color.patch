@@ -1,10 +1,10 @@
 --- ncurses-5.2/misc/terminfo.src~	Thu Sep 20 03:30:22 2001
 +++ ncurses-5.2/misc/terminfo.src	Thu Sep 20 04:10:11 2001
 @@ -2894,10 +2895,19 @@
- #
- # Redhat Linux 6.x distributes XFree86 xterm as "nxterm", which uses bce
  # colors; note that this is not compatible with the 5.2 version.
--nxterm|xterm-color|generic color xterm, 
+ # csw (2002-05-15): make xterm-color primary instead of nxterm, to 
+ #   match XFree86's xterm.terminfo usage and prevent circular links
+-xterm-color|nxterm|generic color xterm, 
 +nxterm|generic color xterm, 
  	ncv@, 
  	op=\E[m, use=xterm-r6, use=klone+color, 
@@ -19,5 +19,4 @@
 +	use=xterm-r6,
 +
  # this describes the alpha-version of Gnome terminal shipped with Redhat 6.0
- gnome|Gnome terminal, 
- 	bce, 
+ gnome-rh62|Gnome terminal, 
