@@ -1,23 +1,24 @@
-Summary:	curses terminal control library
-Summary(de):	curses-Terminal-Control-Library
-Summary(fr):	La bibliothéque de contrôle de terminal curses.
-Summary(pl):	Biblioteki do kontrolowania terminala
-Summary(tr):	Terminal kontrol kitaplýðý
-Name:		ncurses
-Version:	4.2
-Release:	15
-Copyright:	distributable
-Group:		Libraries
-Group(pl):	Biblioteki
-Source0:	ftp://ftp.clark.net/pub/dickey/ncurses/%{name}-%{version}.tar.gz
-Source1:	ftp://ftp.clark.net/pub/dickey/ncurses/4.2/patch-4.2-990213.sh
-Source2:	captoinfo.1m.pl
-Source3:	clear.1.pl
-Source4:	term.7.pl
-Patch0:		ncurses-rh.patch
-Patch1:		ncurses-setuid.patch
-Patch2:		ncurses-arm.patch
-BuildRoot:	/tmp/%{name}-%{version}-root
+Summary:     curses terminal control library
+Summary(de): curses-Terminal-Control-Library
+Summary(fr): La bibliothéque de contrôle de terminal curses.
+Summary(pl): Biblioteki do kontrolowania terminala
+Summary(tr): Terminal kontrol kitaplýðý
+Name:        ncurses
+Version:     4.2
+Release:     16
+Copyright:   distributable
+Group:       Libraries
+Group(pl):   Biblioteki
+Source0:     ftp://ftp.clark.net/pub/dickey/ncurses/%{name}-%{version}.tar.gz
+Source1:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/patch-4.2-990213.sh
+Source2:     captoinfo.1m.pl
+Source3:     clear.1.pl
+Source4:     term.7.pl
+Patch0:      ncurses-rh.patch
+Patch1:      ncurses-setuid.patch
+Patch2:      ncurses-arm.patch
+BuildRoot:   /tmp/%{name}-%{version}-root
+BuildPrereq: sharutils, patch, bash, gawk, sed, gzip
 
 %description
 The curses library routines give the user a terminal-independent method of
@@ -39,8 +40,8 @@ optimisation correcte. Ceci est l'implantation du « nouveau curses » (ncurses)
 et est le remplacement du curses 4.4BSD classique qui est abandonné.
 
 %description -l pl
-Biblioteka curses udostêpnia funkcje pozwalaj±ce u¿ytkownikom odwo³ywanie
-siê do zawarto¶ci terminala niezale¿nie od jego typu. Pakiet tez zawiera
+Biblioteka curses udostêpnia funkcje pozwalaj±ce u¿ytkownikom na odwo³ywanie
+siê do zawarto¶ci terminala niezale¿nie od jego typu. Pakiet ten zawiera
 implementacjê klasycznej biblioteki curses (z systemu 4.4BSD) o nazwie
 ncurses (new curses) i jest zarazem jej przysz³ym zamiennikiem.
 
@@ -50,11 +51,11 @@ karakter tabanlý ekranlara eriþim olanaðý saðlanabilmektedir. Bu uyarlama
 'new curses' (ncurses), BSD deki klasik curses'in geliþmiþ halidir.
 
 %package ext
-Summary:	Additionan ncurses libraries
-Summary(pl):	Dodatkowe biblioteki ncurses
-Group:		Libraries
-Group(pl):	Biblioteki
-Requires:	%{name} = %{version}
+Summary:     Additionan ncurses libraries
+Summary(pl): Dodatkowe biblioteki ncurses
+Group:       Libraries
+Group(pl):   Biblioteki
+Requires:    %{name} = %{version}
 
 %description ext
 This package contain addidion ncurses libraries like libforms, libmenu and
@@ -62,14 +63,14 @@ libpanel for easy making full screen curse application.
 
 %description -l pl ext
 Pakiet ten zawiera dodatkowe biblioteki libforms, libmenu i libpanel s³u¿±ce
-do ³atwego robienia plikacji pe³noekranowych korzystaj±cych z ncurses.
+do ³atwego tworzenia aplikacji pe³noekranowych korzystaj±cych z ncurses.
 
 %package -n terminfo
-Summary:	Complete terminfo database
-Summary(pl):	Kompletna baza terminfo 
-Group:		Utilities/Terminal
-Group(pl):	Narzêdzia/Terminal
-Requires:	%{name} = %{version}
+Summary:     Complete terminfo database
+Summary(pl): Kompletna baza terminfo 
+Group:       Utilities/Terminal
+Group(pl):   Narzêdzia/Terminal
+Requires:    %{name} = %{version}
 
 %description -n terminfo
 This package contain cmplet terminfo database. If you just use the Linux
@@ -78,32 +79,32 @@ minimal /usr/lib/terminfo tree for these terminal is already included in the
 ncurses package.
 
 %description -l pl -n terminfo
-Pakiet ten zconsoleawiera kompletn± bazê terminfo. Ke¿eli u¿ywasz terminali
+Pakiet ten zawiera kompletn± bazê terminfo. Je¿eli u¿ywasz terminali
 linux, console, xterm, vt100 prawdopodobnie nie bedziesz potrzebowa³ tego
 pakietu gdy¿ definicje tych terminali s± w³±czone w pakiet ncurses.
 
 %package devel
-Summary:	Header files for develop ncurses based application
-Summary(pl):	Pliki nag³ówkowe do bibliotek ncurses
-Group:		Development/Libraries
-Group(pl):	Programowanie/Biblioteki
-Requires:	%{name} = %{version}
-Requires:	%{name}-ext = %{version}
+Summary:     Header files for develop ncurses based application
+Summary(pl): Pliki nag³ówkowe do bibliotek ncurses
+Group:       Development/Libraries
+Group(pl):   Programowanie/Biblioteki
+Requires:    %{name} = %{version}
+Requires:    %{name}-ext = %{version}
 
 %description devel
 This package includes the header files and libraries necessary to develop
 applications that use ncurses.
 
 %description -l pl devel
-Pakiet ten zawiera pliki nag³ówkowe - niezbêdne do pisania/kompilowania
+Pakiet ten zawiera pliki nag³ówkowe niezbêdne do pisania/kompilowania
 programów z wykorzystaniem bibliotek ncurses.
 
 %package static
-Summary:	Static libraries for ncurses
-Summary(pl):	Biblioteki statyczne ncurses
-Group:		Development/Libraries
-Group(pl):	Programowanie/Biblioteki
-Requires:	%{name}-devel = %{version}
+Summary:     Static libraries for ncurses
+Summary(pl): Biblioteki statyczne ncurses
+Group:       Development/Libraries
+Group(pl):   Programowanie/Biblioteki
+Requires:    %{name}-devel = %{version}
 
 %description static
 This package includes the static libraries necessary to develop
@@ -111,6 +112,35 @@ applications that use ncurses.
 
 %description -l pl static
 Pakiet ten zawiera biblioteki statyczne ncurses.
+
+%package ++devel
+Summary:     Header files for develop ncurses++ based application
+Summary(pl): Pliki nag³ówkowe do biblioteki ncurses++
+Group:       Development/Libraries
+Group(pl):   Programowanie/Biblioteki
+Requires:    %{name}-devel = %{version}
+
+%description ++devel
+This package includes the header files and libraries necessary to develop
+applications that use ncurses++.
+
+%description -l pl ++devel
+Pakiet ten zawiera pliki nag³ówkowe niezbêdne do pisania/kompilowania
+programów z wykorzystaniem biblioteki ncurses++.
+
+%package ++static
+Summary:     Static libraries for ncurses++
+Summary(pl): Biblioteki statyczne ncurses++
+Group:       Development/Libraries
+Group(pl):   Programowanie/Biblioteki
+Requires:    %{name} = {%version}
+
+%description ++static
+This package includes the static libraries necessary to develop
+applications that use ncurses++.
+
+%description -l pl ++static
+Pakiet ten zawiera biblioteki statyczne ncurses++.
 
 %prep
 %setup  -q
@@ -126,7 +156,6 @@ CFLAGS="$RPM_OPT_FLAGS -DPURE_TERMINFO" LDFLAGS="-s" \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
 	--with-shared \
-	--without-cxx \
 	--without-ada \
 	--without-profile \
 	--without-debug
@@ -151,10 +180,13 @@ install %{SOURCE2} $RPM_BUILD_ROOT/usr/man/pl/man1/captoinfo.1m
 install %{SOURCE3} $RPM_BUILD_ROOT/usr/man/pl/man1/clear.1
 install %{SOURCE4} $RPM_BUILD_ROOT/usr/man/pl/man7/term.7
 
+install -d $RPM_BUILD_ROOT/usr/doc/examples/c++
+install c++/demo.cc $RPM_BUILD_ROOT/usr/doc/examples/c++
+
 rm -f $RPM_BUILD_ROOT/usr/lib/libncurses.so.4
 
-gzip -9nf $RPM_BUILD_ROOT/usr/man/pl/man*/* \
-	README ANNOUNCE 
+gzip -9nf $RPM_BUILD_ROOT/usr/man/pl/man*/* README ANNOUNCE
+gzip -9nf misc/*.doc
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -326,19 +358,51 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc {README,ANNOUNCE}.gz 
-
+%doc {README,ANNOUNCE}.gz misc/*.doc.gz misc/*.html
 %attr(755,root,root) /usr/lib/lib*.so
-
-/usr/include/ncurses
-
+/usr/include/ncurses/curses.h
+/usr/include/ncurses/eti.h
+/usr/include/ncurses/form.h
+/usr/include/ncurses/menu.h
+/usr/include/ncurses/ncurses.h
+/usr/include/ncurses/panel.h
+/usr/include/ncurses/term.h
+/usr/include/ncurses/termcap.h
+/usr/include/ncurses/unctrl.h
 /usr/man/man3/*
 
 %files static
 %defattr(644,root,root,755)
-/usr/lib/lib*.a
+/usr/lib/libncurses.a
+/usr/lib/libform.a
+/usr/lib/libpanel.a
+/usr/lib/libmenu.a
+
+%files ++devel
+%defattr(644,root,root,755)
+%dir /usr/doc/examples
+%dir /usr/doc/examples/c++
+%dir /usr/include/ncurses
+/usr/include/ncurses/cursesapp.h
+/usr/include/ncurses/cursesf.h
+/usr/include/ncurses/cursesm.h
+/usr/include/ncurses/cursesp.h
+/usr/include/ncurses/cursesw.h
+/usr/include/ncurses/etip.h
+/usr/include/ncurses/cursslk.h
+/usr/doc/examples/c++/*
+
+%files ++static
+%defattr(644,root,root,755)
+/usr/lib/libncurses++.a
 
 %changelog
+* Sun May 16 1999 Artur Wróblewski <wrobell@posexperts.com.pl>
+  [4.2-16]
+- added ++devel and ++static packages
+- added documentation to devel package
+- some minor changes
+
 * Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   []
 - removed Conflicts: glibc (not neccesary now),
