@@ -183,7 +183,7 @@ export CFLAGS LDFLAGS
 	--with-termlib \
 	--enable-safe-sprintf
 
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
