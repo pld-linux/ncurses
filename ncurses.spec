@@ -16,7 +16,7 @@ Source3:	clear.1.pl
 Source4:	term.7.pl
 Patch0:		ncurses-rh.patch
 Patch1:		ncurses-setuid.patch
-Patch1:		ncurses-arm.patch
+Patch2:		ncurses-arm.patch
 BuildRoot:	/tmp/%{name}-%{version}-root
 Conflicts:      glibc <= 2.0.7
 
@@ -116,7 +116,8 @@ Pakiet ten zawiera biblioteki statyczne ncurses.
 %setup  -q
 sh %{SOURCE1}
 %patch0 -p1
-%patch1 -p1 
+%patch1 -p1
+%patch2 -p1
 
 %build
 CFLAGS="$RPM_OPT_FLAGS -DPURE_TERMINFO" LDFLAGS="-s" \
