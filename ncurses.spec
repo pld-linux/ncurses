@@ -12,7 +12,7 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.3
-Release:	2
+Release:	3
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -28,6 +28,7 @@ Patch7:		%{name}-meta.patch
 Patch8:		%{name}-ac_hack.patch
 Patch9:		%{name}-xterm-home-end.patch
 Patch10:	%{name}-mouse_trafo-warning.patch
+Patch11:	%{name}-gnome-terminal.patch
 %{!?_without_cxx:BuildRequires:	libstdc++-devel}
 BuildRequires:	sharutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -258,6 +259,7 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 %build
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
