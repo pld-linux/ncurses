@@ -133,7 +133,7 @@ Summary:	Static libraries for C++ ncurses
 Summary(pl):	Biblioteki statyczne C++ ncurses
 Group:		Development/Libraries
 Group(pl):	Programowanie/Biblioteki
-Requires:	%{name}-c++-devel = {%version}
+Requires:	%{name}-c++-devel = %{version}
 
 %description c++-static
 This package includes the static libraries necessary to develop
