@@ -26,8 +26,6 @@ Patch0:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040214.patch.gz
 Patch1:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040221.patch.gz
 Patch2:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040228.patch.gz
 Patch3:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040306.patch.gz
-Patch10:	%{name}-rh.patch
-Patch11:	%{name}-libyx-lat.patch
 Patch13:	%{name}-screen_hpa_fix.patch
 Patch14:	%{name}-xterm-color.patch
 Patch15:	%{name}-xterm_hpa_fix.patch
@@ -273,8 +271,6 @@ develop applications that use Ada95 ncurses.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch10 -p1
-%patch11 -p1
 %patch13 -p1
 #%patch14 -p1
 %patch15 -p1
