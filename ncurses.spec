@@ -178,7 +178,7 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 %patch5 -p1
 
 %build
-CFLAGS="%{?debug:-O0 -g}%{!?debug:%{!?debug:%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O0 -g}}%{?debug:-O0 -g}} -DPURE_TERMINFO"
+CFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS} -DPURE_TERMINFO"
 %configure \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
@@ -227,11 +227,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/tabset
 
 %dir %{_datadir}/terminfo
+%dir %{_datadir}/terminfo/d
 %dir %{_datadir}/terminfo/l
 %dir %{_datadir}/terminfo/s
 %dir %{_datadir}/terminfo/v
 %dir %{_datadir}/terminfo/x
 
+%{_datadir}/terminfo/d/dumb
 %{_datadir}/terminfo/l/linux*
 %{_datadir}/terminfo/s/screen
 %{_datadir}/terminfo/s/screen-w
@@ -254,7 +256,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n terminfo
 %defattr(644,root,root,755)
-%{_datadir}/terminfo/[1-9NPXa-km-rt-uwz]
+%{_datadir}/terminfo/[1-9NPXa-ce-km-rt-uwz]
+%{_datadir}/terminfo/d/d[1-tw]*
 %{_datadir}/terminfo/l/l[anpu]*
 %{_datadir}/terminfo/l/lisa
 %{_datadir}/terminfo/l/lisaterm
@@ -265,7 +268,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/terminfo/s/sc415
 %{_datadir}/terminfo/s/scanset
 %{_datadir}/terminfo/s/scoansi
-%{_datadir}/terminfo/s/screen-w
 %{_datadir}/terminfo/s/screen2
 %{_datadir}/terminfo/s/screen3
 %{_datadir}/terminfo/s/screwpoint
