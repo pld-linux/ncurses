@@ -268,6 +268,7 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 %patch11 -p1
 
 %build
+unset TERMINFO
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
 cp -f /usr/share/automake/config.sub .
 %configure \
