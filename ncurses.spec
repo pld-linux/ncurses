@@ -75,7 +75,7 @@ Requires:    %{name} = %{version}
 %description -n terminfo
 This package contain cmplet terminfo database. If you just use the Linux
 console, xterm and VT100, you probably will not need this this - a
-minimal /usr/lib/terminfo tree for these terminal is already included in the
+minimal /usr/share/terminfo tree for these terminal is already included in the
 ncurses package.
 
 %description -l pl -n terminfo
@@ -173,14 +173,14 @@ ln -sf ../l/linux $RPM_BUILD_ROOT/usr/share/terminfo/c/console
 
 strip $RPM_BUILD_ROOT/usr/{bin/*,lib/lib*so.*.*}
 
-mv $RPM_BUILD_ROOT/usr/lib/libncurses.so.*.* $RPM_BUILD_ROOT/lib
-ln -sf ../../lib/libncurses.so.4.2 $RPM_BUILD_ROOT/usr/lib/libncurses.so
+mv $RPM_BUILD_ROOT%{_libdir}/libncurses.so.*.* $RPM_BUILD_ROOT/lib
+ln -sf ../../lib/libncurses.so.4.2 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
 
 install %{SOURCE2} $RPM_BUILD_ROOT%{_mandir}/pl/man1/captoinfo.1m
 install %{SOURCE3} $RPM_BUILD_ROOT%{_mandir}/pl/man1/clear.1
 install %{SOURCE4} $RPM_BUILD_ROOT%{_mandir}/pl/man7/term.7
 
-rm -f $RPM_BUILD_ROOT/usr/lib/libncurses.so.4
+rm -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.4
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/pl/man*/* README ANNOUNCE
 gzip -9nf misc/*.doc
@@ -219,7 +219,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pl) %{_mandir}/pl/man[17]/*
 
 %files ext
-%attr(755,root,root) /usr/lib/lib*so.*.*
+%attr(755,root,root) %{_libdir}/lib*so.*.*
 
 %files -n terminfo
 %defattr(644,root,root,755)
@@ -356,7 +356,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc {README,ANNOUNCE}.gz misc/*.doc.gz misc/*.html
-%attr(755,root,root) /usr/lib/lib*.so
+%attr(755,root,root) %{_libdir}/lib*.so
 /usr/include/ncurses/curses.h
 /usr/include/ncurses/eti.h
 /usr/include/ncurses/form.h
@@ -370,10 +370,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files static
 %defattr(644,root,root,755)
-/usr/lib/libncurses.a
-/usr/lib/libform.a
-/usr/lib/libpanel.a
-/usr/lib/libmenu.a
+%{_libdir}/libncurses.a
+%{_libdir}/libform.a
+%{_libdir}/libpanel.a
+%{_libdir}/libmenu.a
 
 %files ++devel
 %defattr(644,root,root,755)
@@ -388,7 +388,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files ++static
 %defattr(644,root,root,755)
-/usr/lib/libncurses++.a
+%{_libdir}/libncurses++.a
 
 %changelog
 * Sun May 16 1999 Artur Wróblewski <wrobell@posexperts.com.pl>
