@@ -2,6 +2,7 @@
 # Conditional build:
 %bcond_without cxx		# do not build C++ ncurses bindings and demo programs
 #		  		# (this is neccessary to build ncurses linked with uClibc).
+%bcond_without ada		# do not build Ada95 bindings 
 #
 Summary:	curses terminal control library
 Summary(de):	curses-Terminal-Control-Library
@@ -14,7 +15,7 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.4
-Release:	0.2
+Release:	0.3
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -37,6 +38,7 @@ Patch19:	%{name}-xterm-home-end.patch
 Patch20:	%{name}-mouse_trafo-warning.patch
 Patch21:	%{name}-gnome-terminal.patch
 %{?with_cxx:BuildRequires:	libstdc++-devel}
+%{?with_ada:BuildRequires:	gcc-ada}
 BuildRequires:	automake
 BuildRequires:	sharutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -255,6 +257,16 @@ applications that use C++ ncurses.
 %description c++-static -l pl
 Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 
+%package ada-devel
+Summary:	Header files for develop Ada95 ncurses based application
+Summary(pl):	Pliki nagЁСwkowe do biblioteki Ada95 ncurses
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}
+
+%description ada-devel
+This package includes the header files and libraries necessary to
+develop applications that use Ada95 ncurses.
+
 %prep
 %setup  -q
 %patch0 -p1
@@ -281,7 +293,7 @@ cp -f /usr/share/automake/config.sub .
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
 	--with-shared \
-	--without-ada \
+	--with%{!?with_ada:out}-ada \
 	--with%{!?with_cxx:out}-cxx \
 	--with%{!?with_cxx:out}-cxx-binding \
 	--without-profile \
@@ -415,4 +427,12 @@ rm -rf $RPM_BUILD_ROOT
 %files c++-static
 %defattr(644,root,root,755)
 %{_libdir}/libncurses++.a
+%endif
+
+%if %{with ada}
+%files ada-devel
+%defattr(644,root,root,755)
+%doc Ada95/{README,TODO}
+%{_libdir}/ada/adainclude/*
+%{_libdir}/ada/adalib/*
 %endif
