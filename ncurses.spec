@@ -4,8 +4,8 @@ Summary(fr):	La bibliothéque de contrôle de terminal curses
 Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
-Version:	5.0
-Release:	15
+Version:	5.1
+Release:	1
 Copyright:	distributable
 Group:		Libraries
 Group(fr):	Librairies
@@ -14,7 +14,7 @@ Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
 Source2:	captoinfo.1m.pl
 Source3:	clear.1.pl
 Source4:	term.7.pl
-Patch0:		ftp://dickey.his.com/ncurses/5.0/ncurses-5.0-20000527.patch.gz
+#Patch0:		ftp://dickey.his.com/ncurses/5.0/ncurses-5.0-20000527.patch.gz
 Patch1:		ncurses-rh.patch
 Patch2:		ncurses-setuid.patch
 Patch3:		ncurses-arm.patch
@@ -161,10 +161,10 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 
 %prep
 %setup  -q
-%patch0 -p1
+#%patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
+%patch3 -p1 -b .wiget
 %patch4 -p1
 %patch5 -p1
 
