@@ -1,11 +1,11 @@
---- ncurses-5.2/misc/terminfo.src~	Sun Jun 24 17:56:46 2001
-+++ ncurses-5.2/misc/terminfo.src	Sun Jun 24 18:05:11 2001
-@@ -3510,7 +3510,7 @@
- 	rmir=\E[4l, rmkx=\E[?1l\E>, rmso=\E[23m, rmul=\E[24m, 
- 	rs2=\Ec, sc=\E7, sgr0=\E[m, smacs=^N, smir=\E[4h, 
- 	smkx=\E[?1h\E=, smso=\E[3m, smul=\E[4m, tbc=\E[3g, E0=\E(B, 
--	S0=\E(%p1%c, use=ecma+color, 
-+	S0=\E(%p1%c, use=ecma+color, hpa=\E[%i%p1%dG, 
+--- ncurses-5.2/misc/terminfo.src.orig	Thu Sep 20 03:20:31 2001
++++ ncurses-5.2/misc/terminfo.src	Thu Sep 20 03:25:00 2001
+@@ -3229,7 +3229,7 @@
+ 	rmkx=\E[?1l\E>, rmso=\E[23m, rmul=\E[24m, rs2=\Ec, sc=\E7, 
+ 	sgr0=\E[m, smacs=^N, smir=\E[4h, smkx=\E[?1h\E=, 
+ 	smso=\E[3m, smul=\E[4m, tbc=\E[3g, E0=\E(B, S0=\E(%p1%c, 
+-	use=ecma+color, 
++	use=ecma+color, hpa=\E[%i%p1%dG,
  
- screen-w|VT 100/ANSI X3.64 virtual terminal with 132 cols, 
- 	cols#132, use=screen, 
+ # Read the fine manpage:
+ #       When  screen  tries  to  figure  out  a  terminal name for
