@@ -11,7 +11,7 @@ Summary(pt_BR):	Biblioteca de controle de terminal curses
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	5.2
-Release:	24
+Release:	25
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -26,6 +26,8 @@ Patch5:		%{name}-xterm_hpa_fix.patch
 Patch6:		%{name}-rxvt.patch
 Patch7:		%{name}-meta.patch
 Patch8:		%{name}-ac_hack.patch
+Patch9:		%{name}-xterm-home-end.patch
+Patch10:	%{name}-mouse_trafo-warning.patch
 BuildRequires:	sharutils
 BuildRequires:	sed
 %{!?_without_cxx:BuildRequires:	libstdc++-devel}
@@ -212,6 +214,8 @@ sh %{SOURCE2}
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
+%patch10 -p1
 
 %build
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
