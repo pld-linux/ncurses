@@ -167,7 +167,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/{lib,usr/man/pl/man{1,7}}
 
 make install INSTALL_PREFIX=$RPM_BUILD_ROOT \
-	includedir=/usr/include/ncurses
+	includedir=%{_includedir}/ncurses
 
 ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
@@ -357,15 +357,15 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc {README,ANNOUNCE}.gz misc/*.doc.gz misc/*.html
 %attr(755,root,root) %{_libdir}/lib*.so
-/usr/include/ncurses/curses.h
-/usr/include/ncurses/eti.h
-/usr/include/ncurses/form.h
-/usr/include/ncurses/menu.h
-/usr/include/ncurses/ncurses.h
-/usr/include/ncurses/panel.h
-/usr/include/ncurses/term.h
-/usr/include/ncurses/termcap.h
-/usr/include/ncurses/unctrl.h
+%{_includedir}/ncurses/curses.h
+%{_includedir}/ncurses/eti.h
+%{_includedir}/ncurses/form.h
+%{_includedir}/ncurses/menu.h
+%{_includedir}/ncurses/ncurses.h
+%{_includedir}/ncurses/panel.h
+%{_includedir}/ncurses/term.h
+%{_includedir}/ncurses/termcap.h
+%{_includedir}/ncurses/unctrl.h
 %{_mandir}/man3/*
 
 %files static
@@ -378,13 +378,13 @@ rm -rf $RPM_BUILD_ROOT
 %files ++devel
 %defattr(644,root,root,755)
 %doc c++/demo.cc
-/usr/include/ncurses/cursesapp.h
-/usr/include/ncurses/cursesf.h
-/usr/include/ncurses/cursesm.h
-/usr/include/ncurses/cursesp.h
-/usr/include/ncurses/cursesw.h
-/usr/include/ncurses/etip.h
-/usr/include/ncurses/cursslk.h
+%{_includedir}/ncurses/cursesapp.h
+%{_includedir}/ncurses/cursesf.h
+%{_includedir}/ncurses/cursesm.h
+%{_includedir}/ncurses/cursesp.h
+%{_includedir}/ncurses/cursesw.h
+%{_includedir}/ncurses/etip.h
+%{_includedir}/ncurses/cursslk.h
 
 %files ++static
 %defattr(644,root,root,755)
