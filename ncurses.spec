@@ -5,7 +5,7 @@ Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	5.2
-Release:	3
+Release:	4
 License:	Distributable
 Group:		Libraries
 Group(de):	Libraries
@@ -22,6 +22,7 @@ Patch2:		%{name}-arm.patch
 Patch3:		%{name}-libyx-lat.patch
 Patch4:		%{name}-xtermchanges.patch
 Patch5:		%{name}-no_symlinks.patch
+Patch6:		%{name}-screen_hpa_fix.patch
 BuildRequires:	sharutils
 BuildRequires:	sed
 BuildRequires:	libstdc++-devel
@@ -178,6 +179,7 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
