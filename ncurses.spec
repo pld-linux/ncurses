@@ -1,6 +1,6 @@
 Summary:	curses terminal control library
 Summary(de):	curses-Terminal-Control-Library
-Summary(fr):	La bibliothéque de contrôle de terminal curses.
+Summary(fr):	La bibliothéque de contrôle de terminal curses
 Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
@@ -27,35 +27,37 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_includedir	%{_prefix}/include/ncurses
 
 %description
-The curses library routines give the user a terminal-independent method of
-updating character screens with reasonable optimization. This
-implementation is ``new curses'' (ncurses) and is the approved replacement
-for 4.4BSD classic curses, which is being discontinued.
+The curses library routines give the user a terminal-independent
+method of updating character screens with reasonable optimization.
+This implementation is ``new curses'' (ncurses) and is the approved
+replacement for 4.4BSD classic curses, which is being discontinued.
 
 %description -l de
-Die curses-Library-Routinen geben dem Benutzer eine Terminal-unabhängige
-Methode zur optimierten Aktualisierung von zeichenbasierenden
-Bildschirminhalten an die Hand. Die vorliegende Implementierung ist NEW
-CURSES (ncurses), die offizielle Nachfolgerversion für 4.4BSC (die
-klassische curses-Version), welche nicht weitergeführt wird.
+Die curses-Library-Routinen geben dem Benutzer eine
+Terminal-unabhängige Methode zur optimierten Aktualisierung von
+zeichenbasierenden Bildschirminhalten an die Hand. Die vorliegende
+Implementierung ist NEW CURSES (ncurses), die offizielle
+Nachfolgerversion für 4.4BSC (die klassische curses-Version), welche
+nicht weitergeführt wird.
 
 %description -l fr
-Les routines de la bibliothèque curses donnent à l'utilisateur une méthode
-indépendante du terminal pour la mise à jour des écrans en mode texte avec
-une optimisation correcte. Ceci est l'implantation du « nouveau curses »
-(ncurses) et est le remplacement du curses 4.4BSD classique qui est
-abandonné.
+Les routines de la bibliothèque curses donnent à l'utilisateur une
+méthode indépendante du terminal pour la mise à jour des écrans en
+mode texte avec une optimisation correcte. Ceci est l'implantation du
+« nouveau curses » (ncurses) et est le remplacement du curses 4.4BSD
+classique qui est abandonné.
 
 %description -l pl
 Biblioteka curses udostêpnia funkcje pozwalaj±ce u¿ytkownikom na
-odwo³ywanie siê do zawarto¶ci terminala niezale¿nie od jego typu. Pakiet
-ten zawiera implementacjê klasycznej biblioteki curses (z systemu 4.4BSD) o
-nazwie ncurses (new curses) i jest zarazem jej przysz³ym zamiennikiem.
+odwo³ywanie siê do zawarto¶ci terminala niezale¿nie od jego typu.
+Pakiet ten zawiera implementacjê klasycznej biblioteki curses (z
+systemu 4.4BSD) o nazwie ncurses (new curses) i jest zarazem jej
+przysz³ym zamiennikiem.
 
 %description -l tr
 curses kitaplýðý ile kullanýcýya kullanýlan terminal tipinden baðýmsýz
-olarak karakter tabanlý ekranlara eriþim olanaðý saðlanabilmektedir. Bu
-uyarlama 'new curses' (ncurses), BSD deki klasik curses'in geliþmiþ
+olarak karakter tabanlý ekranlara eriþim olanaðý saðlanabilmektedir.
+Bu uyarlama 'new curses' (ncurses), BSD deki klasik curses'in geliþmiþ
 halidir.
 
 %package ext
@@ -67,13 +69,13 @@ Group(pl):	Biblioteki
 Requires:	%{name} = %{version}
 
 %description ext
-This package contain addidion ncurses libraries like libforms, libmenu and
-libpanel for easy making full screen curse application.
+This package contain addidion ncurses libraries like libforms, libmenu
+and libpanel for easy making full screen curse application.
 
 %description -l pl ext
 Pakiet ten zawiera dodatkowe biblioteki libforms, libmenu i libpanel
-s³u¿±ce do ³atwego tworzenia aplikacji pe³noekranowych korzystaj±cych z
-ncurses.
+s³u¿±ce do ³atwego tworzenia aplikacji pe³noekranowych korzystaj±cych
+z ncurses.
 
 %package -n terminfo
 Summary:	Complete terminfo database
@@ -83,15 +85,16 @@ Group(pl):	Narzêdzia/Terminal
 Requires:	%{name} = %{version}
 
 %description -n terminfo
-This package contain cmplet terminfo database. If you just use the Linux
-console, xterm and VT100, you probably will not need this this - a minimal
-%{_datadir}/terminfo tree for these terminal is already included in the
-ncurses package.
+This package contain cmplet terminfo database. If you just use the
+Linux console, xterm and VT100, you probably will not need this this -
+a minimal %{_datadir}/terminfo tree for these terminal is already
+included in the ncurses package.
 
 %description -l pl -n terminfo
-Pakiet ten zawiera kompletn± bazê terminfo. Je¿eli u¿ywasz terminali linux,
-console, xterm, vt100 prawdopodobnie nie bedziesz potrzebowa³ tego pakietu
-gdy¿ definicje tych terminali s± w³±czone w pakiet ncurses.
+Pakiet ten zawiera kompletn± bazê terminfo. Je¿eli u¿ywasz terminali
+linux, console, xterm, vt100 prawdopodobnie nie bedziesz potrzebowa³
+tego pakietu gdy¿ definicje tych terminali s± w³±czone w pakiet
+ncurses.
 
 %package devel
 Summary:	Header files for develop ncurses based application
@@ -103,8 +106,8 @@ Requires:	%{name} = %{version}
 Requires:	%{name}-ext = %{version}
 
 %description devel
-This package includes the header files and libraries necessary to develop
-applications that use ncurses.
+This package includes the header files and libraries necessary to
+develop applications that use ncurses.
 
 %description -l pl devel
 Pakiet ten zawiera pliki nag³ówkowe niezbêdne do pisania/kompilowania
@@ -134,8 +137,8 @@ Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
 %description c++-devel
-This package includes the header files and libraries necessary to develop
-applications that use C++ ncurses.
+This package includes the header files and libraries necessary to
+develop applications that use C++ ncurses.
 
 %description -l pl c++-devel
 Pakiet ten zawiera pliki nag³ówkowe niezbêdne do pisania/kompilowania
@@ -239,7 +242,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pl) %{_mandir}/pl/man[17]/*
 
 %files ext
-%defattr(755,root,root)
+%defattr(644,root,root,755)
 %{_libdir}/libform.so.*.*
 %{_libdir}/libpanel.so.*.*
 %{_libdir}/libmenu.so.*.*
