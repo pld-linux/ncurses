@@ -5,42 +5,15 @@ Summary(pl): Biblioteki do kontrolowania terminala
 Summary(tr): Terminal kontrol kitaplýðý
 Name:        ncurses
 Version:     4.2
-Release:     11
+Release:     13
 Copyright:   distributable
 Group:       Libraries
 Source0:     ftp://ftp.clark.net/pub/dickey/ncurses/%{name}-%{version}.tar.gz
-Patch00:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980307.patch.gz
-Patch01:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980314.patch.gz
-Patch02:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980321.patch.gz
-Patch03:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980328.patch.gz
-Patch04:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980404.patch.gz
-Patch05:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980411.patch.gz
-Patch06:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980418.patch.gz
-Patch07:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980425.patch.gz
-Patch08:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980509.patch.gz
-Patch09:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980516.patch.gz
-Patch10:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980523.patch.gz
-Patch11:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980530.patch.gz
-Patch12:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980606.patch.gz
-Patch13:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980613.patch.gz
-Patch14:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980620.patch.gz
-Patch15:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980627.patch.gz
-Patch16:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980704.patch.gz
-Patch17:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980711.patch.gz
-Patch18:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980718.patch.gz
-Patch19:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980725.patch.gz
-Patch20:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980801.patch.gz
-Patch21:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980808.patch.gz
-Patch22:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980809.patch.gz
-Patch23:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980815.patch.gz
-Patch24:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980822.patch.gz
-Patch25:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980829.patch.gz
-Patch26:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980905.patch.gz
-Patch27:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980912.patch.gz
-Patch28:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980919.patch.gz
-Patch100:    ncurses-4.2-hjl.patch
-Patch101:    ncurses-4.2-rh.patch
-Patch102:    ncurses-4.2-setuid2.patch
+Patch0:      ncurses-4.2-updates-981202.patch.gz
+Patch1:      ncurses-4.2-arm.patch
+Patch2:      ncurses-4.2-hjl.patch
+Patch3:      ncurses-4.2-rh.patch
+Patch4:      ncurses-4.2-setuid2.patch
 BuildRoot:   /tmp/%{name}-%{version}-root
 
 %description
@@ -101,44 +74,23 @@ Pakiet ten zawiera biblioteki statyczne dla ncurses.
 
 %prep
 %setup -q
-%patch00 -p1
-%patch01 -p1
-%patch02 -p1
-%patch03 -p1
-%patch04 -p1
-%patch05 -p1
-%patch06 -p1
-%patch07 -p1
-%patch08 -p1
-%patch09 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch28 -p1
-
-%patch100 -p0 -b .hjlu
-%patch101 -p1 -b .rh
-%patch102 -p1 -b .setuid
-find . -name "*.orig" -exec rm -f {} \;
+%patch0 -p1
+%patch1 -p1
+%patch2 -p0
+%patch3 -p1
+%patch4 -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS -DPURE_TERMINFO" ./configure \
-	--prefix=/usr --with-normal --with-shared --with-debug --with-profile
+CFLAGS="$RPM_OPT_FLAGS -DPURE_TERMINFO" LDFLAGS="-s" \
+./configure \
+	--prefix=/usr \
+	--with-install-prefix=$RPM_BUILD_ROOT \
+	--with-normal \
+	--with-shared \
+	--without-cxx \
+	--without-ada \
+	--without-profile \
+	--without-debug
 
 make
 
@@ -160,10 +112,19 @@ rm -f $RPM_BUILD_ROOT/usr/lib/terminfo/l/linux
 rm -f $RPM_BUILD_ROOT/usr/lib/terminfo/l/linux-m
 %endif
 
-strip $RPM_BUILD_ROOT/usr/{bin/*,lib/lib*.so.*.*} || :
+strip $RPM_BUILD_ROOT/usr/lib/lib*.so.*.* || :
 
 mv $RPM_BUILD_ROOT/usr/lib/libncurses.so.*.* $RPM_BUILD_ROOT/lib
 ln -sf ../../lib/libncurses.so.4.2 $RPM_BUILD_ROOT/usr/lib/libncurses.so
+
+for i in $RPM_BUILD_ROOT/usr/man/man1/*m ; do
+	mv $i $RPM_BUILD_ROOT/usr/man/man1/`basename $i m`
+done
+for i in $RPM_BUILD_ROOT/usr/man/man3/*x ; do
+	mv $i $RPM_BUILD_ROOT/usr/man/man3/`basename $i x`
+done
+
+gzip -9nf $RPM_BUILD_ROOT/usr/man/man{1,3,5,7}/*
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -178,20 +139,29 @@ rm -rf $RPM_BUILD_ROOT
 /usr/share/terminfo
 /usr/share/tabset
 %attr(755, root, root) /usr/bin/*
-/usr/man/man[157]/*
+%attr(644, root,  man) /usr/man/man[157]/*
 
 %files devel
 %defattr(644, root, root, 755)
 %doc README ANNOUNCE c++ test
 /usr/lib/lib*.so
-/usr/include/ncurses
-/usr/include/*.h
-%attr(755, root,  man) /usr/man/man3/*
+/usr/include/*
+%attr(644, root,  man) /usr/man/man3/*
 
 %files static
 %attr(644, root, root) /usr/lib/lib*.a
 
 %changelog
+* Fri Dec  6 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [4.2-13]
+- added gzipping man pages,
+- changed man pages permission from 755 to 644,
+- --with-debug configure parameter changed to --without-debug and
+  --without-profile, --without-cxx, --without-ada,
+- added LDFLAGS="-s" to ./configure enviroment,
+- splification in devel %files,
+- changed sufixes man pages file names to *.1 and *.3.
+
 * Wed Nov 13 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [4.2-11]
 - added more patches from rawhide ncurses,
