@@ -8,7 +8,7 @@ Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	5.2
 Release:	16
-License:	Distributable
+License:	distributable
 Group:		Libraries
 Group(de):	Libraries
 Group(es):	Bibliotecas
