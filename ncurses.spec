@@ -12,12 +12,12 @@ Summary(tr):	Terminal kontrol kitaplığı
 Summary(uk):	ncurses - ÎÏ×Á Â¦ÂÌ¦ÏÔÅËÁ ËÅÒÕ×ÁÎÎÑ ÔÅÒÍ¦ÎÁÌÁÍÉ
 Name:		ncurses
 Version:	5.2
-Release:	31
+Release:	32
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
 Source1:	%{name}-non-english-man-pages.tar.bz2
-Source2:	ftp://dickey.his.com/ncurses/5.2/patch-%{version}-20010908.sh
+Source2:	ftp://dickey.his.com/ncurses/5.2/patch-5.2-20020727.sh.gz
 Patch0:		%{name}-rh.patch
 Patch1:		%{name}-libyx-lat.patch
 Patch2:		%{name}-no_symlinks.patch
@@ -129,6 +129,7 @@ Summary(pl):	Kompletna baza terminfo
 Summary(pt_BR):	Base de dados terminfo para terminais adicionais (menos usados)
 Group:		Applications/Terminal
 Requires:	%{name} = %{version}
+Obsoletes:	ncurses-extraterms
 
 %description -n terminfo
 This package contain cmplet terminfo database. If you just use the
@@ -247,7 +248,8 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 
 %prep
 %setup  -q
-sh %{SOURCE2}
+zcat %{SOURCE2} > patch.sh
+sh patch.sh
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -311,6 +313,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/tabset
 
 %dir %{_datadir}/terminfo
+%{_datadir}/terminfo/E
 %dir %{_datadir}/terminfo/d
 %dir %{_datadir}/terminfo/l
 %dir %{_datadir}/terminfo/s
@@ -319,8 +322,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_datadir}/terminfo/d/dumb
 %{_datadir}/terminfo/l/linux*
-%{_datadir}/terminfo/s/screen
-%{_datadir}/terminfo/s/screen-w
+%{_datadir}/terminfo/s/screen*
 %{_datadir}/terminfo/v/vt100
 %{_datadir}/terminfo/v/vt220
 %{_datadir}/terminfo/v/vt220-8
@@ -345,9 +347,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n terminfo
 %defattr(644,root,root,755)
-%{_datadir}/terminfo/[1-9NPXa-ce-km-rt-uwz]
+%{_datadir}/terminfo/[1-9ALMNPQXa-ce-km-rt-uwz]
 %{_datadir}/terminfo/d/d[1-tw]*
-%{_datadir}/terminfo/l/l[anpu]*
+%{_datadir}/terminfo/l/l[afnpu]*
 %{_datadir}/terminfo/l/lisa
 %{_datadir}/terminfo/l/lisaterm
 %{_datadir}/terminfo/l/lisaterm-w
@@ -356,15 +358,18 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/terminfo/s/sc410
 %{_datadir}/terminfo/s/sc415
 %{_datadir}/terminfo/s/scanset
-%{_datadir}/terminfo/s/scoansi
+%{_datadir}/terminfo/s/sco*
 %{_datadir}/terminfo/s/screen2
 %{_datadir}/terminfo/s/screen3
 %{_datadir}/terminfo/s/screwpoint
 %{_datadir}/terminfo/s/scrhp
-%{_datadir}/terminfo/v/v[235aceikpr]*
+%{_datadir}/terminfo/v/v[235aceikprs]*
 %{_datadir}/terminfo/v/vt-61
 %{_datadir}/terminfo/v/vt100-am
+%{_datadir}/terminfo/v/vt100-bm
+%{_datadir}/terminfo/v/vt100-bm-o
 %{_datadir}/terminfo/v/vt100-bot-s
+%{_datadir}/terminfo/v/vt100nam
 %{_datadir}/terminfo/v/vt100-nam
 %{_datadir}/terminfo/v/vt100-nam-w
 %{_datadir}/terminfo/v/vt100-nav
@@ -373,11 +378,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/terminfo/v/vt100-s-bot
 %{_datadir}/terminfo/v/vt100-s-top
 %{_datadir}/terminfo/v/vt100-top-s
+%{_datadir}/terminfo/v/vt100-vb
 %{_datadir}/terminfo/v/vt100-w
 %{_datadir}/terminfo/v/vt100-w-am
 %{_datadir}/terminfo/v/vt100-w-nam
 %{_datadir}/terminfo/v/vt100-w-nav
-%{_datadir}/terminfo/v/vt100nam
 %{_datadir}/terminfo/v/vt102
 %{_datadir}/terminfo/v/vt102-nsgr
 %{_datadir}/terminfo/v/vt102-w
@@ -385,12 +390,17 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/terminfo/v/vt131
 %{_datadir}/terminfo/v/vt132
 %{_datadir}/terminfo/v/vt200
+%{_datadir}/terminfo/v/vt200-8
+%{_datadir}/terminfo/v/vt200-8bit
 %{_datadir}/terminfo/v/vt200-js
+%{_datadir}/terminfo/v/vt200-old
 %{_datadir}/terminfo/v/vt200-w
+%{_datadir}/terminfo/v/vt220-8bit
+%{_datadir}/terminfo/v/vt220d
 %{_datadir}/terminfo/v/vt220-js
 %{_datadir}/terminfo/v/vt220-nam
+%{_datadir}/terminfo/v/vt220-old
 %{_datadir}/terminfo/v/vt220-w
-%{_datadir}/terminfo/v/vt220d
 %{_datadir}/terminfo/v/vt300
 %{_datadir}/terminfo/v/vt300-nam
 %{_datadir}/terminfo/v/vt300-w
@@ -398,10 +408,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/terminfo/v/vt320
 %{_datadir}/terminfo/v/vt320-k3
 %{_datadir}/terminfo/v/vt320-k311
+%{_datadir}/terminfo/v/vt320nam
 %{_datadir}/terminfo/v/vt320-nam
 %{_datadir}/terminfo/v/vt320-w
 %{_datadir}/terminfo/v/vt320-w-nam
-%{_datadir}/terminfo/v/vt320nam
 %{_datadir}/terminfo/v/vt330
 %{_datadir}/terminfo/v/vt340
 %{_datadir}/terminfo/v/vt400
@@ -419,7 +429,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/terminfo/v/vt525
 %{_datadir}/terminfo/v/vt61
 %{_datadir}/terminfo/v/vt61.5
-%{_datadir}/terminfo/x/x[168elw]*
+%{_datadir}/terminfo/v/vv100
+%{_datadir}/terminfo/x/x[168delnw]*
 %{_datadir}/terminfo/x/xtalk
 
 %files devel
