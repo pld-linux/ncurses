@@ -147,7 +147,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/{lib,usr/include/ncurses}
 
 make install INSTALL_PREFIX=$RPM_BUILD_ROOT \
-	includedir=$RPM_BUILD_ROOT/usr/include/ncurses
+	includedir=/usr/include/ncurses
 ln -sf ../l/linux $RPM_BUILD_ROOT/usr/share/terminfo/c/console
 ln -sf ncurses/curses.h $RPM_BUILD_ROOT/usr/include/ncurses.h
 for I in curses unctrl eti form menu panel term; do
