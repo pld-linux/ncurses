@@ -14,7 +14,7 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.3
-Release:	6
+Release:	7
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -280,9 +280,6 @@ cp -f /usr/share/automake/config.sub .
 	--without-profile \
 	--without-debug \
 	--with-termlib \
-%ifnarch ppc
-	--enable-safe-sprintf \
-%endif
 	--with-manpage-format=normal
 
 %{__make}
