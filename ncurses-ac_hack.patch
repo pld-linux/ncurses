@@ -1,0 +1,16 @@
+--- ncurses-5.2/configure~	Thu Mar  7 14:58:08 2002
++++ ncurses-5.2/configure	Thu Mar  7 14:58:08 2002
+@@ -7670,11 +7670,11 @@
+ 	fi
+ done
+ echo "$ac_t""$cf_cv_src_modules" 1>&6
+-TEST_ARGS="-L${LIB_DIR} -L\$(libdir) $TEST_ARGS"
++TEST_ARGS="-L${LIB_DIR} -L../lib $TEST_ARGS"
+ 
+ 
+ 
+-PROG_ARGS="-L${LIB_DIR} -L\$(libdir) $PROG_ARGS"
++PROG_ARGS="-L${LIB_DIR} -L../lib $PROG_ARGS"
+ 
+ 
+ SRC_SUBDIRS="man include"
