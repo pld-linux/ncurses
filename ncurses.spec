@@ -11,7 +11,7 @@ Summary(pt_BR):	Biblioteca de controle de terminal curses
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	5.2
-Release:	23
+Release:	24
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -240,8 +240,11 @@ ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
 mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.*.* $RPM_BUILD_ROOT/lib
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.*.* $RPM_BUILD_ROOT/lib
-ln -sf ../../lib/libtinfo.so.5 $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
-ln -sf ../../lib/libncurses.so.5 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
+ln -sf ../../lib/libtinfo.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
+ln -sf ../../lib/libtinfo.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.5
+ln -sf ../../lib/libncurses.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libcurses.so
+ln -sf ../../lib/libncurses.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
+ln -sf ../../lib/libncurses.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libncurses.so.5
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
@@ -379,6 +382,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc {README,ANNOUNCE}.gz
 %doc doc/html/ncurses-intro.html
 %attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/lib*.so.*
 %dir %{_includedir}
 %{_includedir}/curses.h
 %{_includedir}/eti.h
