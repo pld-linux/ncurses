@@ -1,9 +1,8 @@
 #
 # Conditional build:
+%bcond_without ada		# do not build Ada95 bindings
 %bcond_without cxx		# do not build C++ ncurses bindings and demo programs
 #		  		# (this is neccessary to build ncurses linked with uClibc).
-%bcond_without ada		# do not build Ada95 bindings
-#
 Summary:	curses terminal control library
 Summary(de):	curses-Terminal-Control-Library
 Summary(es):	Biblioteca de control de terminal curses
@@ -15,7 +14,7 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.4
-Release:	0.4
+Release:	0.5
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -35,9 +34,9 @@ Patch18:	%{name}-ac_hack.patch
 Patch19:	%{name}-xterm-home-end.patch
 Patch20:	%{name}-mouse_trafo-warning.patch
 Patch21:	%{name}-gnome-terminal.patch
-%{?with_cxx:BuildRequires:	libstdc++-devel}
-%{?with_ada:BuildRequires:	gcc-ada}
 BuildRequires:	automake
+%{?with_ada:BuildRequires:	gcc-ada}
+%{?with_cxx:BuildRequires:	libstdc++-devel}
 BuildRequires:	sharutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libncurses5
@@ -272,7 +271,7 @@ develop applications that use Ada95 ncurses.
 %patch2 -p1
 %patch3 -p1
 %patch13 -p1
-#%patch14 -p1
+%patch14 -p1
 %patch15 -p1
 #%patch16 -p1
 %patch17 -p1
@@ -292,8 +291,8 @@ cp -f /usr/share/automake/config.sub .
 	--with%{!?with_ada:out}-ada \
 	--with%{!?with_cxx:out}-cxx \
 	--with%{!?with_cxx:out}-cxx-binding \
+	--with%{!?debug:out}-debug \
 	--without-profile \
-	--without-debug \
 	--with-termlib \
 	--with-manpage-aliases \
 	--with-manpage-format=normal
