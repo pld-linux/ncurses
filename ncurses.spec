@@ -5,7 +5,7 @@ Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	5.0
-Release:	13
+Release:	14
 Copyright:	distributable
 Group:		Libraries
 Group(fr):	Librairies
@@ -104,6 +104,7 @@ Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 Requires:	%{name}-ext = %{version}
+Obsoletes:	libtermcap-devel
 
 %description devel
 This package includes the header files and libraries necessary to
