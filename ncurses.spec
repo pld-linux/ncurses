@@ -5,7 +5,7 @@ Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	5.0
-Release:	2
+Release:	3
 Copyright:	distributable
 Group:		Libraries
 Group(pl):	Biblioteki
@@ -19,6 +19,7 @@ Patch2:		ncurses-arm.patch
 Patch3:		ftp://ftp.clark.net/pub/dickey/ncurses/5.0/%{name}-%{version}-19991030.patch.gz
 Patch4:		ftp://ftp.clark.net/pub/dickey/ncurses/5.0/%{name}-%{version}-19991106.patch.gz
 Patch5:		ncurses-libyx-lat.patch
+Patch6:		ncurses-xterm_fix.patch
 BuildRequires:	sharutils, patch, bash, gawk, sed, gzip
 BuildRoot:	/tmp/%{name}-%{version}-root
 
@@ -154,6 +155,7 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 CFLAGS="$RPM_OPT_FLAGS -DPURE_TERMINFO"
