@@ -7,7 +7,9 @@ Summary(es):	Biblioteca de control de terminal curses
 Summary(fr):	La bibliothИque de contrТle de terminal curses
 Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(pt_BR):	Biblioteca de controle de terminal curses
+Summary(ru):	ncurses - новая библиотека управления терминалами
 Summary(tr):	Terminal kontrol kitaplЩПЩ
+Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.2
 Release:	29
@@ -76,11 +78,34 @@ otimizaГЦo razoАvel. Essa implementaГЦo И "novo curses" (ncurses) e И
 o substituto aprovado para os clАssicos curses 4.4BSD, que estЦo se
 tornando obsoletos.
 
+%description -l ru
+Программы библиотеки curses предоставляют пользователям возможность
+терминально-независимого обновления символьных экранов с достаточной
+оптимизацией. Эта реализация - "новые curses" (ncurses), которая
+является одобренной заменой классической библиотеки curses из 4.4BSD,
+в настоящее время "снятой с производства". В KSI Linux ncurses
+является жизненно необходимой, без нее не будут функционировать многие
+программы, составляющие базовую систему. Практически все программы,
+которые выводят что-либо на терминал, используют ncurses. В KSI Linux
+ни библиотека termcap, ни традиционный файл /etc/termcap, не
+используются...
+
 %description -l tr
 curses kitaplЩПЩ ile kullanЩcЩya kullanЩlan terminal tipinden baПЩmsЩz
 olarak karakter tabanlЩ ekranlara eriЧim olanaПЩ saПlanabilmektedir.
 Bu uyarlama 'new curses' (ncurses), BSD deki klasik curses'in geliЧmiЧ
 halidir.
+
+%description -l uk
+Програми б╕бл╕отеки curses дають користувачам можлив╕сть
+терм╕нально-незалежного поновлення символьних екран╕в з достатньою
+оптим╕зац╕╓ю. Ця реал╕зац╕я - "нов╕ curses" (ncurses), котра ╓
+схваленою зам╕ною класично╖ б╕бл╕отеки curses з 4.4BSD, яка нараз╕
+"знята з виробництва". В KSI Linux ncurses ╓ житт╓во необх╕дною, без
+не╖ не буде працювати б╕льшость програм, що складають базову систему.
+Практично вс╕ програми, котр╕ виводять щось на терм╕нал,
+використовують ncurses. В KSI Linux ан╕ б╕бл╕отека termcap, ан╕
+традиц╕йний файл /etc/termcap не використовуються...
 
 %package ext
 Summary:	Additional ncurses libraries
@@ -130,6 +155,8 @@ Summary:	Header files for develop ncurses based application
 Summary(es):	Bibliotecas de desarrollo para ncurses
 Summary(pl):	Pliki nagЁСwkowe do bibliotek ncurses
 Summary(pt_BR):	Bibliotecas de desenvolvimento para ncurses
+Summary(ru):	Хедеры и библиотеки для разработки программ с ncurses
+Summary(uk):	Хедери та б╕бл╕отеки для розробки програм з ncurses
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	%{name}-ext = %{version}
@@ -152,11 +179,21 @@ programСw z wykorzystaniem bibliotek ncurses.
 Este pacote inclui as bibliotecas e arquivos de inclusЦo necessАrios
 ao desenvolvimento de aplicaГУes que usam ncurses.
 
+%description devel -l ru
+Этот пакет содержит хедеры и библиотеки, необходимые для разработки
+программ, использующих ncurses.
+
+%description devel -l uk
+Цей пакет м╕стить хедери та б╕бл╕отеки, необх╕дн╕ для розробки
+програм, що використовують ncurses.
+
 %package static
 Summary:	Static libraries for ncurses
 Summary(es):	Static libraries for ncurses development
 Summary(pl):	Biblioteki statyczne ncurses
 Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com ncurses
+Summary(ru):	Статические библиотеки для разработки программ с ncurses
+Summary(uk):	Статичн╕ б╕бл╕отеки для розробки програм з ncurses
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
 
@@ -172,6 +209,14 @@ Pakiet ten zawiera biblioteki statyczne ncurses.
 
 %description static -l pt_BR
 Bibliotecas estАticas para desenvolvimento com ncurses.
+
+%description static -l ru
+Этот пакет содержит статические библиотеки, необходимые для разработки
+программ, использующих ncurses.
+
+%description static -l uk
+Цей пакет м╕стить статичн╕ б╕бл╕отеки, необх╕дн╕ для розробки програм,
+що використовують ncurses.
 
 %package c++-devel
 Summary:	Header files for develop C++ ncurses based application
