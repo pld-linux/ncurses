@@ -11,6 +11,9 @@ Group:		Libraries
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.clark.net/pub/dickey/ncurses/%{name}-%{version}.tar.gz
 Source1:	ftp://ftp.clark.net/pub/dickey/ncurses/4.2/patch-4.2-990213.sh
+Source2:	captoinfo.1m.pl
+Source3:	clear.1.pl
+Source4:	term.7.pl
 Patch0:		ncurses-rh.patch
 Patch1:		ncurses-setuid.patch
 Patch1:		ncurses-arm.patch
@@ -131,25 +134,23 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/{lib,usr/include/ncurses}
+install -d $RPM_BUILD_ROOT/{lib,usr/man/pl/man{1,7}}
 
 make install INSTALL_PREFIX=$RPM_BUILD_ROOT \
 	includedir=/usr/include/ncurses
 
 ln -sf ../l/linux $RPM_BUILD_ROOT/usr/share/terminfo/c/console
 
-ln -sf ncurses/curses.h $RPM_BUILD_ROOT/usr/include/ncurses.h
-
-for I in curses unctrl eti form menu panel term; do
-	ln -sf ncurses/$I.h $RPM_BUILD_ROOT/usr/include/$I.h
-done
-
 strip $RPM_BUILD_ROOT/usr/{bin/*,lib/lib*so.*.*}
 
 mv $RPM_BUILD_ROOT/usr/lib/libncurses.so.*.* $RPM_BUILD_ROOT/lib
-ln -sf ../../usr/lib/libncurses.so.4.2 $RPM_BUILD_ROOT/usr/lib/libncurses.so
+ln -sf ../../lib/libncurses.so.4.2 $RPM_BUILD_ROOT/usr/lib/libncurses.so
 
-gzip -9nf $RPM_BUILD_ROOT/usr/man/man*/*
+install %{SOURCE2} $RPM_BUILD_ROOT/usr/man/pl/man1/captoinfo.1m
+install %{SOURCE3} $RPM_BUILD_ROOT/usr/man/pl/man1/clear.1
+install %{SOURCE4} $RPM_BUILD_ROOT/usr/man/pl/man7/term.7
+
+gzip -9nf $RPM_BUILD_ROOT/usr/man/{man*/*,pl/man*/*}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -175,6 +176,7 @@ gzip -9nf $RPM_BUILD_ROOT/usr/man/man*/*
 
 %attr(755,root,root) /usr/bin/*
 %attr(644,root, man) /usr/man/man[157]/*
+%attr(644,root, man) %lang(pl) /usr/man/pl/man[17]/*
 
 %files ext
 %attr(755,root,root) /usr/lib/lib*so.*.*
