@@ -1,11 +1,12 @@
---- ncurses-5.2/misc/terminfo.src.orig	Thu Sep 20 03:20:31 2001
-+++ ncurses-5.2/misc/terminfo.src	Thu Sep 20 03:25:00 2001
-@@ -3229,7 +3229,7 @@
- 	rmkx=\E[?1l\E>, rmso=\E[23m, rmul=\E[24m, rs2=\Ec, sc=\E7, 
- 	sgr0=\E[m, smacs=^N, smir=\E[4h, smkx=\E[?1h\E=, 
- 	smso=\E[3m, smul=\E[4m, tbc=\E[3g, E0=\E(B, S0=\E(%p1%c, 
+diff -urN ncurses-5.4.org/misc/terminfo.src ncurses-5.4/misc/terminfo.src
+--- ncurses-5.4.org/misc/terminfo.src	2004-02-17 01:18:31.073424233 +0100
++++ ncurses-5.4/misc/terminfo.src	2004-02-17 01:24:36.380634962 +0100
+@@ -3659,7 +3659,7 @@
+ 	rmul=\E[24m, rs2=\Ec, sc=\E7, sgr0=\E[m, smacs=^N, 
+ 	smcup=\E[?1049h, smir=\E[4h, smkx=\E[?1h\E=, smso=\E[3m, 
+ 	smul=\E[4m, tbc=\E[3g, E0=\E(B, S0=\E(%p1%c, 
 -	use=ecma+color, 
 +	use=ecma+color, hpa=\E[%i%p1%dG,
- 
- # Read the fine manpage:
- #       When  screen  tries  to  figure  out  a  terminal name for
+ # The bce and status-line entries are from screen 3.9.13 (and require some
+ # changes to .screenrc).
+ screen-bce|VT 100/ANSI X3.64 virtual terminal with bce, 
