@@ -1,25 +1,25 @@
-Summary:     curses terminal control library
-Summary(de): curses-Terminal-Control-Library
-Summary(fr): La bibliothéque de contrôle de terminal curses.
-Summary(pl): Biblioteki do kontrolowania terminala
-Summary(tr): Terminal kontrol kitaplýðý
-Name:        ncurses
-Version:     4.2
-Release:     14
-Copyright:   distributable
-Group:       Libraries
-Group(pl):   Biblioteki
-Source:      ftp://ftp.clark.net/pub/dickey/ncurses/%{name}-%{version}.tar.gz
-Patch0:      %{name}-4.2-updates-981202.patch.gz
-Patch1:      %{name}-4.2-arm.patch
-Patch2:      %{name}-4.2-hjl.patch
-Patch3:      %{name}-4.2-rh.patch
-Patch4:      %{name}-4.2-setuid2.patch
-BuildRoot:   /tmp/%{name}-%{version}-root
+Summary:	curses terminal control library
+Summary(de):	curses-Terminal-Control-Library
+Summary(fr):	La bibliothéque de contrôle de terminal curses.
+Summary(pl):	Biblioteki do kontrolowania terminala
+Summary(tr):	Terminal kontrol kitaplýðý
+Name:		ncurses
+Version:	4.2
+Release:	12
+Copyright:	distributable
+Group:		Libraries
+Group(pl):	Biblioteki
+Source0:	ftp://ftp.clark.net/pub/dickey/ncurses/%{name}-%{version}.tar.gz
+Source1:	ftp://ftp.clark.net/pub/dickey/ncurses/4.2/patch-4.2-990213.sh
+Patch0:		ncurses-rh.patch
+Patch1:		ncurses-setuid.patch
+Patch1:		ncurses-arm.patch
+BuildRoot:	/tmp/%{name}-%{version}-root
+Conflicts:      glibc <= 2.0.7
 
 %description
 The curses library routines give the user a terminal-independent method of
-updating character screens with reasonable optimization.  This
+updating character screens with reasonable optimization. This
 implementation is ``new curses'' (ncurses) and is the approved replacement
 for 4.4BSD classic curses, which is being discontinued. 
 
@@ -37,8 +37,8 @@ optimisation correcte. Ceci est l'implantation du « nouveau curses » (ncurses)
 et est le remplacement du curses 4.4BSD classique qui est abandonné.
 
 %description -l pl
-Biblioteka curses udostêpnia funkcje umo¿liwiaj±ce u¿ytkownikom odwo³ywanie
-siê do zawarto¶ci terminala niezale¿nie od jego typu. Pakiet ten zawiera
+Biblioteka curses udostêpnia funkcje pozwalaj±ce u¿ytkownikom odwo³ywanie
+siê do zawarto¶ci terminala niezale¿nie od jego typu. Pakiet tez zawiera
 implementacjê klasycznej biblioteki curses (z systemu 4.4BSD) o nazwie
 ncurses (new curses) i jest zarazem jej przysz³ym zamiennikiem.
 
@@ -47,41 +47,73 @@ curses kitaplýðý ile kullanýcýya kullanýlan terminal tipinden baðýmsýz olarak
 karakter tabanlý ekranlara eriþim olanaðý saðlanabilmektedir. Bu uyarlama
 'new curses' (ncurses), BSD deki klasik curses'in geliþmiþ halidir.
 
+%package ext
+Summary:	Additionan ncurses libraries
+Summary(pl):	Dodatkowe biblioteki ncurses
+Group:		Libraries
+Group(pl):	Biblioteki
+Requires:	%{name} = %{version}
+
+%description ext
+This package contain addidion ncurses libraries like libforms, libmenu and
+libpanel for easy making full screen curse application.
+
+%description -l pl ext
+Pakiet ten zawiera dodatkowe biblioteki libforms, libmenu i libpanel s³u¿±ce
+do ³atwego robienia plikacji pe³noekranowych korzystaj±cych z ncurses.
+
+%package -n terminfo
+Summary:	Complete terminfo database
+Summary(pl):	Kompletna baza terminfo 
+Group:		Libraries
+Group(pl):	Biblioteki
+Requires:	%{name} = %{version}
+
+%description -n terminfo
+This package contain cmplet terminfo database. If you just use the Linux
+console, xterm and VT100, you probably will not need this this - a
+minimal /usr/lib/terminfo tree for these terminal is already included in the
+ncurses package.
+
+%description -l pl -n terminfo
+Pakiet ten zconsoleawiera kompletn± bazê terminfo. Ke¿eli u¿ywasz terminali
+linux, console, xterm, vt100 prawdopodobnie nie bedziesz potrzebowa³ tego
+pakietu gdy¿ definicje tych terminali s± w³±czone w pakiet ncurses.
+
 %package devel
-Summary:     Heade files for develop ncurses based application
-Summary(pl): Pliki nag³ówkowe dla ncurses
-Group:       Development/Libraries
-Group(pl):   Programowanie/Biblioteki
-Requires:    %{name} = %{version}
+Summary:	Header files for develop ncurses based application
+Summary(pl):	Pliki nag³ówkowe do bibliotek ncurses
+Group:		Development/Libraries
+Requires:	%{name} = %{version}
+Requires:	%{name}-ext = %{version}
 
 %description devel
 This package includes the header files and libraries necessary to develop
 applications that use ncurses.
 
 %description -l pl devel
-Pakiet ten zawiera pliki nag³ówkowe - niezbêdne do kompilowania programów
-wykorzystuj±cych ncurses.
+Pakiet ten zawiera pliki nag³ówkowe - niezbêdne do pisania/kompilowania
+programów z wykorzystaniem bibliotek ncurses.
 
 %package static
-Summary:     Static ncurses libraries
-Summary(pl): Biblioteki statyczne ncurses
-Group:       Development/Libraries
-Group(pl):   Programowanie/Biblioteki
-Requires:    %{name}-devel = %{version}
+Summary:	Static libraries for ncurses
+Summary(pl):	Biblioteki statyczne ncurses
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name}-devel = %{version}
 
 %description static
-Static ncurses libraries.
+This package includes the static libraries necessary to develop
+applications that use ncurses.
 
 %description -l pl static
-Pakiet ten zawiera biblioteki statyczne dla ncurses.
+Pakiet ten zawiera biblioteki statyczne ncurses.
 
 %prep
-%setup -q
+%setup  -q
+sh %{SOURCE1}
 %patch0 -p1
-%patch1 -p1
-%patch2 -p0
-%patch3 -p1
-%patch4 -p1
+%patch1 -p1 
 
 %build
 CFLAGS="$RPM_OPT_FLAGS -DPURE_TERMINFO" LDFLAGS="-s" \
@@ -103,100 +135,234 @@ install -d $RPM_BUILD_ROOT/{lib,usr/include/ncurses}
 
 make install INSTALL_PREFIX=$RPM_BUILD_ROOT \
 	includedir=/usr/include/ncurses
+
 ln -sf ../l/linux $RPM_BUILD_ROOT/usr/share/terminfo/c/console
+
 ln -sf ncurses/curses.h $RPM_BUILD_ROOT/usr/include/ncurses.h
+
 for I in curses unctrl eti form menu panel term; do
 	ln -sf ncurses/$I.h $RPM_BUILD_ROOT/usr/include/$I.h
 done
-# remove the linux terminfo entries 
-# (broken on sparc, see termfiles_sparc pkg)
-%ifarch sparc
-rm -f $RPM_BUILD_ROOT/usr/lib/terminfo/l/linux
-rm -f $RPM_BUILD_ROOT/usr/lib/terminfo/l/linux-m
-%endif
 
-strip $RPM_BUILD_ROOT/usr/lib/lib*.so.*.* || :
+strip $RPM_BUILD_ROOT/usr/{bin/*,lib/lib*so.*.*}
 
 mv $RPM_BUILD_ROOT/usr/lib/libncurses.so.*.* $RPM_BUILD_ROOT/lib
-ln -sf ../../lib/libncurses.so.4.2 $RPM_BUILD_ROOT/usr/lib/libncurses.so
+ln -sf ../../usr/lib/libncurses.so.4.2 $RPM_BUILD_ROOT/usr/lib/libncurses.so
 
-for i in $RPM_BUILD_ROOT/usr/man/man1/*m ; do
-	mv $i $RPM_BUILD_ROOT/usr/man/man1/`basename $i m`
-done
-for i in $RPM_BUILD_ROOT/usr/man/man3/*x ; do
-	mv $i $RPM_BUILD_ROOT/usr/man/man3/`basename $i x`
-done
-
-gzip -9nf $RPM_BUILD_ROOT/usr/man/man{1,3,5,7}/*
-gzip -9nf README ANNOUNCE
+gzip -9nf $RPM_BUILD_ROOT/usr/man/man*/*
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
+%post   ext -p /sbin/ldconfig
+%postun ext -p /sbin/ldconfig
+
+%files
+%defattr(644,root,root,755)
+%attr(755,root,root) /lib/libncurses.so.*.*
+
+/usr/share/tabset
+%dir /usr/share/terminfo
+%dir /usr/share/terminfo/l
+%dir /usr/share/terminfo/v
+%dir /usr/share/terminfo/x
+/usr/share/terminfo/l/linux*
+/usr/share/terminfo/v/vt100
+/usr/share/terminfo/v/vt220
+/usr/share/terminfo/v/vt220-8
+/usr/share/terminfo/v/vt52
+/usr/share/terminfo/x/xterm*
+
+%attr(755,root,root) /usr/bin/*
+%attr(644,root, man) /usr/man/man[157]/*
+
+%files ext
+%attr(755,root,root) /usr/lib/lib*so.*.*
+
+%files -n terminfo
+%defattr(644,root,root,755)
+/usr/share/terminfo/[1-9NPXa-km-uwz]
+/usr/share/terminfo/l/la120
+/usr/share/terminfo/l/layer
+/usr/share/terminfo/l/lisa
+/usr/share/terminfo/l/lisaterm
+/usr/share/terminfo/l/lisaterm-w
+/usr/share/terminfo/l/liswb
+/usr/share/terminfo/l/ln03
+/usr/share/terminfo/l/ln03-w
+/usr/share/terminfo/l/lpr
+/usr/share/terminfo/l/luna
+/usr/share/terminfo/l/luna68k
+/usr/share/terminfo/v/v200-nam
+/usr/share/terminfo/v/v320n
+/usr/share/terminfo/v/v3220
+/usr/share/terminfo/v/v5410
+/usr/share/terminfo/v/vapple
+/usr/share/terminfo/v/vc103
+/usr/share/terminfo/v/vc203
+/usr/share/terminfo/v/vc303
+/usr/share/terminfo/v/vc303a
+/usr/share/terminfo/v/vc403a
+/usr/share/terminfo/v/vc404
+/usr/share/terminfo/v/vc404-s
+/usr/share/terminfo/v/vc414
+/usr/share/terminfo/v/vc414h
+/usr/share/terminfo/v/vc415
+/usr/share/terminfo/v/venix
+/usr/share/terminfo/v/versaterm
+/usr/share/terminfo/v/vi200
+/usr/share/terminfo/v/vi200-f
+/usr/share/terminfo/v/vi200-rv
+/usr/share/terminfo/v/vi300
+/usr/share/terminfo/v/vi300-old
+/usr/share/terminfo/v/vi50
+/usr/share/terminfo/v/vi500
+/usr/share/terminfo/v/vi50adm
+/usr/share/terminfo/v/vi55
+/usr/share/terminfo/v/vi550
+/usr/share/terminfo/v/vi603
+/usr/share/terminfo/v/viewpoint
+/usr/share/terminfo/v/viewpoint3a+
+/usr/share/terminfo/v/viewpoint60
+/usr/share/terminfo/v/viewpoint90
+/usr/share/terminfo/v/visa50
+/usr/share/terminfo/v/visual603
+/usr/share/terminfo/v/vitty
+/usr/share/terminfo/v/vk100
+/usr/share/terminfo/v/vp3a+
+/usr/share/terminfo/v/vp60
+/usr/share/terminfo/v/vp90
+/usr/share/terminfo/v/vremote
+/usr/share/terminfo/v/vs100
+/usr/share/terminfo/v/vs100-x10
+/usr/share/terminfo/v/vsc
+/usr/share/terminfo/v/vt-61
+/usr/share/terminfo/v/vt100-am
+/usr/share/terminfo/v/vt100-bot-s
+/usr/share/terminfo/v/vt100-nam
+/usr/share/terminfo/v/vt100-nam-w
+/usr/share/terminfo/v/vt100-nav
+/usr/share/terminfo/v/vt100-nav-w
+/usr/share/terminfo/v/vt100-s
+/usr/share/terminfo/v/vt100-s-bot
+/usr/share/terminfo/v/vt100-s-top
+/usr/share/terminfo/v/vt100-top-s
+/usr/share/terminfo/v/vt100-w
+/usr/share/terminfo/v/vt100-w-am
+/usr/share/terminfo/v/vt100-w-nam
+/usr/share/terminfo/v/vt100-w-nav
+/usr/share/terminfo/v/vt100nam
+/usr/share/terminfo/v/vt102
+/usr/share/terminfo/v/vt102-nsgr
+/usr/share/terminfo/v/vt102-w
+/usr/share/terminfo/v/vt125
+/usr/share/terminfo/v/vt131
+/usr/share/terminfo/v/vt132
+/usr/share/terminfo/v/vt200
+/usr/share/terminfo/v/vt200-js
+/usr/share/terminfo/v/vt200-w
+/usr/share/terminfo/v/vt220-js
+/usr/share/terminfo/v/vt220-nam
+/usr/share/terminfo/v/vt220-w
+/usr/share/terminfo/v/vt220d
+/usr/share/terminfo/v/vt300
+/usr/share/terminfo/v/vt300-nam
+/usr/share/terminfo/v/vt300-w
+/usr/share/terminfo/v/vt300-w-nam
+/usr/share/terminfo/v/vt320
+/usr/share/terminfo/v/vt320-k3
+/usr/share/terminfo/v/vt320-k311
+/usr/share/terminfo/v/vt320-nam
+/usr/share/terminfo/v/vt320-w
+/usr/share/terminfo/v/vt320-w-nam
+/usr/share/terminfo/v/vt320nam
+/usr/share/terminfo/v/vt330
+/usr/share/terminfo/v/vt340
+/usr/share/terminfo/v/vt400
+/usr/share/terminfo/v/vt400-24
+/usr/share/terminfo/v/vt420
+/usr/share/terminfo/v/vt420f
+/usr/share/terminfo/v/vt420pc
+/usr/share/terminfo/v/vt420pcdos
+/usr/share/terminfo/v/vt50
+/usr/share/terminfo/v/vt50h
+/usr/share/terminfo/v/vt510
+/usr/share/terminfo/v/vt510pc
+/usr/share/terminfo/v/vt510pcdos
+/usr/share/terminfo/v/vt520
+/usr/share/terminfo/v/vt525
+/usr/share/terminfo/v/vt61
+/usr/share/terminfo/v/vt61.5
+/usr/share/terminfo/x/x10term
+/usr/share/terminfo/x/x1700
+/usr/share/terminfo/x/x1700-lm
+/usr/share/terminfo/x/x1720
+/usr/share/terminfo/x/x1750
+/usr/share/terminfo/x/x68k
+/usr/share/terminfo/x/x68k-ite
+/usr/share/terminfo/x/x820
+/usr/share/terminfo/x/xenix
+/usr/share/terminfo/x/xerox
+/usr/share/terminfo/x/xerox-lm
+/usr/share/terminfo/x/xerox1720
+/usr/share/terminfo/x/xerox820
+/usr/share/terminfo/x/xl83
+/usr/share/terminfo/x/xtalk
+/usr/share/terminfo/x/xwsh
+
+%files devel
+%defattr(644,root,root,755)
+%doc README ANNOUNCE test
+%attr(755,root,root) /usr/lib/lib*.so
+
+/usr/include/ncurses
+
+%attr(644,root, man) /usr/man/man3/*
+
+%files static
+%attr(644,root,root) /usr/lib/lib*.a
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
-%defattr(644, root, root, 755)
-%attr(755, root, root) /usr/lib/lib*.so.*.*
-%attr(755, root, root) /lib/lib*.so.*.*
-/usr/share/terminfo
-/usr/share/tabset
-%attr(755, root, root) /usr/bin/*
-%attr(644, root,  man) /usr/man/man[157]/*
-
-%files devel
-%defattr(644, root, root, 755)
-%doc README ANNOUNCE c++ test
-/usr/lib/lib*.so
-/usr/include/*
-%attr(644, root,  man) /usr/man/man3/*
-
-%files static
-%attr(644, root, root) /usr/lib/lib*.a
-
 %changelog
-* Thu Feb 10 1999 Micha³ Kuratczyk <kurkens@polbox.com>
-  [4.2-14]
-- added Group(pl)
-- fixed pl translations
-- added gzipping documentation
-
-* Fri Dec  6 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [4.2-13]
-- added gzipping man pages,
-- changed man pages permission from 755 to 644,
-- --with-debug configure parameter changed to --without-debug and
-  --without-profile, --without-cxx, --without-ada,
+* Wed Feb 17 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [4.2-12]
+- updated to 990213 snapshot,
+- removed hjl patch (now is in 990213 snap),
 - added LDFLAGS="-s" to ./configure enviroment,
-- splification in devel %files,
-- changed sufixes man pages file names to *.1 and *.3.
+- removed removing linux, linux-m terminfo on sparc,
+- added terminfo subbackage with full terminfo database (minimal
+  term db is in main package),
+- added "Conflicts: glibc <= 2.0.7" in main,
+- added separated subpackage ext with non base ncurses libraries
+  (separating this allow minimize minimal system size).
 
 * Wed Nov 13 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [4.2-11]
+  [4.2-4d]
 - added more patches from rawhide ncurses,
 - use INSTALL_PREFIX instead prefix on "make install" (without this some
   binaries like tset have internal paths padded with Buildroot),
+- shares libncurses moved to /lib,
 - fixed pl translation.
 
-* Tue Sep  9 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-- added pl translation.
+* Sat Nov 07 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
+  [4.2-3d]
+- added some patches .. ;)
+- fixed ol translation,
+- full %file description,
+- fixed permissions,
+- minor changes.
 
-* Thu Sep  8 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [4.2-10]
-- added "rm -rf $RPM_BUILD_ROOT" on start %install,
-- shares libncurses moved to /lib.
-
-* Tue Sep  1 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [4.2-9]
-- changed Buildroot to /tmp/%%{name}-%%{version}-root,
-- added using %%{name} and %%{version} in Source,
-- added static subpackage,
-- changed dependencies to "Requires: %%{name} = %%{version}" in devel
-  subpackage,
-- added stripping shared libraries,
-- added %attr and %defattr macros in %files (allows build package from
-  non-root account).
+* Tue Sep 09 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
+  [4.2-2d]
+- translation modified for pl,
+- build against glibc-2.1,
+- fixed permissions of ELF binaries,
+- moved Buildroot to /var/tmp/%{name}-%{version}-%{release}-root
+- added a static package,
+- added %defattr support,
+- build from non root's account. 
 
 * Mon Jul 20 1998 Cristian Gafton <gafton@redhat.com>
 - added lots of patches. This spec file is starting to look ugly
