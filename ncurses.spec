@@ -233,7 +233,6 @@ CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
 	--enable-safe-sprintf \
 %endif
 	--with-manpage-format=normal
-%else
 
 %{__make}
 
