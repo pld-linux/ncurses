@@ -11,13 +11,12 @@ Summary(ru):	ncurses - новая библиотека управления терминалами
 Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
-Version:	5.2
-Release:	34
+Version:	5.3
+Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
 Source1:	%{name}-non-english-man-pages.tar.bz2
-Source2:	ftp://dickey.his.com/ncurses/5.2/patch-5.2-20020727.sh.gz
 Patch0:		%{name}-rh.patch
 Patch1:		%{name}-libyx-lat.patch
 Patch2:		%{name}-no_symlinks.patch
@@ -248,8 +247,6 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 
 %prep
 %setup  -q
-zcat %{SOURCE2} > patch.sh
-sh patch.sh
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
