@@ -14,7 +14,7 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.4
-Release:	1
+Release:	2
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -25,6 +25,13 @@ Patch0:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040711-patch.sh.bz2
 Patch1:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040718.patch.gz
 Patch2:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040724.patch.gz
 Patch3:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040731.patch.gz
+Patch4:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040807.patch.gz
+Patch5:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040814.patch.gz
+Patch6:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040821.patch.gz
+Patch7:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040828.patch.gz
+Patch8:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040911.patch.gz
+Patch9:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040918.patch.gz
+Patch10:	ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040925.patch.gz
 Patch13:	%{name}-screen_hpa_fix.patch
 Patch14:	%{name}-xterm_hpa_fix.patch
 Patch15:	%{name}-rxvt.patch
@@ -33,6 +40,7 @@ Patch17:	%{name}-ac_hack.patch
 Patch18:	%{name}-xterm-home-end.patch
 Patch19:	%{name}-mouse_trafo-warning.patch
 Patch20:	%{name}-gnome-terminal.patch
+Patch21:	%{name}-setcchar-fix.patch
 URL:		http://dickey.his.com/ncurses/ncurses.html
 BuildRequires:	automake
 %{?with_ada:BuildRequires:	gcc-ada}
@@ -299,6 +307,13 @@ sh patch.sh
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
 %patch13 -p1
 %patch14 -p1
 #%patch15 -p1
@@ -307,6 +322,7 @@ sh patch.sh
 %patch18 -p1
 %patch19 -p1
 %patch20 -p1
+%patch21 -p1
 
 %build
 unset TERMINFO || :
