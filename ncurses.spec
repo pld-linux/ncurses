@@ -122,7 +122,7 @@ halidir.
 Summary:	Additional ncurses libraries
 Summary(pl):	Dodatkowe biblioteki ncurses
 Group:		Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description ext
 This package contains addidion ncurses libraries like libforms,
@@ -170,8 +170,8 @@ Summary(pt_BR):	Bibliotecas de desenvolvimento para ncurses
 Summary(ru):	Хедеры и библиотеки для разработки программ с ncurses
 Summary(uk):	Хедери та б╕бл╕отеки для розробки програм з ncurses
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
-Requires:	%{name}-ext = %{version}
+Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-ext = %{version}-%{release}
 Obsoletes:	libtermcap-devel
 Obsoletes:	libncurses5-devel
 
@@ -207,7 +207,7 @@ Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com ncurses
 Summary(ru):	Статические библиотеки для разработки программ с ncurses
 Summary(uk):	Статичн╕ б╕бл╕отеки для розробки програм з ncurses
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 This package includes the static libraries necessary to develop
@@ -234,7 +234,7 @@ Bibliotecas estАticas para desenvolvimento com ncurses.
 Summary:	Header files for develop C++ ncurses based application
 Summary(pl):	Pliki nagЁСwkowe do biblioteki C++ ncurses
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description c++-devel
 This package includes the header files and libraries necessary to
@@ -248,7 +248,7 @@ programСw z wykorzystaniem biblioteki c++-ncurses.
 Summary:	Static libraries for C++ ncurses
 Summary(pl):	Biblioteki statyczne C++ ncurses
 Group:		Development/Libraries
-Requires:	%{name}-c++-devel = %{version}
+Requires:	%{name}-c++-devel = %{version}-%{release}
 
 %description c++-static
 This package includes the static libraries necessary to develop
@@ -261,7 +261,7 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 Summary:	Header files for develop Ada95 ncurses based application
 Summary(pl):	Pliki nagЁСwkowe do biblioteki Ada95 ncurses
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description ada-devel
 This package includes the header files and libraries necessary to
