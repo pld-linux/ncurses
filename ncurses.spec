@@ -67,8 +67,8 @@ do ³atwego robienia plikacji pe³noekranowych korzystaj±cych z ncurses.
 %package -n terminfo
 Summary:	Complete terminfo database
 Summary(pl):	Kompletna baza terminfo 
-Group:		Libraries
-Group(pl):	Biblioteki
+Group:		Utilities/Terminal
+Group(pl):	Narzêdzia/Terminal
 Requires:	%{name} = %{version}
 
 %description -n terminfo
