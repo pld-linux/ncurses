@@ -180,9 +180,6 @@ install %{SOURCE2} $RPM_BUILD_ROOT/usr/man/pl/man1/captoinfo.1m
 install %{SOURCE3} $RPM_BUILD_ROOT/usr/man/pl/man1/clear.1
 install %{SOURCE4} $RPM_BUILD_ROOT/usr/man/pl/man7/term.7
 
-install -d $RPM_BUILD_ROOT/usr/doc/examples/c++
-install c++/demo.cc $RPM_BUILD_ROOT/usr/doc/examples/c++
-
 rm -f $RPM_BUILD_ROOT/usr/lib/libncurses.so.4
 
 gzip -9nf $RPM_BUILD_ROOT/usr/man/pl/man*/* README ANNOUNCE
@@ -380,9 +377,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files ++devel
 %defattr(644,root,root,755)
-%dir /usr/doc/examples
-%dir /usr/doc/examples/c++
-%dir /usr/include/ncurses
+%doc c++/demo.cc
 /usr/include/ncurses/cursesapp.h
 /usr/include/ncurses/cursesf.h
 /usr/include/ncurses/cursesm.h
@@ -390,7 +385,6 @@ rm -rf $RPM_BUILD_ROOT
 /usr/include/ncurses/cursesw.h
 /usr/include/ncurses/etip.h
 /usr/include/ncurses/cursslk.h
-/usr/doc/examples/c++/*
 
 %files ++static
 %defattr(644,root,root,755)
