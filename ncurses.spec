@@ -5,7 +5,7 @@ Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	4.2
-Release:	14
+Release:	15
 Copyright:	distributable
 Group:		Libraries
 Group(pl):	Biblioteki
@@ -18,7 +18,6 @@ Patch0:		ncurses-rh.patch
 Patch1:		ncurses-setuid.patch
 Patch2:		ncurses-arm.patch
 BuildRoot:	/tmp/%{name}-%{version}-root
-Conflicts:      glibc <= 2.0.7
 
 %description
 The curses library routines give the user a terminal-independent method of
@@ -27,11 +26,11 @@ implementation is ``new curses'' (ncurses) and is the approved replacement
 for 4.4BSD classic curses, which is being discontinued. 
 
 %description -l de
-Die curses-Library-Routinen geben dem Benutzer eine Terminal-unabhängige 
-Methode zur optimierten Aktualisierung von zeichenbasierenden 
-Bildschirminhalten an die Hand. Die vorliegende Implementierung ist NEW 
-CURSES (ncurses), die offizielle Nachfolgerversion für 4.4BSC (die 
-klassische curses-Version), welche nicht weitergeführt wird. 
+Die curses-Library-Routinen geben dem Benutzer eine Terminal-unabhängige
+Methode zur optimierten Aktualisierung von zeichenbasierenden
+Bildschirminhalten an die Hand. Die vorliegende Implementierung ist NEW
+CURSES (ncurses), die offizielle Nachfolgerversion für 4.4BSC (die
+klassische curses-Version), welche nicht weitergeführt wird.
 
 %description -l fr
 Les routines de la bibliothèque curses donnent à l'utilisateur une méthode
@@ -50,7 +49,7 @@ curses kitaplýðý ile kullanýcýya kullanýlan terminal tipinden baðýmsýz olarak
 karakter tabanlý ekranlara eriþim olanaðý saðlanabilmektedir. Bu uyarlama
 'new curses' (ncurses), BSD deki klasik curses'in geliþmiþ halidir.
 
-%package	ext
+%package ext
 Summary:	Additionan ncurses libraries
 Summary(pl):	Dodatkowe biblioteki ncurses
 Group:		Libraries
@@ -65,7 +64,7 @@ libpanel for easy making full screen curse application.
 Pakiet ten zawiera dodatkowe biblioteki libforms, libmenu i libpanel s³u¿±ce
 do ³atwego robienia plikacji pe³noekranowych korzystaj±cych z ncurses.
 
-%package -n	terminfo
+%package -n terminfo
 Summary:	Complete terminfo database
 Summary(pl):	Kompletna baza terminfo 
 Group:		Libraries
@@ -83,7 +82,7 @@ Pakiet ten zconsoleawiera kompletn± bazê terminfo. Ke¿eli u¿ywasz terminali
 linux, console, xterm, vt100 prawdopodobnie nie bedziesz potrzebowa³ tego
 pakietu gdy¿ definicje tych terminali s± w³±czone w pakiet ncurses.
 
-%package	devel
+%package devel
 Summary:	Header files for develop ncurses based application
 Summary(pl):	Pliki nag³ówkowe do bibliotek ncurses
 Group:		Development/Libraries
@@ -99,7 +98,7 @@ applications that use ncurses.
 Pakiet ten zawiera pliki nag³ówkowe - niezbêdne do pisania/kompilowania
 programów z wykorzystaniem bibliotek ncurses.
 
-%package	static
+%package static
 Summary:	Static libraries for ncurses
 Summary(pl):	Biblioteki statyczne ncurses
 Group:		Development/Libraries
@@ -152,8 +151,6 @@ install %{SOURCE2} $RPM_BUILD_ROOT/usr/man/pl/man1/captoinfo.1m
 install %{SOURCE3} $RPM_BUILD_ROOT/usr/man/pl/man1/clear.1
 install %{SOURCE4} $RPM_BUILD_ROOT/usr/man/pl/man7/term.7
 
-chmod 755 $RPM_BUILD_ROOT/{lib/lib*.so.*.*,usr/lib/lib*.so.*.*}
-
 rm -f $RPM_BUILD_ROOT/usr/lib/libncurses.so.4
 
 gzip -9nf $RPM_BUILD_ROOT/usr/man/pl/man*/* \
@@ -171,7 +168,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 
-%attr(755,root,root) /lib/libncurses.so.*
+%attr(755,root,root) /lib/libncurses.so.*.*
 
 /usr/share/tabset
 
@@ -188,12 +185,12 @@ rm -rf $RPM_BUILD_ROOT
 /usr/share/terminfo/x/xterm*
 
 %attr(755,root,root) /usr/bin/*
-/usr/man/man[157]/*
 
+/usr/man/man[157]/*
 %lang(pl) /usr/man/pl/man[17]/*
 
 %files ext
-%attr(755,root,root) /usr/lib/lib*so.*
+%attr(755,root,root) /usr/lib/lib*so.*.*
 
 %files -n terminfo
 %defattr(644,root,root,755)
@@ -342,6 +339,11 @@ rm -rf $RPM_BUILD_ROOT
 /usr/lib/lib*.a
 
 %changelog
+* Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  []
+- removed Conflicts: glibc (not neccesary now),
+- recompiles on new rpm.
+
 * Sun Mar 14 1999 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
   [4.2-14]
 - compressed documentation,
