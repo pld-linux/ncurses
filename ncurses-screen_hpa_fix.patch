@@ -1,0 +1,11 @@
+--- ncurses-5.2/misc/terminfo.src~	Sun Jun 24 17:56:46 2001
++++ ncurses-5.2/misc/terminfo.src	Sun Jun 24 18:05:11 2001
+@@ -3510,7 +3510,7 @@
+ 	rmir=\E[4l, rmkx=\E[?1l\E>, rmso=\E[23m, rmul=\E[24m, 
+ 	rs2=\Ec, sc=\E7, sgr0=\E[m, smacs=^N, smir=\E[4h, 
+ 	smkx=\E[?1h\E=, smso=\E[3m, smul=\E[4m, tbc=\E[3g, E0=\E(B, 
+-	S0=\E(%p1%c, use=ecma+color, 
++	S0=\E(%p1%c, use=ecma+color, hpa=\E[%i%p1%dG, 
+ 
+ screen-w|VT 100/ANSI X3.64 virtual terminal with 132 cols, 
+ 	cols#132, use=screen, 
