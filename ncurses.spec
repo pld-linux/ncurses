@@ -13,17 +13,16 @@ Summary(ru):	ncurses - новая библиотека управления терминалами
 Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
-Version:	5.3
-Release:	7
+Version:	5.4
+Release:	0.1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
-# Source0-md5: 5dcc9faa93157eafa572494bffed131a
+# Source0-md5:	069c8880072060373290a4fefff43520
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
-# Source1-md5: 3b05ee835dc20c306e9af2a9d3fbf1f1
+# Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 Patch0:		%{name}-rh.patch
 Patch1:		%{name}-libyx-lat.patch
-Patch2:		%{name}-no_symlinks.patch
 Patch3:		%{name}-screen_hpa_fix.patch
 Patch4:		%{name}-xterm-color.patch
 Patch5:		%{name}-xterm_hpa_fix.patch
@@ -256,11 +255,10 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 %setup  -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 %patch3 -p1
-%patch4 -p1
+#%patch4 -p1
 %patch5 -p1
-%patch6 -p1
+#%patch6 -p1
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
@@ -281,6 +279,7 @@ cp -f /usr/share/automake/config.sub .
 	--without-profile \
 	--without-debug \
 	--with-termlib \
+	--with-manpage-aliases \
 	--with-manpage-format=normal
 
 %{__make}
