@@ -5,7 +5,7 @@ Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	5.2
-Release:	4
+Release:	5
 License:	Distributable
 Group:		Libraries
 Group(de):	Libraries
@@ -183,7 +183,7 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 
 %build
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
-%configure \
+%configure2_13 \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
 	--with-shared \
