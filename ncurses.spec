@@ -176,13 +176,13 @@ strip $RPM_BUILD_ROOT/usr/{bin/*,lib/lib*so.*.*}
 mv $RPM_BUILD_ROOT/usr/lib/libncurses.so.*.* $RPM_BUILD_ROOT/lib
 ln -sf ../../lib/libncurses.so.4.2 $RPM_BUILD_ROOT/usr/lib/libncurses.so
 
-install %{SOURCE2} $RPM_BUILD_ROOT/usr/man/pl/man1/captoinfo.1m
-install %{SOURCE3} $RPM_BUILD_ROOT/usr/man/pl/man1/clear.1
-install %{SOURCE4} $RPM_BUILD_ROOT/usr/man/pl/man7/term.7
+install %{SOURCE2} $RPM_BUILD_ROOT%{_mandir}/pl/man1/captoinfo.1m
+install %{SOURCE3} $RPM_BUILD_ROOT%{_mandir}/pl/man1/clear.1
+install %{SOURCE4} $RPM_BUILD_ROOT%{_mandir}/pl/man7/term.7
 
 rm -f $RPM_BUILD_ROOT/usr/lib/libncurses.so.4
 
-gzip -9nf $RPM_BUILD_ROOT/usr/man/pl/man*/* README ANNOUNCE
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/pl/man*/* README ANNOUNCE
 gzip -9nf misc/*.doc
 
 %post   -p /sbin/ldconfig
@@ -215,8 +215,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %attr(755,root,root) /usr/bin/*
 
-/usr/man/man[157]/*
-%lang(pl) /usr/man/pl/man[17]/*
+%{_mandir}/man[157]/*
+%lang(pl) %{_mandir}/pl/man[17]/*
 
 %files ext
 %attr(755,root,root) /usr/lib/lib*so.*.*
@@ -366,7 +366,7 @@ rm -rf $RPM_BUILD_ROOT
 /usr/include/ncurses/term.h
 /usr/include/ncurses/termcap.h
 /usr/include/ncurses/unctrl.h
-/usr/man/man3/*
+%{_mandir}/man3/*
 
 %files static
 %defattr(644,root,root,755)
