@@ -12,7 +12,7 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.2
-Release:	32
+Release:	33
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -359,8 +359,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/terminfo/s/sc415
 %{_datadir}/terminfo/s/scanset
 %{_datadir}/terminfo/s/sco*
-%{_datadir}/terminfo/s/screen2
-%{_datadir}/terminfo/s/screen3
 %{_datadir}/terminfo/s/screwpoint
 %{_datadir}/terminfo/s/scrhp
 %{_datadir}/terminfo/v/v[235aceikprs]*
