@@ -33,6 +33,7 @@ Patch17:	%{name}-ac_hack.patch
 Patch18:	%{name}-xterm-home-end.patch
 Patch19:	%{name}-mouse_trafo-warning.patch
 Patch20:	%{name}-gnome-terminal.patch
+URL:		http://dickey.his.com/ncurses/ncurses.html
 BuildRequires:	automake
 %{?with_ada:BuildRequires:	gcc-ada}
 %{?with_cxx:BuildRequires:	libstdc++-devel}
