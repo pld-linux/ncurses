@@ -1,6 +1,6 @@
-# --without cxx	- do not build C++ ncurses bindings and demo programs
-#		  (this is neccessary to build ncurses linked with uClibc).
-
+%bcond_without cxx		# do not build C++ ncurses bindings and demo programs
+#				# (this is neccessary to build ncurses linked with uClibc).
+#
 Summary:	curses terminal control library
 Summary(de):	curses-Terminal-Control-Library
 Summary(es):	Biblioteca de control de terminal curses
@@ -12,7 +12,7 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.2
-Release:	35
+Release:	35.1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -31,7 +31,7 @@ Patch7:		%{name}-meta.patch
 Patch8:		%{name}-ac_hack.patch
 Patch9:		%{name}-xterm-home-end.patch
 Patch10:	%{name}-mouse_trafo-warning.patch
-%{!?_without_cxx:BuildRequires:	libstdc++-devel}
+%{?with_cxx:BuildRequires:	libstdc++-devel}
 BuildRequires:	sharutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libncurses5
@@ -271,8 +271,8 @@ CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
 	--with-normal \
 	--with-shared \
 	--without-ada \
-	--with%{?_without_cxx:out}-cxx \
-	--with%{?_without_cxx:out}-cxx-binding \
+	--with%{!?with_cxx:out}-cxx \
+	--with%{!?with_cxx:out}-cxx-binding \
 	--without-profile \
 	--without-debug \
 	--with-termlib \
@@ -460,7 +460,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libpanel.a
 %{_libdir}/libmenu.a
 
-%if %{!?_without_cxx:1}
+%if %{with cxx}
 %files c++-devel
 %defattr(644,root,root,755)
 %doc c++/{demo.cc,README-first,NEWS,PROBLEMS}
