@@ -156,8 +156,8 @@ chmod 755 $RPM_BUILD_ROOT/{lib/lib*.so.*.*,usr/lib/lib*.so.*.*}
 
 rm -f $RPM_BUILD_ROOT/usr/lib/libncurses.so.4
 
-gzip -9nf $RPM_BUILD_ROOT/usr/man/pl/man*/*
-bzip2 -9 README ANNOUNCE 
+gzip -9nf $RPM_BUILD_ROOT/usr/man/pl/man*/* \
+	README ANNOUNCE 
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -329,7 +329,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc {README,ANNOUNCE}.bz2 
+%doc {README,ANNOUNCE}.gz 
 
 %attr(755,root,root) /usr/lib/lib*.so
 
@@ -338,7 +338,8 @@ rm -rf $RPM_BUILD_ROOT
 /usr/man/man3/*
 
 %files static
-%attr(644,root,root) /usr/lib/lib*.a
+%defattr(644,root,root,755)
+/usr/lib/lib*.a
 
 %changelog
 * Sun Mar 14 1999 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
