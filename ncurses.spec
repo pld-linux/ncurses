@@ -87,15 +87,15 @@ Requires:	%{name} = %{version}
 This package contain addidion ncurses libraries like libforms, libmenu
 and libpanel for easy making full screen curse application.
 
-%description -l pl ext
+%description ext -l pl
 Pakiet ten zawiera dodatkowe biblioteki libforms, libmenu i libpanel
 s³u¿±ce do ³atwego tworzenia aplikacji pe³noekranowych korzystaj±cych
 z ncurses.
 
 %package -n terminfo
 Summary:	Complete terminfo database
-Summary(es):	Banco de datos terminfo para terminales extras (menos usados) 
-Summary(pl):	Kompletna baza terminfo 
+Summary(es):	Banco de datos terminfo para terminales extras (menos usados)
+Summary(pl):	Kompletna baza terminfo
 Summary(pt_BR):	Base de dados terminfo para terminais adicionais (menos usados)
 Group:		Applications/Terminal
 Requires:	%{name} = %{version}
@@ -106,17 +106,17 @@ Linux console, xterm and VT100, you probably will not need this this -
 a minimal %{_datadir}/terminfo tree for these terminal is already
 included in the ncurses package.
 
-%description -l es -n terminfo
+%description -n terminfo -l es
 Banco de datos terminfo para terminales extras. Las capacidades de los
 terminales más usados ya están en el paquete principal ncurses.
 
-%description -l pl -n terminfo
+%description -n terminfo -l pl
 Pakiet ten zawiera kompletn± bazê terminfo. Je¿eli u¿ywasz terminali
 linux, console, xterm, vt100 prawdopodobnie nie bedziesz potrzebowa³
 tego pakietu gdy¿ definicje tych terminali s± w³±czone w pakiet
 ncurses.
 
-%description -l pt_BR -n terminfo
+%description -n terminfo -l pt_BR
 Base de dados terminfo para terminais extras. As definições dos
 terminais mais usados já estão no pacote principal ncurses.
 
@@ -135,15 +135,15 @@ Obsoletes:	libncurses5-devel
 This package includes the header files and libraries necessary to
 develop applications that use ncurses.
 
-%description -l es devel
+%description devel -l es
 Este paquete incluye las bibliotecas y archivos de inclusión
 necesarios al desarrollo de aplicaciones que usan ncurses.
 
-%description -l pl devel
+%description devel -l pl
 Pakiet ten zawiera pliki nag³ówkowe niezbêdne do pisania/kompilowania
 programów z wykorzystaniem bibliotek ncurses.
 
-%description -l pt_BR devel
+%description devel -l pt_BR
 Este pacote inclui as bibliotecas e arquivos de inclusão necessários
 ao desenvolvimento de aplicações que usam ncurses.
 
@@ -159,13 +159,13 @@ Requires:	%{name}-devel = %{version}
 This package includes the static libraries necessary to develop
 applications that use ncurses.
 
-%description -l es static
+%description static -l es
 Static libraries for ncurses development.
 
-%description -l pl static
+%description static -l pl
 Pakiet ten zawiera biblioteki statyczne ncurses.
 
-%description -l pt_BR static
+%description static -l pt_BR
 Bibliotecas estáticas para desenvolvimento com ncurses.
 
 %package c++-devel
@@ -178,7 +178,7 @@ Requires:	%{name}-devel = %{version}
 This package includes the header files and libraries necessary to
 develop applications that use C++ ncurses.
 
-%description -l pl c++-devel
+%description c++-devel -l pl
 Pakiet ten zawiera pliki nag³ówkowe niezbêdne do pisania/kompilowania
 programów z wykorzystaniem biblioteki c++-ncurses.
 
@@ -192,7 +192,7 @@ Requires:	%{name}-c++-devel = %{version}
 This package includes the static libraries necessary to develop
 applications that use C++ ncurses.
 
-%description -l pl c++-static
+%description c++-static -l pl
 Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 
 %prep
