@@ -247,7 +247,7 @@ sh %{SOURCE2}
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-#%patch7 -p1
+%patch7 -p1
 
 %build
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
