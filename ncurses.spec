@@ -7,7 +7,7 @@ Summary(pt_BR):	Biblioteca de controle de terminal curses
 Summary(tr):	Terminal kontrol kitapl˝˝
 Name:		ncurses
 Version:	5.2
-Release:	16
+Release:	17
 License:	distributable
 Group:		Libraries
 Group(de):	Libraries
@@ -18,10 +18,8 @@ Group(pt_BR):	Bibliotecas
 Group(ru):	‚…¬Ã…œ‘≈À…
 Group(uk):	‚¶¬Ã¶œ‘≈À…
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
-Source2:	captoinfo.1m.pl
-Source3:	clear.1.pl
-Source4:	term.7.pl
-Source5:	ftp://dickey.his.com/ncurses/5.2/patch-%{version}-20010908.sh
+Source1:	%{name}-non-english-man-pages.tar.bz2
+Source2:	ftp://dickey.his.com/ncurses/5.2/patch-%{version}-20010908.sh
 Patch0:		%{name}-rh.patch
 Patch1:		%{name}-libyx-lat.patch
 Patch2:		%{name}-no_symlinks.patch
@@ -239,7 +237,7 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 
 %prep
 %setup  -q
-sh %{SOURCE5}
+sh %{SOURCE2}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -264,7 +262,7 @@ CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{/lib,%{_mandir}/pl/man{1,7}}
+install -d $RPM_BUILD_ROOT{/lib,%{_mandir}}
 
 %{__make} install INSTALL_PREFIX=$RPM_BUILD_ROOT
 
@@ -275,9 +273,7 @@ mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.*.* $RPM_BUILD_ROOT/lib
 ln -sf ../../lib/libtinfo.so.5 $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
 ln -sf ../../lib/libncurses.so.5 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
 
-install %{SOURCE2} $RPM_BUILD_ROOT%{_mandir}/pl/man1/captoinfo.1m
-install %{SOURCE3} $RPM_BUILD_ROOT%{_mandir}/pl/man1/clear.1
-install %{SOURCE4} $RPM_BUILD_ROOT%{_mandir}/pl/man7/term.7
+bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
 gzip -9nf README ANNOUNCE c++/{README-first,NEWS,PROBLEMS,demo.cc}
 
@@ -316,7 +312,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 
 %{_mandir}/man[157]/*
-%lang(pl) %{_mandir}/pl/man[17]/*
+%lang(fi) %{_mandir}/fi/man1/*
+%lang(fr) %{_mandir}/fr/man1/*
+%lang(hu) %{_mandir}/hu/man1/*
+%lang(id) %{_mandir}/id/man1/*
+%lang(it) %{_mandir}/it/man1/*
+%lang(pl) %{_mandir}/pl/man[157]/*
 
 %files ext
 %defattr(644,root,root,755)
@@ -419,6 +420,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/termcap.h
 %{_includedir}/unctrl.h
 %{_mandir}/man3/*
+%lang(pl) %{_mandir}/pl/man3/*
 
 %files static
 %defattr(644,root,root,755)
