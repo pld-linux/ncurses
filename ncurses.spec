@@ -5,21 +5,22 @@ Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	5.1
-Release:	2
-Copyright:	distributable
+Release:	3
+License:	distributable
 Group:		Libraries
+Group(de):	Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
 Source2:	captoinfo.1m.pl
 Source3:	clear.1.pl
 Source4:	term.7.pl
-#Patch0:		ftp://dickey.his.com/ncurses/5.0/ncurses-5.0-20000527.patch.gz
-Patch1:		ncurses-rh.patch
-Patch2:		ncurses-setuid.patch
-Patch3:		ncurses-arm.patch
-Patch4:		ncurses-libyx-lat.patch
-Patch5:		ncurses-xtermchanges.patch
+#Patch0:	ftp://dickey.his.com/ncurses/5.0/%{name}-5.0-20000527.patch.gz
+Patch1:		%{name}-rh.patch
+Patch2:		%{name}-setuid.patch
+Patch3:		%{name}-arm.patch
+Patch4:		%{name}-libyx-lat.patch
+Patch5:		%{name}-xtermchanges.patch
 BuildRequires:	sharutils, patch, bash, mawk, sed, gzip
 Requires:	terminfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -64,6 +65,7 @@ halidir.
 Summary:	Additional ncurses libraries
 Summary(pl):	Dodatkowe biblioteki ncurses
 Group:		Libraries
+Group(de):	Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Requires:	%{name} = %{version}
@@ -80,8 +82,9 @@ z ncurses.
 %package -n terminfo
 Summary:	Complete terminfo database
 Summary(pl):	Kompletna baza terminfo 
-Group:		Utilities/Terminal
-Group(pl):	Narzêdzia/Terminal
+Group:		Applications/Terminal
+Group(de):	Applikationen/Terminal
+Group(pl):	Aplikacje/Terminal
 Requires:	%{name} = %{version}
 
 %description -n terminfo
@@ -100,6 +103,7 @@ ncurses.
 Summary:	Header files for develop ncurses based application
 Summary(pl):	Pliki nag³ówkowe do bibliotek ncurses
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -118,6 +122,7 @@ programów z wykorzystaniem bibliotek ncurses.
 Summary:	Static libraries for ncurses
 Summary(pl):	Biblioteki statyczne ncurses
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
@@ -133,6 +138,7 @@ Pakiet ten zawiera biblioteki statyczne ncurses.
 Summary:	Header files for develop C++ ncurses based application
 Summary(pl):	Pliki nag³ówkowe do biblioteki C++ ncurses
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
@@ -149,6 +155,7 @@ programów z wykorzystaniem biblioteki c++-ncurses.
 Summary:	Static libraries for C++ ncurses
 Summary(pl):	Biblioteki statyczne C++ ncurses
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-c++-devel = %{version}
@@ -170,9 +177,7 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 %patch5 -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS -DPURE_TERMINFO"
-LDFLAGS="-s"
-export CFLAGS LDFLAGS
+CFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g} -DPURE_TERMINFO"
 %configure \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
@@ -193,10 +198,8 @@ install -d $RPM_BUILD_ROOT{/lib,%{_mandir}/pl/man{1,7}}
 
 ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
-strip $RPM_BUILD_ROOT{%{_bindir}/*,%{_libdir}/lib*so.*.*}
-
-mv $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.*.* $RPM_BUILD_ROOT/lib
-mv $RPM_BUILD_ROOT%{_libdir}/libncurses.so.*.* $RPM_BUILD_ROOT/lib
+mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.*.* $RPM_BUILD_ROOT/lib
+mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.*.* $RPM_BUILD_ROOT/lib
 ln -sf ../../lib/libtinfo.so.5.1 $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
 ln -sf ../../lib/libncurses.so.5.1 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
 
@@ -204,9 +207,7 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_mandir}/pl/man1/captoinfo.1m
 install %{SOURCE3} $RPM_BUILD_ROOT%{_mandir}/pl/man1/clear.1
 install %{SOURCE4} $RPM_BUILD_ROOT%{_mandir}/pl/man7/term.7
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/pl/man*/* README ANNOUNCE \
-	$RPM_BUILD_ROOT%{_mandir}/man1/tack.1 \
-	c++/{README-first,NEWS,PROBLEMS,demo.cc}
+gzip -9nf README ANNOUNCE c++/{README-first,NEWS,PROBLEMS,demo.cc}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -219,7 +220,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-
 %attr(755,root,root) /lib/lib*.so.*.*
 
 %{_datadir}/tabset
