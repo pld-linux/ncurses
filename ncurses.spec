@@ -151,7 +151,7 @@ sh %{SOURCE1}
 
 %build
 CFLAGS="$RPM_OPT_FLAGS -DPURE_TERMINFO" LDFLAGS="-s" \
-./configure %{_target} \
+./configure %{_target_platform} \
 	--prefix=%{_prefix} \
 	--includedir=%{_includedir}/ncurses \
 	--mandir=%{_mandir} \
