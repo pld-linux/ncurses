@@ -176,7 +176,7 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 %patch5 -p1
 
 %build
-CFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS} -DPURE_TERMINFO"
+CFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS} -DPURE_TERMINFO"
 %configure \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
