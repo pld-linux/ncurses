@@ -1,6 +1,8 @@
-# --without cxx	- do not build C++ ncurses bindings and demo programs
+#
+# Conditional build:
+# _without_cxx	- do not build C++ ncurses bindings and demo programs
 #		  (this is neccessary to build ncurses linked with uClibc).
-
+#
 Summary:	curses terminal control library
 Summary(de):	curses-Terminal-Control-Library
 Summary(es):	Biblioteca de control de terminal curses
@@ -35,6 +37,7 @@ Patch11:	%{name}-gnome-terminal.patch
 BuildRequires:	sharutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libncurses5
+Conflicts:	terminfo < 5.2-33
 
 %define		_includedir	%{_prefix}/include/ncurses
 
@@ -130,7 +133,7 @@ Summary(es):	Banco de datos terminfo para terminales extras (menos usados)
 Summary(pl):	Kompletna baza terminfo
 Summary(pt_BR):	Base de dados terminfo para terminais adicionais (menos usados)
 Group:		Applications/Terminal
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Obsoletes:	ncurses-extraterms
 
 %description -n terminfo
