@@ -12,11 +12,13 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.2
-Release:	34
+Release:	35
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
+# Source0-md5:	464d6a49010cf2a6eb9ce59a264d4d47
 Source1:	%{name}-non-english-man-pages.tar.bz2
+# Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 Source2:	ftp://dickey.his.com/ncurses/5.2/patch-5.2-20020727.sh.gz
 Patch0:		%{name}-rh.patch
 Patch1:		%{name}-libyx-lat.patch
@@ -83,10 +85,10 @@ tornando obsoletos.
 терминально-независимого обновления символьных экранов с достаточной
 оптимизацией. Эта реализация - "новые curses" (ncurses), которая
 является одобренной заменой классической библиотеки curses из 4.4BSD,
-в настоящее время "снятой с производства". В KSI Linux ncurses
+в настоящее время "снятой с производства". В PLD Linux ncurses
 является жизненно необходимой, без нее не будут функционировать многие
 программы, составляющие базовую систему. Практически все программы,
-которые выводят что-либо на терминал, используют ncurses. В KSI Linux
+которые выводят что-либо на терминал, используют ncurses. В PLD Linux
 ни библиотека termcap, ни традиционный файл /etc/termcap, не
 используются...
 
@@ -101,10 +103,10 @@ halidir.
 терм╕нально-незалежного поновлення символьних екран╕в з достатньою
 оптим╕зац╕╓ю. Ця реал╕зац╕я - "нов╕ curses" (ncurses), котра ╓
 схваленою зам╕ною класично╖ б╕бл╕отеки curses з 4.4BSD, яка нараз╕
-"знята з виробництва". В KSI Linux ncurses ╓ житт╓во необх╕дною, без
+"знята з виробництва". В PLD Linux ncurses ╓ житт╓во необх╕дною, без
 не╖ не буде працювати б╕льшость програм, що складають базову систему.
 Практично вс╕ програми, котр╕ виводять щось на терм╕нал,
-використовують ncurses. В KSI Linux ан╕ б╕бл╕отека termcap, ан╕
+використовують ncurses. В PLD Linux ан╕ б╕бл╕отека termcap, ан╕
 традиц╕йний файл /etc/termcap не використовуються...
 
 %package ext
@@ -247,7 +249,7 @@ applications that use C++ ncurses.
 Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 
 %prep
-%setup  -q
+%setup -q
 zcat %{SOURCE2} > patch.sh
 sh patch.sh
 %patch0 -p1
@@ -300,11 +302,11 @@ bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
-%post   ext -p /sbin/ldconfig
-%postun ext -p /sbin/ldconfig
+%post	ext -p /sbin/ldconfig
+%postun	ext -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
