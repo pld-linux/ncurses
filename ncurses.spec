@@ -21,6 +21,7 @@ Patch2:		%{name}-setuid.patch
 Patch3:		%{name}-arm.patch
 Patch4:		%{name}-libyx-lat.patch
 Patch5:		%{name}-xtermchanges.patch
+Patch6:		%{name}-no_symlinks.patch
 BuildRequires:	sharutils, patch, bash, mawk, sed, gzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -174,6 +175,7 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 %patch3 -p1 -b .wiget
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 CFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g} -DPURE_TERMINFO"
@@ -185,7 +187,8 @@ CFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g} -DPURE_TERMINFO"
 	--without-profile \
 	--without-debug \
 	--with-termlib \
-	--enable-safe-sprintf
+	--enable-safe-sprintf \
+	--with-manpage-format=normal
 
 %{__make}
 
@@ -250,8 +253,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n terminfo
 %defattr(644,root,root,755)
-%{_datadir}/terminfo/[1-9NPXa-km-uwz]
-%{_datadir}/terminfo/l/l[ainpu]*
+%{_datadir}/terminfo/[1-9NPXa-km-rt-uwz]
+%{_datadir}/terminfo/l/l[anpu]*
 %{_datadir}/terminfo/l/lisa
 %{_datadir}/terminfo/l/lisaterm
 %{_datadir}/terminfo/l/lisaterm-w
