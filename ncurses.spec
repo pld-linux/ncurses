@@ -22,7 +22,6 @@ Patch3:		%{name}-arm.patch
 Patch4:		%{name}-libyx-lat.patch
 Patch5:		%{name}-xtermchanges.patch
 BuildRequires:	sharutils, patch, bash, mawk, sed, gzip
-Requires:	terminfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_includedir	%{_prefix}/include/ncurses
@@ -226,10 +225,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %dir %{_datadir}/terminfo
 %dir %{_datadir}/terminfo/l
+%dir %{_datadir}/terminfo/s
 %dir %{_datadir}/terminfo/v
 %dir %{_datadir}/terminfo/x
 
 %{_datadir}/terminfo/l/linux*
+%{_datadir}/terminfo/s/screen
 %{_datadir}/terminfo/v/vt100
 %{_datadir}/terminfo/v/vt220
 %{_datadir}/terminfo/v/vt220-8
@@ -249,62 +250,23 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n terminfo
 %defattr(644,root,root,755)
-
 %{_datadir}/terminfo/[1-9NPXa-km-uwz]
-%{_datadir}/terminfo/l/la120
-%{_datadir}/terminfo/l/layer
+%{_datadir}/terminfo/l/l[ainpu]*
 %{_datadir}/terminfo/l/lisa
 %{_datadir}/terminfo/l/lisaterm
 %{_datadir}/terminfo/l/lisaterm-w
 %{_datadir}/terminfo/l/liswb
-%{_datadir}/terminfo/l/ln03
-%{_datadir}/terminfo/l/ln03-w
-%{_datadir}/terminfo/l/lpr
-%{_datadir}/terminfo/l/luna
-%{_datadir}/terminfo/l/luna68k
-%{_datadir}/terminfo/v/v200-nam
-%{_datadir}/terminfo/v/v320n
-%{_datadir}/terminfo/v/v3220
-%{_datadir}/terminfo/v/v5410
-%{_datadir}/terminfo/v/vapple
-%{_datadir}/terminfo/v/vc103
-%{_datadir}/terminfo/v/vc203
-%{_datadir}/terminfo/v/vc303
-%{_datadir}/terminfo/v/vc303a
-%{_datadir}/terminfo/v/vc403a
-%{_datadir}/terminfo/v/vc404
-%{_datadir}/terminfo/v/vc404-s
-%{_datadir}/terminfo/v/vc414
-%{_datadir}/terminfo/v/vc414h
-%{_datadir}/terminfo/v/vc415
-%{_datadir}/terminfo/v/venix
-%{_datadir}/terminfo/v/versaterm
-%{_datadir}/terminfo/v/vi200
-%{_datadir}/terminfo/v/vi200-f
-%{_datadir}/terminfo/v/vi200-rv
-%{_datadir}/terminfo/v/vi300
-%{_datadir}/terminfo/v/vi300-old
-%{_datadir}/terminfo/v/vi50
-%{_datadir}/terminfo/v/vi500
-%{_datadir}/terminfo/v/vi50adm
-%{_datadir}/terminfo/v/vi55
-%{_datadir}/terminfo/v/vi550
-%{_datadir}/terminfo/v/vi603
-%{_datadir}/terminfo/v/viewpoint
-%{_datadir}/terminfo/v/viewpoint3a+
-%{_datadir}/terminfo/v/viewpoint60
-%{_datadir}/terminfo/v/viewpoint90
-%{_datadir}/terminfo/v/visa50
-%{_datadir}/terminfo/v/visual603
-%{_datadir}/terminfo/v/vitty
-%{_datadir}/terminfo/v/vk100
-%{_datadir}/terminfo/v/vp3a+
-%{_datadir}/terminfo/v/vp60
-%{_datadir}/terminfo/v/vp90
-%{_datadir}/terminfo/v/vremote
-%{_datadir}/terminfo/v/vs100
-%{_datadir}/terminfo/v/vs100-x10
-%{_datadir}/terminfo/v/vsc
+/usr/share/terminfo/s/s[4bioptuvwy]*
+/usr/share/terminfo/s/sc410
+/usr/share/terminfo/s/sc415
+/usr/share/terminfo/s/scanset
+/usr/share/terminfo/s/scoansi
+/usr/share/terminfo/s/screen-w
+/usr/share/terminfo/s/screen2
+/usr/share/terminfo/s/screen3
+/usr/share/terminfo/s/screwpoint
+/usr/share/terminfo/s/scrhp
+%{_datadir}/terminfo/v/v[235aceikpr]*
 %{_datadir}/terminfo/v/vt-61
 %{_datadir}/terminfo/v/vt100-am
 %{_datadir}/terminfo/v/vt100-bot-s
@@ -362,22 +324,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/terminfo/v/vt525
 %{_datadir}/terminfo/v/vt61
 %{_datadir}/terminfo/v/vt61.5
-%{_datadir}/terminfo/x/x10term
-%{_datadir}/terminfo/x/x1700
-%{_datadir}/terminfo/x/x1700-lm
-%{_datadir}/terminfo/x/x1720
-%{_datadir}/terminfo/x/x1750
-%{_datadir}/terminfo/x/x68k
-%{_datadir}/terminfo/x/x68k-ite
-%{_datadir}/terminfo/x/x820
-%{_datadir}/terminfo/x/xenix
-%{_datadir}/terminfo/x/xerox
-%{_datadir}/terminfo/x/xerox-lm
-%{_datadir}/terminfo/x/xerox1720
-%{_datadir}/terminfo/x/xerox820
-%{_datadir}/terminfo/x/xl83
+%{_datadir}/terminfo/x/x[168elw]*
 %{_datadir}/terminfo/x/xtalk
-%{_datadir}/terminfo/x/xwsh
 
 %files devel
 %defattr(644,root,root,755)
