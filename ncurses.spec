@@ -12,7 +12,7 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.2
-Release:	33
+Release:	34
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -291,9 +291,9 @@ ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
 mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.*.* $RPM_BUILD_ROOT/lib
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.*.* $RPM_BUILD_ROOT/lib
-ln -sf ../../lib/libtinfo.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
-ln -sf ../../lib/libncurses.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libcurses.so
-ln -sf ../../lib/libncurses.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
+ln -sf /lib/libtinfo.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
+ln -sf /lib/libncurses.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libcurses.so
+ln -sf /lib/libncurses.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
