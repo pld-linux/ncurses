@@ -5,7 +5,7 @@ Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	4.2
-Release:	12
+Release:	13
 Copyright:	distributable
 Group:		Libraries
 Group(pl):	Biblioteki
@@ -158,6 +158,9 @@ gzip -9nf $RPM_BUILD_ROOT/usr/man/{man*/*,pl/man*/*}
 %post   ext -p /sbin/ldconfig
 %postun ext -p /sbin/ldconfig
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) /lib/libncurses.so.*.*
@@ -175,8 +178,8 @@ gzip -9nf $RPM_BUILD_ROOT/usr/man/{man*/*,pl/man*/*}
 /usr/share/terminfo/x/xterm*
 
 %attr(755,root,root) /usr/bin/*
-%attr(644,root, man) /usr/man/man[157]/*
-%attr(644,root, man) %lang(pl) /usr/man/pl/man[17]/*
+/usr/man/man[157]/*
+%lang(pl) /usr/man/pl/man[17]/*
 
 %files ext
 %attr(755,root,root) /usr/lib/lib*so.*.*
@@ -319,15 +322,16 @@ gzip -9nf $RPM_BUILD_ROOT/usr/man/{man*/*,pl/man*/*}
 
 /usr/include/ncurses
 
-%attr(644,root, man) /usr/man/man3/*
+/usr/man/man3/*
 
 %files static
 %attr(644,root,root) /usr/lib/lib*.a
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %changelog
+* Mon Feb 22 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [4.2-13]
+- removed man group from man pages.
+
 * Wed Feb 17 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [4.2-12]
 - updated to 990213 snapshot,
@@ -338,8 +342,8 @@ rm -rf $RPM_BUILD_ROOT
   term db is in main package),
 - added "Conflicts: glibc <= 2.0.7" in main,
 - added pl man pages for captoinfo(1), clear(1), term(7),
-- added separated subpackage ext with non base ncurses libraries
-  (separating this allow minimize minimal system size).
+- added separated subpackage ext with non base ncurses libraries (separating
+  this allow minimize minimal system size).
 
 * Wed Nov 13 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [4.2-4d]
