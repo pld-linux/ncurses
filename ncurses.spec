@@ -4,19 +4,21 @@ Summary(fr):	La bibliothéque de contrôle de terminal curses.
 Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
-Version:	4.2
-Release:	20
+Version:	5.0
+Release:	2
 Copyright:	distributable
 Group:		Libraries
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.clark.net/pub/dickey/ncurses/%{name}-%{version}.tar.gz
-Source1:	ftp://ftp.clark.net/pub/dickey/ncurses/4.2/patches/patch-4.2-990213.sh
 Source2:	captoinfo.1m.pl
 Source3:	clear.1.pl
 Source4:	term.7.pl
 Patch0:		ncurses-rh.patch
 Patch1:		ncurses-setuid.patch
 Patch2:		ncurses-arm.patch
+Patch3:		ftp://ftp.clark.net/pub/dickey/ncurses/5.0/%{name}-%{version}-19991030.patch.gz
+Patch4:		ftp://ftp.clark.net/pub/dickey/ncurses/5.0/%{name}-%{version}-19991106.patch.gz
+Patch5:		ncurses-libyx-lat.patch
 BuildRequires:	sharutils, patch, bash, gawk, sed, gzip
 BuildRoot:	/tmp/%{name}-%{version}-root
 
@@ -116,11 +118,11 @@ applications that use ncurses.
 Pakiet ten zawiera biblioteki statyczne ncurses.
 
 %package c++-devel
-Summary:     Header files for develop C++ ncurses based application
-Summary(pl): Pliki nag³ówkowe do biblioteki C++ ncurses
-Group:       Development/Libraries
-Group(pl):   Programowanie/Biblioteki
-Requires:    %{name}-devel = %{version}
+Summary:	Header files for develop C++ ncurses based application
+Summary(pl):	Pliki nag³ówkowe do biblioteki C++ ncurses
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name}-devel = %{version}
 
 %description c++-devel
 This package includes the header files and libraries necessary to develop
@@ -146,10 +148,12 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 
 %prep
 %setup  -q
-sh %{SOURCE1}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 CFLAGS="$RPM_OPT_FLAGS -DPURE_TERMINFO"
@@ -161,7 +165,9 @@ export CFLAGS LDFLAGS
 	--with-shared \
 	--without-ada \
 	--without-profile \
-	--without-debug
+	--without-debug \
+	--with-termlib \
+	--enable-safe-sprintf
 
 make
 
@@ -175,14 +181,14 @@ ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
 strip $RPM_BUILD_ROOT{%{_bindir}/*,%{_libdir}/lib*so.*.*}
 
+mv $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.*.* $RPM_BUILD_ROOT/lib
 mv $RPM_BUILD_ROOT%{_libdir}/libncurses.so.*.* $RPM_BUILD_ROOT/lib
-ln -sf ../../lib/libncurses.so.4.2 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
+ln -sf ../../lib/libtinfo.so.5.0 $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
+ln -sf ../../lib/libncurses.so.5.0 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
 
 install %{SOURCE2} $RPM_BUILD_ROOT%{_mandir}/pl/man1/captoinfo.1m
 install %{SOURCE3} $RPM_BUILD_ROOT%{_mandir}/pl/man1/clear.1
 install %{SOURCE4} $RPM_BUILD_ROOT%{_mandir}/pl/man7/term.7
-
-rm -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.4
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/pl/man*/* README ANNOUNCE \
 	misc/*.doc misc/*.html c++/{README-first,NEWS,PROBLEMS,demo.cc}
@@ -199,7 +205,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 
-%attr(755,root,root) /lib/libncurses.so.*.*
+%attr(755,root,root) /lib/lib*.so.*.*
 
 %{_datadir}/tabset
 
@@ -221,7 +227,9 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pl) %{_mandir}/pl/man[17]/*
 
 %files ext
-%attr(755,root,root) %{_libdir}/lib*so.*.*
+%attr(755,root,root) %{_libdir}/libform.so.*.*
+%attr(755,root,root) %{_libdir}/libpanel.so.*.*
+%attr(755,root,root) %{_libdir}/libmenu.so.*.*
 
 %files -n terminfo
 %defattr(644,root,root,755)
@@ -373,6 +381,7 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libncurses.a
+%{_libdir}/libtinfo.a
 %{_libdir}/libform.a
 %{_libdir}/libpanel.a
 %{_libdir}/libmenu.a
