@@ -14,7 +14,7 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.4
-Release:	0.6
+Release:	0.7
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -317,6 +317,10 @@ sh patch.sh
 unset TERMINFO || :
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
 cp -f /usr/share/automake/config.sub .
+for t in narrowc widec; do
+install -d obj-$t
+cd obj-$t
+ln -sf ../configure .
 %configure \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
@@ -329,16 +333,20 @@ cp -f /usr/share/automake/config.sub .
 	--with-termlib \
 	--with-manpage-aliases \
 	--with-manpage-format=normal \
-	--without-manpage-symlinks
-
+	--without-manpage-symlinks \
+	`[ "$t" = "widec" ] && echo --enable-widec --includedir=%{_includedir}w`
 %{__make}
+cd ..
+done
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{/%{_lib},%{_mandir}}
 
-%{__make} install \
+for t in widec narrowc; do
+%{__make} -C obj-$t install \
 	INSTALL_PREFIX=$RPM_BUILD_ROOT
+done
 
 ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
@@ -364,6 +372,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc ANNOUNCE README
 %attr(755,root,root) /%{_lib}/libncurses.so.*.*
 %attr(755,root,root) /%{_lib}/libtinfo.so.*.*
+%attr(755,root,root) %{_libdir}/libncursesw.so.*.*
+%attr(755,root,root) %{_libdir}/libtinfow.so.*.*
 
 %{_datadir}/tabset
 
@@ -411,6 +421,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libcurses.so
 %attr(755,root,root) %{_libdir}/libncurses.so
 %attr(755,root,root) %{_libdir}/libtinfo.so
+%attr(755,root,root) %{_libdir}/libcursesw.so
+%attr(755,root,root) %{_libdir}/libncursesw.so
+%attr(755,root,root) %{_libdir}/libtinfow.so
 %dir %{_includedir}
 %{_includedir}/curses.h
 %{_includedir}/eti.h
@@ -419,6 +432,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/term.h
 %{_includedir}/termcap.h
 %{_includedir}/unctrl.h
+%dir %{_includedir}w
+%{_includedir}w/curses.h
+%{_includedir}w/eti.h
+%{_includedir}w/ncurses.h
+%{_includedir}w/ncurses_dll.h
+%{_includedir}w/term.h
+%{_includedir}w/termcap.h
+%{_includedir}w/unctrl.h
 %{_mandir}/man3/*
 %exclude %{_mandir}/man3/form*
 %exclude %{_mandir}/man3/menu*
@@ -429,21 +450,32 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libncurses.a
 %{_libdir}/libtinfo.a
+%{_libdir}/libncursesw.a
+%{_libdir}/libtinfow.a
 
 %files ext
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libform.so.*.*
 %attr(755,root,root) %{_libdir}/libmenu.so.*.*
 %attr(755,root,root) %{_libdir}/libpanel.so.*.*
+%attr(755,root,root) %{_libdir}/libformw.so.*.*
+%attr(755,root,root) %{_libdir}/libmenuw.so.*.*
+%attr(755,root,root) %{_libdir}/libpanelw.so.*.*
 
 %files ext-devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libform.so
 %attr(755,root,root) %{_libdir}/libmenu.so
 %attr(755,root,root) %{_libdir}/libpanel.so
+%attr(755,root,root) %{_libdir}/libformw.so
+%attr(755,root,root) %{_libdir}/libmenuw.so
+%attr(755,root,root) %{_libdir}/libpanelw.so
 %{_includedir}/form.h
 %{_includedir}/menu.h
 %{_includedir}/panel.h
+%{_includedir}w/form.h
+%{_includedir}w/menu.h
+%{_includedir}w/panel.h
 %{_mandir}/man3/form*
 %{_mandir}/man3/menu*
 %{_mandir}/man3/panel*
@@ -453,6 +485,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libform.a
 %{_libdir}/libmenu.a
 %{_libdir}/libpanel.a
+%{_libdir}/libformw.a
+%{_libdir}/libmenuw.a
+%{_libdir}/libpanelw.a
 
 %if %{with cxx}
 %files c++-devel
@@ -465,10 +500,18 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/cursesw.h
 %{_includedir}/etip.h
 %{_includedir}/cursslk.h
+%{_includedir}w/cursesapp.h
+%{_includedir}w/cursesf.h
+%{_includedir}w/cursesm.h
+%{_includedir}w/cursesp.h
+%{_includedir}w/cursesw.h
+%{_includedir}w/etip.h
+%{_includedir}w/cursslk.h
 
 %files c++-static
 %defattr(644,root,root,755)
 %{_libdir}/libncurses++.a
+%{_libdir}/libncurses++w.a
 %endif
 
 %if %{with ada}
