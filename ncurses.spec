@@ -32,6 +32,7 @@ BuildRequires:	sharutils
 BuildRequires:	sed
 BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	libncurses5
 
 %define		_includedir	%{_prefix}/include/ncurses
 
@@ -151,6 +152,7 @@ Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 Requires:	%{name}-ext = %{version}
 Obsoletes:	libtermcap-devel
+Obsoletes:	libncurses5-devel
 
 %description devel
 This package includes the header files and libraries necessary to
