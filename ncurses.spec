@@ -189,7 +189,7 @@ make
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{/lib,%{_mandir}/pl/man{1,7}}
 
-make install INSTALL_PREFIX=$RPM_BUILD_ROOT
+%{__make} install INSTALL_PREFIX=$RPM_BUILD_ROOT
 
 ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
