@@ -56,7 +56,7 @@ karakter tabanlý ekranlara eriþim olanaðý saðlanabilmektedir. Bu uyarlama
 'new curses' (ncurses), BSD deki klasik curses'in geliþmiþ halidir.
 
 %package ext
-Summary:	Additionan ncurses libraries
+Summary:	Additional ncurses libraries
 Summary(pl):	Dodatkowe biblioteki ncurses
 Group:		Libraries
 Group(pl):	Biblioteki
