@@ -5,7 +5,7 @@ Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	4.2
-Release:	19
+Release:	20
 Copyright:	distributable
 Group:		Libraries
 Group(pl):	Biblioteki
@@ -19,6 +19,8 @@ Patch1:		ncurses-setuid.patch
 Patch2:		ncurses-arm.patch
 BuildRequires:	sharutils, patch, bash, gawk, sed, gzip
 BuildRoot:	/tmp/%{name}-%{version}-root
+
+%define		_includedir	%{_prefix}/include/ncurses
 
 %description
 The curses library routines give the user a terminal-independent method of
@@ -150,11 +152,10 @@ sh %{SOURCE1}
 %patch2 -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS -DPURE_TERMINFO" LDFLAGS="-s" \
-./configure %{_target_platform} \
-	--prefix=%{_prefix} \
-	--includedir=%{_includedir}/ncurses \
-	--mandir=%{_mandir} \
+CFLAGS="$RPM_OPT_FLAGS -DPURE_TERMINFO"
+LDFLAGS="-s"
+export CFLAGS LDFLAGS
+%configure \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
 	--with-shared \
@@ -166,7 +167,7 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{/lib,/bin,%{_mandir}/pl/man{1,7},/.terminfo/{l,v}}
+install -d $RPM_BUILD_ROOT{/lib,%{_mandir}/pl/man{1,7}}
 
 make install INSTALL_PREFIX=$RPM_BUILD_ROOT
 
@@ -176,10 +177,6 @@ strip $RPM_BUILD_ROOT{%{_bindir}/*,%{_libdir}/lib*so.*.*}
 
 mv $RPM_BUILD_ROOT%{_libdir}/libncurses.so.*.* $RPM_BUILD_ROOT/lib
 ln -sf ../../lib/libncurses.so.4.2 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
-
-mv $RPM_BUILD_ROOT%{_bindir}/tput $RPM_BUILD_ROOT/bin
-cp $RPM_BUILD_ROOT%{_datadir}/terminfo/v/vt* $RPM_BUILD_ROOT/.terminfo/v/
-cp $RPM_BUILD_ROOT%{_datadir}/terminfo/v/linux* $RPM_BUILD_ROOT/.terminfo/l/
 
 install %{SOURCE2} $RPM_BUILD_ROOT%{_mandir}/pl/man1/captoinfo.1m
 install %{SOURCE3} $RPM_BUILD_ROOT%{_mandir}/pl/man1/clear.1
@@ -206,19 +203,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_datadir}/tabset
 
-%dir /.terminfo
-%dir /.terminfo/l
-%dir /.terminfo/v
 %dir %{_datadir}/terminfo
 %dir %{_datadir}/terminfo/l
 %dir %{_datadir}/terminfo/v
 %dir %{_datadir}/terminfo/x
 
-/.terminfo/l/linux*
-/.terminfo/v/vt100
-/.terminfo/v/vt220
-/.terminfo/v/vt220-8
-/.terminfo/v/vt52
 %{_datadir}/terminfo/l/linux*
 %{_datadir}/terminfo/v/vt100
 %{_datadir}/terminfo/v/vt220
@@ -226,7 +215,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/terminfo/v/vt52
 %{_datadir}/terminfo/x/xterm*
 
-%attr(755,root,root) /bin/*
 %attr(755,root,root) %{_bindir}/*
 
 %{_mandir}/man[157]/*
@@ -371,15 +359,15 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc {README,ANNOUNCE}.gz misc/*.{doc,html}.gz
 %attr(755,root,root) %{_libdir}/lib*.so
-%{_includedir}/ncurses/curses.h
-%{_includedir}/ncurses/eti.h
-%{_includedir}/ncurses/form.h
-%{_includedir}/ncurses/menu.h
-%{_includedir}/ncurses/ncurses.h
-%{_includedir}/ncurses/panel.h
-%{_includedir}/ncurses/term.h
-%{_includedir}/ncurses/termcap.h
-%{_includedir}/ncurses/unctrl.h
+%{_includedir}/curses.h
+%{_includedir}/eti.h
+%{_includedir}/form.h
+%{_includedir}/menu.h
+%{_includedir}/ncurses.h
+%{_includedir}/panel.h
+%{_includedir}/term.h
+%{_includedir}/termcap.h
+%{_includedir}/unctrl.h
 %{_mandir}/man3/*
 
 %files static
@@ -392,13 +380,13 @@ rm -rf $RPM_BUILD_ROOT
 %files c++-devel
 %defattr(644,root,root,755)
 %doc c++/{demo.cc,README-first,NEWS,PROBLEMS}.gz
-%{_includedir}/ncurses/cursesapp.h
-%{_includedir}/ncurses/cursesf.h
-%{_includedir}/ncurses/cursesm.h
-%{_includedir}/ncurses/cursesp.h
-%{_includedir}/ncurses/cursesw.h
-%{_includedir}/ncurses/etip.h
-%{_includedir}/ncurses/cursslk.h
+%{_includedir}/cursesapp.h
+%{_includedir}/cursesf.h
+%{_includedir}/cursesm.h
+%{_includedir}/cursesp.h
+%{_includedir}/cursesw.h
+%{_includedir}/etip.h
+%{_includedir}/cursslk.h
 
 %files c++-static
 %defattr(644,root,root,755)
