@@ -4,7 +4,7 @@ Summary(fr): La bibliothéque de contrôle de terminal curses.
 Summary(tr): Terminal kontrol kitaplýðý
 Name:        ncurses
 Version:     4.2
-Release:     9
+Release:     10
 Copyright:   distributable
 Group:       Libraries
 Source0:     ftp://ftp.clark.net/pub/dickey/ncurses/%{name}-%{version}.tar.gz
@@ -105,6 +105,9 @@ CFLAGS="$RPM_OPT_FLAGS -DPURE_TERMINFO" ./configure \
 make
 
 %install
+rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/lib
+
 make install prefix=$RPM_BUILD_ROOT/usr \
 	includedir=$RPM_BUILD_ROOT/usr/include/ncurses
 ln -sf ../l/linux $RPM_BUILD_ROOT/usr/share/terminfo/c/console
@@ -121,6 +124,9 @@ rm -f $RPM_BUILD_ROOT/usr/lib/terminfo/l/linux-m
 
 strip $RPM_BUILD_ROOT/usr/{bin/*,lib/lib*.so.*.*}
 
+mv $RPM_BUILD_ROOT/usr/lib/libncurses.so.*.* $RPM_BUILD_ROOT/lib
+ln -sf ../../lib/libncurses.so.4.2 $RPM_BUILD_ROOT/usr/lib/libncurses.so
+
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
@@ -130,6 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644, root, root, 755)
 %attr(755, root, root) /usr/lib/lib*.so.*.*
+%attr(755, root, root) /lib/lib*.so.*.*
 /usr/share/terminfo
 /usr/share/tabset
 %attr(755, root, root) /usr/bin/*
@@ -147,6 +154,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(644, root, root) /usr/lib/lib*.a
 
 %changelog
+* Thu Sep  8 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [4.2-10]
+- added "rm -rf $RPM_BUILD_ROOT" on start %install,
+- shares libncurses moved to /lib.
+
 * Tue Sep  1 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [4.2-9]
 - changed Buildroot to /tmp/%%{name}-%%{version}-root,
