@@ -390,9 +390,3 @@ rm -rf $RPM_BUILD_ROOT
 %files c++-static
 %defattr(644,root,root,755)
 %{_libdir}/libncurses++.a
-
-%changelog
-* Fri May 28 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [4.2-19]
-- based on RH spec,
-- spec rewrited by PLD team.c
