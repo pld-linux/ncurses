@@ -5,22 +5,21 @@ Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	5.0
-Release:	14
+Release:	15
 Copyright:	distributable
 Group:		Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
-Source0:	ftp://ftp.clark.net/pub/dickey/ncurses/%{name}-%{version}.tar.gz
+Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
 Source2:	captoinfo.1m.pl
 Source3:	clear.1.pl
 Source4:	term.7.pl
-Patch0:		ncurses-rh.patch
-Patch1:		ncurses-setuid.patch
-Patch2:		ncurses-arm.patch
-Patch3:		ftp://ftp.clark.net/pub/dickey/ncurses/5.0/%{name}-%{version}-19991030.patch.gz
-Patch4:		ftp://ftp.clark.net/pub/dickey/ncurses/5.0/%{name}-%{version}-19991106.patch.gz
-Patch5:		ncurses-libyx-lat.patch
-Patch6:		ncurses-xterm_fix.patch
+Patch0:		ftp://dickey.his.com/ncurses/5.0/ncurses-5.0-20000527.patch.gz
+Patch1:		ncurses-rh.patch
+Patch2:		ncurses-setuid.patch
+Patch3:		ncurses-arm.patch
+Patch4:		ncurses-libyx-lat.patch
+Patch5:		ncurses-xtermchanges.patch
 BuildRequires:	sharutils, patch, bash, gawk, sed, gzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -168,7 +167,6 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 
 %build
 CFLAGS="$RPM_OPT_FLAGS -DPURE_TERMINFO"
@@ -207,7 +205,7 @@ install %{SOURCE4} $RPM_BUILD_ROOT%{_mandir}/pl/man7/term.7
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/pl/man*/* README ANNOUNCE \
 	$RPM_BUILD_ROOT%{_mandir}/man1/tack.1 \
-	misc/*.doc misc/*.html c++/{README-first,NEWS,PROBLEMS,demo.cc}
+	c++/{README-first,NEWS,PROBLEMS,demo.cc}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -382,7 +380,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc {README,ANNOUNCE}.gz misc/*.{doc,html}.gz
+%doc {README,ANNOUNCE}.gz
 %attr(755,root,root) %{_libdir}/lib*.so
 %dir %{_includedir}
 %{_includedir}/curses.h
