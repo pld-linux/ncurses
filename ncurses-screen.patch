@@ -1,0 +1,11 @@
+--- ncurses-5.2/misc/terminfo.src~	Wed Dec 26 01:07:46 2001
++++ ncurses-5.2/misc/terminfo.src	Wed Dec 26 01:09:10 2001
+@@ -3217,7 +3217,7 @@
+ #
+ # tested with screen 3.09.08
+ screen|VT 100/ANSI X3.64 virtual terminal, 
+-	OTbs, OTpt, am, km, mir, msgr, xenl, G0, 
++	OTbs, OTpt, am, mir, msgr, xenl, G0, 
+ 	colors#8, cols#80, it#8, lines#24, pairs#64, 
+ 	acsc=++\,\,--..00``aaffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~, 
+ 	bel=^G, blink=\E[5m, bold=\E[1m, cbt=\E[Z, civis=\E[?25l, 
