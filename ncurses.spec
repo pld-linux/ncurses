@@ -10,13 +10,6 @@ Version:	5.2
 Release:	22
 License:	distributable
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
 Source1:	%{name}-non-english-man-pages.tar.bz2
 Source2:	ftp://dickey.his.com/ncurses/5.2/patch-%{version}-20010908.sh
@@ -88,13 +81,6 @@ halidir.
 Summary:	Additional ncurses libraries
 Summary(pl):	Dodatkowe biblioteki ncurses
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description ext
@@ -112,8 +98,6 @@ Summary(es):	Banco de datos terminfo para terminales extras (menos usados)
 Summary(pl):	Kompletna baza terminfo 
 Summary(pt_BR):	Base de dados terminfo para terminais adicionais (menos usados)
 Group:		Applications/Terminal
-Group(de):	Applikationen/Terminal
-Group(pl):	Aplikacje/Terminal
 Requires:	%{name} = %{version}
 
 %description -n terminfo
@@ -142,13 +126,6 @@ Summary(es):	Bibliotecas de desarrollo para ncurses
 Summary(pl):	Pliki nagЁСwkowe do bibliotek ncurses
 Summary(pt_BR):	Bibliotecas de desenvolvimento para ncurses
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 Requires:	%{name}-ext = %{version}
 Obsoletes:	libtermcap-devel
@@ -176,13 +153,6 @@ Summary(es):	Static libraries for ncurses development
 Summary(pl):	Biblioteki statyczne ncurses
 Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com ncurses
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
@@ -202,13 +172,6 @@ Bibliotecas estАticas para desenvolvimento com ncurses.
 Summary:	Header files for develop C++ ncurses based application
 Summary(pl):	Pliki nagЁСwkowe do biblioteki C++ ncurses
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description c++-devel
@@ -223,13 +186,6 @@ programСw z wykorzystaniem biblioteki c++-ncurses.
 Summary:	Static libraries for C++ ncurses
 Summary(pl):	Biblioteki statyczne C++ ncurses
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-c++-devel = %{version}
 
 %description c++-static
