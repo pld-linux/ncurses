@@ -213,7 +213,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/terminfo/v/vt52
 %{_datadir}/terminfo/x/xterm*
 
-%attr(755,root,root) /usr/bin/*
+%attr(755,root,root) %{_bindir}/*
 
 %{_mandir}/man[157]/*
 %lang(pl) %{_mandir}/pl/man[17]/*
