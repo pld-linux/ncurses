@@ -5,7 +5,7 @@ Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	5.2
-Release:	2
+Release:	3
 License:	Distributable
 Group:		Libraries
 Group(de):	Libraries
