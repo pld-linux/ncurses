@@ -2,7 +2,7 @@
 # Conditional build:
 %bcond_without cxx		# do not build C++ ncurses bindings and demo programs
 #		  		# (this is neccessary to build ncurses linked with uClibc).
-%bcond_without ada		# do not build Ada95 bindings 
+%bcond_without ada		# do not build Ada95 bindings
 #
 Summary:	curses terminal control library
 Summary(de):	curses-Terminal-Control-Library
@@ -15,7 +15,7 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.4
-Release:	0.3
+Release:	0.4
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
