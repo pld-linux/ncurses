@@ -7,7 +7,7 @@ Summary(pt_BR):	Biblioteca de controle de terminal curses
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	5.2
-Release:	17
+Release:	18
 License:	distributable
 Group:		Libraries
 Group(de):	Libraries
@@ -26,6 +26,7 @@ Patch2:		%{name}-no_symlinks.patch
 Patch3:		%{name}-screen_hpa_fix.patch
 Patch4:		%{name}-xterm-color.patch
 Patch5:		%{name}-xterm_hpa_fix.patch
+Patch6:		%{name}-rxvt.patch
 BuildRequires:	sharutils
 BuildRequires:	sed
 BuildRequires:	libstdc++-devel
@@ -244,6 +245,7 @@ sh %{SOURCE2}
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
