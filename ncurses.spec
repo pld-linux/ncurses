@@ -236,7 +236,7 @@ This package includes the header files and libraries necessary to
 develop applications that use C++ ncurses.
 
 %description c++-devel -l pl
-Pakiet ten zawiera pliki nag³ówkowe niezbêdne do pisania/kompilowania
+Pakiet ten zawiera pliki nag³ówkowe niezbêdne do kompilacji
 programów z wykorzystaniem biblioteki c++-ncurses.
 
 %package c++-static
