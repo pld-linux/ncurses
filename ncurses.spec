@@ -337,6 +337,7 @@ rm -rf $RPM_BUILD_ROOT
 - added terminfo subbackage with full terminfo database (minimal
   term db is in main package),
 - added "Conflicts: glibc <= 2.0.7" in main,
+- added pl man pages for captoinfo(1), clear(1), term(7),
 - added separated subpackage ext with non base ncurses libraries
   (separating this allow minimize minimal system size).
 
