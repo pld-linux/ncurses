@@ -219,7 +219,6 @@ sh %{SOURCE2}
 
 %build
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
-%ifarch ppc
 %configure2_13 \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
@@ -230,21 +229,11 @@ CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
 	--without-profile \
 	--without-debug \
 	--with-termlib \
+%ifnarch ppc
+	--enable-safe-sprintf \
+%endif
 	--with-manpage-format=normal
 %else
-%configure2_13 \
-	--with-install-prefix=$RPM_BUILD_ROOT \
-	--with-normal \
-	--with-shared \
-	--without-ada \
-	--with%{?_without_cxx:out}-cxx \
-	--with%{?_without_cxx:out}-cxx-binding \
-	--without-profile \
-	--without-debug \
-	--with-termlib \
-	--enable-safe-sprintf \
-	--with-manpage-format=normal
-%endif
 
 %{__make}
 
