@@ -121,7 +121,7 @@ sh %{SOURCE1}
 
 %build
 CFLAGS="$RPM_OPT_FLAGS -DPURE_TERMINFO" LDFLAGS="-s" \
-./configure \
+./configure %{_target} \
 	--prefix=/usr \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
