@@ -261,7 +261,7 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 
 %build
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
-%configure2_13 \
+%configure \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
 	--with-shared \
@@ -288,9 +288,9 @@ ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
 mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.*.* $RPM_BUILD_ROOT/lib
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.*.* $RPM_BUILD_ROOT/lib
-ln -sf /lib/libtinfo.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
-ln -sf /lib/libncurses.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libcurses.so
-ln -sf /lib/libncurses.so.5.2 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
+ln -sf /lib/`cd $RPM_BUILD_ROOT/lib ; echo libtinfo.so.*.*` $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
+ln -sf /lib/`cd $RPM_BUILD_ROOT/lib ; echo libncurses.so.*.*` $RPM_BUILD_ROOT%{_libdir}/libcurses.so
+ln -sf /lib/`cd $RPM_BUILD_ROOT/lib ; echo libncurses.so.*.*` $RPM_BUILD_ROOT%{_libdir}/libncurses.so
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
