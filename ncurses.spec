@@ -20,7 +20,7 @@ Patch2:		ncurses-setuid.patch
 Patch3:		ncurses-arm.patch
 Patch4:		ncurses-libyx-lat.patch
 Patch5:		ncurses-xtermchanges.patch
-BuildRequires:	sharutils, patch, bash, gawk, sed, gzip
+BuildRequires:	sharutils, patch, bash, mawk, sed, gzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_includedir	%{_prefix}/include/ncurses
