@@ -14,7 +14,7 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.4
-Release:	5
+Release:	6
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -345,6 +345,8 @@ ln -sf ../configure .
 	--with-manpage-aliases \
 	--with-manpage-format=normal \
 	--without-manpage-symlinks \
+	--with-ada-include=%{_libdir}/ada/adainclude/ \
+	--with-ada-objects=%{_libdir}/ada/adalib/ \
 	`[ "$t" = "widec" ] && echo --enable-widec --includedir=%{_includedir}w`
 %{__make}
 cd ..
