@@ -11,7 +11,7 @@ Summary(pt_BR):	Biblioteca de controle de terminal curses
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	5.2
-Release:	25
+Release:	26
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -219,6 +219,19 @@ sh %{SOURCE2}
 
 %build
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
+%ifarch ppc
+%configure2_13 \
+	--with-install-prefix=$RPM_BUILD_ROOT \
+	--with-normal \
+	--with-shared \
+	--without-ada \
+	--with%{?_without_cxx:out}-cxx \
+	--with%{?_without_cxx:out}-cxx-binding \
+	--without-profile \
+	--without-debug \
+	--with-termlib \
+	--with-manpage-format=normal
+%else
 %configure2_13 \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
@@ -231,6 +244,7 @@ CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
 	--with-termlib \
 	--enable-safe-sprintf \
 	--with-manpage-format=normal
+%endif
 
 %{__make}
 
