@@ -1,23 +1,24 @@
 Summary:     curses terminal control library
 Summary(de): curses-Terminal-Control-Library
 Summary(fr): La bibliothéque de contrôle de terminal curses.
+Summary(pl): Biblioteki do kontrolowania terminala
 Summary(tr): Terminal kontrol kitaplýðý
 Name:        ncurses
 Version:     4.2
-Release:     10
+Release:     11
 Copyright:   distributable
 Group:       Libraries
 Source0:     ftp://ftp.clark.net/pub/dickey/ncurses/%{name}-%{version}.tar.gz
-Patch0:      ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980307.patch.gz
-Patch1:      ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980314.patch.gz
-Patch2:      ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980321.patch.gz
-Patch3:      ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980328.patch.gz
-Patch4:      ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980404.patch.gz
-Patch5:      ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980411.patch.gz
-Patch6:      ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980418.patch.gz
-Patch7:      ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980425.patch.gz
-Patch8:      ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980509.patch.gz
-Patch9:      ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980516.patch.gz
+Patch00:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980307.patch.gz
+Patch01:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980314.patch.gz
+Patch02:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980321.patch.gz
+Patch03:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980328.patch.gz
+Patch04:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980404.patch.gz
+Patch05:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980411.patch.gz
+Patch06:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980418.patch.gz
+Patch07:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980425.patch.gz
+Patch08:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980509.patch.gz
+Patch09:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980516.patch.gz
 Patch10:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980523.patch.gz
 Patch11:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980530.patch.gz
 Patch12:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980606.patch.gz
@@ -26,9 +27,20 @@ Patch14:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980620.patch
 Patch15:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980627.patch.gz
 Patch16:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980704.patch.gz
 Patch17:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980711.patch.gz
+Patch18:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980718.patch.gz
+Patch19:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980725.patch.gz
+Patch20:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980801.patch.gz
+Patch21:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980808.patch.gz
+Patch22:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980809.patch.gz
+Patch23:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980815.patch.gz
+Patch24:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980822.patch.gz
+Patch25:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980829.patch.gz
+Patch26:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980905.patch.gz
+Patch27:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980912.patch.gz
+Patch28:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/ncurses-4.2-980919.patch.gz
 Patch100:    ncurses-4.2-hjl.patch
 Patch101:    ncurses-4.2-rh.patch
-Patch102:    ncurses-4.2-setuid.patch
+Patch102:    ncurses-4.2-setuid2.patch
 BuildRoot:   /tmp/%{name}-%{version}-root
 
 %description
@@ -50,6 +62,12 @@ indépendante du terminal pour la mise à jour des écrans en mode texte avec une
 optimisation correcte. Ceci est l'implantation du « nouveau curses » (ncurses)
 et est le remplacement du curses 4.4BSD classique qui est abandonné.
 
+%description -l pl
+Biblioteka curses udostêpnia funkcje pozwalaj±ce u¿ytkownikom odwo³ywanie
+siê do zawarto¶ci terminala niezale¿nie od jego typu. Pakiet tez zawiera
+implementacjê klasycznej biblioteki curses (z systemu 4.4BSD) o nazwie
+ncurses (new curses) i jest zarazem jej przysz³ym zamiennikiem.
+
 %description -l tr
 curses kitaplýðý ile kullanýcýya kullanýlan terminal tipinden baðýmsýz olarak
 karakter tabanlý ekranlara eriþim olanaðý saðlanabilmektedir. Bu uyarlama
@@ -57,6 +75,7 @@ karakter tabanlý ekranlara eriþim olanaðý saðlanabilmektedir. Bu uyarlama
 
 %package devel
 Summary:     Heade files for develop ncurses based application
+Summary(pl): Pliki nag³ówkowe dla ncurses
 Group:       Development/Libraries
 Requires:    %{name} = %{version}
 
@@ -64,26 +83,34 @@ Requires:    %{name} = %{version}
 This package includes the header files and libraries necessary to develop
 applications that use ncurses.
 
+%description -l pl devel
+Pakiet ten zawiera pliki nag³ówkowe - niezbêdne do pisania/kompilowania
+programów z wykorzystaniem ncurses.
+
 %package static
 Summary:     Static ncurses libraries
+Summary(pl): Biblioteki statyczne ncurses
 Group:       Development/Libraries
 Requires:    %{name}-devel = %{version}
 
 %description static
 Static ncurses libraries.
 
+%description -l pl static
+Pakiet ten zawiera biblioteki statyczne dla ncurses.
+
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
+%patch00 -p1
+%patch01 -p1
+%patch02 -p1
+%patch03 -p1
+%patch04 -p1
+%patch05 -p1
+%patch06 -p1
+%patch07 -p1
+%patch08 -p1
+%patch09 -p1
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
@@ -92,6 +119,17 @@ Static ncurses libraries.
 %patch15 -p1
 %patch16 -p1
 %patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
+%patch27 -p1
+%patch28 -p1
 
 %patch100 -p0 -b .hjlu
 %patch101 -p1 -b .rh
@@ -106,9 +144,9 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/lib
+install -d $RPM_BUILD_ROOT/{lib,usr/include/ncurses}
 
-make install prefix=$RPM_BUILD_ROOT/usr \
+make install INSTALL_PREFIX=$RPM_BUILD_ROOT \
 	includedir=$RPM_BUILD_ROOT/usr/include/ncurses
 ln -sf ../l/linux $RPM_BUILD_ROOT/usr/share/terminfo/c/console
 ln -sf ncurses/curses.h $RPM_BUILD_ROOT/usr/include/ncurses.h
@@ -154,6 +192,16 @@ rm -rf $RPM_BUILD_ROOT
 %attr(644, root, root) /usr/lib/lib*.a
 
 %changelog
+* Wed Nov 13 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [4.2-11]
+- added more patches from rawhide ncurses,
+- use INSTALL_PREFIX instead prefix on "make install" (without this some
+  binaries like tset have internal paths padded with Buildroot),
+- fixed pl translation.
+
+* Tue Sep  9 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
+- added pl translation.
+
 * Thu Sep  8 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [4.2-10]
 - added "rm -rf $RPM_BUILD_ROOT" on start %install,
