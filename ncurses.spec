@@ -113,34 +113,34 @@ applications that use ncurses.
 %description -l pl static
 Pakiet ten zawiera biblioteki statyczne ncurses.
 
-%package ++devel
-Summary:     Header files for develop ncurses++ based application
-Summary(pl): Pliki nag³ówkowe do biblioteki ncurses++
+%package c++-devel
+Summary:     Header files for develop C++ ncurses based application
+Summary(pl): Pliki nag³ówkowe do biblioteki C++ ncurses
 Group:       Development/Libraries
 Group(pl):   Programowanie/Biblioteki
 Requires:    %{name}-devel = %{version}
 
-%description ++devel
+%description c++-devel
 This package includes the header files and libraries necessary to develop
-applications that use ncurses++.
+applications that use C++ ncurses.
 
-%description -l pl ++devel
+%description -l pl c++-devel
 Pakiet ten zawiera pliki nag³ówkowe niezbêdne do pisania/kompilowania
-programów z wykorzystaniem biblioteki ncurses++.
+programów z wykorzystaniem biblioteki c++-ncurses.
 
-%package ++static
-Summary:     Static libraries for ncurses++
-Summary(pl): Biblioteki statyczne ncurses++
+%package c++-static
+Summary:     Static libraries for C++ ncurses
+Summary(pl): Biblioteki statyczne C++ ncurses
 Group:       Development/Libraries
 Group(pl):   Programowanie/Biblioteki
-Requires:    %{name} = {%version}
+Requires:    %{name}-c++-devel = {%version}
 
-%description ++static
+%description c++-static
 This package includes the static libraries necessary to develop
-applications that use ncurses++.
+applications that use C++ ncurses.
 
-%description -l pl ++static
-Pakiet ten zawiera biblioteki statyczne ncurses++.
+%description -l pl c++-static
+Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 
 %prep
 %setup  -q
@@ -183,7 +183,7 @@ install %{SOURCE4} $RPM_BUILD_ROOT%{_mandir}/pl/man7/term.7
 rm -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.4
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/pl/man*/* README ANNOUNCE
-gzip -9nf misc/*.doc
+gzip -9nf misc/*.doc misc/*.html c++/{README-first,NEWS,PROBLEMS,demo.cc}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -355,7 +355,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc {README,ANNOUNCE}.gz misc/*.doc.gz misc/*.html
+%doc {README,ANNOUNCE}.gz misc/*.{doc,html}.gz
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/ncurses/curses.h
 %{_includedir}/ncurses/eti.h
@@ -375,9 +375,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libpanel.a
 %{_libdir}/libmenu.a
 
-%files ++devel
+%files c++-devel
 %defattr(644,root,root,755)
-%doc c++/demo.cc
+%doc c++/{demo.cc,README-first,NEWS,PROBLEMS}.gz
 %{_includedir}/ncurses/cursesapp.h
 %{_includedir}/ncurses/cursesf.h
 %{_includedir}/ncurses/cursesm.h
@@ -386,7 +386,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/ncurses/etip.h
 %{_includedir}/ncurses/cursslk.h
 
-%files ++static
+%files c++-static
 %defattr(644,root,root,755)
 %{_libdir}/libncurses++.a
 
