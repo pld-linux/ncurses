@@ -1,0 +1,18 @@
+diff -Nru ncurses-5.1/configure ncurses-5.1.new/configure
+--- ncurses-5.1/configure	Fri Jul  7 17:11:50 2000
++++ ncurses-5.1.new/configure	Thu Oct 12 01:39:58 2000
+@@ -2169,12 +2169,12 @@
+ 						else
+ 							echo .. \$verb alias \$cf_alias\${suffix}
+ 							rm -f \$cf_alias\${suffix}
+-							$LN_S \$target \$cf_alias\${suffix}
++							echo ".so \$target" > \$cf_alias\${suffix}
+ 						fi
+ 					else
+ 						echo .. \$verb alias \$cf_alias\${suffix}
+ 						rm -f \$cf_alias\${suffix}
+-						$LN_S \$target \$cf_alias\${suffix}
++						echo ".so \$target" > \$cf_alias\${suffix}
+ 					fi
+ 				done
+ 			)
