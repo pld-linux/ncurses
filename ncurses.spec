@@ -166,7 +166,7 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{/lib,%{_mandir}/pl/man{1,7}}
+install -d $RPM_BUILD_ROOT{/lib,/bin,%{_mandir}/pl/man{1,7},/.terminfo/{l,v}}
 
 make install INSTALL_PREFIX=$RPM_BUILD_ROOT
 
@@ -176,6 +176,10 @@ strip $RPM_BUILD_ROOT{%{_bindir}/*,%{_libdir}/lib*so.*.*}
 
 mv $RPM_BUILD_ROOT%{_libdir}/libncurses.so.*.* $RPM_BUILD_ROOT/lib
 ln -sf ../../lib/libncurses.so.4.2 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
+
+mv $RPM_BUILD_ROOT%{_bindir}/tput $RPM_BUILD_ROOT/bin
+cp $RPM_BUILD_ROOT%{_datadir}/terminfo/v/vt* $RPM_BUILD_ROOT/.terminfo/v/
+cp $RPM_BUILD_ROOT%{_datadir}/terminfo/v/linux* $RPM_BUILD_ROOT/.terminfo/l/
 
 install %{SOURCE2} $RPM_BUILD_ROOT%{_mandir}/pl/man1/captoinfo.1m
 install %{SOURCE3} $RPM_BUILD_ROOT%{_mandir}/pl/man1/clear.1
@@ -202,11 +206,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_datadir}/tabset
 
+%dir /.terminfo
+%dir /.terminfo/l
+%dir /.terminfo/v
 %dir %{_datadir}/terminfo
 %dir %{_datadir}/terminfo/l
 %dir %{_datadir}/terminfo/v
 %dir %{_datadir}/terminfo/x
 
+/.terminfo/l/linux*
+/.terminfo/v/vt100
+/.terminfo/v/vt220
+/.terminfo/v/vt220-8
+/.terminfo/v/vt52
 %{_datadir}/terminfo/l/linux*
 %{_datadir}/terminfo/v/vt100
 %{_datadir}/terminfo/v/vt220
@@ -214,6 +226,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/terminfo/v/vt52
 %{_datadir}/terminfo/x/xterm*
 
+%attr(755,root,root) /bin/*
 %attr(755,root,root) %{_bindir}/*
 
 %{_mandir}/man[157]/*
