@@ -14,7 +14,7 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.3
-Release:	5
+Release:	6
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -34,6 +34,7 @@ Patch9:		%{name}-xterm-home-end.patch
 Patch10:	%{name}-mouse_trafo-warning.patch
 Patch11:	%{name}-gnome-terminal.patch
 %{?with_cxx:BuildRequires:	libstdc++-devel}
+BuildRequires:	automake
 BuildRequires:	sharutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libncurses5
@@ -268,6 +269,7 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 
 %build
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
+cp -f /usr/share/automake/config.sub .
 %configure \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
