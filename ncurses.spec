@@ -1,7 +1,9 @@
 Summary:	curses terminal control library
 Summary(de):	curses-Terminal-Control-Library
+Summary(es):	Biblioteca de control de terminal curses
 Summary(fr):	La bibliothéque de contrôle de terminal curses
 Summary(pl):	Biblioteki do kontrolowania terminala
+Summary(pt_BR):	Biblioteca de controle de terminal curses
 Summary(tr):	Terminal kontrol kitaplığı
 Name:		ncurses
 Version:	5.2
@@ -12,11 +14,14 @@ Group(de):	Libraries
 Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
+Group(pt_BR):	Bibliotecas
+Group(ru):	âÉÂÌÉÏÔÅËÉ
+Group(uk):	â¦ÂÌ¦ÏÔÅËÉ
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
 Source2:	captoinfo.1m.pl
 Source3:	clear.1.pl
 Source4:	term.7.pl
-Source5:	ftp://dickey.his.com/ncurses/5.2/patch-5.2-20010908.sh
+Source5:	ftp://dickey.his.com/ncurses/5.2/patch-%{version}-20010908.sh
 Patch0:		%{name}-rh.patch
 Patch1:		%{name}-libyx-lat.patch
 Patch2:		%{name}-no_symlinks.patch
@@ -43,6 +48,13 @@ Implementierung ist NEW CURSES (ncurses), die offizielle
 Nachfolgerversion für 4.4BSC (die klassische curses-Version), welche
 nicht weitergeführt wird.
 
+%description -l es
+Las rutinas de la biblioteca curses ofrecen al usuario un método
+independiente de terminal para actualización de las pantallas de
+caracteres con optimización razonable. Este soporte es "nuevo curses"
+(ncurses) y es el substituto aprobado para los clásicos curses 4.4BSD,
+que se quedaban desfasados.
+
 %description -l fr
 Les routines de la bibliothèque curses donnent à l'utilisateur une
 méthode indépendante du terminal pour la mise à jour des écrans en
@@ -56,6 +68,13 @@ odwo³ywanie siê do zawarto¶ci terminala niezale¿nie od jego typu.
 Pakiet ten zawiera implementacjê klasycznej biblioteki curses (z
 systemu 4.4BSD) o nazwie ncurses (new curses) i jest zarazem jej
 przysz³ym zamiennikiem.
+
+%description -l pt_BR
+As rotinas da biblioteca curses fornecem ao usuário um método
+independente de terminal para atualização das telas de caracteres com
+otimização razoável. Essa implementação é "novo curses" (ncurses) e é
+o substituto aprovado para os clássicos curses 4.4BSD, que estão se
+tornando obsoletos.
 
 %description -l tr
 curses kitaplığı ile kullanıcıya kullanılan terminal tipinden bağımsız
@@ -71,6 +90,9 @@ Group(de):	Libraries
 Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
+Group(pt_BR):	Bibliotecas
+Group(ru):	âÉÂÌÉÏÔÅËÉ
+Group(uk):	â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name} = %{version}
 
 %description ext
@@ -84,7 +106,9 @@ z ncurses.
 
 %package -n terminfo
 Summary:	Complete terminfo database
+Summary(es):	Banco de datos terminfo para terminales extras (menos usados) 
 Summary(pl):	Kompletna baza terminfo 
+Summary(pt_BR):	Base de dados terminfo para terminais adicionais (menos usados)
 Group:		Applications/Terminal
 Group(de):	Applikationen/Terminal
 Group(pl):	Aplikacje/Terminal
@@ -96,19 +120,33 @@ Linux console, xterm and VT100, you probably will not need this this -
 a minimal %{_datadir}/terminfo tree for these terminal is already
 included in the ncurses package.
 
+%description -l es -n terminfo
+Banco de datos terminfo para terminales extras. Las capacidades de los
+terminales más usados ya están en el paquete principal ncurses.
+
 %description -l pl -n terminfo
 Pakiet ten zawiera kompletn± bazê terminfo. Je¿eli u¿ywasz terminali
 linux, console, xterm, vt100 prawdopodobnie nie bedziesz potrzebowa³
 tego pakietu gdy¿ definicje tych terminali s± w³±czone w pakiet
 ncurses.
 
+%description -l pt_BR -n terminfo
+Base de dados terminfo para terminais extras. As definições dos
+terminais mais usados já estão no pacote principal ncurses.
+
 %package devel
 Summary:	Header files for develop ncurses based application
+Summary(es):	Bibliotecas de desarrollo para ncurses
 Summary(pl):	Pliki nag³ówkowe do bibliotek ncurses
+Summary(pt_BR):	Bibliotecas de desenvolvimento para ncurses
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
+Group(uk):	òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name} = %{version}
 Requires:	%{name}-ext = %{version}
 Obsoletes:	libtermcap-devel
@@ -117,33 +155,57 @@ Obsoletes:	libtermcap-devel
 This package includes the header files and libraries necessary to
 develop applications that use ncurses.
 
+%description -l es devel
+Este paquete incluye las bibliotecas y archivos de inclusión
+necesarios al desarrollo de aplicaciones que usan ncurses.
+
 %description -l pl devel
 Pakiet ten zawiera pliki nag³ówkowe niezbêdne do pisania/kompilowania
 programów z wykorzystaniem bibliotek ncurses.
 
+%description -l pt_BR devel
+Este pacote inclui as bibliotecas e arquivos de inclusão necessários
+ao desenvolvimento de aplicações que usam ncurses.
+
 %package static
 Summary:	Static libraries for ncurses
+Summary(es):	Static libraries for ncurses development
 Summary(pl):	Biblioteki statyczne ncurses
+Summary(pt_BR):	Bibliotecas estáticas para desenvolvimento com ncurses
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
+Group(uk):	òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name}-devel = %{version}
 
 %description static
 This package includes the static libraries necessary to develop
 applications that use ncurses.
 
+%description -l es static
+Static libraries for ncurses development.
+
 %description -l pl static
 Pakiet ten zawiera biblioteki statyczne ncurses.
+
+%description -l pt_BR static
+Bibliotecas estáticas para desenvolvimento com ncurses.
 
 %package c++-devel
 Summary:	Header files for develop C++ ncurses based application
 Summary(pl):	Pliki nag³ówkowe do biblioteki C++ ncurses
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
+Group(uk):	òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name}-devel = %{version}
 
 %description c++-devel
@@ -159,8 +221,12 @@ Summary:	Static libraries for C++ ncurses
 Summary(pl):	Biblioteki statyczne C++ ncurses
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
+Group(uk):	òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name}-c++-devel = %{version}
 
 %description c++-static
