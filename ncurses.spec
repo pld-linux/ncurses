@@ -14,7 +14,7 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.4
-Release:	0.5
+Release:	0.6
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -30,21 +30,20 @@ Patch5:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040320.patch.gz
 Patch6:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040327.patch.gz
 Patch7:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040328.patch.gz
 Patch13:	%{name}-screen_hpa_fix.patch
-Patch14:	%{name}-xterm-color.patch
-Patch15:	%{name}-xterm_hpa_fix.patch
-Patch16:	%{name}-rxvt.patch
-Patch17:	%{name}-meta.patch
-Patch18:	%{name}-ac_hack.patch
-Patch19:	%{name}-xterm-home-end.patch
-Patch20:	%{name}-mouse_trafo-warning.patch
-Patch21:	%{name}-gnome-terminal.patch
+Patch14:	%{name}-xterm_hpa_fix.patch
+Patch15:	%{name}-rxvt.patch
+Patch16:	%{name}-meta.patch
+Patch17:	%{name}-ac_hack.patch
+Patch18:	%{name}-xterm-home-end.patch
+Patch19:	%{name}-mouse_trafo-warning.patch
+Patch20:	%{name}-gnome-terminal.patch
 BuildRequires:	automake
 %{?with_ada:BuildRequires:	gcc-ada}
 %{?with_cxx:BuildRequires:	libstdc++-devel}
 BuildRequires:	sharutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libncurses5
-Conflicts:	terminfo < 5.2-33
+Conflicts:	terminfo < 5.4-0.6
 
 %define		_includedir	%{_prefix}/include/ncurses
 
@@ -277,12 +276,11 @@ develop applications that use Ada95 ncurses.
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
-#%patch16 -p1
+%patch16 -p1
 %patch17 -p1
 %patch18 -p1
 %patch19 -p1
 %patch20 -p1
-%patch21 -p1
 
 %build
 unset TERMINFO || :
@@ -337,12 +335,14 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/terminfo
 %{_datadir}/terminfo/E
 %dir %{_datadir}/terminfo/d
+%dir %{_datadir}/terminfo/k
 %dir %{_datadir}/terminfo/l
 %dir %{_datadir}/terminfo/s
 %dir %{_datadir}/terminfo/v
 %dir %{_datadir}/terminfo/x
 
 %{_datadir}/terminfo/d/dumb
+%{_datadir}/terminfo/k/klone+color
 %{_datadir}/terminfo/l/linux*
 %{_datadir}/terminfo/s/screen*
 %{_datadir}/terminfo/v/vt100
@@ -369,13 +369,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n terminfo
 %defattr(644,root,root,755)
-%{_datadir}/terminfo/[1-9ALMNPQXa-ce-km-rt-uwz]
+%{_datadir}/terminfo/[1-9ALMNPQXa-ce-jm-rt-uwz]
 %{_datadir}/terminfo/d/*
+%{_datadir}/terminfo/k/*
 %{_datadir}/terminfo/l/*
 %{_datadir}/terminfo/s/*
 %{_datadir}/terminfo/v/*
 %{_datadir}/terminfo/x/*
 %exclude %{_datadir}/terminfo/d/dumb
+%exclude %{_datadir}/terminfo/k/klone+color
 %exclude %{_datadir}/terminfo/l/linux*
 %exclude %{_datadir}/terminfo/s/screen*
 %exclude %{_datadir}/terminfo/v/vt100
