@@ -7,7 +7,7 @@ Summary(pt_BR):	Biblioteca de controle de terminal curses
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	5.2
-Release:	22
+Release:	23
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -369,6 +369,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc {README,ANNOUNCE}.gz
+%doc doc/html/ncurses-intro.html
 %attr(755,root,root) %{_libdir}/lib*.so
 %dir %{_includedir}
 %{_includedir}/curses.h
