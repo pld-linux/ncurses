@@ -75,7 +75,7 @@ Requires:    %{name} = %{version}
 %description -n terminfo
 This package contain cmplet terminfo database. If you just use the Linux
 console, xterm and VT100, you probably will not need this this - a
-minimal /usr/share/terminfo tree for these terminal is already included in the
+minimal %{_datadir}/terminfo tree for these terminal is already included in the
 ncurses package.
 
 %description -l pl -n terminfo
@@ -169,7 +169,7 @@ install -d $RPM_BUILD_ROOT/{lib,usr/man/pl/man{1,7}}
 make install INSTALL_PREFIX=$RPM_BUILD_ROOT \
 	includedir=/usr/include/ncurses
 
-ln -sf ../l/linux $RPM_BUILD_ROOT/usr/share/terminfo/c/console
+ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
 strip $RPM_BUILD_ROOT/usr/{bin/*,lib/lib*so.*.*}
 
@@ -199,19 +199,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %attr(755,root,root) /lib/libncurses.so.*.*
 
-/usr/share/tabset
+%{_datadir}/tabset
 
-%dir /usr/share/terminfo
-%dir /usr/share/terminfo/l
-%dir /usr/share/terminfo/v
-%dir /usr/share/terminfo/x
+%dir %{_datadir}/terminfo
+%dir %{_datadir}/terminfo/l
+%dir %{_datadir}/terminfo/v
+%dir %{_datadir}/terminfo/x
 
-/usr/share/terminfo/l/linux*
-/usr/share/terminfo/v/vt100
-/usr/share/terminfo/v/vt220
-/usr/share/terminfo/v/vt220-8
-/usr/share/terminfo/v/vt52
-/usr/share/terminfo/x/xterm*
+%{_datadir}/terminfo/l/linux*
+%{_datadir}/terminfo/v/vt100
+%{_datadir}/terminfo/v/vt220
+%{_datadir}/terminfo/v/vt220-8
+%{_datadir}/terminfo/v/vt52
+%{_datadir}/terminfo/x/xterm*
 
 %attr(755,root,root) /usr/bin/*
 
@@ -224,134 +224,134 @@ rm -rf $RPM_BUILD_ROOT
 %files -n terminfo
 %defattr(644,root,root,755)
 
-/usr/share/terminfo/[1-9NPXa-km-uwz]
-/usr/share/terminfo/l/la120
-/usr/share/terminfo/l/layer
-/usr/share/terminfo/l/lisa
-/usr/share/terminfo/l/lisaterm
-/usr/share/terminfo/l/lisaterm-w
-/usr/share/terminfo/l/liswb
-/usr/share/terminfo/l/ln03
-/usr/share/terminfo/l/ln03-w
-/usr/share/terminfo/l/lpr
-/usr/share/terminfo/l/luna
-/usr/share/terminfo/l/luna68k
-/usr/share/terminfo/v/v200-nam
-/usr/share/terminfo/v/v320n
-/usr/share/terminfo/v/v3220
-/usr/share/terminfo/v/v5410
-/usr/share/terminfo/v/vapple
-/usr/share/terminfo/v/vc103
-/usr/share/terminfo/v/vc203
-/usr/share/terminfo/v/vc303
-/usr/share/terminfo/v/vc303a
-/usr/share/terminfo/v/vc403a
-/usr/share/terminfo/v/vc404
-/usr/share/terminfo/v/vc404-s
-/usr/share/terminfo/v/vc414
-/usr/share/terminfo/v/vc414h
-/usr/share/terminfo/v/vc415
-/usr/share/terminfo/v/venix
-/usr/share/terminfo/v/versaterm
-/usr/share/terminfo/v/vi200
-/usr/share/terminfo/v/vi200-f
-/usr/share/terminfo/v/vi200-rv
-/usr/share/terminfo/v/vi300
-/usr/share/terminfo/v/vi300-old
-/usr/share/terminfo/v/vi50
-/usr/share/terminfo/v/vi500
-/usr/share/terminfo/v/vi50adm
-/usr/share/terminfo/v/vi55
-/usr/share/terminfo/v/vi550
-/usr/share/terminfo/v/vi603
-/usr/share/terminfo/v/viewpoint
-/usr/share/terminfo/v/viewpoint3a+
-/usr/share/terminfo/v/viewpoint60
-/usr/share/terminfo/v/viewpoint90
-/usr/share/terminfo/v/visa50
-/usr/share/terminfo/v/visual603
-/usr/share/terminfo/v/vitty
-/usr/share/terminfo/v/vk100
-/usr/share/terminfo/v/vp3a+
-/usr/share/terminfo/v/vp60
-/usr/share/terminfo/v/vp90
-/usr/share/terminfo/v/vremote
-/usr/share/terminfo/v/vs100
-/usr/share/terminfo/v/vs100-x10
-/usr/share/terminfo/v/vsc
-/usr/share/terminfo/v/vt-61
-/usr/share/terminfo/v/vt100-am
-/usr/share/terminfo/v/vt100-bot-s
-/usr/share/terminfo/v/vt100-nam
-/usr/share/terminfo/v/vt100-nam-w
-/usr/share/terminfo/v/vt100-nav
-/usr/share/terminfo/v/vt100-nav-w
-/usr/share/terminfo/v/vt100-s
-/usr/share/terminfo/v/vt100-s-bot
-/usr/share/terminfo/v/vt100-s-top
-/usr/share/terminfo/v/vt100-top-s
-/usr/share/terminfo/v/vt100-w
-/usr/share/terminfo/v/vt100-w-am
-/usr/share/terminfo/v/vt100-w-nam
-/usr/share/terminfo/v/vt100-w-nav
-/usr/share/terminfo/v/vt100nam
-/usr/share/terminfo/v/vt102
-/usr/share/terminfo/v/vt102-nsgr
-/usr/share/terminfo/v/vt102-w
-/usr/share/terminfo/v/vt125
-/usr/share/terminfo/v/vt131
-/usr/share/terminfo/v/vt132
-/usr/share/terminfo/v/vt200
-/usr/share/terminfo/v/vt200-js
-/usr/share/terminfo/v/vt200-w
-/usr/share/terminfo/v/vt220-js
-/usr/share/terminfo/v/vt220-nam
-/usr/share/terminfo/v/vt220-w
-/usr/share/terminfo/v/vt220d
-/usr/share/terminfo/v/vt300
-/usr/share/terminfo/v/vt300-nam
-/usr/share/terminfo/v/vt300-w
-/usr/share/terminfo/v/vt300-w-nam
-/usr/share/terminfo/v/vt320
-/usr/share/terminfo/v/vt320-k3
-/usr/share/terminfo/v/vt320-k311
-/usr/share/terminfo/v/vt320-nam
-/usr/share/terminfo/v/vt320-w
-/usr/share/terminfo/v/vt320-w-nam
-/usr/share/terminfo/v/vt320nam
-/usr/share/terminfo/v/vt330
-/usr/share/terminfo/v/vt340
-/usr/share/terminfo/v/vt400
-/usr/share/terminfo/v/vt400-24
-/usr/share/terminfo/v/vt420
-/usr/share/terminfo/v/vt420f
-/usr/share/terminfo/v/vt420pc
-/usr/share/terminfo/v/vt420pcdos
-/usr/share/terminfo/v/vt50
-/usr/share/terminfo/v/vt50h
-/usr/share/terminfo/v/vt510
-/usr/share/terminfo/v/vt510pc
-/usr/share/terminfo/v/vt510pcdos
-/usr/share/terminfo/v/vt520
-/usr/share/terminfo/v/vt525
-/usr/share/terminfo/v/vt61
-/usr/share/terminfo/v/vt61.5
-/usr/share/terminfo/x/x10term
-/usr/share/terminfo/x/x1700
-/usr/share/terminfo/x/x1700-lm
-/usr/share/terminfo/x/x1720
-/usr/share/terminfo/x/x1750
-/usr/share/terminfo/x/x68k
-/usr/share/terminfo/x/x68k-ite
-/usr/share/terminfo/x/x820
-/usr/share/terminfo/x/xenix
-/usr/share/terminfo/x/xerox
-/usr/share/terminfo/x/xerox-lm
-/usr/share/terminfo/x/xerox1720
-/usr/share/terminfo/x/xerox820
-/usr/share/terminfo/x/xl83
-/usr/share/terminfo/x/xtalk
-/usr/share/terminfo/x/xwsh
+%{_datadir}/terminfo/[1-9NPXa-km-uwz]
+%{_datadir}/terminfo/l/la120
+%{_datadir}/terminfo/l/layer
+%{_datadir}/terminfo/l/lisa
+%{_datadir}/terminfo/l/lisaterm
+%{_datadir}/terminfo/l/lisaterm-w
+%{_datadir}/terminfo/l/liswb
+%{_datadir}/terminfo/l/ln03
+%{_datadir}/terminfo/l/ln03-w
+%{_datadir}/terminfo/l/lpr
+%{_datadir}/terminfo/l/luna
+%{_datadir}/terminfo/l/luna68k
+%{_datadir}/terminfo/v/v200-nam
+%{_datadir}/terminfo/v/v320n
+%{_datadir}/terminfo/v/v3220
+%{_datadir}/terminfo/v/v5410
+%{_datadir}/terminfo/v/vapple
+%{_datadir}/terminfo/v/vc103
+%{_datadir}/terminfo/v/vc203
+%{_datadir}/terminfo/v/vc303
+%{_datadir}/terminfo/v/vc303a
+%{_datadir}/terminfo/v/vc403a
+%{_datadir}/terminfo/v/vc404
+%{_datadir}/terminfo/v/vc404-s
+%{_datadir}/terminfo/v/vc414
+%{_datadir}/terminfo/v/vc414h
+%{_datadir}/terminfo/v/vc415
+%{_datadir}/terminfo/v/venix
+%{_datadir}/terminfo/v/versaterm
+%{_datadir}/terminfo/v/vi200
+%{_datadir}/terminfo/v/vi200-f
+%{_datadir}/terminfo/v/vi200-rv
+%{_datadir}/terminfo/v/vi300
+%{_datadir}/terminfo/v/vi300-old
+%{_datadir}/terminfo/v/vi50
+%{_datadir}/terminfo/v/vi500
+%{_datadir}/terminfo/v/vi50adm
+%{_datadir}/terminfo/v/vi55
+%{_datadir}/terminfo/v/vi550
+%{_datadir}/terminfo/v/vi603
+%{_datadir}/terminfo/v/viewpoint
+%{_datadir}/terminfo/v/viewpoint3a+
+%{_datadir}/terminfo/v/viewpoint60
+%{_datadir}/terminfo/v/viewpoint90
+%{_datadir}/terminfo/v/visa50
+%{_datadir}/terminfo/v/visual603
+%{_datadir}/terminfo/v/vitty
+%{_datadir}/terminfo/v/vk100
+%{_datadir}/terminfo/v/vp3a+
+%{_datadir}/terminfo/v/vp60
+%{_datadir}/terminfo/v/vp90
+%{_datadir}/terminfo/v/vremote
+%{_datadir}/terminfo/v/vs100
+%{_datadir}/terminfo/v/vs100-x10
+%{_datadir}/terminfo/v/vsc
+%{_datadir}/terminfo/v/vt-61
+%{_datadir}/terminfo/v/vt100-am
+%{_datadir}/terminfo/v/vt100-bot-s
+%{_datadir}/terminfo/v/vt100-nam
+%{_datadir}/terminfo/v/vt100-nam-w
+%{_datadir}/terminfo/v/vt100-nav
+%{_datadir}/terminfo/v/vt100-nav-w
+%{_datadir}/terminfo/v/vt100-s
+%{_datadir}/terminfo/v/vt100-s-bot
+%{_datadir}/terminfo/v/vt100-s-top
+%{_datadir}/terminfo/v/vt100-top-s
+%{_datadir}/terminfo/v/vt100-w
+%{_datadir}/terminfo/v/vt100-w-am
+%{_datadir}/terminfo/v/vt100-w-nam
+%{_datadir}/terminfo/v/vt100-w-nav
+%{_datadir}/terminfo/v/vt100nam
+%{_datadir}/terminfo/v/vt102
+%{_datadir}/terminfo/v/vt102-nsgr
+%{_datadir}/terminfo/v/vt102-w
+%{_datadir}/terminfo/v/vt125
+%{_datadir}/terminfo/v/vt131
+%{_datadir}/terminfo/v/vt132
+%{_datadir}/terminfo/v/vt200
+%{_datadir}/terminfo/v/vt200-js
+%{_datadir}/terminfo/v/vt200-w
+%{_datadir}/terminfo/v/vt220-js
+%{_datadir}/terminfo/v/vt220-nam
+%{_datadir}/terminfo/v/vt220-w
+%{_datadir}/terminfo/v/vt220d
+%{_datadir}/terminfo/v/vt300
+%{_datadir}/terminfo/v/vt300-nam
+%{_datadir}/terminfo/v/vt300-w
+%{_datadir}/terminfo/v/vt300-w-nam
+%{_datadir}/terminfo/v/vt320
+%{_datadir}/terminfo/v/vt320-k3
+%{_datadir}/terminfo/v/vt320-k311
+%{_datadir}/terminfo/v/vt320-nam
+%{_datadir}/terminfo/v/vt320-w
+%{_datadir}/terminfo/v/vt320-w-nam
+%{_datadir}/terminfo/v/vt320nam
+%{_datadir}/terminfo/v/vt330
+%{_datadir}/terminfo/v/vt340
+%{_datadir}/terminfo/v/vt400
+%{_datadir}/terminfo/v/vt400-24
+%{_datadir}/terminfo/v/vt420
+%{_datadir}/terminfo/v/vt420f
+%{_datadir}/terminfo/v/vt420pc
+%{_datadir}/terminfo/v/vt420pcdos
+%{_datadir}/terminfo/v/vt50
+%{_datadir}/terminfo/v/vt50h
+%{_datadir}/terminfo/v/vt510
+%{_datadir}/terminfo/v/vt510pc
+%{_datadir}/terminfo/v/vt510pcdos
+%{_datadir}/terminfo/v/vt520
+%{_datadir}/terminfo/v/vt525
+%{_datadir}/terminfo/v/vt61
+%{_datadir}/terminfo/v/vt61.5
+%{_datadir}/terminfo/x/x10term
+%{_datadir}/terminfo/x/x1700
+%{_datadir}/terminfo/x/x1700-lm
+%{_datadir}/terminfo/x/x1720
+%{_datadir}/terminfo/x/x1750
+%{_datadir}/terminfo/x/x68k
+%{_datadir}/terminfo/x/x68k-ite
+%{_datadir}/terminfo/x/x820
+%{_datadir}/terminfo/x/xenix
+%{_datadir}/terminfo/x/xerox
+%{_datadir}/terminfo/x/xerox-lm
+%{_datadir}/terminfo/x/xerox1720
+%{_datadir}/terminfo/x/xerox820
+%{_datadir}/terminfo/x/xl83
+%{_datadir}/terminfo/x/xtalk
+%{_datadir}/terminfo/x/xwsh
 
 %files devel
 %defattr(644,root,root,755)
