@@ -1,7 +1,7 @@
 #
 # Conditional build:
-%bcond_without ada		# do not build Ada95 bindings
-%bcond_without cxx		# do not build C++ ncurses bindings and demo programs
+%bcond_without	ada		# do not build Ada95 bindings
+%bcond_without	cxx		# do not build C++ ncurses bindings and demo programs
 #		  		# (this is neccessary to build ncurses linked with uClibc).
 Summary:	curses terminal control library
 Summary(de):	curses-Terminal-Control-Library
