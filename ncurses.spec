@@ -117,21 +117,6 @@ halidir.
 використовують ncurses. В PLD Linux ан╕ б╕бл╕отека termcap, ан╕
 традиц╕йний файл /etc/termcap не використовуються...
 
-%package ext
-Summary:	Additional ncurses libraries
-Summary(pl):	Dodatkowe biblioteki ncurses
-Group:		Libraries
-Requires:	%{name} = %{version}-%{release}
-
-%description ext
-This package contains addidion ncurses libraries like libforms,
-libmenu and libpanel for easy making full screen curse application.
-
-%description ext -l pl
-Pakiet ten zawiera dodatkowe biblioteki libforms, libmenu i libpanel
-sЁu©╠ce do Ёatwego tworzenia aplikacji peЁnoekranowych korzystaj╠cych
-z ncurses.
-
 %package -n terminfo
 Summary:	Complete terminfo database
 Summary(es):	Banco de datos terminfo para terminales extras (menos usados)
@@ -170,7 +155,6 @@ Summary(ru):	Хедеры и библиотеки для разработки программ с ncurses
 Summary(uk):	Хедери та б╕бл╕отеки для розробки програм з ncurses
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	%{name}-ext = %{version}-%{release}
 Obsoletes:	libtermcap-devel
 Obsoletes:	libncurses5-devel
 
@@ -228,6 +212,46 @@ Bibliotecas estАticas para desenvolvimento com ncurses.
 %description static -l uk
 Цей пакет м╕стить статичн╕ б╕бл╕отеки, необх╕дн╕ для розробки програм,
 що використовують ncurses.
+
+%package ext
+Summary:	Additional ncurses libraries
+Summary(pl):	Dodatkowe biblioteki ncurses
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description ext
+This package contains addidion ncurses libraries like libforms,
+libmenu and libpanel for easy making full screen curse application.
+
+%description ext -l pl
+Pakiet ten zawiera dodatkowe biblioteki libforms, libmenu i libpanel
+sЁu©╠ce do Ёatwego tworzenia aplikacji peЁnoekranowych korzystaj╠cych
+z ncurses.
+
+%package ext-devel
+Summary:	Header files for additional ncurses libraries
+Summary(pl):	Pliki nagЁСwkowe dodatkowych bibliotek ncurses
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-ext = %{version}-%{release}
+
+%description ext-devel
+Header files for additional ncurses libraries (form, menu, panel).
+
+%description ext-devel -l pl
+Pliki nagЁСwkowe dodatkowych bibliotek ncurses (form, menu, panel).
+
+%package ext-static
+Summary:	Static versions of additional ncurses libraries
+Summary(pl):	Statyczne wersje dodatkowych bibliotek ncurses
+Group:		Development/Libraries
+Requires:	%{name}-ext-devel = %{version}-%{release}
+
+%description ext-static
+Static versions of additional ncurses libraries (form, menu, panel).
+
+%description ext-static -l pl
+Statyczne wersje dodatkowych bibliotek ncurses (form, menu, panel).
 
 %package c++-devel
 Summary:	Header files for develop C++ ncurses based application
@@ -304,7 +328,8 @@ cp -f /usr/share/automake/config.sub .
 	--without-profile \
 	--with-termlib \
 	--with-manpage-aliases \
-	--with-manpage-format=normal
+	--with-manpage-format=normal \
+	--without-manpage-symlinks
 
 %{__make}
 
@@ -312,7 +337,8 @@ cp -f /usr/share/automake/config.sub .
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{/%{_lib},%{_mandir}}
 
-%{__make} install INSTALL_PREFIX=$RPM_BUILD_ROOT
+%{__make} install \
+	INSTALL_PREFIX=$RPM_BUILD_ROOT
 
 ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
@@ -335,18 +361,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) /%{_lib}/lib*.so.*.*
+%doc ANNOUNCE README
+%attr(755,root,root) /%{_lib}/libncurses.so.*.*
+%attr(755,root,root) /%{_lib}/libtinfo.so.*.*
 
 %{_datadir}/tabset
 
 %dir %{_datadir}/terminfo
 %{_datadir}/terminfo/E
-%dir %{_datadir}/terminfo/d
-%dir %{_datadir}/terminfo/k
-%dir %{_datadir}/terminfo/l
-%dir %{_datadir}/terminfo/s
-%dir %{_datadir}/terminfo/v
-%dir %{_datadir}/terminfo/x
+%dir %{_datadir}/terminfo/[dklsvx]
 
 %{_datadir}/terminfo/d/dumb
 %{_datadir}/terminfo/k/klone+color
@@ -368,21 +391,10 @@ rm -rf $RPM_BUILD_ROOT
 %lang(it) %{_mandir}/it/man1/*
 %lang(pl) %{_mandir}/pl/man[157]/*
 
-%files ext
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libform.so.*
-%attr(755,root,root) %{_libdir}/libpanel.so.*
-%attr(755,root,root) %{_libdir}/libmenu.so.*
-
 %files -n terminfo
 %defattr(644,root,root,755)
 %{_datadir}/terminfo/[1-9ALMNPQXa-ce-jm-rt-uwz]
-%{_datadir}/terminfo/d/*
-%{_datadir}/terminfo/k/*
-%{_datadir}/terminfo/l/*
-%{_datadir}/terminfo/s/*
-%{_datadir}/terminfo/v/*
-%{_datadir}/terminfo/x/*
+%{_datadir}/terminfo/[dklsvx]/*
 %exclude %{_datadir}/terminfo/d/dumb
 %exclude %{_datadir}/terminfo/k/klone+color
 %exclude %{_datadir}/terminfo/l/linux*
@@ -395,30 +407,52 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc README ANNOUNCE
 %doc doc/html/ncurses-intro.html
-%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/libcurses.so
+%attr(755,root,root) %{_libdir}/libncurses.so
+%attr(755,root,root) %{_libdir}/libtinfo.so
 %dir %{_includedir}
 %{_includedir}/curses.h
 %{_includedir}/eti.h
-%{_includedir}/form.h
-%{_includedir}/menu.h
 %{_includedir}/ncurses.h
 %{_includedir}/ncurses_dll.h
-%{_includedir}/panel.h
 %{_includedir}/term.h
 %{_includedir}/termcap.h
 %{_includedir}/unctrl.h
 %{_mandir}/man3/*
+%exclude %{_mandir}/man3/form*
+%exclude %{_mandir}/man3/menu*
+%exclude %{_mandir}/man3/panel*
 %lang(pl) %{_mandir}/pl/man3/*
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libncurses.a
 %{_libdir}/libtinfo.a
+
+%files ext
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libform.so.*.*
+%attr(755,root,root) %{_libdir}/libmenu.so.*.*
+%attr(755,root,root) %{_libdir}/libpanel.so.*.*
+
+%files ext-devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libform.so
+%attr(755,root,root) %{_libdir}/libmenu.so
+%attr(755,root,root) %{_libdir}/libpanel.so
+%{_includedir}/form.h
+%{_includedir}/menu.h
+%{_includedir}/panel.h
+%{_mandir}/man3/form*
+%{_mandir}/man3/menu*
+%{_mandir}/man3/panel*
+
+%files ext-static
+%defattr(644,root,root,755)
 %{_libdir}/libform.a
-%{_libdir}/libpanel.a
 %{_libdir}/libmenu.a
+%{_libdir}/libpanel.a
 
 %if %{with cxx}
 %files c++-devel
