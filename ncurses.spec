@@ -5,15 +5,16 @@ Summary(pl): Biblioteki do kontrolowania terminala
 Summary(tr): Terminal kontrol kitaplýðý
 Name:        ncurses
 Version:     4.2
-Release:     13
+Release:     14
 Copyright:   distributable
 Group:       Libraries
-Source0:     ftp://ftp.clark.net/pub/dickey/ncurses/%{name}-%{version}.tar.gz
-Patch0:      ncurses-4.2-updates-981202.patch.gz
-Patch1:      ncurses-4.2-arm.patch
-Patch2:      ncurses-4.2-hjl.patch
-Patch3:      ncurses-4.2-rh.patch
-Patch4:      ncurses-4.2-setuid2.patch
+Group(pl):   Biblioteki
+Source:      ftp://ftp.clark.net/pub/dickey/ncurses/%{name}-%{version}.tar.gz
+Patch0:      %{name}-4.2-updates-981202.patch.gz
+Patch1:      %{name}-4.2-arm.patch
+Patch2:      %{name}-4.2-hjl.patch
+Patch3:      %{name}-4.2-rh.patch
+Patch4:      %{name}-4.2-setuid2.patch
 BuildRoot:   /tmp/%{name}-%{version}-root
 
 %description
@@ -36,8 +37,8 @@ optimisation correcte. Ceci est l'implantation du « nouveau curses » (ncurses)
 et est le remplacement du curses 4.4BSD classique qui est abandonné.
 
 %description -l pl
-Biblioteka curses udostêpnia funkcje pozwalaj±ce u¿ytkownikom odwo³ywanie
-siê do zawarto¶ci terminala niezale¿nie od jego typu. Pakiet tez zawiera
+Biblioteka curses udostêpnia funkcje umo¿liwiaj±ce u¿ytkownikom odwo³ywanie
+siê do zawarto¶ci terminala niezale¿nie od jego typu. Pakiet ten zawiera
 implementacjê klasycznej biblioteki curses (z systemu 4.4BSD) o nazwie
 ncurses (new curses) i jest zarazem jej przysz³ym zamiennikiem.
 
@@ -50,6 +51,7 @@ karakter tabanlý ekranlara eriþim olanaðý saðlanabilmektedir. Bu uyarlama
 Summary:     Heade files for develop ncurses based application
 Summary(pl): Pliki nag³ówkowe dla ncurses
 Group:       Development/Libraries
+Group(pl):   Programowanie/Biblioteki
 Requires:    %{name} = %{version}
 
 %description devel
@@ -57,13 +59,14 @@ This package includes the header files and libraries necessary to develop
 applications that use ncurses.
 
 %description -l pl devel
-Pakiet ten zawiera pliki nag³ówkowe - niezbêdne do pisania/kompilowania
-programów z wykorzystaniem ncurses.
+Pakiet ten zawiera pliki nag³ówkowe - niezbêdne do kompilowania programów
+wykorzystuj±cych ncurses.
 
 %package static
 Summary:     Static ncurses libraries
 Summary(pl): Biblioteki statyczne ncurses
 Group:       Development/Libraries
+Group(pl):   Programowanie/Biblioteki
 Requires:    %{name}-devel = %{version}
 
 %description static
@@ -125,6 +128,7 @@ for i in $RPM_BUILD_ROOT/usr/man/man3/*x ; do
 done
 
 gzip -9nf $RPM_BUILD_ROOT/usr/man/man{1,3,5,7}/*
+gzip -9nf README ANNOUNCE
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -152,6 +156,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(644, root, root) /usr/lib/lib*.a
 
 %changelog
+* Thu Feb 10 1999 Micha³ Kuratczyk <kurkens@polbox.com>
+  [4.2-14]
+- added Group(pl)
+- fixed pl translations
+- added gzipping documentation
+
 * Fri Dec  6 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [4.2-13]
 - added gzipping man pages,
