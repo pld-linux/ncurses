@@ -25,6 +25,10 @@ Patch0:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040214.patch.gz
 Patch1:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040221.patch.gz
 Patch2:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040228.patch.gz
 Patch3:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040306.patch.gz
+Patch4:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040313.patch.gz
+Patch5:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040320.patch.gz
+Patch6:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040327.patch.gz
+Patch7:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040328.patch.gz
 Patch13:	%{name}-screen_hpa_fix.patch
 Patch14:	%{name}-xterm-color.patch
 Patch15:	%{name}-xterm_hpa_fix.patch
