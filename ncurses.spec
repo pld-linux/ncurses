@@ -5,7 +5,7 @@ Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	4.2
-Release:	13
+Release:	14
 Copyright:	distributable
 Group:		Libraries
 Group(pl):	Biblioteki
@@ -50,7 +50,7 @@ curses kitaplýðý ile kullanýcýya kullanýlan terminal tipinden baðýmsýz olarak
 karakter tabanlý ekranlara eriþim olanaðý saðlanabilmektedir. Bu uyarlama
 'new curses' (ncurses), BSD deki klasik curses'in geliþmiþ halidir.
 
-%package ext
+%package	ext
 Summary:	Additionan ncurses libraries
 Summary(pl):	Dodatkowe biblioteki ncurses
 Group:		Libraries
@@ -65,7 +65,7 @@ libpanel for easy making full screen curse application.
 Pakiet ten zawiera dodatkowe biblioteki libforms, libmenu i libpanel s³u¿±ce
 do ³atwego robienia plikacji pe³noekranowych korzystaj±cych z ncurses.
 
-%package -n terminfo
+%package -n	terminfo
 Summary:	Complete terminfo database
 Summary(pl):	Kompletna baza terminfo 
 Group:		Libraries
@@ -83,10 +83,11 @@ Pakiet ten zconsoleawiera kompletn± bazê terminfo. Ke¿eli u¿ywasz terminali
 linux, console, xterm, vt100 prawdopodobnie nie bedziesz potrzebowa³ tego
 pakietu gdy¿ definicje tych terminali s± w³±czone w pakiet ncurses.
 
-%package devel
+%package	devel
 Summary:	Header files for develop ncurses based application
 Summary(pl):	Pliki nag³ówkowe do bibliotek ncurses
 Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 Requires:	%{name}-ext = %{version}
 
@@ -98,7 +99,7 @@ applications that use ncurses.
 Pakiet ten zawiera pliki nag³ówkowe - niezbêdne do pisania/kompilowania
 programów z wykorzystaniem bibliotek ncurses.
 
-%package static
+%package	static
 Summary:	Static libraries for ncurses
 Summary(pl):	Biblioteki statyczne ncurses
 Group:		Development/Libraries
@@ -151,7 +152,12 @@ install %{SOURCE2} $RPM_BUILD_ROOT/usr/man/pl/man1/captoinfo.1m
 install %{SOURCE3} $RPM_BUILD_ROOT/usr/man/pl/man1/clear.1
 install %{SOURCE4} $RPM_BUILD_ROOT/usr/man/pl/man7/term.7
 
-gzip -9nf $RPM_BUILD_ROOT/usr/man/{man*/*,pl/man*/*}
+chmod 755 $RPM_BUILD_ROOT/{lib/lib*.so.*.*,usr/lib/lib*.so.*.*}
+
+rm -f $RPM_BUILD_ROOT/usr/lib/libncurses.so.4
+
+gzip -9nf $RPM_BUILD_ROOT/usr/man/pl/man*/*
+bzip2 -9 README ANNOUNCE 
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -164,13 +170,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) /lib/libncurses.so.*.*
+
+%attr(755,root,root) /lib/libncurses.so.*
 
 /usr/share/tabset
+
 %dir /usr/share/terminfo
 %dir /usr/share/terminfo/l
 %dir /usr/share/terminfo/v
 %dir /usr/share/terminfo/x
+
 /usr/share/terminfo/l/linux*
 /usr/share/terminfo/v/vt100
 /usr/share/terminfo/v/vt220
@@ -180,13 +189,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %attr(755,root,root) /usr/bin/*
 /usr/man/man[157]/*
+
 %lang(pl) /usr/man/pl/man[17]/*
 
 %files ext
-%attr(755,root,root) /usr/lib/lib*so.*.*
+%attr(755,root,root) /usr/lib/lib*so.*
 
 %files -n terminfo
 %defattr(644,root,root,755)
+
 /usr/share/terminfo/[1-9NPXa-km-uwz]
 /usr/share/terminfo/l/la120
 /usr/share/terminfo/l/layer
@@ -318,7 +329,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc README ANNOUNCE test
+%doc {README,ANNOUNCE}.bz2 
+
 %attr(755,root,root) /usr/lib/lib*.so
 
 /usr/include/ncurses
@@ -329,6 +341,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(644,root,root) /usr/lib/lib*.a
 
 %changelog
+* Sun Mar 14 1999 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
+  [4.2-14]
+- compressed documentation,
+- added so-links of shared libraries,
+- added Group(pl) in devel subpackage,
+- fixed double compressing of man pages,
+- removed test/* from documentation.
+
 * Mon Feb 22 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [4.2-13]
 - removed man group from man pages.
@@ -359,52 +379,16 @@ rm -rf $RPM_BUILD_ROOT
 - added some patches .. ;)
 - fixed ol translation,
 - full %file description,
-- fixed permissions,
+- fixed files permissions,
 - minor changes.
 
 * Tue Sep 09 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
   [4.2-2d]
 - translation modified for pl,
-- build against glibc-2.1,
+- build against GNU libc-2.1,
 - fixed permissions of ELF binaries,
-- moved Buildroot to /var/tmp/%{name}-%{version}-%{release}-root
+- moved Buildroot to /var/tmp/%{name}-%{version}-root
 - added a static package,
 - added %defattr support,
-- build from non root's account. 
-
-* Mon Jul 20 1998 Cristian Gafton <gafton@redhat.com>
-- added lots of patches. This spec file is starting to look ugly
-
-* Wed Jul 01 1998 Alan Cox <alan@redhat.com>
-- Fix setuid trusting. Open termcap/info files as the real user.
-
-* Wed May 06 1998 Cristian Gafton <gafton@redhat.com>
-- added terminfo entry for the poor guys using lat1 and/or lat-2 on their
-  consoles... Enjoy linux-lat ! Thanks, Erik !
-
-* Tue Apr 21 1998 Cristian Gafton <gafton@redhat.com>
-- new patch to get xterm-color and nxterm terminfo entries
-- aliased them to rxvt, as that seems to satisfy everybody
-
-* Sun Apr 12 1998 Cristian Gafton <gafton@redhat.com>
-- added %clean section
-
-* Tue Apr 07 1998 Cristian Gafton <gafton@redhat.com>
-- removed /usr/lib/terminfo symlink - we shouldn't need that
-
-* Mon Apr 06 1998 Cristian Gafton <gafton@redhat.com>
-- updated to 4.2 + patches
-- added BuildRoot
-
-* Sat Apr 04 1998 Cristian Gafton <gafton@redhat.com>
-- rebuilt with egcs on alpha
-
-* Wed Dec 31 1997 Erik Troan <ewt@redhat.com>
-- version 7 didn't rebuild properly on the Alpha somehow -- no real changes
-  are in this version
-
-* Tue Dec 09 1997 Erik Troan <ewt@redhat.com>
-- TIOCGWINSZ wasn't used properly
-
-* Tue Jul 08 1997 Erik Troan <ewt@redhat.com>
-- built against glibc, linked shared libs against -lc
+- build from non root's account, 
+- start at invalid RH spec file.
