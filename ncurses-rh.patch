@@ -1,0 +1,14 @@
+--- ncurses-4.2/misc/terminfo.src.rh	Wed May  6 01:50:54 1998
++++ ncurses-4.2/misc/terminfo.src	Wed May  6 01:54:10 1998
+@@ -637,6 +637,11 @@
+ linux-koi8r|linux with koi8-r alternate character set, 
+ 	use=linux, use=klone+koi8acs, 
+ 
++# Entry for the latin1 and latin2 fonts
++linux-lat|linux with latin1 or latin2 alternate character set,
++	use=linux,
++	acsc=+\020\,\021-\030.^Y0\333`\004a\013f\370g\361h\260i\316j\211k\214l\206m\203n\305o~p\304q\212r\304s_t\207u\215v\301w\302x\205y\363z\362{\343|\330}\234~\376, 
++
+ # SCO console and SOS-Syscons console for 386bsd
+ # (scoansi: had unknown capabilities
+ #	:Gc=N:Gd=K:Gh=M:Gl=L:Gu=J:Gv=\072:\
