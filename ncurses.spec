@@ -119,8 +119,8 @@ Group:		Libraries
 Requires:	%{name} = %{version}
 
 %description ext
-This package contain addidion ncurses libraries like libforms, libmenu
-and libpanel for easy making full screen curse application.
+This package contains addidion ncurses libraries like libforms,
+libmenu and libpanel for easy making full screen curse application.
 
 %description ext -l pl
 Pakiet ten zawiera dodatkowe biblioteki libforms, libmenu i libpanel
@@ -137,7 +137,7 @@ Requires:	%{name} = %{version}-%{release}
 Obsoletes:	ncurses-extraterms
 
 %description -n terminfo
-This package contain cmplet terminfo database. If you just use the
+This package contains cmplet terminfo database. If you just use the
 Linux console, xterm and VT100, you probably will not need this this -
 a minimal %{_datadir}/terminfo tree for these terminal is already
 included in the ncurses package.
