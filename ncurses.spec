@@ -1,24 +1,24 @@
-Summary:     curses terminal control library
-Summary(de): curses-Terminal-Control-Library
-Summary(fr): La bibliothéque de contrôle de terminal curses.
-Summary(pl): Biblioteki do kontrolowania terminala
-Summary(tr): Terminal kontrol kitaplýðý
-Name:        ncurses
-Version:     4.2
-Release:     16
-Copyright:   distributable
-Group:       Libraries
-Group(pl):   Biblioteki
-Source0:     ftp://ftp.clark.net/pub/dickey/ncurses/%{name}-%{version}.tar.gz
-Source1:     ftp://ftp.clark.net/pub/dickey/ncurses/4.2/patch-4.2-990213.sh
-Source2:     captoinfo.1m.pl
-Source3:     clear.1.pl
-Source4:     term.7.pl
-Patch0:      ncurses-rh.patch
-Patch1:      ncurses-setuid.patch
-Patch2:      ncurses-arm.patch
+Summary:	curses terminal control library
+Summary(de):	curses-Terminal-Control-Library
+Summary(fr):	La bibliothéque de contrôle de terminal curses.
+Summary(pl):	Biblioteki do kontrolowania terminala
+Summary(tr):	Terminal kontrol kitaplýðý
+Name:		ncurses
+Version:	4.2
+Release:	19
+Copyright:	distributable
+Group:		Libraries
+Group(pl):	Biblioteki
+Source0:	ftp://ftp.clark.net/pub/dickey/ncurses/%{name}-%{version}.tar.gz
+Source1:	ftp://ftp.clark.net/pub/dickey/ncurses/4.2/patches/patch-4.2-990213.sh
+Source2:	captoinfo.1m.pl
+Source3:	clear.1.pl
+Source4:	term.7.pl
+Patch0:		ncurses-rh.patch
+Patch1:		ncurses-setuid.patch
+Patch2:		ncurses-arm.patch
+BuildPrereq:	sharutils, patch, bash, gawk, sed, gzip
 BuildRoot:	/tmp/%{name}-%{version}-root
-BuildPrereq: sharutils, patch, bash, gawk, sed, gzip
 
 %description
 The curses library routines give the user a terminal-independent method of
@@ -51,11 +51,11 @@ karakter tabanlý ekranlara eriþim olanaðý saðlanabilmektedir. Bu uyarlama
 'new curses' (ncurses), BSD deki klasik curses'in geliþmiþ halidir.
 
 %package ext
-Summary:     Additionan ncurses libraries
-Summary(pl): Dodatkowe biblioteki ncurses
-Group:       Libraries
-Group(pl):   Biblioteki
-Requires:    %{name} = %{version}
+Summary:	Additionan ncurses libraries
+Summary(pl):	Dodatkowe biblioteki ncurses
+Group:		Libraries
+Group(pl):	Biblioteki
+Requires:	%{name} = %{version}
 
 %description ext
 This package contain addidion ncurses libraries like libforms, libmenu and
@@ -66,11 +66,11 @@ Pakiet ten zawiera dodatkowe biblioteki libforms, libmenu i libpanel s³u¿±ce
 do ³atwego tworzenia aplikacji pe³noekranowych korzystaj±cych z ncurses.
 
 %package -n terminfo
-Summary:     Complete terminfo database
-Summary(pl): Kompletna baza terminfo 
-Group:       Utilities/Terminal
-Group(pl):   Narzêdzia/Terminal
-Requires:    %{name} = %{version}
+Summary:	Complete terminfo database
+Summary(pl):	Kompletna baza terminfo 
+Group:		Utilities/Terminal
+Group(pl):	Narzêdzia/Terminal
+Requires:	%{name} = %{version}
 
 %description -n terminfo
 This package contain cmplet terminfo database. If you just use the Linux
@@ -84,12 +84,12 @@ linux, console, xterm, vt100 prawdopodobnie nie bedziesz potrzebowa³ tego
 pakietu gdy¿ definicje tych terminali s± w³±czone w pakiet ncurses.
 
 %package devel
-Summary:     Header files for develop ncurses based application
-Summary(pl): Pliki nag³ówkowe do bibliotek ncurses
-Group:       Development/Libraries
-Group(pl):   Programowanie/Biblioteki
-Requires:    %{name} = %{version}
-Requires:    %{name}-ext = %{version}
+Summary:	Header files for develop ncurses based application
+Summary(pl):	Pliki nag³ówkowe do bibliotek ncurses
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+Requires:	%{name}-ext = %{version}
 
 %description devel
 This package includes the header files and libraries necessary to develop
@@ -100,11 +100,11 @@ Pakiet ten zawiera pliki nag³ówkowe niezbêdne do pisania/kompilowania
 programów z wykorzystaniem bibliotek ncurses.
 
 %package static
-Summary:     Static libraries for ncurses
-Summary(pl): Biblioteki statyczne ncurses
-Group:       Development/Libraries
-Group(pl):   Programowanie/Biblioteki
-Requires:    %{name}-devel = %{version}
+Summary:	Static libraries for ncurses
+Summary(pl):	Biblioteki statyczne ncurses
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name}-devel = %{version}
 
 %description static
 This package includes the static libraries necessary to develop
@@ -129,11 +129,11 @@ Pakiet ten zawiera pliki nag³ówkowe niezbêdne do pisania/kompilowania
 programów z wykorzystaniem biblioteki c++-ncurses.
 
 %package c++-static
-Summary:     Static libraries for C++ ncurses
-Summary(pl): Biblioteki statyczne C++ ncurses
-Group:       Development/Libraries
-Group(pl):   Programowanie/Biblioteki
-Requires:    %{name}-c++-devel = {%version}
+Summary:	Static libraries for C++ ncurses
+Summary(pl):	Biblioteki statyczne C++ ncurses
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name}-c++-devel = {%version}
 
 %description c++-static
 This package includes the static libraries necessary to develop
@@ -152,7 +152,9 @@ sh %{SOURCE1}
 %build
 CFLAGS="$RPM_OPT_FLAGS -DPURE_TERMINFO" LDFLAGS="-s" \
 ./configure %{_target} \
-	--prefix=/usr \
+	--prefix=%{_prefix} \
+	--includedir=%{_includedir}/ncurses \
+	--mandir=%{_mandir} \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
 	--with-shared \
@@ -164,14 +166,13 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/{lib,usr/man/pl/man{1,7}}
+install -d $RPM_BUILD_ROOT{/lib,%{_mandir}/pl/man{1,7}}
 
-make install INSTALL_PREFIX=$RPM_BUILD_ROOT \
-	includedir=%{_includedir}/ncurses
+make install INSTALL_PREFIX=$RPM_BUILD_ROOT
 
 ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
-strip $RPM_BUILD_ROOT/usr/{bin/*,lib/lib*so.*.*}
+strip $RPM_BUILD_ROOT{%{_bindir}/*,%{_libdir}/lib*so.*.*}
 
 mv $RPM_BUILD_ROOT%{_libdir}/libncurses.so.*.* $RPM_BUILD_ROOT/lib
 ln -sf ../../lib/libncurses.so.4.2 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
@@ -182,8 +183,8 @@ install %{SOURCE4} $RPM_BUILD_ROOT%{_mandir}/pl/man7/term.7
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.4
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/pl/man*/* README ANNOUNCE
-gzip -9nf misc/*.doc misc/*.html c++/{README-first,NEWS,PROBLEMS,demo.cc}
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/pl/man*/* README ANNOUNCE \
+	misc/*.doc misc/*.html c++/{README-first,NEWS,PROBLEMS,demo.cc}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -391,65 +392,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libncurses++.a
 
 %changelog
-* Sun May 16 1999 Artur Wróblewski <wrobell@posexperts.com.pl>
-  [4.2-16]
-- added ++devel and ++static packages
-- added documentation to devel package
-- some minor changes
-
-* Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  []
-- removed Conflicts: glibc (not neccesary now),
-- recompiles on new rpm.
-
-* Sun Mar 14 1999 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-  [4.2-14]
-- compressed documentation,
-- added so-links of shared libraries,
-- added Group(pl) in devel subpackage,
-- fixed double compressing of man pages,
-- removed test/* from documentation.
-
-* Mon Feb 22 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [4.2-13]
-- removed man group from man pages.
-
-* Wed Feb 17 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [4.2-12]
-- updated to 990213 snapshot,
-- removed hjl patch (now is in 990213 snap),
-- added LDFLAGS="-s" to ./configure enviroment,
-- removed removing linux, linux-m terminfo on sparc,
-- added terminfo subbackage with full terminfo database (minimal
-  term db is in main package),
-- added "Conflicts: glibc <= 2.0.7" in main,
-- added pl man pages for captoinfo(1), clear(1), term(7),
-- added separated subpackage ext with non base ncurses libraries (separating
-  this allow minimize minimal system size).
-
-* Wed Nov 13 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [4.2-4d]
-- added more patches from rawhide ncurses,
-- use INSTALL_PREFIX instead prefix on "make install" (without this some
-  binaries like tset have internal paths padded with Buildroot),
-- shares libncurses moved to /lib,
-- fixed pl translation.
-
-* Sat Nov 07 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-  [4.2-3d]
-- added some patches .. ;)
-- fixed ol translation,
-- full %file description,
-- fixed files permissions,
-- minor changes.
-
-* Tue Sep 09 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-  [4.2-2d]
-- translation modified for pl,
-- build against GNU libc-2.1,
-- fixed permissions of ELF binaries,
-- moved Buildroot to /var/tmp/%{name}-%{version}-root
-- added a static package,
-- added %defattr support,
-- build from non root's account, 
-- start at invalid RH spec file.
+* Fri May 28 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [4.2-19]
+- based on RH spec,
+- spec rewrited by PLD team.c
