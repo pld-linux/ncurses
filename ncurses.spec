@@ -196,8 +196,8 @@ strip $RPM_BUILD_ROOT{%{_bindir}/*,%{_libdir}/lib*so.*.*}
 
 mv $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.*.* $RPM_BUILD_ROOT/lib
 mv $RPM_BUILD_ROOT%{_libdir}/libncurses.so.*.* $RPM_BUILD_ROOT/lib
-ln -sf ../../lib/libtinfo.so.5.0 $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
-ln -sf ../../lib/libncurses.so.5.0 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
+ln -sf ../../lib/libtinfo.so.5.1 $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
+ln -sf ../../lib/libncurses.so.5.1 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
 
 install %{SOURCE2} $RPM_BUILD_ROOT%{_mandir}/pl/man1/captoinfo.1m
 install %{SOURCE3} $RPM_BUILD_ROOT%{_mandir}/pl/man1/clear.1
