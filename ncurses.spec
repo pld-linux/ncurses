@@ -122,7 +122,7 @@ rm -f $RPM_BUILD_ROOT/usr/lib/terminfo/l/linux
 rm -f $RPM_BUILD_ROOT/usr/lib/terminfo/l/linux-m
 %endif
 
-strip $RPM_BUILD_ROOT/usr/{bin/*,lib/lib*.so.*.*}
+strip $RPM_BUILD_ROOT/usr/{bin/*,lib/lib*.so.*.*} || :
 
 mv $RPM_BUILD_ROOT/usr/lib/libncurses.so.*.* $RPM_BUILD_ROOT/lib
 ln -sf ../../lib/libncurses.so.4.2 $RPM_BUILD_ROOT/usr/lib/libncurses.so
