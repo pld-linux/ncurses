@@ -22,7 +22,9 @@ Patch2:		%{name}-arm.patch
 Patch3:		%{name}-libyx-lat.patch
 Patch4:		%{name}-xtermchanges.patch
 Patch5:		%{name}-no_symlinks.patch
-BuildRequires:	sharutils, patch, bash, mawk, sed, gzip
+BuildRequires:	sharutils
+BuildRequires:	sed
+BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_includedir	%{_prefix}/include/ncurses
@@ -178,7 +180,7 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 %patch5 -p1
 
 %build
-CFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS} -DPURE_TERMINFO"
+CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
 %configure \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
