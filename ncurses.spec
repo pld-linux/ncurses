@@ -1,3 +1,7 @@
+# --without cxx	- do not build C++ ncurses bindings and demo programs
+#		  (use this is neccessary for build ncurses linked with
+#		  uClibc).
+
 Summary:	curses terminal control library
 Summary(de):	curses-Terminal-Control-Library
 Summary(es):	Biblioteca de control de terminal curses
@@ -21,9 +25,10 @@ Patch4:		%{name}-xterm-color.patch
 Patch5:		%{name}-xterm_hpa_fix.patch
 Patch6:		%{name}-rxvt.patch
 Patch7:		%{name}-meta.patch
+Patch8:		%{name}-ac_hack.patch
 BuildRequires:	sharutils
 BuildRequires:	sed
-BuildRequires:	libstdc++-devel
+%{!?_without_cxx:BuildRequires:	libstdc++-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libncurses5
 
@@ -206,6 +211,7 @@ sh %{SOURCE2}
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
@@ -214,6 +220,8 @@ CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
 	--with-normal \
 	--with-shared \
 	--without-ada \
+	--with%{?_without_cxx:out}-cxx \
+	--with%{?_without_cxx:out}-cxx-binding \
 	--without-profile \
 	--without-debug \
 	--with-termlib \
@@ -393,6 +401,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libpanel.a
 %{_libdir}/libmenu.a
 
+%if %{!?_without_cxx:1}
 %files c++-devel
 %defattr(644,root,root,755)
 %doc c++/{demo.cc,README-first,NEWS,PROBLEMS}.gz
@@ -407,3 +416,4 @@ rm -rf $RPM_BUILD_ROOT
 %files c++-static
 %defattr(644,root,root,755)
 %{_libdir}/libncurses++.a
+%endif
