@@ -185,7 +185,7 @@ rm -rf $RPM_BUILD_ROOT
 - changed dependencies to "Requires: %%{name} = %%{version}" in devel
   subpackage,
 - added stripping shared libraries,
-- added %attr and %defattr macros in %files (allow build package from
+- added %attr and %defattr macros in %files (allows build package from
   non-root account).
 
 * Mon Jul 20 1998 Cristian Gafton <gafton@redhat.com>
