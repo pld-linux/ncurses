@@ -16,7 +16,9 @@ Release:	3
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
+# Source0-md5: 5dcc9faa93157eafa572494bffed131a
 Source1:	%{name}-non-english-man-pages.tar.bz2
+# Source1-md5: 3b05ee835dc20c306e9af2a9d3fbf1f1
 Patch0:		%{name}-rh.patch
 Patch1:		%{name}-libyx-lat.patch
 Patch2:		%{name}-no_symlinks.patch
