@@ -4,9 +4,9 @@ Summary(fr):	La bibliothéque de contrôle de terminal curses
 Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
-Version:	5.1
-Release:	3
-License:	distributable
+Version:	5.2
+Release:	1
+License:	Distributable
 Group:		Libraries
 Group(de):	Libraries
 Group(fr):	Librairies
@@ -15,13 +15,12 @@ Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
 Source2:	captoinfo.1m.pl
 Source3:	clear.1.pl
 Source4:	term.7.pl
-#Patch0:	ftp://dickey.his.com/ncurses/5.0/%{name}-5.0-20000527.patch.gz
-Patch1:		%{name}-rh.patch
-Patch2:		%{name}-setuid.patch
-Patch3:		%{name}-arm.patch
-Patch4:		%{name}-libyx-lat.patch
-Patch5:		%{name}-xtermchanges.patch
-Patch6:		%{name}-no_symlinks.patch
+Patch0:		%{name}-rh.patch
+Patch1:		%{name}-setuid.patch
+Patch2:		%{name}-arm.patch
+Patch3:		%{name}-libyx-lat.patch
+Patch4:		%{name}-xtermchanges.patch
+Patch5:		%{name}-no_symlinks.patch
 BuildRequires:	sharutils, patch, bash, mawk, sed, gzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -169,13 +168,12 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 
 %prep
 %setup  -q
-#%patch0 -p1
+%patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1 -b .wiget
+%patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 
 %build
 CFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g} -DPURE_TERMINFO"
@@ -202,8 +200,8 @@ ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
 mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.*.* $RPM_BUILD_ROOT/lib
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.*.* $RPM_BUILD_ROOT/lib
-ln -sf ../../lib/libtinfo.so.5.1 $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
-ln -sf ../../lib/libncurses.so.5.1 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
+ln -sf ../../lib/libtinfo.so.5 $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
+ln -sf ../../lib/libncurses.so.5 $RPM_BUILD_ROOT%{_libdir}/libncurses.so
 
 install %{SOURCE2} $RPM_BUILD_ROOT%{_mandir}/pl/man1/captoinfo.1m
 install %{SOURCE3} $RPM_BUILD_ROOT%{_mandir}/pl/man1/clear.1
