@@ -61,7 +61,7 @@ ustawienie typu terminala na `vt100' (zak³adaj±c, ¿e rzeczywi¶cie u¿ywasz
 VT100-podobnej konsoli, terminala, lub emulatora terminala.)
 .PP
 W ka¿dym razie, mo¿esz dowolnie zmieniaæ zmienn± \fBTERM\fR ustawion± przez
-Twój system na dowoln± warto¶æ w profilu Twojej pow³oki. Program \fBtset\fR(1) 
+Twój system na dowoln± warto¶æ w profilu Twojego shell'a. Program \fBtset\fR(1) 
 mo¿e byæ w tym pomocny; mo¿esz mu podaæ zbiór regu³ aby wydedukowa³ lub
 za¿±da³ podania typu terminala bazuj±c na urz±dzeniu tty i prêdko¶ci
 przesy³u danych (baud rate).
@@ -72,12 +72,12 @@ widzialny dzwonek (czyli b³y¶niêcie ekranu) lub pod¶wietlenie) które maj±
 zamieniæ standardowe ustawienia systemu.
 .PP
 Opisy typów terminali s± przechowywane jako pliki zawieraj±ce dane opisuj±ce
-ich mo¿liwo¶ci w katalogu \*d. Aby przejrzeæ listê wszystkich nazw terminali 
+ich mo¿liwo¶ci w katalogu \*d. Aby przej¿eæ listê wszystkich nazw terminali 
 rozpoznawanych przez system, wykonaj 
 
 	toe | more
 
-z promptu pow³oki. Pliki te, opisuj±ce mo¿liwo¶ci terminali s± przechowywane
+z promptu shell'a. Pliki te, opisuj±ce mo¿liwo¶ci terminali s± przechowywane
 w formacie binarnym aby zapewniæ optymaln± prêdko¶æ dostêpu do nich
 (odwrotnie ni¿ w przypadku starego bazuj±cego na tek¶cie pliku \fBtermcap\fR, 
 który zastêpuj±); aby sprawdziæ jedn± z pozycji musisz u¿yæ komendy \fBinfocmp\fR(1).
@@ -108,10 +108,10 @@ nazywaæ a tak¿e jak je rozumieæ:
 Najpierw wybierz g³ówn± nazwê.  Powinna siê ona sk³adaæ z ma³ej litery
 i nastêpuj±cych po niej do siedmiu ma³ych liter b±d¼ cyfr. Powiniene¶
 unikaæ u¿ywania znaków przestankowych w g³ównych nazwach, poniewa¿ s± one
-u¿ywane i interpretowane jako nazwy plików i meta-znaków pow³oki
+u¿ywane i interpretowane jako nazwy plików i meta-znaków shella 
 (np. takie jak !, $, *, ? etc.), umieszczone w nich mog± spowodowaæ dziwne
 i k³opotliwe zachowanie.
-Uko¶nik (/), czy jakikolwiek inny znak, który mo¿e zostaæ zinterpretowany
+Slash (/), czy jakikolwiek inny znak, który mo¿e zostaæ zinterpretowany
 przez czyj¶ system plików (\e, $, [, ]), jest szczególnie niebezpieczne 
 (terminfo jest niezale¿ne od platformy, wiêc wybór nazwy zawieraj±cej znaki
 specjalne mo¿e którego¶ dnia spowodowaæ pewne problemy dla przysz³ych

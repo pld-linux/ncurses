@@ -11,7 +11,7 @@
 \fBclear\fR czy¶ci ekran terminala (o ile to mo¿liwe). Sprawdza on w
 ¶rodowisku typ terminala, a potem w bazie \fBterminfo\fR szuka sposobu na
 wyczyszczenie ekranu.
-.SH ZOBACZ TAK¯E
+.SH Zobacz tak¿e
 \fBtput\fR(1), \fBterminfo\fR(\*n)
 .\"#
 .\"# The following sets edit modes for GNU EMACS
