@@ -5,7 +5,7 @@ Summary(pl):	Biblioteki do kontrolowania terminala
 Summary(tr):	Terminal kontrol kitaplýðý
 Name:		ncurses
 Version:	5.0
-Release:	3
+Release:	4
 Copyright:	distributable
 Group:		Libraries
 Group(pl):	Biblioteki
@@ -193,6 +193,7 @@ install %{SOURCE3} $RPM_BUILD_ROOT%{_mandir}/pl/man1/clear.1
 install %{SOURCE4} $RPM_BUILD_ROOT%{_mandir}/pl/man7/term.7
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/pl/man*/* README ANNOUNCE \
+	$RPM_BUILD_ROOT%{_mandir}/man1/tack.1 \
 	misc/*.doc misc/*.html c++/{README-first,NEWS,PROBLEMS,demo.cc}
 
 %post   -p /sbin/ldconfig
