@@ -14,20 +14,17 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.4
-Release:	0.7
+Release:	0.8
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
 # Source0-md5:	069c8880072060373290a4fefff43520
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
-Patch0:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040424-patch.sh.bz2
-Patch1:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040501.patch.gz
-Patch2:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040508.patch.gz
-Patch3:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040516.patch.gz
-Patch4:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040522.patch.gz
-Patch5:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040529.patch.gz
-Patch6:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040605.patch.gz
+Patch0:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040711-patch.sh.bz2
+Patch1:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040718.patch.gz
+Patch2:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040724.patch.gz
+Patch3:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040731.patch.gz
 Patch13:	%{name}-screen_hpa_fix.patch
 Patch14:	%{name}-xterm_hpa_fix.patch
 Patch15:	%{name}-rxvt.patch
@@ -301,9 +298,6 @@ sh patch.sh
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
 %patch13 -p1
 %patch14 -p1
 #%patch15 -p1
