@@ -1,0 +1,11 @@
+--- ncurses-5.4/misc/terminfo.src.xterm-kbs	2005-04-17 09:17:09.416779464 +0200
++++ ncurses-5.4/misc/terminfo.src	2005-04-17 09:18:59.974972064 +0200
+@@ -2963,7 +2963,7 @@
+ 	kIC=\E[2;2~, kLFT=\E[1;2D, kNXT=\E[6;2~, kPRV=\E[5;2~, 
+ 	kRIT=\E[1;2C, kb2=\EOE, kcbt=\E[Z, kcub1=\EOD, kcud1=\EOB, 
+ 	kcuf1=\EOC, kcuu1=\EOA, kend=\EOF, kent=\EOM, khome=\EOH, 
+-	kich1=\E[2~, kmous=\E[M, knp=\E[6~, kpp=\E[5~, 
++	kich1=\E[2~, kmous=\E[M, knp=\E[6~, kpp=\E[5~, kbs=\177, 
+ 	rin=\E[%p1%dT, use=xterm+pcfkeys, use=xterm-basic, 
+ #
+ # This fragment describes as much of XFree86 xterm's "pc-style" function

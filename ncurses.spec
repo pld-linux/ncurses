@@ -1,7 +1,7 @@
 #
 # Conditional build:
-%bcond_without ada		# do not build Ada95 bindings
-%bcond_without cxx		# do not build C++ ncurses bindings and demo programs
+%bcond_with	ada		# build Ada95 bindings
+%bcond_without	cxx		# do not build C++ ncurses bindings and demo programs
 #		  		# (this is neccessary to build ncurses linked with uClibc).
 Summary:	curses terminal control library
 Summary(de):	curses-Terminal-Control-Library
@@ -14,21 +14,17 @@ Summary(tr):	Terminal kontrol kitaplýðý
 Summary(uk):	ncurses - ÎÏ×Á Â¦ÂÌ¦ÏÔÅËÁ ËÅÒÕ×ÁÎÎÑ ÔÅÒÍ¦ÎÁÌÁÍÉ
 Name:		ncurses
 Version:	5.4
-Release:	0.6
+Release:	4
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
 # Source0-md5:	069c8880072060373290a4fefff43520
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
-Patch0:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040214.patch.gz
-Patch1:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040221.patch.gz
-Patch2:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040228.patch.gz
-Patch3:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040306.patch.gz
-Patch4:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040313.patch.gz
-Patch5:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040320.patch.gz
-Patch6:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040327.patch.gz
-Patch7:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040328.patch.gz
+Patch0:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040711-patch.sh.bz2
+Patch1:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040718.patch.gz
+Patch2:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040724.patch.gz
+Patch3:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040731.patch.gz
 Patch13:	%{name}-screen_hpa_fix.patch
 Patch14:	%{name}-xterm_hpa_fix.patch
 Patch15:	%{name}-rxvt.patch
@@ -37,6 +33,7 @@ Patch17:	%{name}-ac_hack.patch
 Patch18:	%{name}-xterm-home-end.patch
 Patch19:	%{name}-mouse_trafo-warning.patch
 Patch20:	%{name}-gnome-terminal.patch
+Patch21:	%{name}-xterm-kbs.patch
 BuildRequires:	automake
 %{?with_ada:BuildRequires:	gcc-ada}
 %{?with_cxx:BuildRequires:	libstdc++-devel}
@@ -118,21 +115,6 @@ halidir.
 ×ÉËÏÒÉÓÔÏ×ÕÀÔØ ncurses. ÷ PLD Linux ÁÎ¦ Â¦ÂÌ¦ÏÔÅËÁ termcap, ÁÎ¦
 ÔÒÁÄÉÃ¦ÊÎÉÊ ÆÁÊÌ /etc/termcap ÎÅ ×ÉËÏÒÉÓÔÏ×ÕÀÔØÓÑ...
 
-%package ext
-Summary:	Additional ncurses libraries
-Summary(pl):	Dodatkowe biblioteki ncurses
-Group:		Libraries
-Requires:	%{name} = %{version}-%{release}
-
-%description ext
-This package contains addidion ncurses libraries like libforms,
-libmenu and libpanel for easy making full screen curse application.
-
-%description ext -l pl
-Pakiet ten zawiera dodatkowe biblioteki libforms, libmenu i libpanel
-s³u¿±ce do ³atwego tworzenia aplikacji pe³noekranowych korzystaj±cych
-z ncurses.
-
 %package -n terminfo
 Summary:	Complete terminfo database
 Summary(es):	Banco de datos terminfo para terminales extras (menos usados)
@@ -171,7 +153,6 @@ Summary(ru):	èÅÄÅÒÙ É ÂÉÂÌÉÏÔÅËÉ ÄÌÑ ÒÁÚÒÁÂÏÔËÉ ÐÒÏÇÒÁÍÍ Ó ncurses
 Summary(uk):	èÅÄÅÒÉ ÔÁ Â¦ÂÌ¦ÏÔÅËÉ ÄÌÑ ÒÏÚÒÏÂËÉ ÐÒÏÇÒÁÍ Ú ncurses
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	%{name}-ext = %{version}-%{release}
 Obsoletes:	libtermcap-devel
 Obsoletes:	libncurses5-devel
 
@@ -230,6 +211,46 @@ Bibliotecas estáticas para desenvolvimento com ncurses.
 ãÅÊ ÐÁËÅÔ Í¦ÓÔÉÔØ ÓÔÁÔÉÞÎ¦ Â¦ÂÌ¦ÏÔÅËÉ, ÎÅÏÂÈ¦ÄÎ¦ ÄÌÑ ÒÏÚÒÏÂËÉ ÐÒÏÇÒÁÍ,
 ÝÏ ×ÉËÏÒÉÓÔÏ×ÕÀÔØ ncurses.
 
+%package ext
+Summary:	Additional ncurses libraries
+Summary(pl):	Dodatkowe biblioteki ncurses
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description ext
+This package contains addidion ncurses libraries like libforms,
+libmenu and libpanel for easy making full screen curse application.
+
+%description ext -l pl
+Pakiet ten zawiera dodatkowe biblioteki libforms, libmenu i libpanel
+s³u¿±ce do ³atwego tworzenia aplikacji pe³noekranowych korzystaj±cych
+z ncurses.
+
+%package ext-devel
+Summary:	Header files for additional ncurses libraries
+Summary(pl):	Pliki nag³ówkowe dodatkowych bibliotek ncurses
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-ext = %{version}-%{release}
+
+%description ext-devel
+Header files for additional ncurses libraries (form, menu, panel).
+
+%description ext-devel -l pl
+Pliki nag³ówkowe dodatkowych bibliotek ncurses (form, menu, panel).
+
+%package ext-static
+Summary:	Static versions of additional ncurses libraries
+Summary(pl):	Statyczne wersje dodatkowych bibliotek ncurses
+Group:		Development/Libraries
+Requires:	%{name}-ext-devel = %{version}-%{release}
+
+%description ext-static
+Static versions of additional ncurses libraries (form, menu, panel).
+
+%description ext-static -l pl
+Statyczne wersje dodatkowych bibliotek ncurses (form, menu, panel).
+
 %package c++-devel
 Summary:	Header files for develop C++ ncurses based application
 Summary(pl):	Pliki nag³ówkowe do biblioteki C++ ncurses
@@ -267,9 +288,14 @@ Requires:	%{name}-devel = %{version}-%{release}
 This package includes the header files and libraries necessary to
 develop applications that use Ada95 ncurses.
 
+%description ada-devel -l pl
+Ten pakiet zawiera pliki nag³ówkowe i biblioteki potrzebne do
+tworzenia aplikacji u¿ywaj±cych ncurses w jêzyku Ada95.
+
 %prep
-%setup  -q
-%patch0 -p1
+%setup -q
+bzcat %{PATCH0} > patch.sh
+sh patch.sh
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -281,11 +307,16 @@ develop applications that use Ada95 ncurses.
 %patch18 -p1
 %patch19 -p1
 %patch20 -p1
+%patch21 -p1
 
 %build
 unset TERMINFO || :
-CFLAGS="%{rpmcflags} -DPURE_TERMINFO"
+CFLAGS="%{rpmcflags} -DPURE_TERMINFO -D_FILE_OFFSET_BITS=64"
 cp -f /usr/share/automake/config.sub .
+for t in narrowc widec; do
+install -d obj-$t
+cd obj-$t
+ln -sf ../configure .
 %configure \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
@@ -297,15 +328,21 @@ cp -f /usr/share/automake/config.sub .
 	--without-profile \
 	--with-termlib \
 	--with-manpage-aliases \
-	--with-manpage-format=normal
-
+	--with-manpage-format=normal \
+	--without-manpage-symlinks \
+	`[ "$t" = "widec" ] && echo --enable-widec --includedir=%{_includedir}w`
 %{__make}
+cd ..
+done
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{/%{_lib},%{_mandir}}
 
-%{__make} install INSTALL_PREFIX=$RPM_BUILD_ROOT
+for t in widec narrowc; do
+%{__make} -C obj-$t install \
+	INSTALL_PREFIX=$RPM_BUILD_ROOT
+done
 
 ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
@@ -328,18 +365,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) /%{_lib}/lib*.so.*.*
+%doc ANNOUNCE README
+%attr(755,root,root) /%{_lib}/libncurses.so.*.*
+%attr(755,root,root) /%{_lib}/libtinfo.so.*.*
+%attr(755,root,root) %{_libdir}/libncursesw.so.*.*
+%attr(755,root,root) %{_libdir}/libtinfow.so.*.*
 
 %{_datadir}/tabset
 
 %dir %{_datadir}/terminfo
 %{_datadir}/terminfo/E
-%dir %{_datadir}/terminfo/d
-%dir %{_datadir}/terminfo/k
-%dir %{_datadir}/terminfo/l
-%dir %{_datadir}/terminfo/s
-%dir %{_datadir}/terminfo/v
-%dir %{_datadir}/terminfo/x
+%dir %{_datadir}/terminfo/[dklsvx]
 
 %{_datadir}/terminfo/d/dumb
 %{_datadir}/terminfo/k/klone+color
@@ -361,21 +397,10 @@ rm -rf $RPM_BUILD_ROOT
 %lang(it) %{_mandir}/it/man1/*
 %lang(pl) %{_mandir}/pl/man[157]/*
 
-%files ext
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libform.so.*
-%attr(755,root,root) %{_libdir}/libpanel.so.*
-%attr(755,root,root) %{_libdir}/libmenu.so.*
-
 %files -n terminfo
 %defattr(644,root,root,755)
 %{_datadir}/terminfo/[1-9ALMNPQXa-ce-jm-rt-uwz]
-%{_datadir}/terminfo/d/*
-%{_datadir}/terminfo/k/*
-%{_datadir}/terminfo/l/*
-%{_datadir}/terminfo/s/*
-%{_datadir}/terminfo/v/*
-%{_datadir}/terminfo/x/*
+%{_datadir}/terminfo/[dklsvx]/*
 %exclude %{_datadir}/terminfo/d/dumb
 %exclude %{_datadir}/terminfo/k/klone+color
 %exclude %{_datadir}/terminfo/l/linux*
@@ -388,30 +413,77 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc README ANNOUNCE
 %doc doc/html/ncurses-intro.html
-%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/libcurses.so
+%attr(755,root,root) %{_libdir}/libncurses.so
+%attr(755,root,root) %{_libdir}/libtinfo.so
+%attr(755,root,root) %{_libdir}/libcursesw.so
+%attr(755,root,root) %{_libdir}/libncursesw.so
+%attr(755,root,root) %{_libdir}/libtinfow.so
 %dir %{_includedir}
 %{_includedir}/curses.h
 %{_includedir}/eti.h
-%{_includedir}/form.h
-%{_includedir}/menu.h
 %{_includedir}/ncurses.h
 %{_includedir}/ncurses_dll.h
-%{_includedir}/panel.h
 %{_includedir}/term.h
 %{_includedir}/termcap.h
 %{_includedir}/unctrl.h
+%dir %{_includedir}w
+%{_includedir}w/curses.h
+%{_includedir}w/eti.h
+%{_includedir}w/ncurses.h
+%{_includedir}w/ncurses_dll.h
+%{_includedir}w/term.h
+%{_includedir}w/termcap.h
+%{_includedir}w/unctrl.h
 %{_mandir}/man3/*
+%exclude %{_mandir}/man3/form*
+%exclude %{_mandir}/man3/menu*
+%exclude %{_mandir}/man3/panel*
 %lang(pl) %{_mandir}/pl/man3/*
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libncurses.a
 %{_libdir}/libtinfo.a
+%{_libdir}/libncursesw.a
+%{_libdir}/libtinfow.a
+
+%files ext
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libform.so.*.*
+%attr(755,root,root) %{_libdir}/libmenu.so.*.*
+%attr(755,root,root) %{_libdir}/libpanel.so.*.*
+%attr(755,root,root) %{_libdir}/libformw.so.*.*
+%attr(755,root,root) %{_libdir}/libmenuw.so.*.*
+%attr(755,root,root) %{_libdir}/libpanelw.so.*.*
+
+%files ext-devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libform.so
+%attr(755,root,root) %{_libdir}/libmenu.so
+%attr(755,root,root) %{_libdir}/libpanel.so
+%attr(755,root,root) %{_libdir}/libformw.so
+%attr(755,root,root) %{_libdir}/libmenuw.so
+%attr(755,root,root) %{_libdir}/libpanelw.so
+%{_includedir}/form.h
+%{_includedir}/menu.h
+%{_includedir}/panel.h
+%{_includedir}w/form.h
+%{_includedir}w/menu.h
+%{_includedir}w/panel.h
+%{_mandir}/man3/form*
+%{_mandir}/man3/menu*
+%{_mandir}/man3/panel*
+
+%files ext-static
+%defattr(644,root,root,755)
 %{_libdir}/libform.a
-%{_libdir}/libpanel.a
 %{_libdir}/libmenu.a
+%{_libdir}/libpanel.a
+%{_libdir}/libformw.a
+%{_libdir}/libmenuw.a
+%{_libdir}/libpanelw.a
 
 %if %{with cxx}
 %files c++-devel
@@ -424,10 +496,18 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/cursesw.h
 %{_includedir}/etip.h
 %{_includedir}/cursslk.h
+%{_includedir}w/cursesapp.h
+%{_includedir}w/cursesf.h
+%{_includedir}w/cursesm.h
+%{_includedir}w/cursesp.h
+%{_includedir}w/cursesw.h
+%{_includedir}w/etip.h
+%{_includedir}w/cursslk.h
 
 %files c++-static
 %defattr(644,root,root,755)
 %{_libdir}/libncurses++.a
+%{_libdir}/libncurses++w.a
 %endif
 
 %if %{with ada}
