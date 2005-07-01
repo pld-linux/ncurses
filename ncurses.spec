@@ -14,7 +14,7 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.4
-Release:	7
+Release:	8
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -33,6 +33,7 @@ Patch17:	%{name}-ac_hack.patch
 Patch18:	%{name}-xterm-home-end.patch
 Patch19:	%{name}-mouse_trafo-warning.patch
 Patch20:	%{name}-gnome-terminal.patch
+Patch21:	%{name}-xterm-kbs.patch
 URL:		http://dickey.his.com/ncurses/ncurses.html
 BuildRequires:	automake
 %{?with_ada:BuildRequires:	gcc-ada}
@@ -307,6 +308,7 @@ sh patch.sh
 %patch18 -p1
 %patch19 -p1
 %patch20 -p1
+%patch21 -p1
 
 %build
 unset TERMINFO || :
