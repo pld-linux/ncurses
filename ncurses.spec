@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	ada		# do not build Ada95 bindings
+%bcond_with	ada		# build Ada95 bindings
 %bcond_without	cxx		# do not build C++ ncurses bindings and demo programs
 #		  		# (this is neccessary to build ncurses linked with uClibc).
 Summary:	curses terminal control library
@@ -14,17 +14,17 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.4
-Release:	8
+Release:	5
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
 # Source0-md5:	069c8880072060373290a4fefff43520
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
-Patch0:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050319-patch.sh.bz2
-Patch1:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050320.patch.gz
-Patch2:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050326.patch.gz
-Patch3:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050327.patch.gz
+Patch0:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040711-patch.sh.bz2
+Patch1:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040718.patch.gz
+Patch2:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040724.patch.gz
+Patch3:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20040731.patch.gz
 Patch13:	%{name}-screen_hpa_fix.patch
 Patch14:	%{name}-xterm_hpa_fix.patch
 Patch15:	%{name}-rxvt.patch
@@ -34,7 +34,7 @@ Patch18:	%{name}-xterm-home-end.patch
 Patch19:	%{name}-mouse_trafo-warning.patch
 Patch20:	%{name}-gnome-terminal.patch
 Patch21:	%{name}-xterm-kbs.patch
-URL:		http://dickey.his.com/ncurses/ncurses.html
+Patch22:	%{name}-xterm-color-new.patch
 BuildRequires:	automake
 %{?with_ada:BuildRequires:	gcc-ada}
 %{?with_cxx:BuildRequires:	libstdc++-devel}
@@ -309,6 +309,7 @@ sh patch.sh
 %patch19 -p1
 %patch20 -p1
 %patch21 -p1
+%patch22 -p1
 
 %build
 unset TERMINFO || :
@@ -331,8 +332,6 @@ ln -sf ../configure .
 	--with-manpage-aliases \
 	--with-manpage-format=normal \
 	--without-manpage-symlinks \
-	--with-ada-include=%{_libdir}/ada/adainclude/ \
-	--with-ada-objects=%{_libdir}/ada/adalib/ \
 	`[ "$t" = "widec" ] && echo --enable-widec --includedir=%{_includedir}w`
 %{__make}
 cd ..

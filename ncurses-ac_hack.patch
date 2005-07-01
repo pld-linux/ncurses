@@ -1,11 +1,14 @@
---- ncurses-5.4/configure.orig	2005-03-30 14:59:36.880333960 +0200
-+++ ncurses-5.4/configure	2005-03-30 15:04:55.168946736 +0200
-@@ -12760,7 +12760,7 @@
+--- ncurses-5.2/configure.orig	Mon Aug 12 09:10:54 2002
++++ ncurses-5.2/configure	Mon Aug 12 09:14:37 2002
+@@ -10564,9 +10564,9 @@
  done
- echo "$as_me:12761: result: $cf_cv_src_modules" >&5
+ echo "$as_me:10565: result: $cf_cv_src_modules" >&5
  echo "${ECHO_T}$cf_cv_src_modules" >&6
 -TEST_ARGS="-L${LIB_DIR} $TEST_ARGS"
-+TEST_ARGS="-L${LIB_DIR} -L../lib  $TEST_ARGS"
++TEST_ARGS="-L${LIB_DIR} -L../lib $TEST_ARGS"
+ 
+-PROG_ARGS="-L${LIB_DIR} $PROG_ARGS"
++PROG_ARGS="-L${LIB_DIR} -L../lib $PROG_ARGS"
  
  SRC_SUBDIRS="man include"
  for cf_dir in $cf_cv_src_modules
