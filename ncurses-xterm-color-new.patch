@@ -1,0 +1,11 @@
+--- ncurses-5.4/misc/terminfo.src~	2005-07-01 15:08:20.097712920 +0200
++++ ncurses-5.4/misc/terminfo.src	2005-07-01 15:42:30.465009712 +0200
+@@ -3215,7 +3215,7 @@
+ #   match XFree86's xterm.terminfo usage and prevent circular links
+ xterm-color|nxterm|generic color xterm, 
+ 	ncv@, 
+-	op=\E[m, use=xterm-r6, use=klone+color, 
++	op=\E[m, use=xterm-new, use=klone+color, 
+ 
+ # this describes the alpha-version of Gnome terminal shipped with Redhat 6.0
+ gnome-rh62|Gnome terminal, 
