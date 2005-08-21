@@ -1,0 +1,21 @@
+diff -urN ncurses-5.4.org/Ada95/samples/Makefile.in ncurses-5.4/Ada95/samples/Makefile.in
+--- ncurses-5.4.org/Ada95/samples/Makefile.in	2005-08-21 23:00:52.884875000 +0200
++++ ncurses-5.4/Ada95/samples/Makefile.in	2005-08-21 23:01:21.119582984 +0200
+@@ -85,7 +85,7 @@
+ CARGS        =-cargs $(ADAFLAGS)
+ LARGS        =-largs @TEST_ARG2@ $(LD_FLAGS) -lAdaCurses
+  
+-PROGS        = tour rain ncurses 
++PROGS        = tour ncurses 
+ 
+ TOUR_OBJS    =	tour.o sample.o sample-curses_demo.o sample-explanation.o 	\
+ 		sample-form_demo.o sample-function_key_setting.o 		\
+@@ -109,7 +109,7 @@
+ 	ncurses2-flushinp_test.o
+ 
+ 
+-all ::  tour$x rain$x ncurses$x
++all ::  tour$x ncurses$x
+ 	@echo made $@
+ 
+ sources :

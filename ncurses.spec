@@ -14,7 +14,7 @@ Summary(tr):	Terminal kontrol kitapl˝˝
 Summary(uk):	ncurses - Œœ◊¡ ¬¶¬Ã¶œ‘≈À¡ À≈“’◊¡ŒŒ— ‘≈“Õ¶Œ¡Ã¡Õ…
 Name:		ncurses
 Version:	5.4
-Release:	10
+Release:	10.1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -25,15 +25,35 @@ Patch0:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050319-patch.sh.bz2
 Patch1:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050320.patch.gz
 Patch2:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050326.patch.gz
 Patch3:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050327.patch.gz
-Patch13:	%{name}-screen_hpa_fix.patch
-Patch14:	%{name}-xterm_hpa_fix.patch
-Patch15:	%{name}-rxvt.patch
-Patch16:	%{name}-meta.patch
-Patch17:	%{name}-ac_hack.patch
-Patch18:	%{name}-xterm-home-end.patch
-Patch19:	%{name}-mouse_trafo-warning.patch
-Patch20:	%{name}-gnome-terminal.patch
-Patch21:	%{name}-xterm-kbs.patch
+Patch4:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050403.patch.gz
+Patch5:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050409.patch.gz
+Patch6:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050416.patch.gz
+Patch7:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050423.patch.gz
+Patch8:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050430.patch.gz
+Patch9:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050507.patch.gz
+Patch10:	ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050515.patch.gz
+Patch11:	ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050528.patch.gz
+Patch12:	ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050604.patch.gz
+Patch13:	ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050611.patch.gz
+Patch14:	ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050618.patch.gz
+Patch15:	ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050619.patch.gz
+Patch16:	ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050625.patch.gz
+Patch17:	ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050702.patch.gz
+Patch18:	ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050716.patch.gz
+Patch19:	ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050723.patch.gz
+Patch20:	ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050806.patch.gz
+Patch21:	ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050813.patch.gz
+Patch22:	ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050820.patch.gz
+Patch100:	%{name}-screen_hpa_fix.patch
+Patch101:	%{name}-xterm_hpa_fix.patch
+Patch102:	%{name}-rxvt.patch
+Patch103:	%{name}-meta.patch
+Patch104:	%{name}-xterm-home-end.patch
+Patch105:	%{name}-mouse_trafo-warning.patch
+Patch106:	%{name}-gnome-terminal.patch
+Patch107:	%{name}-xterm-kbs.patch
+# disable rain demo; triggers gcc bug: http://gcc.gnu.org/bugzilla/show_bug.cgi?id=14998
+Patch108:	%{name}-no-rain-demo.patch
 URL:		http://dickey.his.com/ncurses/ncurses.html
 BuildRequires:	automake
 %{?with_ada:BuildRequires:	gcc-ada}
@@ -263,8 +283,8 @@ This package includes the header files and libraries necessary to
 develop applications that use C++ ncurses.
 
 %description c++-devel -l pl
-Pakiet ten zawiera pliki nag≥Ûwkowe niezbÍdne do kompilacji
-programÛw z wykorzystaniem biblioteki c++-ncurses.
+Pakiet ten zawiera pliki nag≥Ûwkowe niezbÍdne do kompilacji programÛw
+z wykorzystaniem biblioteki c++-ncurses.
 
 %package c++-static
 Summary:	Static libraries for C++ ncurses
@@ -300,15 +320,34 @@ sh patch.sh
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
 %patch13 -p1
 %patch14 -p1
-#%patch15 -p1
+%patch15 -p1
 %patch16 -p1
 %patch17 -p1
 %patch18 -p1
 %patch19 -p1
 %patch20 -p1
 %patch21 -p1
+%patch22 -p1
+%patch100 -p1
+%patch101 -p1
+#%patch102 -p1
+%patch103 -p1
+%patch104 -p1
+%patch105 -p1
+%patch106 -p1
+%patch107 -p1
+%patch108 -p1
 
 %build
 unset TERMINFO || :
@@ -328,6 +367,10 @@ ln -sf ../configure .
 	--with%{!?debug:out}-debug \
 	--without-profile \
 	--with-termlib \
+	--with-largefile \
+	--disable-lp64 \
+	--with-chtype='long' \
+	--with-mmask-t='long' \
 	--with-manpage-aliases \
 	--with-manpage-format=normal \
 	--without-manpage-symlinks \
