@@ -13,17 +13,14 @@ Summary(ru):	ncurses - новая библиотека управления терминалами
 Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
-Version:	5.4
-Release:	10.2
+Version:	5.5
+Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
-# Source0-md5:	069c8880072060373290a4fefff43520
+# Source0-md5:	e73c1ac10b4bfc46db43b2ddfd6244ef
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
-Patch0:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050827-patch.sh.bz2
-Patch1:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050903.patch.gz
-Patch2:		ftp://dickey.his.com/ncurses/5.4/%{name}-5.4-20050910.patch.gz
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
 Patch102:	%{name}-rxvt.patch
@@ -295,10 +292,6 @@ tworzenia aplikacji u©ywaj╠cych ncurses w jЙzyku Ada95.
 
 %prep
 %setup -q
-bzcat %{PATCH0} > patch.sh
-sh patch.sh
-%patch1 -p1
-%patch2 -p1
 %patch100 -p1
 %patch101 -p1
 #%patch102 -p1
@@ -337,7 +330,8 @@ ln -sf ../configure .
 	--with-ada-include=%{_libdir}/ada/adainclude/ \
 	--with-ada-objects=%{_libdir}/ada/adalib/ \
 	`[ "$t" = "widec" ] && echo --enable-widec --includedir=%{_includedir}w`
-%{__make}
+%{__make} \
+	CC="%{__cc}"
 cd ..
 done
 
