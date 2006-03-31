@@ -14,22 +14,21 @@ Summary(tr):	Terminal kontrol kitapl˝˝
 Summary(uk):	ncurses - Œœ◊¡ ¬¶¬Ã¶œ‘≈À¡ À≈“’◊¡ŒŒ— ‘≈“Õ¶Œ¡Ã¡Õ…
 Name:		ncurses
 Version:	5.5
-Release:	2
+Release:	2.1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
 # Source0-md5:	e73c1ac10b4bfc46db43b2ddfd6244ef
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
-Patch0:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20051015.patch.gz
-Patch1:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20051022.patch.gz
-Patch2:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20051029.patch.gz
-Patch3:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20051112.patch.gz
-Patch4:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20051119.patch.gz
-Patch5:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20051126.patch.gz
-Patch6:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20051203.patch.gz
-Patch7:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20051210.patch.gz
-Patch8:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20051217.patch.gz
+Patch0:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060128-patch.sh.bz2
+Patch1:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060204.patch.gz
+Patch2:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060211.patch.gz
+Patch3:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060218.patch.gz
+Patch4:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060225.patch.gz
+Patch5:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060311.patch.gz
+Patch6:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060312.patch.gz
+Patch7:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060318.patch.gz
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
 Patch102:	%{name}-rxvt.patch
@@ -309,7 +308,6 @@ tworzenia aplikacji uøywaj±cych ncurses w jÍzyku Ada95.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
 %patch100 -p1
 %patch101 -p1
 #%patch102 -p1
