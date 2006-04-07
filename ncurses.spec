@@ -14,7 +14,7 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.5
-Release:	2.1
+Release:	2.2
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -29,6 +29,7 @@ Patch4:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060225.patch.gz
 Patch5:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060311.patch.gz
 Patch6:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060312.patch.gz
 Patch7:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060318.patch.gz
+Patch8:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060401.patch.gz
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
 Patch102:	%{name}-rxvt.patch
@@ -308,6 +309,7 @@ tworzenia aplikacji u©ywaj╠cych ncurses w jЙzyku Ada95.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 %patch100 -p1
 %patch101 -p1
 #%patch102 -p1
