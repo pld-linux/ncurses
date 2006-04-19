@@ -14,7 +14,7 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.5
-Release:	4
+Release:	5
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -31,6 +31,8 @@ Patch6:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060312.patch.gz
 Patch7:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060318.patch.gz
 Patch8:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060401.patch.gz
 Patch9:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060408.patch.gz
+Patch10:	ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060415.patch.gz
+Patch11:	ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060416.patch.gz
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
 Patch102:	%{name}-rxvt.patch
@@ -46,9 +48,9 @@ BuildRequires:	automake
 %{?with_ada:BuildRequires:	gcc-ada}
 %{?with_cxx:BuildRequires:	libstdc++-devel}
 BuildRequires:	sharutils
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libncurses5
 Conflicts:	terminfo < 5.4-0.6
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_includedir	%{_prefix}/include/ncurses
 
@@ -161,8 +163,8 @@ Summary(ru):	Хедеры и библиотеки для разработки программ с ncurses
 Summary(uk):	Хедери та б╕бл╕отеки для розробки програм з ncurses
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Obsoletes:	libtermcap-devel
 Obsoletes:	libncurses5-devel
+Obsoletes:	libtermcap-devel
 
 %description devel
 This package includes the header files and libraries necessary to
@@ -312,6 +314,8 @@ tworzenia aplikacji u©ywaj╠cych ncurses w jЙzyku Ada95.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
 %patch100 -p1
 %patch101 -p1
 #%patch102 -p1
