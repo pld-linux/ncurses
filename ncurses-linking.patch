@@ -90,7 +90,7 @@ diff -Nur ncurses-5.5.orig/tack/Makefile.in ncurses-5.5.linking/tack/Makefile.in
  
  tack$x: $(DEPS_TACK) $(DEPS_CURSES)
 -	@ECHO_LINK@ $(LINK) $(DEPS_TACK) $(LDFLAGS_DEFAULT) -o $@
-+	@ECHO_LINK@ $(LDFLAGS_DEFAULT) $(LINK) $(DEPS_TACK) -o $@
++	@ECHO_LINK@ $(LINK) $(LDFLAGS_DEFAULT) $(DEPS_TACK) -o $@
  
  #
  # Utility productions start here
