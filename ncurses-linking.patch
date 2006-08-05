@@ -1,6 +1,6 @@
 diff -Nur ncurses-5.5.orig/mk-1st.awk ncurses-5.5.linking/mk-1st.awk
 --- ncurses-5.5.orig/mk-1st.awk	2005-06-18 21:15:57.000000000 +0200
-+++ ncurses-5.5.linking/mk-1st.awk	2006-08-05 17:34:45.000000000 +0200
++++ ncurses-5.5.linking/mk-1st.awk	2006-08-05 18:13:45.000000000 +0200
 @@ -210,9 +210,9 @@
  					print "\t-@rm -f $@";
  				}
@@ -13,3 +13,84 @@ diff -Nur ncurses-5.5.orig/mk-1st.awk ncurses-5.5.linking/mk-1st.awk
  				}
  				sharedlinks("../lib")
  
+diff -Nur ncurses-5.5.orig/progs/Makefile.in ncurses-5.5.linking/progs/Makefile.in
+--- ncurses-5.5.orig/progs/Makefile.in	2006-08-05 18:13:39.000000000 +0200
++++ ncurses-5.5.linking/progs/Makefile.in	2006-08-05 18:21:55.000000000 +0200
+@@ -96,7 +96,8 @@
+ LD		= @LD@
+ LINK		= @LINK_PROGS@ $(LIBTOOL_LINK) $(CC)
+ LDFLAGS		= @EXTRA_LDFLAGS@ \
+-		@TINFO_ARGS@ @LDFLAGS@ @LD_MODEL@ @LIBS@
++		@TINFO_ARGS@ @LDFLAGS@ @LD_MODEL@
++LIBS		= @LIBS@
+ 
+ LDFLAGS_LIBTOOL	= $(LDFLAGS) $(CFLAGS_LIBTOOL)
+ LDFLAGS_NORMAL	= $(LDFLAGS) $(CFLAGS_NORMAL)
+@@ -207,40 +208,40 @@
+ 	$(MODEL)/dump_entry$o
+ 
+ tic$x: $(DEPS_TIC) $(DEPS_CURSES) transform.h
+-	@ECHO_LINK@ $(LINK) $(DEPS_TIC) $(LDFLAGS_DEFAULT) -o $@
++	@ECHO_LINK@ $(LINK) $(LDFLAGS_DEFAULT) $(DEPS_TIC) $(LIBS) -o $@
+ 
+ DEPS_TOE = \
+ 	$(MODEL)/toe$o \
+ 	$(MODEL)/dump_entry$o
+ 
+ toe$x: $(DEPS_TOE) $(DEPS_CURSES)
+-	@ECHO_LINK@ $(LINK) $(DEPS_TOE) $(LDFLAGS_DEFAULT) -o $@
++	@ECHO_LINK@ $(LINK) $(LDFLAGS_DEFAULT) $(DEPS_TOE) $(LIBS) -o $@
+ 
+ DEPS_CLEAR = \
+ 	$(MODEL)/clear$o
+ 
+ clear$x: $(DEPS_CLEAR) $(DEPS_CURSES)
+-	@ECHO_LINK@ $(LINK) $(DEPS_CLEAR) $(LDFLAGS_DEFAULT) -o $@
++	@ECHO_LINK@ $(LINK) $(LDFLAGS_DEFAULT) $(DEPS_CLEAR) $(LIBS) -o $@
+ 
+ DEPS_TPUT = \
+ 	$(MODEL)/tput$o
+ 
+ tput$x: $(DEPS_TPUT) $(DEPS_CURSES) transform.h
+-	@ECHO_LINK@ $(LINK) $(DEPS_TPUT) $(LDFLAGS_DEFAULT) -o $@
++	@ECHO_LINK@ $(LINK) $(LDFLAGS_DEFAULT) $(DEPS_TPUT) $(LIBS) -o $@
+ 
+ DEPS_INFOCMP = \
+ 	$(MODEL)/infocmp$o \
+ 	$(MODEL)/dump_entry$o
+ 
+ infocmp$x: $(DEPS_INFOCMP) $(DEPS_CURSES)
+-	@ECHO_LINK@ $(LINK) $(DEPS_INFOCMP) $(LDFLAGS_DEFAULT) -o $@
++	@ECHO_LINK@ $(LINK) $(LDFLAGS_DEFAULT) $(DEPS_INFOCMP) $(LIBS) -o $@
+ 
+ DEPS_TSET = \
+ 	$(MODEL)/tset$o \
+ 	$(MODEL)/dump_entry$o
+ 
+ tset$x: $(DEPS_TSET) $(DEPS_CURSES) transform.h
+-	@ECHO_LINK@ $(LINK) $(DEPS_TSET) $(LDFLAGS_DEFAULT) -o $@
++	@ECHO_LINK@ $(LINK) $(LDFLAGS_DEFAULT) $(DEPS_TSET) $(LIBS) -o $@
+ 
+ termsort.c: $(srcdir)/MKtermsort.sh
+ 	sh $(srcdir)/MKtermsort.sh $(AWK) $(srcdir)/../include/@TERMINFO_CAPS@ >$@
+diff -Nur ncurses-5.5.orig/tack/Makefile.in ncurses-5.5.linking/tack/Makefile.in
+--- ncurses-5.5.orig/tack/Makefile.in	2005-06-19 01:01:59.000000000 +0200
++++ ncurses-5.5.linking/tack/Makefile.in	2006-08-05 18:17:29.000000000 +0200
+@@ -64,7 +64,7 @@
+ LD		= @LD@
+ LINK		= @LINK_PROGS@ $(LIBTOOL_LINK) $(CC)
+ LDFLAGS		= @EXTRA_LDFLAGS@ \
+-		@TINFO_ARGS@ @LDFLAGS@ @LD_MODEL@ @LIBS@
++		@TINFO_ARGS@ @LDFLAGS@ @LD_MODEL@
+ 
+ LDFLAGS_LIBTOOL	= $(LDFLAGS) $(CFLAGS_LIBTOOL)
+ LDFLAGS_NORMAL	= $(LDFLAGS) $(CFLAGS_NORMAL)
+@@ -135,7 +135,7 @@
+ 	$(MODEL)/tack$o
+ 
+ tack$x: $(DEPS_TACK) $(DEPS_CURSES)
+-	@ECHO_LINK@ $(LINK) $(DEPS_TACK) $(LDFLAGS_DEFAULT) -o $@
++	@ECHO_LINK@ $(LDFLAGS_DEFAULT) $(LINK) $(DEPS_TACK) -o $@
+ 
+ #
+ # Utility productions start here
