@@ -43,6 +43,7 @@ Patch106:	%{name}-gnome-terminal.patch
 Patch107:	%{name}-xterm-kbs.patch
 # disable rain demo; triggers gcc bug: http://gcc.gnu.org/bugzilla/show_bug.cgi?id=14998
 Patch108:	%{name}-no-rain-demo.patch
+Patch109:	%{name}-linking.patch
 URL:		http://dickey.his.com/ncurses/ncurses.html
 BuildRequires:	automake
 %{?with_ada:BuildRequires:	gcc-ada}
@@ -325,6 +326,7 @@ tworzenia aplikacji u¿ywaj±cych ncurses w jêzyku Ada95.
 %patch106 -p1
 %patch107 -p1
 %patch108 -p1
+%patch109 -p1
 
 %build
 unset TERMINFO || :
