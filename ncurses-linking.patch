@@ -1,0 +1,15 @@
+diff -Nur ncurses-5.5.orig/mk-1st.awk ncurses-5.5.linking/mk-1st.awk
+--- ncurses-5.5.orig/mk-1st.awk	2005-06-18 21:15:57.000000000 +0200
++++ ncurses-5.5.linking/mk-1st.awk	2006-08-05 17:34:45.000000000 +0200
+@@ -210,9 +210,9 @@
+ 					print "\t-@rm -f $@";
+ 				}
+ 				if ( subset == "termlib" || subset == "termlib+ext_tinfo" ) {
+-					printf "\t$(MK_SHARED_LIB) $(%s_OBJS) $(TINFO_LIST) $(LDFLAGS)\n", OBJS
++					printf "\t$(MK_SHARED_LIB) $(LDFLAGS) $(%s_OBJS) $(TINFO_LIST)\n", OBJS
+ 				} else {
+-					printf "\t$(MK_SHARED_LIB) $(%s_OBJS) $(SHLIB_LIST) $(LDFLAGS)\n", OBJS
++					printf "\t$(MK_SHARED_LIB) $(LDFLAGS) $(%s_OBJS) $(SHLIB_LIST)\n", OBJS
+ 				}
+ 				sharedlinks("../lib")
+ 
