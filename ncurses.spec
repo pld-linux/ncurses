@@ -3,6 +3,8 @@
 %bcond_without	ada		# do not build Ada95 bindings
 %bcond_without	cxx		# do not build C++ ncurses bindings and demo programs
 #		  		# (this is neccessary to build ncurses linked with uClibc).
+%bcond_without	gpm		# build without (dynamically loadable) libgpm support
+#
 Summary:	curses terminal control library
 Summary(de):	curses-Terminal-Control-Library
 Summary(es):	Biblioteca de control de terminal curses
@@ -13,40 +15,31 @@ Summary(ru):	ncurses - новая библиотека управления терминалами
 Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
-Version:	5.5
-Release:	5
+Version:	5.6
+Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
-# Source0-md5:	e73c1ac10b4bfc46db43b2ddfd6244ef
+# Source0-md5:	b6593abe1089d6aab1551c105c9300e3
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
-Patch0:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060128-patch.sh.bz2
-Patch1:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060204.patch.gz
-Patch2:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060211.patch.gz
-Patch3:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060218.patch.gz
-Patch4:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060225.patch.gz
-Patch5:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060311.patch.gz
-Patch6:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060312.patch.gz
-Patch7:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060318.patch.gz
-Patch8:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060401.patch.gz
-Patch9:		ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060408.patch.gz
-Patch10:	ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060415.patch.gz
-Patch11:	ftp://dickey.his.com/ncurses/5.5/%{name}-5.5-20060416.patch.gz
+Patch0:		ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20061223.patch.gz
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
-Patch102:	%{name}-rxvt.patch
-Patch103:	%{name}-meta.patch
-Patch104:	%{name}-xterm-home-end.patch
-Patch105:	%{name}-mouse_trafo-warning.patch
-Patch106:	%{name}-gnome-terminal.patch
-Patch107:	%{name}-xterm-kbs.patch
+Patch102:	%{name}-meta.patch
+Patch103:	%{name}-xterm-home-end.patch
+Patch104:	%{name}-mouse_trafo-warning.patch
+Patch105:	%{name}-gnome-terminal.patch
+# not sure about this one, now all xterms have kbs defined (to ^H, not \177)
+# and only XTerm.ad.pl sets backspace to \177 instead of ^H
+Patch106:	%{name}-xterm-kbs.patch
 # disable rain demo; triggers gcc bug: http://gcc.gnu.org/bugzilla/show_bug.cgi?id=14998
-Patch108:	%{name}-no-rain-demo.patch
-Patch109:	%{name}-linking.patch
+Patch107:	%{name}-no-rain-demo.patch
+Patch108:	%{name}-linking.patch
 URL:		http://dickey.his.com/ncurses/ncurses.html
 BuildRequires:	automake
 %{?with_ada:BuildRequires:	gcc-ada}
+%{?with_gpm:BuildRequires:	gpm-devel}
 %{?with_cxx:BuildRequires:	libstdc++-devel}
 BuildRequires:	sharutils
 Obsoletes:	libncurses5
@@ -306,27 +299,15 @@ tworzenia aplikacji u©ywaj╠cych ncurses w jЙzyku Ada95.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
 %patch100 -p1
 %patch101 -p1
-#%patch102 -p1
+%patch102 -p1
 %patch103 -p1
 %patch104 -p1
 %patch105 -p1
 %patch106 -p1
 %patch107 -p1
 %patch108 -p1
-%patch109 -p1
 
 %build
 unset TERMINFO || :
@@ -335,8 +316,8 @@ cp -f /usr/share/automake/config.sub .
 for t in narrowc widec; do
 install -d obj-$t
 cd obj-$t
-ln -sf ../configure .
-%configure \
+#ln -sf ../configure .
+../%configure \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
 	--with-shared \
@@ -344,6 +325,7 @@ ln -sf ../configure .
 	--with%{!?with_cxx:out}-cxx \
 	--with%{!?with_cxx:out}-cxx-binding \
 	--with%{!?debug:out}-debug \
+	--with%{!?with_gpm:out}-gpm \
 	--without-profile \
 	--with-termlib \
 	--with-largefile \
@@ -392,6 +374,16 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ANNOUNCE README
+%attr(755,root,root) %{_bindir}/captoinfo
+%attr(755,root,root) %{_bindir}/clear
+%attr(755,root,root) %{_bindir}/infocmp
+%attr(755,root,root) %{_bindir}/infotocap
+%attr(755,root,root) %{_bindir}/reset
+%attr(755,root,root) %{_bindir}/tack
+%attr(755,root,root) %{_bindir}/tic
+%attr(755,root,root) %{_bindir}/toe
+%attr(755,root,root) %{_bindir}/tput
+%attr(755,root,root) %{_bindir}/tset
 %attr(755,root,root) /%{_lib}/libncurses.so.*.*
 %attr(755,root,root) /%{_lib}/libtinfo.so.*.*
 %attr(755,root,root) %{_libdir}/libncursesw.so.*.*
@@ -412,8 +404,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/terminfo/v/vt220-8
 %{_datadir}/terminfo/v/vt52
 %{_datadir}/terminfo/x/xterm*
-
-%attr(755,root,root) %{_bindir}/*
 
 %{_mandir}/man[157]/*
 %lang(fi) %{_mandir}/fi/man1/*
@@ -440,6 +430,8 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc doc/html/ncurses-intro.html
+%attr(755,root,root) %{_bindir}/ncurses5-config
+%attr(755,root,root) %{_bindir}/ncursesw5-config
 %attr(755,root,root) %{_libdir}/libcurses.so
 %attr(755,root,root) %{_libdir}/libncurses.so
 %attr(755,root,root) %{_libdir}/libtinfo.so
