@@ -316,7 +316,6 @@ cp -f /usr/share/automake/config.sub .
 for t in narrowc widec; do
 install -d obj-$t
 cd obj-$t
-#ln -sf ../configure .
 ../%configure \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-normal \
