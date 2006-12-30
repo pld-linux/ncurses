@@ -1,18 +1,14 @@
-diff -Nur ncurses-5.5.orig/mk-1st.awk ncurses-5.5.linking/mk-1st.awk
---- ncurses-5.5.orig/mk-1st.awk	2005-06-18 21:15:57.000000000 +0200
-+++ ncurses-5.5.linking/mk-1st.awk	2006-08-05 18:50:18.000000000 +0200
-@@ -210,9 +210,9 @@
- 					print "\t-@rm -f $@";
- 				}
- 				if ( subset == "termlib" || subset == "termlib+ext_tinfo" ) {
--					printf "\t$(MK_SHARED_LIB) $(%s_OBJS) $(TINFO_LIST) $(LDFLAGS)\n", OBJS
-+					printf "\t$(MK_SHARED_LIB) $(LDFLAGS) $(%s_OBJS) $(TINFO_LIST)\n", OBJS
- 				} else {
--					printf "\t$(MK_SHARED_LIB) $(%s_OBJS) $(SHLIB_LIST) $(LDFLAGS)\n", OBJS
-+					printf "\t$(MK_SHARED_LIB) $(LDFLAGS) $(%s_OBJS) $(SHLIB_LIST)\n", OBJS
- 				}
- 				sharedlinks("../lib")
- 
+--- ncurses-5.6/mk-1st.awk.orig	2006-12-30 17:40:34.164755215 +0100
++++ ncurses-5.6/mk-1st.awk	2006-12-30 17:42:11.054276635 +0100
+@@ -83,7 +83,7 @@
+ 		}
+ 	}
+ function make_shlib(objs, shlib_list) {
+-		printf "\t$(MK_SHARED_LIB) $(%s_OBJS) $(%s) $(LDFLAGS)\n", objs, shlib_list
++		printf "\t$(MK_SHARED_LIB) $(LDFLAGS) $(%s_OBJS) $(%s)\n", objs, shlib_list
+ 	}
+ function sharedlinks(directory) {
+ 		if ( ShlibVer != "auto" && ShlibVer != "cygdll" ) {
 diff -Nur ncurses-5.5.orig/progs/Makefile.in ncurses-5.5.linking/progs/Makefile.in
 --- ncurses-5.5.orig/progs/Makefile.in	2006-08-05 18:50:12.000000000 +0200
 +++ ncurses-5.5.linking/progs/Makefile.in	2006-08-05 18:50:21.000000000 +0200

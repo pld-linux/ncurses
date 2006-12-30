@@ -1,11 +1,11 @@
---- ncurses-5.4/misc/terminfo.src.xterm-kbs	2005-04-17 09:17:09.416779464 +0200
-+++ ncurses-5.4/misc/terminfo.src	2005-04-17 09:18:59.974972064 +0200
-@@ -2982,7 +2982,7 @@
- 	kRIT=\E[1;2C, kb2=\EOE, kcbt=\E[Z, kcub1=\EOD, kcud1=\EOB, 
- 	kcuf1=\EOC, kcuu1=\EOA, kend=\EOF, kent=\EOM, khome=\EOH, 
- 	kich1=\E[2~, kind=\E[1;2B, kmous=\E[M, knp=\E[6~, 
--	kpp=\E[5~, kri=\E[1;2A, rin=\E[%p1%dT, use=xterm+pcfkeys, 
-+	kpp=\E[5~, kbs=\177, kri=\E[1;2A, rin=\E[%p1%dT, use=xterm+pcfkeys, 
- 	use=xterm-basic, 
+--- ncurses-5.6/misc/terminfo.src.orig	2006-12-30 17:12:31.136844922 +0100
++++ ncurses-5.6/misc/terminfo.src	2006-12-30 17:38:53.471017008 +0100
+@@ -3019,7 +3019,7 @@
+ 	kRIT=\E[1;2C, kb2=\EOE, kcbt=\E[Z, kcub1=\EOD, kcud1=\EOB,
+ 	kcuf1=\EOC, kcuu1=\EOA, kend=\EOF, kent=\EOM, khome=\EOH,
+ 	kich1=\E[2~, kind=\E[1;2B, kmous=\E[M, knp=\E[6~,
+-	kpp=\E[5~, kri=\E[1;2A, rin=\E[%p1%dT, use=xterm+pcfkeys,
++	kpp=\E[5~, kbs=\177, kri=\E[1;2A, rin=\E[%p1%dT, use=xterm+pcfkeys,
+ 	use=xterm-basic,
  #
  # This fragment describes as much of XFree86 xterm's "pc-style" function
