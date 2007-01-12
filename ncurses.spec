@@ -16,7 +16,7 @@ Summary(tr):	Terminal kontrol kitaplЩПЩ
 Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
 Name:		ncurses
 Version:	5.6
-Release:	1
+Release:	2
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -383,10 +383,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/toe
 %attr(755,root,root) %{_bindir}/tput
 %attr(755,root,root) %{_bindir}/tset
-%attr(755,root,root) /%{_lib}/libncurses.so.*.*
-%attr(755,root,root) /%{_lib}/libtinfo.so.*.*
-%attr(755,root,root) %{_libdir}/libncursesw.so.*.*
-%attr(755,root,root) %{_libdir}/libtinfow.so.*.*
+%attr(755,root,root) /%{_lib}/libncurses.so.*
+%attr(755,root,root) /%{_lib}/libtinfo.so.*
+%attr(755,root,root) %{_libdir}/libncursesw.so.*
+%attr(755,root,root) %{_libdir}/libtinfow.so.*
 
 %{_datadir}/tabset
 
@@ -468,12 +468,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files ext
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libform.so.*.*
-%attr(755,root,root) %{_libdir}/libmenu.so.*.*
-%attr(755,root,root) %{_libdir}/libpanel.so.*.*
-%attr(755,root,root) %{_libdir}/libformw.so.*.*
-%attr(755,root,root) %{_libdir}/libmenuw.so.*.*
-%attr(755,root,root) %{_libdir}/libpanelw.so.*.*
+%attr(755,root,root) %{_libdir}/libform.so.*
+%attr(755,root,root) %{_libdir}/libmenu.so.*
+%attr(755,root,root) %{_libdir}/libpanel.so.*
+%attr(755,root,root) %{_libdir}/libformw.so.*
+%attr(755,root,root) %{_libdir}/libmenuw.so.*
+%attr(755,root,root) %{_libdir}/libpanelw.so.*
 
 %files ext-devel
 %defattr(644,root,root,755)
