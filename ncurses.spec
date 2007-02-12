@@ -6,14 +6,14 @@
 %bcond_without	gpm		# build without (dynamically loadable) libgpm support
 #
 Summary:	curses terminal control library
-Summary(de):	curses-Terminal-Control-Library
-Summary(es):	Biblioteca de control de terminal curses
-Summary(fr):	La bibliothИque de contrТle de terminal curses
-Summary(pl):	Biblioteki do kontrolowania terminala
-Summary(pt_BR):	Biblioteca de controle de terminal curses
-Summary(ru):	ncurses - новая библиотека управления терминалами
-Summary(tr):	Terminal kontrol kitaplЩПЩ
-Summary(uk):	ncurses - нова б╕бл╕отека керування терм╕налами
+Summary(de.UTF-8):   curses-Terminal-Control-Library
+Summary(es.UTF-8):   Biblioteca de control de terminal curses
+Summary(fr.UTF-8):   La bibliothц╘que de contrц╢le de terminal curses
+Summary(pl.UTF-8):   Biblioteki do kontrolowania terminala
+Summary(pt_BR.UTF-8):   Biblioteca de controle de terminal curses
+Summary(ru.UTF-8):   ncurses - п╫п╬п╡п╟я▐ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╟ я┐п©я─п╟п╡п╩п╣п╫п╦я▐ я┌п╣я─п╪п╦п╫п╟п╩п╟п╪п╦
+Summary(tr.UTF-8):   Terminal kontrol kitaplд╠д÷д╠
+Summary(uk.UTF-8):   ncurses - п╫п╬п╡п╟ п╠я√п╠п╩я√п╬я┌п╣п╨п╟ п╨п╣я─я┐п╡п╟п╫п╫я▐ я┌п╣я─п╪я√п╫п╟п╩п╟п╪п╦
 Name:		ncurses
 Version:	5.6
 Release:	2
@@ -54,76 +54,76 @@ method of updating character screens with reasonable optimization.
 This implementation is ``new curses'' (ncurses) and is the approved
 replacement for 4.4BSD classic curses, which is being discontinued.
 
-%description -l de
+%description -l de.UTF-8
 Die curses-Library-Routinen geben dem Benutzer eine
-Terminal-unabhДngige Methode zur optimierten Aktualisierung von
+Terminal-unabhц╓ngige Methode zur optimierten Aktualisierung von
 zeichenbasierenden Bildschirminhalten an die Hand. Die vorliegende
 Implementierung ist NEW CURSES (ncurses), die offizielle
-Nachfolgerversion fЭr 4.4BSC (die klassische curses-Version), welche
-nicht weitergefЭhrt wird.
+Nachfolgerversion fц╪r 4.4BSC (die klassische curses-Version), welche
+nicht weitergefц╪hrt wird.
 
-%description -l es
-Las rutinas de la biblioteca curses ofrecen al usuario un mИtodo
-independiente de terminal para actualizaciСn de las pantallas de
-caracteres con optimizaciСn razonable. Este soporte es "nuevo curses"
-(ncurses) y es el substituto aprobado para los clАsicos curses 4.4BSD,
+%description -l es.UTF-8
+Las rutinas de la biblioteca curses ofrecen al usuario un mц╘todo
+independiente de terminal para actualizaciцЁn de las pantallas de
+caracteres con optimizaciцЁn razonable. Este soporte es "nuevo curses"
+(ncurses) y es el substituto aprobado para los clц║sicos curses 4.4BSD,
 que se quedaban desfasados.
 
-%description -l fr
-Les routines de la bibliothХque curses donnent Ю l'utilisateur une
-mИthode indИpendante du terminal pour la mise Ю jour des Иcrans en
+%description -l fr.UTF-8
+Les routines de la bibliothц╗que curses donnent ц═ l'utilisateur une
+mц╘thode indц╘pendante du terminal pour la mise ц═ jour des ц╘crans en
 mode texte avec une optimisation correcte. Ceci est l'implantation du
-╚ nouveau curses ╩ (ncurses) et est le remplacement du curses 4.4BSD
-classique qui est abandonnИ.
+б╚ nouveau curses б╩ (ncurses) et est le remplacement du curses 4.4BSD
+classique qui est abandonnц╘.
 
-%description -l pl
-Biblioteka curses udostЙpnia funkcje pozwalaj╠ce u©ytkownikom na
-odwoЁywanie siЙ do zawarto╤ci terminala niezale©nie od jego typu.
-Pakiet ten zawiera implementacjЙ klasycznej biblioteki curses (z
+%description -l pl.UTF-8
+Biblioteka curses udostд≥pnia funkcje pozwalajд┘ce uе╪ytkownikom na
+odwoе┌ywanie siд≥ do zawartoе⌡ci terminala niezaleе╪nie od jego typu.
+Pakiet ten zawiera implementacjд≥ klasycznej biblioteki curses (z
 systemu 4.4BSD) o nazwie ncurses (new curses) i jest zarazem jej
-przyszЁym zamiennikiem.
+przyszе┌ym zamiennikiem.
 
-%description -l pt_BR
-As rotinas da biblioteca curses fornecem ao usuАrio um mИtodo
-independente de terminal para atualizaГЦo das telas de caracteres com
-otimizaГЦo razoАvel. Essa implementaГЦo И "novo curses" (ncurses) e И
-o substituto aprovado para os clАssicos curses 4.4BSD, que estЦo se
+%description -l pt_BR.UTF-8
+As rotinas da biblioteca curses fornecem ao usuц║rio um mц╘todo
+independente de terminal para atualizaц╖цёo das telas de caracteres com
+otimizaц╖цёo razoц║vel. Essa implementaц╖цёo ц╘ "novo curses" (ncurses) e ц╘
+o substituto aprovado para os clц║ssicos curses 4.4BSD, que estцёo se
 tornando obsoletos.
 
-%description -l ru
-Программы библиотеки curses предоставляют пользователям возможность
-терминально-независимого обновления символьных экранов с достаточной
-оптимизацией. Эта реализация - "новые curses" (ncurses), которая
-является одобренной заменой классической библиотеки curses из 4.4BSD,
-в настоящее время "снятой с производства". В PLD Linux ncurses
-является жизненно необходимой, без нее не будут функционировать многие
-программы, составляющие базовую систему. Практически все программы,
-которые выводят что-либо на терминал, используют ncurses. В PLD Linux
-ни библиотека termcap, ни традиционный файл /etc/termcap, не
-используются...
+%description -l ru.UTF-8
+п÷я─п╬пЁя─п╟п╪п╪я▀ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ curses п©я─п╣п╢п╬я│я┌п╟п╡п╩я▐я▌я┌ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▐п╪ п╡п╬п╥п╪п╬п╤п╫п╬я│я┌я▄
+я┌п╣я─п╪п╦п╫п╟п╩я▄п╫п╬-п╫п╣п╥п╟п╡п╦я│п╦п╪п╬пЁп╬ п╬п╠п╫п╬п╡п╩п╣п╫п╦я▐ я│п╦п╪п╡п╬п╩я▄п╫я▀я┘ я█п╨я─п╟п╫п╬п╡ я│ п╢п╬я│я┌п╟я┌п╬я┤п╫п╬п╧
+п╬п©я┌п╦п╪п╦п╥п╟я├п╦п╣п╧. п╜я┌п╟ я─п╣п╟п╩п╦п╥п╟я├п╦я▐ - "п╫п╬п╡я▀п╣ curses" (ncurses), п╨п╬я┌п╬я─п╟я▐
+я▐п╡п╩я▐п╣я┌я│я▐ п╬п╢п╬п╠я─п╣п╫п╫п╬п╧ п╥п╟п╪п╣п╫п╬п╧ п╨п╩п╟я│я│п╦я┤п╣я│п╨п╬п╧ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ curses п╦п╥ 4.4BSD,
+п╡ п╫п╟я│я┌п╬я▐я┴п╣п╣ п╡я─п╣п╪я▐ "я│п╫я▐я┌п╬п╧ я│ п©я─п╬п╦п╥п╡п╬п╢я│я┌п╡п╟". п▓ PLD Linux ncurses
+я▐п╡п╩я▐п╣я┌я│я▐ п╤п╦п╥п╫п╣п╫п╫п╬ п╫п╣п╬п╠я┘п╬п╢п╦п╪п╬п╧, п╠п╣п╥ п╫п╣п╣ п╫п╣ п╠я┐п╢я┐я┌ я└я┐п╫п╨я├п╦п╬п╫п╦я─п╬п╡п╟я┌я▄ п╪п╫п╬пЁп╦п╣
+п©я─п╬пЁя─п╟п╪п╪я▀, я│п╬я│я┌п╟п╡п╩я▐я▌я┴п╦п╣ п╠п╟п╥п╬п╡я┐я▌ я│п╦я│я┌п╣п╪я┐. п÷я─п╟п╨я┌п╦я┤п╣я│п╨п╦ п╡я│п╣ п©я─п╬пЁя─п╟п╪п╪я▀,
+п╨п╬я┌п╬я─я▀п╣ п╡я▀п╡п╬п╢я▐я┌ я┤я┌п╬-п╩п╦п╠п╬ п╫п╟ я┌п╣я─п╪п╦п╫п╟п╩, п╦я│п©п╬п╩я▄п╥я┐я▌я┌ ncurses. п▓ PLD Linux
+п╫п╦ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╟ termcap, п╫п╦ я┌я─п╟п╢п╦я├п╦п╬п╫п╫я▀п╧ я└п╟п╧п╩ /etc/termcap, п╫п╣
+п╦я│п©п╬п╩я▄п╥я┐я▌я┌я│я▐...
 
-%description -l tr
-curses kitaplЩПЩ ile kullanЩcЩya kullanЩlan terminal tipinden baПЩmsЩz
-olarak karakter tabanlЩ ekranlara eriЧim olanaПЩ saПlanabilmektedir.
-Bu uyarlama 'new curses' (ncurses), BSD deki klasik curses'in geliЧmiЧ
+%description -l tr.UTF-8
+curses kitaplд╠д÷д╠ ile kullanд╠cд╠ya kullanд╠lan terminal tipinden baд÷д╠msд╠z
+olarak karakter tabanlд╠ ekranlara eriе÷im olanaд÷д╠ saд÷lanabilmektedir.
+Bu uyarlama 'new curses' (ncurses), BSD deki klasik curses'in geliе÷miе÷
 halidir.
 
-%description -l uk
-Програми б╕бл╕отеки curses дають користувачам можлив╕сть
-терм╕нально-незалежного поновлення символьних екран╕в з достатньою
-оптим╕зац╕╓ю. Ця реал╕зац╕я - "нов╕ curses" (ncurses), котра ╓
-схваленою зам╕ною класично╖ б╕бл╕отеки curses з 4.4BSD, яка нараз╕
-"знята з виробництва". В PLD Linux ncurses ╓ житт╓во необх╕дною, без
-не╖ не буде працювати б╕льшость програм, що складають базову систему.
-Практично вс╕ програми, котр╕ виводять щось на терм╕нал,
-використовують ncurses. В PLD Linux ан╕ б╕бл╕отека termcap, ан╕
-традиц╕йний файл /etc/termcap не використовуються...
+%description -l uk.UTF-8
+п÷я─п╬пЁя─п╟п╪п╦ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ curses п╢п╟я▌я┌я▄ п╨п╬я─п╦я│я┌я┐п╡п╟я┤п╟п╪ п╪п╬п╤п╩п╦п╡я√я│я┌я▄
+я┌п╣я─п╪я√п╫п╟п╩я▄п╫п╬-п╫п╣п╥п╟п╩п╣п╤п╫п╬пЁп╬ п©п╬п╫п╬п╡п╩п╣п╫п╫я▐ я│п╦п╪п╡п╬п╩я▄п╫п╦я┘ п╣п╨я─п╟п╫я√п╡ п╥ п╢п╬я│я┌п╟я┌п╫я▄п╬я▌
+п╬п©я┌п╦п╪я√п╥п╟я├я√я■я▌. п╕я▐ я─п╣п╟п╩я√п╥п╟я├я√я▐ - "п╫п╬п╡я√ curses" (ncurses), п╨п╬я┌я─п╟ я■
+я│я┘п╡п╟п╩п╣п╫п╬я▌ п╥п╟п╪я√п╫п╬я▌ п╨п╩п╟я│п╦я┤п╫п╬я≈ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ curses п╥ 4.4BSD, я▐п╨п╟ п╫п╟я─п╟п╥я√
+"п╥п╫я▐я┌п╟ п╥ п╡п╦я─п╬п╠п╫п╦я├я┌п╡п╟". п▓ PLD Linux ncurses я■ п╤п╦я┌я┌я■п╡п╬ п╫п╣п╬п╠я┘я√п╢п╫п╬я▌, п╠п╣п╥
+п╫п╣я≈ п╫п╣ п╠я┐п╢п╣ п©я─п╟я├я▌п╡п╟я┌п╦ п╠я√п╩я▄я┬п╬я│я┌я▄ п©я─п╬пЁя─п╟п╪, я┴п╬ я│п╨п╩п╟п╢п╟я▌я┌я▄ п╠п╟п╥п╬п╡я┐ я│п╦я│я┌п╣п╪я┐.
+п÷я─п╟п╨я┌п╦я┤п╫п╬ п╡я│я√ п©я─п╬пЁя─п╟п╪п╦, п╨п╬я┌я─я√ п╡п╦п╡п╬п╢я▐я┌я▄ я┴п╬я│я▄ п╫п╟ я┌п╣я─п╪я√п╫п╟п╩,
+п╡п╦п╨п╬я─п╦я│я┌п╬п╡я┐я▌я┌я▄ ncurses. п▓ PLD Linux п╟п╫я√ п╠я√п╠п╩я√п╬я┌п╣п╨п╟ termcap, п╟п╫я√
+я┌я─п╟п╢п╦я├я√п╧п╫п╦п╧ я└п╟п╧п╩ /etc/termcap п╫п╣ п╡п╦п╨п╬я─п╦я│я┌п╬п╡я┐я▌я┌я▄я│я▐...
 
 %package -n terminfo
 Summary:	Complete terminfo database
-Summary(es):	Banco de datos terminfo para terminales extras (menos usados)
-Summary(pl):	Kompletna baza terminfo
-Summary(pt_BR):	Base de dados terminfo para terminais adicionais (menos usados)
+Summary(es.UTF-8):   Banco de datos terminfo para terminales extras (menos usados)
+Summary(pl.UTF-8):   Kompletna baza terminfo
+Summary(pt_BR.UTF-8):   Base de dados terminfo para terminais adicionais (menos usados)
 Group:		Applications/Terminal
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	ncurses-extraterms
@@ -134,27 +134,27 @@ Linux console, xterm and VT100, you probably will not need this this -
 a minimal %{_datadir}/terminfo tree for these terminal is already
 included in the ncurses package.
 
-%description -n terminfo -l es
+%description -n terminfo -l es.UTF-8
 Banco de datos terminfo para terminales extras. Las capacidades de los
-terminales mАs usados ya estАn en el paquete principal ncurses.
+terminales mц║s usados ya estц║n en el paquete principal ncurses.
 
-%description -n terminfo -l pl
-Pakiet ten zawiera kompletn╠ bazЙ terminfo. Je©eli u©ywasz terminali
-linux, console, xterm, vt100 prawdopodobnie nie bedziesz potrzebowaЁ
-tego pakietu gdy© definicje tych terminali s╠ wЁ╠czone w pakiet
+%description -n terminfo -l pl.UTF-8
+Pakiet ten zawiera kompletnд┘ bazд≥ terminfo. Jeе╪eli uе╪ywasz terminali
+linux, console, xterm, vt100 prawdopodobnie nie bedziesz potrzebowaе┌
+tego pakietu gdyе╪ definicje tych terminali sд┘ wе┌д┘czone w pakiet
 ncurses.
 
-%description -n terminfo -l pt_BR
-Base de dados terminfo para terminais extras. As definiГУes dos
-terminais mais usados jА estЦo no pacote principal ncurses.
+%description -n terminfo -l pt_BR.UTF-8
+Base de dados terminfo para terminais extras. As definiц╖ц╣es dos
+terminais mais usados jц║ estцёo no pacote principal ncurses.
 
 %package devel
 Summary:	Header files for develop ncurses based application
-Summary(es):	Bibliotecas de desarrollo para ncurses
-Summary(pl):	Pliki nagЁСwkowe do bibliotek ncurses
-Summary(pt_BR):	Bibliotecas de desenvolvimento para ncurses
-Summary(ru):	Хедеры и библиотеки для разработки программ с ncurses
-Summary(uk):	Хедери та б╕бл╕отеки для розробки програм з ncurses
+Summary(es.UTF-8):   Bibliotecas de desarrollo para ncurses
+Summary(pl.UTF-8):   Pliki nagе┌цЁwkowe do bibliotek ncurses
+Summary(pt_BR.UTF-8):   Bibliotecas de desenvolvimento para ncurses
+Summary(ru.UTF-8):   п╔п╣п╢п╣я─я▀ п╦ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ п©я─п╬пЁя─п╟п╪п╪ я│ ncurses
+Summary(uk.UTF-8):   п╔п╣п╢п╣я─п╦ я┌п╟ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ п©я─п╬пЁя─п╟п╪ п╥ ncurses
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	libncurses5-devel
@@ -164,33 +164,33 @@ Obsoletes:	libtermcap-devel
 This package includes the header files and libraries necessary to
 develop applications that use ncurses.
 
-%description devel -l es
-Este paquete incluye las bibliotecas y archivos de inclusiСn
+%description devel -l es.UTF-8
+Este paquete incluye las bibliotecas y archivos de inclusiцЁn
 necesarios al desarrollo de aplicaciones que usan ncurses.
 
-%description devel -l pl
-Pakiet ten zawiera pliki nagЁСwkowe niezbЙdne do pisania/kompilowania
-programСw z wykorzystaniem bibliotek ncurses.
+%description devel -l pl.UTF-8
+Pakiet ten zawiera pliki nagе┌цЁwkowe niezbд≥dne do pisania/kompilowania
+programцЁw z wykorzystaniem bibliotek ncurses.
 
-%description devel -l pt_BR
-Este pacote inclui as bibliotecas e arquivos de inclusЦo necessАrios
-ao desenvolvimento de aplicaГУes que usam ncurses.
+%description devel -l pt_BR.UTF-8
+Este pacote inclui as bibliotecas e arquivos de inclusцёo necessц║rios
+ao desenvolvimento de aplicaц╖ц╣es que usam ncurses.
 
-%description devel -l ru
-Этот пакет содержит хедеры и библиотеки, необходимые для разработки
-программ, использующих ncurses.
+%description devel -l ru.UTF-8
+п╜я┌п╬я┌ п©п╟п╨п╣я┌ я│п╬п╢п╣я─п╤п╦я┌ я┘п╣п╢п╣я─я▀ п╦ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦, п╫п╣п╬п╠я┘п╬п╢п╦п╪я▀п╣ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦
+п©я─п╬пЁя─п╟п╪п╪, п╦я│п©п╬п╩я▄п╥я┐я▌я┴п╦я┘ ncurses.
 
-%description devel -l uk
-Цей пакет м╕стить хедери та б╕бл╕отеки, необх╕дн╕ для розробки
-програм, що використовують ncurses.
+%description devel -l uk.UTF-8
+п╕п╣п╧ п©п╟п╨п╣я┌ п╪я√я│я┌п╦я┌я▄ я┘п╣п╢п╣я─п╦ я┌п╟ п╠я√п╠п╩я√п╬я┌п╣п╨п╦, п╫п╣п╬п╠я┘я√п╢п╫я√ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦
+п©я─п╬пЁя─п╟п╪, я┴п╬ п╡п╦п╨п╬я─п╦я│я┌п╬п╡я┐я▌я┌я▄ ncurses.
 
 %package static
 Summary:	Static libraries for ncurses
-Summary(es):	Static libraries for ncurses development
-Summary(pl):	Biblioteki statyczne ncurses
-Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com ncurses
-Summary(ru):	Статические библиотеки для разработки программ с ncurses
-Summary(uk):	Статичн╕ б╕бл╕отеки для розробки програм з ncurses
+Summary(es.UTF-8):   Static libraries for ncurses development
+Summary(pl.UTF-8):   Biblioteki statyczne ncurses
+Summary(pt_BR.UTF-8):   Bibliotecas estц║ticas para desenvolvimento com ncurses
+Summary(ru.UTF-8):   п║я┌п╟я┌п╦я┤п╣я│п╨п╦п╣ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ п©я─п╬пЁя─п╟п╪п╪ я│ ncurses
+Summary(uk.UTF-8):   п║я┌п╟я┌п╦я┤п╫я√ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ п©я─п╬пЁя─п╟п╪ п╥ ncurses
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -198,26 +198,26 @@ Requires:	%{name}-devel = %{version}-%{release}
 This package includes the static libraries necessary to develop
 applications that use ncurses.
 
-%description static -l es
+%description static -l es.UTF-8
 Static libraries for ncurses development.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Pakiet ten zawiera biblioteki statyczne ncurses.
 
-%description static -l pt_BR
-Bibliotecas estАticas para desenvolvimento com ncurses.
+%description static -l pt_BR.UTF-8
+Bibliotecas estц║ticas para desenvolvimento com ncurses.
 
-%description static -l ru
-Этот пакет содержит статические библиотеки, необходимые для разработки
-программ, использующих ncurses.
+%description static -l ru.UTF-8
+п╜я┌п╬я┌ п©п╟п╨п╣я┌ я│п╬п╢п╣я─п╤п╦я┌ я│я┌п╟я┌п╦я┤п╣я│п╨п╦п╣ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦, п╫п╣п╬п╠я┘п╬п╢п╦п╪я▀п╣ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦
+п©я─п╬пЁя─п╟п╪п╪, п╦я│п©п╬п╩я▄п╥я┐я▌я┴п╦я┘ ncurses.
 
-%description static -l uk
-Цей пакет м╕стить статичн╕ б╕бл╕отеки, необх╕дн╕ для розробки програм,
-що використовують ncurses.
+%description static -l uk.UTF-8
+п╕п╣п╧ п©п╟п╨п╣я┌ п╪я√я│я┌п╦я┌я▄ я│я┌п╟я┌п╦я┤п╫я√ п╠я√п╠п╩я√п╬я┌п╣п╨п╦, п╫п╣п╬п╠я┘я√п╢п╫я√ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ п©я─п╬пЁя─п╟п╪,
+я┴п╬ п╡п╦п╨п╬я─п╦я│я┌п╬п╡я┐я▌я┌я▄ ncurses.
 
 %package ext
 Summary:	Additional ncurses libraries
-Summary(pl):	Dodatkowe biblioteki ncurses
+Summary(pl.UTF-8):   Dodatkowe biblioteki ncurses
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -225,14 +225,14 @@ Requires:	%{name} = %{version}-%{release}
 This package contains addidion ncurses libraries like libforms,
 libmenu and libpanel for easy making full screen curse application.
 
-%description ext -l pl
+%description ext -l pl.UTF-8
 Pakiet ten zawiera dodatkowe biblioteki libforms, libmenu i libpanel
-sЁu©╠ce do Ёatwego tworzenia aplikacji peЁnoekranowych korzystaj╠cych
+sе┌uе╪д┘ce do е┌atwego tworzenia aplikacji peе┌noekranowych korzystajд┘cych
 z ncurses.
 
 %package ext-devel
 Summary:	Header files for additional ncurses libraries
-Summary(pl):	Pliki nagЁСwkowe dodatkowych bibliotek ncurses
+Summary(pl.UTF-8):   Pliki nagе┌цЁwkowe dodatkowych bibliotek ncurses
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	%{name}-ext = %{version}-%{release}
@@ -240,24 +240,24 @@ Requires:	%{name}-ext = %{version}-%{release}
 %description ext-devel
 Header files for additional ncurses libraries (form, menu, panel).
 
-%description ext-devel -l pl
-Pliki nagЁСwkowe dodatkowych bibliotek ncurses (form, menu, panel).
+%description ext-devel -l pl.UTF-8
+Pliki nagе┌цЁwkowe dodatkowych bibliotek ncurses (form, menu, panel).
 
 %package ext-static
 Summary:	Static versions of additional ncurses libraries
-Summary(pl):	Statyczne wersje dodatkowych bibliotek ncurses
+Summary(pl.UTF-8):   Statyczne wersje dodatkowych bibliotek ncurses
 Group:		Development/Libraries
 Requires:	%{name}-ext-devel = %{version}-%{release}
 
 %description ext-static
 Static versions of additional ncurses libraries (form, menu, panel).
 
-%description ext-static -l pl
+%description ext-static -l pl.UTF-8
 Statyczne wersje dodatkowych bibliotek ncurses (form, menu, panel).
 
 %package c++-devel
 Summary:	Header files for develop C++ ncurses based application
-Summary(pl):	Pliki nagЁСwkowe do biblioteki C++ ncurses
+Summary(pl.UTF-8):   Pliki nagе┌цЁwkowe do biblioteki C++ ncurses
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -265,13 +265,13 @@ Requires:	%{name}-devel = %{version}-%{release}
 This package includes the header files and libraries necessary to
 develop applications that use C++ ncurses.
 
-%description c++-devel -l pl
-Pakiet ten zawiera pliki nagЁСwkowe niezbЙdne do kompilacji programСw
+%description c++-devel -l pl.UTF-8
+Pakiet ten zawiera pliki nagе┌цЁwkowe niezbд≥dne do kompilacji programцЁw
 z wykorzystaniem biblioteki c++-ncurses.
 
 %package c++-static
 Summary:	Static libraries for C++ ncurses
-Summary(pl):	Biblioteki statyczne C++ ncurses
+Summary(pl.UTF-8):   Biblioteki statyczne C++ ncurses
 Group:		Development/Libraries
 Requires:	%{name}-c++-devel = %{version}-%{release}
 
@@ -279,12 +279,12 @@ Requires:	%{name}-c++-devel = %{version}-%{release}
 This package includes the static libraries necessary to develop
 applications that use C++ ncurses.
 
-%description c++-static -l pl
+%description c++-static -l pl.UTF-8
 Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 
 %package ada-devel
 Summary:	Header files for develop Ada95 ncurses based application
-Summary(pl):	Pliki nagЁСwkowe do biblioteki Ada95 ncurses
+Summary(pl.UTF-8):   Pliki nagе┌цЁwkowe do biblioteki Ada95 ncurses
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -292,9 +292,9 @@ Requires:	%{name}-devel = %{version}-%{release}
 This package includes the header files and libraries necessary to
 develop applications that use Ada95 ncurses.
 
-%description ada-devel -l pl
-Ten pakiet zawiera pliki nagЁСwkowe i biblioteki potrzebne do
-tworzenia aplikacji u©ywaj╠cych ncurses w jЙzyku Ada95.
+%description ada-devel -l pl.UTF-8
+Ten pakiet zawiera pliki nagе┌цЁwkowe i biblioteki potrzebne do
+tworzenia aplikacji uе╪ywajд┘cych ncurses w jд≥zyku Ada95.
 
 %prep
 %setup -q
