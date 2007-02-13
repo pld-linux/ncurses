@@ -6,14 +6,14 @@
 %bcond_without	gpm		# build without (dynamically loadable) libgpm support
 #
 Summary:	curses terminal control library
-Summary(de.UTF-8):   curses-Terminal-Control-Library
-Summary(es.UTF-8):   Biblioteca de control de terminal curses
-Summary(fr.UTF-8):   La bibliothéque de contrôle de terminal curses
-Summary(pl.UTF-8):   Biblioteki do kontrolowania terminala
-Summary(pt_BR.UTF-8):   Biblioteca de controle de terminal curses
-Summary(ru.UTF-8):   ncurses - новая библиотека управления терминалами
-Summary(tr.UTF-8):   Terminal kontrol kitaplığı
-Summary(uk.UTF-8):   ncurses - нова бібліотека керування терміналами
+Summary(de.UTF-8):	curses-Terminal-Control-Library
+Summary(es.UTF-8):	Biblioteca de control de terminal curses
+Summary(fr.UTF-8):	La bibliothéque de contrôle de terminal curses
+Summary(pl.UTF-8):	Biblioteki do kontrolowania terminala
+Summary(pt_BR.UTF-8):	Biblioteca de controle de terminal curses
+Summary(ru.UTF-8):	ncurses - новая библиотека управления терминалами
+Summary(tr.UTF-8):	Terminal kontrol kitaplığı
+Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.6
 Release:	2
@@ -121,9 +121,9 @@ halidir.
 
 %package -n terminfo
 Summary:	Complete terminfo database
-Summary(es.UTF-8):   Banco de datos terminfo para terminales extras (menos usados)
-Summary(pl.UTF-8):   Kompletna baza terminfo
-Summary(pt_BR.UTF-8):   Base de dados terminfo para terminais adicionais (menos usados)
+Summary(es.UTF-8):	Banco de datos terminfo para terminales extras (menos usados)
+Summary(pl.UTF-8):	Kompletna baza terminfo
+Summary(pt_BR.UTF-8):	Base de dados terminfo para terminais adicionais (menos usados)
 Group:		Applications/Terminal
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	ncurses-extraterms
@@ -150,11 +150,11 @@ terminais mais usados já estão no pacote principal ncurses.
 
 %package devel
 Summary:	Header files for develop ncurses based application
-Summary(es.UTF-8):   Bibliotecas de desarrollo para ncurses
-Summary(pl.UTF-8):   Pliki nagłówkowe do bibliotek ncurses
-Summary(pt_BR.UTF-8):   Bibliotecas de desenvolvimento para ncurses
-Summary(ru.UTF-8):   Хедеры и библиотеки для разработки программ с ncurses
-Summary(uk.UTF-8):   Хедери та бібліотеки для розробки програм з ncurses
+Summary(es.UTF-8):	Bibliotecas de desarrollo para ncurses
+Summary(pl.UTF-8):	Pliki nagłówkowe do bibliotek ncurses
+Summary(pt_BR.UTF-8):	Bibliotecas de desenvolvimento para ncurses
+Summary(ru.UTF-8):	Хедеры и библиотеки для разработки программ с ncurses
+Summary(uk.UTF-8):	Хедери та бібліотеки для розробки програм з ncurses
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	libncurses5-devel
@@ -186,11 +186,11 @@ ao desenvolvimento de aplicações que usam ncurses.
 
 %package static
 Summary:	Static libraries for ncurses
-Summary(es.UTF-8):   Static libraries for ncurses development
-Summary(pl.UTF-8):   Biblioteki statyczne ncurses
-Summary(pt_BR.UTF-8):   Bibliotecas estáticas para desenvolvimento com ncurses
-Summary(ru.UTF-8):   Статические библиотеки для разработки программ с ncurses
-Summary(uk.UTF-8):   Статичні бібліотеки для розробки програм з ncurses
+Summary(es.UTF-8):	Static libraries for ncurses development
+Summary(pl.UTF-8):	Biblioteki statyczne ncurses
+Summary(pt_BR.UTF-8):	Bibliotecas estáticas para desenvolvimento com ncurses
+Summary(ru.UTF-8):	Статические библиотеки для разработки программ с ncurses
+Summary(uk.UTF-8):	Статичні бібліотеки для розробки програм з ncurses
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -217,7 +217,7 @@ Bibliotecas estáticas para desenvolvimento com ncurses.
 
 %package ext
 Summary:	Additional ncurses libraries
-Summary(pl.UTF-8):   Dodatkowe biblioteki ncurses
+Summary(pl.UTF-8):	Dodatkowe biblioteki ncurses
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -232,7 +232,7 @@ z ncurses.
 
 %package ext-devel
 Summary:	Header files for additional ncurses libraries
-Summary(pl.UTF-8):   Pliki nagłówkowe dodatkowych bibliotek ncurses
+Summary(pl.UTF-8):	Pliki nagłówkowe dodatkowych bibliotek ncurses
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	%{name}-ext = %{version}-%{release}
@@ -245,7 +245,7 @@ Pliki nagłówkowe dodatkowych bibliotek ncurses (form, menu, panel).
 
 %package ext-static
 Summary:	Static versions of additional ncurses libraries
-Summary(pl.UTF-8):   Statyczne wersje dodatkowych bibliotek ncurses
+Summary(pl.UTF-8):	Statyczne wersje dodatkowych bibliotek ncurses
 Group:		Development/Libraries
 Requires:	%{name}-ext-devel = %{version}-%{release}
 
@@ -257,7 +257,7 @@ Statyczne wersje dodatkowych bibliotek ncurses (form, menu, panel).
 
 %package c++-devel
 Summary:	Header files for develop C++ ncurses based application
-Summary(pl.UTF-8):   Pliki nagłówkowe do biblioteki C++ ncurses
+Summary(pl.UTF-8):	Pliki nagłówkowe do biblioteki C++ ncurses
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -271,7 +271,7 @@ z wykorzystaniem biblioteki c++-ncurses.
 
 %package c++-static
 Summary:	Static libraries for C++ ncurses
-Summary(pl.UTF-8):   Biblioteki statyczne C++ ncurses
+Summary(pl.UTF-8):	Biblioteki statyczne C++ ncurses
 Group:		Development/Libraries
 Requires:	%{name}-c++-devel = %{version}-%{release}
 
@@ -284,7 +284,7 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 
 %package ada-devel
 Summary:	Header files for develop Ada95 ncurses based application
-Summary(pl.UTF-8):   Pliki nagłówkowe do biblioteki Ada95 ncurses
+Summary(pl.UTF-8):	Pliki nagłówkowe do biblioteki Ada95 ncurses
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
