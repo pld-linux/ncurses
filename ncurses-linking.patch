@@ -12,13 +12,13 @@
 diff -Nur ncurses-5.5.orig/progs/Makefile.in ncurses-5.5.linking/progs/Makefile.in
 --- ncurses-5.5.orig/progs/Makefile.in	2006-08-05 18:50:12.000000000 +0200
 +++ ncurses-5.5.linking/progs/Makefile.in	2006-08-05 18:50:21.000000000 +0200
-@@ -96,7 +96,8 @@
+@@ -100,7 +100,8 @@
  LD		= @LD@
  LINK		= @LINK_PROGS@ $(LIBTOOL_LINK) $(CC)
  LDFLAGS		= @EXTRA_LDFLAGS@ \
--		@TINFO_ARGS@ @LDFLAGS@ @LD_MODEL@ @LIBS@
+-		@TICS_ARGS@ @TINFO_ARGS@ @LDFLAGS@ @LD_MODEL@ @LIBS@
 +		@LDFLAGS@ @LD_MODEL@
-+LIBS		= @TINFO_ARGS@ @LIBS@
++LIBS		= @TICS_ARGS@ @TINFO_ARGS@ @LIBS@
  
  LDFLAGS_LIBTOOL	= $(LDFLAGS) $(CFLAGS_LIBTOOL)
  LDFLAGS_NORMAL	= $(LDFLAGS) $(CFLAGS_NORMAL)
@@ -72,22 +72,23 @@ diff -Nur ncurses-5.5.orig/progs/Makefile.in ncurses-5.5.linking/progs/Makefile.
 diff -Nur ncurses-5.5.orig/tack/Makefile.in ncurses-5.5.linking/tack/Makefile.in
 --- ncurses-5.5.orig/tack/Makefile.in	2005-06-19 01:01:59.000000000 +0200
 +++ ncurses-5.5.linking/tack/Makefile.in	2006-08-05 18:51:31.000000000 +0200
-@@ -64,7 +64,8 @@
+@@ -95,7 +95,8 @@
  LD		= @LD@
  LINK		= @LINK_PROGS@ $(LIBTOOL_LINK) $(CC)
  LDFLAGS		= @EXTRA_LDFLAGS@ \
--		@TINFO_ARGS@ @LDFLAGS@ @LD_MODEL@ @LIBS@
+-		@TICS_ARGS@ @TINFO_ARGS@ @LDFLAGS@ @LD_MODEL@ @LIBS@
 +		@LDFLAGS@ @LD_MODEL@
-+LIBS		= @TINFO_ARGS@ @LIBS@
++LIBS		= @TICS_ARGS@  @TINFO_ARGS@ @LIBS@
  
  LDFLAGS_LIBTOOL	= $(LDFLAGS) $(CFLAGS_LIBTOOL)
  LDFLAGS_NORMAL	= $(LDFLAGS) $(CFLAGS_NORMAL)
-@@ -135,7 +136,7 @@
+@@ -166,7 +167,7 @@
  	$(MODEL)/tack$o
  
- tack$x: $(DEPS_TACK) $(DEPS_CURSES)
+ tack$x: $(DEPS_TACK) @NCURSES_TREE@$(DEPS_CURSES)
 -	@ECHO_LINK@ $(LINK) $(DEPS_TACK) $(LDFLAGS_DEFAULT) -o $@
 +	@ECHO_LINK@ $(LINK) $(LDFLAGS_DEFAULT) $(DEPS_TACK) $(LIBS) -o $@
  
  #
  # Utility productions start here
+
