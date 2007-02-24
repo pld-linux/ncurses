@@ -16,7 +16,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.6
-Release:	3
+Release:	4
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -24,6 +24,15 @@ Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 Patch0:		ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20061223.patch.gz
+Patch1:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20061230.patch.gz
+Patch2:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20070106.patch.gz
+Patch3:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20070113.patch.gz
+Patch4:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20070120.patch.gz
+Patch5:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20070127.patch.gz
+Patch6:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20070128.patch.gz
+Patch7:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20070203.patch.gz
+Patch8:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20070210.patch.gz
+Patch9:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20070217.patch.gz
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
 Patch102:	%{name}-meta.patch
@@ -299,6 +308,15 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
 %patch100 -p1
 %patch101 -p1
 %patch102 -p1
@@ -336,7 +354,8 @@ cd obj-$t
 	--without-manpage-symlinks \
 	--with-ada-include=%{_libdir}/ada/adainclude/ \
 	--with-ada-objects=%{_libdir}/ada/adalib/ \
-	`[ "$t" = "widec" ] && echo --enable-widec --includedir=%{_includedir}w`
+	`[ "$t" != "widec" ] && echo --with-termlib=tinfo` \
+	`[ "$t" = "widec" ] && echo --with-termlib=tinfow --enable-widec --includedir=%{_includedir}w`
 %{__make} \
 	CC="%{__cc}"
 cd ..
@@ -440,18 +459,24 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_includedir}
 %{_includedir}/curses.h
 %{_includedir}/eti.h
+%{_includedir}/nc_tparm.h
 %{_includedir}/ncurses.h
 %{_includedir}/ncurses_dll.h
 %{_includedir}/term.h
+%{_includedir}/term_entry.h
 %{_includedir}/termcap.h
+%{_includedir}/tic.h
 %{_includedir}/unctrl.h
 %dir %{_includedir}w
 %{_includedir}w/curses.h
 %{_includedir}w/eti.h
+%{_includedir}w/nc_tparm.h
 %{_includedir}w/ncurses.h
 %{_includedir}w/ncurses_dll.h
 %{_includedir}w/term.h
+%{_includedir}w/term_entry.h
 %{_includedir}w/termcap.h
+%{_includedir}w/tic.h
 %{_includedir}w/unctrl.h
 %{_mandir}/man3/*
 %exclude %{_mandir}/man3/form*
