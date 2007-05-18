@@ -1,0 +1,2 @@
+- release 15: added one missing header file (%{_includedir}/ncurses_dll.h)
+  devel %files list.
