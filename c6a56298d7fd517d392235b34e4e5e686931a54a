@@ -1,0 +1,4 @@
+- Removed xterm-color.patch - do not see reason tyo keep klone+color
+  in separate package and make new existances
+- Fied apropriate %files sections
+- Release 0.6
