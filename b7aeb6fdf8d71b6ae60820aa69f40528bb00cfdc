@@ -1,0 +1,3 @@
+- BuildRequires: libstdc++-devel
+- removed buildreqs required by rpm-build
+- use %rpmcflags
