@@ -1,0 +1,3 @@
+- added 4 official bugfix patches
+- simplify %files terminfo (thx to %exclude)
+- release 0.2
