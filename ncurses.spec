@@ -23,16 +23,19 @@ Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
 # Source0-md5:	b6593abe1089d6aab1551c105c9300e3
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
-Patch0:		ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20061223.patch.gz
-Patch1:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20061230.patch.gz
-Patch2:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20070106.patch.gz
-Patch3:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20070113.patch.gz
-Patch4:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20070120.patch.gz
-Patch5:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20070127.patch.gz
-Patch6:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20070128.patch.gz
-Patch7:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20070203.patch.gz
-Patch8:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20070210.patch.gz
-Patch9:         ftp://dickey.his.com/ncurses/5.6/%{name}-5.6-20070217.patch.gz
+
+# source: ftp://dickey.his.com/ncurses/5.6/
+Patch0:		%{name}-5.6-20061223.patch.gz
+Patch1:		%{name}-5.6-20061230.patch.gz
+Patch2:		%{name}-5.6-20070106.patch.gz
+Patch3:		%{name}-5.6-20070113.patch.gz
+Patch4:		%{name}-5.6-20070120.patch.gz
+Patch5:		%{name}-5.6-20070127.patch.gz
+Patch6:		%{name}-5.6-20070128.patch.gz
+Patch7:		%{name}-5.6-20070203.patch.gz
+Patch8:		%{name}-5.6-20070210.patch.gz
+Patch9:		%{name}-5.6-20070217.patch.gz
+
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
 Patch102:	%{name}-meta.patch
@@ -383,11 +386,11 @@ bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
-%post   ext -p /sbin/ldconfig
-%postun ext -p /sbin/ldconfig
+%post	ext -p /sbin/ldconfig
+%postun	ext -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
