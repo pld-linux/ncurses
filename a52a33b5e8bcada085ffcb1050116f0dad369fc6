@@ -1,0 +1,6 @@
+- added ac_hack path (dirty hack directly in configure script with remove
+  -L$(libdir) from linking parameters and this is hack because for allow
+  regenerate ac files must be first rewrited ac suit :>),
+- added --witout cxx bcond handling for not produce C++ bindings subpackages.
+  NOTE: now ncurses builded --without cxx can produce correct result on system
+  with uCibc instead glibc.
