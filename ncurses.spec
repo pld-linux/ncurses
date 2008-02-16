@@ -16,7 +16,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.6
-Release:	4
+Release:	5
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -299,6 +299,7 @@ Summary:	Header files for develop Ada95 ncurses based application
 Summary(pl.UTF-8):	Pliki nagłówkowe do biblioteki Ada95 ncurses
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
+%requires_eq	gcc-ada
 
 %description ada-devel
 This package includes the header files and libraries necessary to
@@ -332,6 +333,8 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 
 %build
 unset TERMINFO || :
+gcc_target=$(gcc -dumpmachine)
+gcc_version=$(gcc -dumpversion)
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO -D_FILE_OFFSET_BITS=64"
 cp -f /usr/share/automake/config.sub .
 for t in narrowc widec; do
@@ -355,8 +358,8 @@ cd obj-$t
 	--with-manpage-aliases \
 	--with-manpage-format=normal \
 	--without-manpage-symlinks \
-	--with-ada-include=%{_libdir}/ada/adainclude/ \
-	--with-ada-objects=%{_libdir}/ada/adalib/ \
+	--with-ada-include=%{_libdir}/gcc/$gcc_target/$gcc_version/adainclude/ \
+	--with-ada-objects=%{_libdir}/gcc/$gcc_target/$gcc_version/adalib/ \
 	`[ "$t" != "widec" ] && echo --with-termlib=tinfo` \
 	`[ "$t" = "widec" ] && echo --with-termlib=tinfow --enable-widec --includedir=%{_includedir}w`
 %{__make} \
@@ -559,6 +562,6 @@ rm -rf $RPM_BUILD_ROOT
 %files ada-devel
 %defattr(644,root,root,755)
 %doc Ada95/{README,TODO}
-%{_libdir}/ada/adainclude/*
-%{_libdir}/ada/adalib/*
+%{_libdir}/gcc/*/*/adainclude/*
+%{_libdir}/gcc/*/*/adalib/*
 %endif
