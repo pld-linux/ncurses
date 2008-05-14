@@ -1,3 +1,6 @@
+# TODO:
+# - fix ada build
+# - restore parts of ncurses-linking.patch rev 1.7 that fix ncurses with tinfo linking
 #
 # Conditional build:
 %bcond_without	ada		# do not build Ada95 bindings
@@ -16,7 +19,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.6
-Release:	5
+Release:	5.1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -25,16 +28,21 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-ma
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 
 # source: ftp://dickey.his.com/ncurses/5.6/
-Patch0:		%{name}-5.6-20061223.patch.gz
-Patch1:		%{name}-5.6-20061230.patch.gz
-Patch2:		%{name}-5.6-20070106.patch.gz
-Patch3:		%{name}-5.6-20070113.patch.gz
-Patch4:		%{name}-5.6-20070120.patch.gz
-Patch5:		%{name}-5.6-20070127.patch.gz
-Patch6:		%{name}-5.6-20070128.patch.gz
-Patch7:		%{name}-5.6-20070203.patch.gz
-Patch8:		%{name}-5.6-20070210.patch.gz
-Patch9:		%{name}-5.6-20070217.patch.gz
+Patch0:		%{name}-5.6-20071201-patch.sh.bz2
+Patch1:		%{name}-5.6-20071215.patch.gz
+Patch2:		%{name}-5.6-20071222.patch.gz
+Patch3:		%{name}-5.6-20080105.patch.gz
+Patch4:		%{name}-5.6-20080112.patch.gz
+Patch5:		%{name}-5.6-20080119.patch.gz
+Patch6:		%{name}-5.6-20080203.patch.gz
+Patch7:		%{name}-5.6-20080209.patch.gz
+Patch8:		%{name}-5.6-20080223.patch.gz
+Patch9:		%{name}-5.6-20080301.patch.gz
+Patch10:	%{name}-5.6-20080308.patch.gz
+Patch11:	%{name}-5.6-20080322.patch.gz
+Patch12:	%{name}-5.6-20080329.patch.gz
+Patch13:	%{name}-5.6-20080405.patch.gz
+Patch14:	%{name}-5.6-20080412.patch.gz
 
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -47,7 +55,8 @@ Patch105:	%{name}-gnome-terminal.patch
 Patch106:	%{name}-xterm-kbs.patch
 # disable rain demo; triggers gcc bug: http://gcc.gnu.org/bugzilla/show_bug.cgi?id=14998
 Patch107:	%{name}-no-rain-demo.patch
-Patch108:	%{name}-linking.patch
+Patch108:	%{name}-hash.patch
+Patch109:	%{name}-linking.patch
 URL:		http://dickey.his.com/ncurses/ncurses.html
 BuildRequires:	automake
 %{?with_ada:BuildRequires:	gcc-ada}
@@ -321,6 +330,12 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+
 %patch100 -p1
 %patch101 -p1
 %patch102 -p1
@@ -329,7 +344,8 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %patch105 -p1
 %patch106 -p1
 %patch107 -p1
-%patch108 -p1
+%patch108 -p0
+%patch109 -p0
 
 %build
 unset TERMINFO || :
@@ -362,8 +378,9 @@ cd obj-$t
 	--with-ada-objects=%{_libdir}/gcc/$gcc_target/$gcc_version/adalib/ \
 	`[ "$t" != "widec" ] && echo --with-termlib=tinfo` \
 	`[ "$t" = "widec" ] && echo --with-termlib=tinfow --enable-widec --includedir=%{_includedir}w`
-%{__make} \
-	CC="%{__cc}"
+
+%{__make}
+
 cd ..
 done
 
