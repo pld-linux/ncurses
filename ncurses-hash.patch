@@ -1,0 +1,65 @@
+--- tack/edit.c.org	2008-05-14 20:41:36.562238644 +0200
++++ tack/edit.c	2008-05-14 20:43:36.504639242 +0200
+@@ -285,7 +285,7 @@
+ 		put_clear();
+ 	}
+ 	op = t->flags & 255;
+-	if ((nt = _nc_find_entry(buf, _nc_info_hash_table))) {
++	if ((nt = _nc_find_entry(buf, _nc_get_hash_table(FALSE)))) {
+ 		switch (nt->nte_type) {
+ 		case BOOLEAN:
+ 			if (op == SHOW_DELETE) {
+@@ -386,7 +386,7 @@
+ {
+ 	struct name_table_entry const *nt;
+ 
+-	if ((nt = _nc_find_entry(name, _nc_info_hash_table))) {
++	if ((nt = _nc_find_entry(name, _nc_get_hash_table(FALSE)))) {
+ 		if (nt->nte_type == STRING) {
+ 			*long_name = strfnames[nt->nte_index];
+ 			return (CUR Strings[nt->nte_index]);
+@@ -537,7 +537,7 @@
+ 	struct name_table_entry const *nt;
+ 
+ 	alloc_arrays();
+-	if ((nt = _nc_find_entry(name, _nc_info_hash_table))) {
++	if ((nt = _nc_find_entry(name, _nc_get_hash_table(FALSE)))) {
+ 		switch (nt->nte_type) {
+ 		case BOOLEAN:
+ 			flag_boolean[nt->nte_index] |= flag;
+@@ -616,7 +616,7 @@
+ 				if (j) {
+ 					name[j] = '\0';
+ 					if ((nt = _nc_find_entry(name,
+-						_nc_info_hash_table)) &&
++						_nc_get_hash_table(FALSE))) &&
+ 						(nt->nte_type == STRING)) {
+ 						*inx++ = nt->nte_index;
+ 					}
+@@ -816,7 +816,7 @@
+ 	/* Lookup the translated strings */
+ 	for (i = 0; i < TM_last; i++) {
+ 		if ((nt = _nc_find_entry(TM_string[i].name,
+-			_nc_info_hash_table)) && (nt->nte_type == STRING)) {
++			_nc_get_hash_table(FALSE))) && (nt->nte_type == STRING)) {
+ 			TM_string[i].index = nt->nte_index;
+ 		} else {
+ 			sprintf(temp, "TM_string lookup failed for: %s",
+@@ -824,7 +824,7 @@
+ 			ptextln(temp);
+ 		}
+ 	}
+-	if ((nt = _nc_find_entry("xon", _nc_info_hash_table)) != 0) {
++	if ((nt = _nc_find_entry("xon", _nc_get_hash_table(FALSE))) != 0) {
+ 		xon_index = nt->nte_index;
+ 	}
+ 	xon_shadow = xon_xoff;
+@@ -859,7 +859,7 @@
+ 			*chp = pad[0];
+ 			return;
+ 		}
+-		if ((nt = _nc_find_entry(pad, _nc_info_hash_table)) &&
++		if ((nt = _nc_find_entry(pad, _nc_get_hash_table(FALSE))) &&
+ 			(nt->nte_type == STRING)) {
+ 			x = nt->nte_index;
+ 			current_string = CUR Strings[x];
