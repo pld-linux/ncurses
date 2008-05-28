@@ -43,6 +43,10 @@ Patch11:	%{name}-5.6-20080322.patch.gz
 Patch12:	%{name}-5.6-20080329.patch.gz
 Patch13:	%{name}-5.6-20080405.patch.gz
 Patch14:	%{name}-5.6-20080412.patch.gz
+Patch15:	%{name}-5.6-20080419.patch.gz
+Patch16:	%{name}-5.6-20080503.patch.gz
+Patch17:	%{name}-5.6-20080517.patch.gz
+Patch18:	%{name}-5.6-20080524.patch.gz
 
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -335,6 +339,10 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
 
 %patch100 -p1
 %patch101 -p1
