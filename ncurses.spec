@@ -19,7 +19,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.6
-Release:	5.1
+Release:	6
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -28,7 +28,7 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-ma
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 
 # source: ftp://dickey.his.com/ncurses/5.6/
-Patch0:		%{name}-5.6-20071201-patch.sh.bz2
+Patch0:		%{name}-5.6-20071201.patch.gz
 Patch1:		%{name}-5.6-20071215.patch.gz
 Patch2:		%{name}-5.6-20071222.patch.gz
 Patch3:		%{name}-5.6-20080105.patch.gz
@@ -59,8 +59,7 @@ Patch105:	%{name}-gnome-terminal.patch
 Patch106:	%{name}-xterm-kbs.patch
 # disable rain demo; triggers gcc bug: http://gcc.gnu.org/bugzilla/show_bug.cgi?id=14998
 Patch107:	%{name}-no-rain-demo.patch
-Patch108:	%{name}-hash.patch
-Patch109:	%{name}-linking.patch
+Patch108:	%{name}-ada_fixes.patch
 URL:		http://dickey.his.com/ncurses/ncurses.html
 BuildRequires:	automake
 %{?with_ada:BuildRequires:	gcc-ada}
@@ -353,7 +352,6 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %patch106 -p1
 %patch107 -p1
 %patch108 -p0
-%patch109 -p0
 
 %build
 unset TERMINFO || :
@@ -428,7 +426,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/infocmp
 %attr(755,root,root) %{_bindir}/infotocap
 %attr(755,root,root) %{_bindir}/reset
-%attr(755,root,root) %{_bindir}/tack
 %attr(755,root,root) %{_bindir}/tic
 %attr(755,root,root) %{_bindir}/toe
 %attr(755,root,root) %{_bindir}/tput
