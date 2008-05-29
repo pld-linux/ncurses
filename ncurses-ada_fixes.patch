@@ -1,0 +1,126 @@
+diff -ur Ada95.orig/samples/ncurses2-acs_and_scroll.adb Ada95/samples/ncurses2-acs_and_scroll.adb
+--- Ada95.orig/samples/ncurses2-acs_and_scroll.adb	2006-06-25 16:24:40.000000000 +0200
++++ Ada95/samples/ncurses2-acs_and_scroll.adb	2008-05-29 13:03:23.000000000 +0200
+@@ -527,11 +527,11 @@
+                current := current.last;
+             end if;
+          when Character'Pos ('F') mod 16#20#  => --  Ctrl('F')
+-            if current /= null and HaveScroll (current.wind) then
++            if current /= null and then HaveScroll (current.wind) then
+                Scroll (current.wind, 1);
+             end if;
+          when Character'Pos ('B') mod 16#20#  => --  Ctrl('B')
+-            if current /= null and HaveScroll (current.wind) then
++            if current /= null and then HaveScroll (current.wind) then
+             --  The C version of Scroll may return ERR which is ignored
+             --  we need to avoid the exception
+             --  with the 'and HaveScroll(current.wind)'
+diff -ur Ada95.orig/samples/ncurses2-genericputs.adb Ada95/samples/ncurses2-genericputs.adb
+--- Ada95.orig/samples/ncurses2-genericputs.adb	2006-06-25 16:24:40.000000000 +0200
++++ Ada95/samples/ncurses2-genericputs.adb	2008-05-29 13:11:28.000000000 +0200
+@@ -39,15 +39,10 @@
+ --  $Date$
+ --  Binding Version 01.00
+ ------------------------------------------------------------------------------
+-with Ada.Text_IO;
+-with Ada.Strings.Bounded;
+ 
+ with Terminal_Interface.Curses; use Terminal_Interface.Curses;
+ with Terminal_Interface.Curses.Aux; use Terminal_Interface.Curses.Aux;
+ 
+-with Interfaces.C;
+-with Interfaces.C.Strings;
+-
+ package body ncurses2.genericPuts is
+ 
+    procedure myGet (Win : in  Window := Standard_Window;
+diff -ur Ada95.orig/samples/ncurses2-m.adb Ada95/samples/ncurses2-m.adb
+--- Ada95.orig/samples/ncurses2-m.adb	2008-05-29 12:41:18.000000000 +0200
++++ Ada95/samples/ncurses2-m.adb	2008-05-29 13:02:57.000000000 +0200
+@@ -64,7 +64,6 @@
+ with ncurses2.color_edit;
+ with ncurses2.slk_test;
+ with ncurses2.acs_display;
+-with ncurses2.color_edit;
+ with ncurses2.acs_and_scroll;
+ with ncurses2.flushinp_test;
+ with ncurses2.test_sgr_attributes;
+diff -ur Ada95.orig/samples/ncurses2-util.adb Ada95/samples/ncurses2-util.adb
+--- Ada95.orig/samples/ncurses2-util.adb	2006-06-25 16:24:40.000000000 +0200
++++ Ada95/samples/ncurses2-util.adb	2008-05-29 13:05:00.000000000 +0200
+@@ -39,9 +39,6 @@
+ --  $Date$
+ --  Binding Version 01.00
+ ------------------------------------------------------------------------------
+-with Terminal_Interface.Curses;
+-
+-with Ada.Text_IO;
+ 
+ pragma Warnings (Off);
+ with Terminal_Interface.Curses.Aux;
+diff -ur Ada95.orig/samples/sample-helpers.adb Ada95/samples/sample-helpers.adb
+--- Ada95.orig/samples/sample-helpers.adb	2006-06-25 16:30:22.000000000 +0200
++++ Ada95/samples/sample-helpers.adb	2008-05-29 12:54:23.000000000 +0200
+@@ -39,7 +39,6 @@
+ --  $Date$
+ --  Binding Version 01.00
+ ------------------------------------------------------------------------------
+-with Terminal_Interface.Curses;
+ 
+ with Sample.Explanation; use Sample.Explanation;
+ 
+diff -ur Ada95.orig/samples/sample-my_field_type.adb Ada95/samples/sample-my_field_type.adb
+--- Ada95.orig/samples/sample-my_field_type.adb	2006-06-25 16:30:22.000000000 +0200
++++ Ada95/samples/sample-my_field_type.adb	2008-05-29 12:54:54.000000000 +0200
+@@ -39,7 +39,6 @@
+ --  $Date$
+ --  Binding Version 01.00
+ ------------------------------------------------------------------------------
+-with Terminal_Interface.Curses.Forms;
+ 
+ --  This is a very simple user defined field type. It accepts only a
+ --  defined character as input into the field.
+diff -ur Ada95.orig/src/terminal_interface-curses-forms-field_types.adb Ada95/src/terminal_interface-curses-forms-field_types.adb
+--- Ada95.orig/src/terminal_interface-curses-forms-field_types.adb	2006-06-25 16:24:40.000000000 +0200
++++ Ada95/src/terminal_interface-curses-forms-field_types.adb	2008-05-29 12:57:14.000000000 +0200
+@@ -39,7 +39,6 @@
+ --  $Date$
+ --  Binding Version 01.00
+ ------------------------------------------------------------------------------
+-with Interfaces.C;
+ with Terminal_Interface.Curses.Aux; use Terminal_Interface.Curses.Aux;
+ with Ada.Unchecked_Deallocation;
+ with Ada.Unchecked_Conversion;
+diff -ur Ada95.orig/src/terminal_interface-curses-forms-field_types-user.adb Ada95/src/terminal_interface-curses-forms-field_types-user.adb
+--- Ada95.orig/src/terminal_interface-curses-forms-field_types-user.adb	2006-06-25 16:24:40.000000000 +0200
++++ Ada95/src/terminal_interface-curses-forms-field_types-user.adb	2008-05-29 12:57:32.000000000 +0200
+@@ -40,7 +40,6 @@
+ --  Binding Version 01.00
+ ------------------------------------------------------------------------------
+ with Ada.Unchecked_Conversion;
+-with Interfaces.C;
+ with Terminal_Interface.Curses.Aux; use Terminal_Interface.Curses.Aux;
+ 
+ package body Terminal_Interface.Curses.Forms.Field_Types.User is
+diff -ur Ada95.orig/src/terminal_interface-curses-forms-field_types-user-choice.adb Ada95/src/terminal_interface-curses-forms-field_types-user-choice.adb
+--- Ada95.orig/src/terminal_interface-curses-forms-field_types-user-choice.adb	2006-06-25 16:24:40.000000000 +0200
++++ Ada95/src/terminal_interface-curses-forms-field_types-user-choice.adb	2008-05-29 13:02:13.000000000 +0200
+@@ -40,7 +40,6 @@
+ --  Binding Version 01.00
+ ------------------------------------------------------------------------------
+ with Ada.Unchecked_Conversion;
+-with Interfaces.C;
+ with Terminal_Interface.Curses.Aux; use Terminal_Interface.Curses.Aux;
+ 
+ package body Terminal_Interface.Curses.Forms.Field_Types.User.Choice is
+diff -ur Ada95.orig/src/terminal_interface-curses-mouse.adb Ada95/src/terminal_interface-curses-mouse.adb
+--- Ada95.orig/src/terminal_interface-curses-mouse.adb	2004-08-21 23:37:00.000000000 +0200
++++ Ada95/src/terminal_interface-curses-mouse.adb	2008-05-29 12:53:46.000000000 +0200
+@@ -39,7 +39,6 @@
+ --  $Date$
+ --  Binding Version 01.00
+ ------------------------------------------------------------------------------
+-with System;
+ 
+ with Terminal_Interface.Curses.Aux; use Terminal_Interface.Curses.Aux;
+ with Interfaces.C; use Interfaces.C;
