@@ -1,6 +1,3 @@
-# TODO:
-# - fix ada build
-# - restore parts of ncurses-linking.patch rev 1.7 that fix ncurses with tinfo linking
 #
 # Conditional build:
 %bcond_without	ada		# do not build Ada95 bindings
@@ -19,7 +16,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.6
-Release:	6
+Release:	7
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -47,6 +44,8 @@ Patch15:	%{name}-5.6-20080419.patch.gz
 Patch16:	%{name}-5.6-20080503.patch.gz
 Patch17:	%{name}-5.6-20080517.patch.gz
 Patch18:	%{name}-5.6-20080524.patch.gz
+Patch19:	%{name}-5.6-20080531.patch.gz
+Patch20:	%{name}-5.6-20080607.patch.gz
 
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -342,6 +341,8 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %patch16 -p1
 %patch17 -p1
 %patch18 -p1
+%patch19 -p1
+%patch20 -p1
 
 %patch100 -p1
 %patch101 -p1
