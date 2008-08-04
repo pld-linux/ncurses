@@ -153,7 +153,7 @@ Requires:	%{name} = %{version}-%{release}
 Obsoletes:	ncurses-extraterms
 
 %description -n terminfo
-This package contains cmplet terminfo database. If you just use the
+This package contains complete terminfo database. If you just use the
 Linux console, xterm and VT100, you probably will not need this this -
 a minimal %{_datadir}/terminfo tree for these terminal is already
 included in the ncurses package.
