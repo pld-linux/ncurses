@@ -16,7 +16,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.6
-Release:	10
+Release:	11
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -47,6 +47,22 @@ Patch18:	%{name}-5.6-20080524.patch.gz
 Patch19:	%{name}-5.6-20080531.patch.gz
 Patch20:	%{name}-5.6-20080607.patch.gz
 Patch21:	%{name}-5.6-20080614.patch.gz
+Patch22:	%{name}-5.6-20080621.patch.gz
+Patch23:	%{name}-5.6-20080628.patch.gz
+Patch24:	%{name}-5.6-20080705.patch.gz
+Patch25:	%{name}-5.6-20080712.patch.gz
+Patch26:	%{name}-5.6-20080713.patch.gz
+Patch27:	%{name}-5.6-20080726.patch.gz
+Patch28:	%{name}-5.6-20080804.patch.gz
+Patch29:	%{name}-5.6-20080816.patch.gz
+Patch30:	%{name}-5.6-20080823.patch.gz
+Patch31:	%{name}-5.6-20080830.patch.gz
+Patch32:	%{name}-5.6-20080906.patch.gz
+Patch33:	%{name}-5.6-20080907.patch.gz
+Patch34:	%{name}-5.6-20080913.patch.gz
+Patch35:	%{name}-5.6-20080920.patch.gz
+Patch36:	%{name}-5.6-20080925.patch.gz
+Patch37:	%{name}-5.6-20080927.patch.gz
 
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -59,7 +75,6 @@ Patch105:	%{name}-gnome-terminal.patch
 Patch106:	%{name}-xterm-kbs.patch
 # disable rain demo; triggers gcc bug: http://gcc.gnu.org/bugzilla/show_bug.cgi?id=14998
 Patch107:	%{name}-no-rain-demo.patch
-Patch108:	%{name}-ada_fixes.patch
 URL:		http://dickey.his.com/ncurses/ncurses.html
 BuildRequires:	automake
 %{?with_ada:BuildRequires:	gcc-ada}
@@ -345,6 +360,22 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %patch19 -p1
 %patch20 -p1
 %patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
+%patch27 -p1
+%patch28 -p1
+%patch29 -p1
+%patch30 -p1
+%patch31 -p1
+%patch32 -p1
+%patch33 -p1
+%patch34 -p1
+%patch35 -p1
+%patch36 -p1
+%patch37 -p1
 
 %patch100 -p1
 %patch101 -p1
@@ -354,7 +385,6 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %patch105 -p1
 %patch106 -p1
 %patch107 -p1
-%patch108 -p0
 
 %build
 unset TERMINFO || :
@@ -409,6 +439,8 @@ mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.*.* $RPM_BUILD_ROOT/%{_lib}
 ln -sf /%{_lib}/`cd $RPM_BUILD_ROOT/%{_lib} ; echo libtinfo.so.*.*` $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
 ln -sf /%{_lib}/`cd $RPM_BUILD_ROOT/%{_lib} ; echo libncurses.so.*.*` $RPM_BUILD_ROOT%{_libdir}/libcurses.so
 ln -sf /%{_lib}/`cd $RPM_BUILD_ROOT/%{_lib} ; echo libncurses.so.*.*` $RPM_BUILD_ROOT%{_libdir}/libncurses.so
+ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
+ln -sf libncursesw.so $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
