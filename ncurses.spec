@@ -15,54 +15,17 @@ Summary(ru.UTF-8):	ncurses - новая библиотека управлени�
 Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
-Version:	5.6
-Release:	11
+Version:	5.7
+Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
-# Source0-md5:	b6593abe1089d6aab1551c105c9300e3
+# Source0-md5:	cce05daf61a64501ef6cd8da1f727ec6
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 
-# source: ftp://dickey.his.com/ncurses/5.6/
-Patch0:		%{name}-5.6-20071201.patch.gz
-Patch1:		%{name}-5.6-20071215.patch.gz
-Patch2:		%{name}-5.6-20071222.patch.gz
-Patch3:		%{name}-5.6-20080105.patch.gz
-Patch4:		%{name}-5.6-20080112.patch.gz
-Patch5:		%{name}-5.6-20080119.patch.gz
-Patch6:		%{name}-5.6-20080203.patch.gz
-Patch7:		%{name}-5.6-20080209.patch.gz
-Patch8:		%{name}-5.6-20080223.patch.gz
-Patch9:		%{name}-5.6-20080301.patch.gz
-Patch10:	%{name}-5.6-20080308.patch.gz
-Patch11:	%{name}-5.6-20080322.patch.gz
-Patch12:	%{name}-5.6-20080329.patch.gz
-Patch13:	%{name}-5.6-20080405.patch.gz
-Patch14:	%{name}-5.6-20080412.patch.gz
-Patch15:	%{name}-5.6-20080419.patch.gz
-Patch16:	%{name}-5.6-20080503.patch.gz
-Patch17:	%{name}-5.6-20080517.patch.gz
-Patch18:	%{name}-5.6-20080524.patch.gz
-Patch19:	%{name}-5.6-20080531.patch.gz
-Patch20:	%{name}-5.6-20080607.patch.gz
-Patch21:	%{name}-5.6-20080614.patch.gz
-Patch22:	%{name}-5.6-20080621.patch.gz
-Patch23:	%{name}-5.6-20080628.patch.gz
-Patch24:	%{name}-5.6-20080705.patch.gz
-Patch25:	%{name}-5.6-20080712.patch.gz
-Patch26:	%{name}-5.6-20080713.patch.gz
-Patch27:	%{name}-5.6-20080726.patch.gz
-Patch28:	%{name}-5.6-20080804.patch.gz
-Patch29:	%{name}-5.6-20080816.patch.gz
-Patch30:	%{name}-5.6-20080823.patch.gz
-Patch31:	%{name}-5.6-20080830.patch.gz
-Patch32:	%{name}-5.6-20080906.patch.gz
-Patch33:	%{name}-5.6-20080907.patch.gz
-Patch34:	%{name}-5.6-20080913.patch.gz
-Patch35:	%{name}-5.6-20080920.patch.gz
-Patch36:	%{name}-5.6-20080925.patch.gz
-Patch37:	%{name}-5.6-20080927.patch.gz
+# source: ftp://dickey.his.com/ncurses/5.7/
+Patch0:		%{name}-5.7-20081115.patch.gz
 
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -339,43 +302,6 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch28 -p1
-%patch29 -p1
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
-%patch34 -p1
-%patch35 -p1
-%patch36 -p1
-%patch37 -p1
 
 %patch100 -p1
 %patch101 -p1
