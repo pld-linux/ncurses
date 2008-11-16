@@ -3,7 +3,7 @@
 @@ -2741,7 +2741,7 @@
  # "resize -s"), though it does not pass SIGWINCH to the application if the
  # user resizes the window with the mouse.
- teraterm|Tera Term Pro,
+ teraterm2.3|Tera Term Pro,
 -	km, xon@,
 +	xon@,
  	ncv#43, vt@,
