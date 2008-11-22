@@ -360,11 +360,11 @@ done
 
 ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
-mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.*.* $RPM_BUILD_ROOT/%{_lib}
-mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.*.* $RPM_BUILD_ROOT/%{_lib}
-ln -sf /%{_lib}/`cd $RPM_BUILD_ROOT/%{_lib} ; echo libtinfo.so.*.*` $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
-ln -sf /%{_lib}/`cd $RPM_BUILD_ROOT/%{_lib} ; echo libncurses.so.*.*` $RPM_BUILD_ROOT%{_libdir}/libcurses.so
-ln -sf /%{_lib}/`cd $RPM_BUILD_ROOT/%{_lib} ; echo libncurses.so.*.*` $RPM_BUILD_ROOT%{_libdir}/libncurses.so
+mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.* $RPM_BUILD_ROOT/%{_lib}
+mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.* $RPM_BUILD_ROOT/%{_lib}
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libtinfo.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libcurses.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libncurses.so
 ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
 ln -sf libncursesw.so $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
 
@@ -387,14 +387,19 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/infocmp
 %attr(755,root,root) %{_bindir}/infotocap
 %attr(755,root,root) %{_bindir}/reset
+%attr(755,root,root) %{_bindir}/tabs
 %attr(755,root,root) %{_bindir}/tic
 %attr(755,root,root) %{_bindir}/toe
 %attr(755,root,root) %{_bindir}/tput
 %attr(755,root,root) %{_bindir}/tset
-%attr(755,root,root) /%{_lib}/libncurses.so.*
-%attr(755,root,root) /%{_lib}/libtinfo.so.*
-%attr(755,root,root) %{_libdir}/libncursesw.so.*
-%attr(755,root,root) %{_libdir}/libtinfow.so.*
+%attr(755,root,root) /%{_lib}/libncurses.so.*.*
+%attr(755,root,root) %ghost /%{_lib}/libncurses.so.5
+%attr(755,root,root) /%{_lib}/libtinfo.so.*.*
+%attr(755,root,root) %ghost /%{_lib}/libtinfo.so.5
+%attr(755,root,root) %{_libdir}/libncursesw.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libncursesw.so.5
+%attr(755,root,root) %{_libdir}/libtinfow.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libtinfow.so.5
 
 %{_datadir}/tabset
 
@@ -545,6 +550,7 @@ rm -rf $RPM_BUILD_ROOT
 %files ada-devel
 %defattr(644,root,root,755)
 %doc Ada95/{README,TODO}
+%attr(755,root,root) %{_bindir}/adacurses-config
 %{_libdir}/gcc/*/*/adainclude/*
 %{_libdir}/gcc/*/*/adalib/*
 %endif
