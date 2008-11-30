@@ -16,7 +16,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.7
-Release:	2
+Release:	3
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -27,6 +27,7 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-ma
 # source: ftp://dickey.his.com/ncurses/5.7/
 Patch0:		%{name}-5.7-20081115.patch.gz
 Patch1:		%{name}-5.7-20081122.patch.gz
+Patch2:		%{name}-5.7-20081129.patch.gz
 
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -304,6 +305,7 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %patch100 -p1
 %patch101 -p1
