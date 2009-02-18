@@ -16,7 +16,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.7
-Release:	5
+Release:	6
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -28,6 +28,18 @@ Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-ma
 Patch0:		%{name}-5.7-20081115.patch.gz
 Patch1:		%{name}-5.7-20081122.patch.gz
 Patch2:		%{name}-5.7-20081129.patch.gz
+Patch3:		%{name}-5.7-20081206.patch.gz
+Patch4:		%{name}-5.7-20081213.patch.gz
+Patch5:		%{name}-5.7-20081220.patch.gz
+Patch6:		%{name}-5.7-20081227.patch.gz
+Patch7:		%{name}-5.7-20090103.patch.gz
+Patch8:		%{name}-5.7-20090104.patch.gz
+Patch9:		%{name}-5.7-20090105.patch.gz
+Patch10:	%{name}-5.7-20090110.patch.gz
+Patch11:	%{name}-5.7-20090117.patch.gz
+Patch12:	%{name}-5.7-20090124.patch.gz
+Patch13:	%{name}-5.7-20090207.patch.gz
+Patch14:	%{name}-5.7-20090214.patch.gz
 
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -306,6 +318,18 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
 
 %patch100 -p1
 %patch101 -p1
@@ -346,7 +370,7 @@ cd obj-$t
 	--with-ada-include=%{_libdir}/gcc/$gcc_target/$gcc_version/adainclude/ \
 	--with-ada-objects=%{_libdir}/gcc/$gcc_target/$gcc_version/adalib/ \
 	`[ "$t" != "widec" ] && echo --with-termlib=tinfo` \
-	`[ "$t" = "widec" ] && echo --with-termlib=tinfow --enable-widec --includedir=%{_includedir}w`
+	`[ "$t" = "widec" ] && echo --with-termlib=tinfow --enable-widec --enable-ext-colors --includedir=%{_includedir}w`
 
 %{__make}
 
@@ -401,9 +425,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /%{_lib}/libtinfo.so.*.*
 %attr(755,root,root) %ghost /%{_lib}/libtinfo.so.5
 %attr(755,root,root) %{_libdir}/libncursesw.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libncursesw.so.5
+%attr(755,root,root) %ghost %{_libdir}/libncursesw.so.6
 %attr(755,root,root) %{_libdir}/libtinfow.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libtinfow.so.5
+%attr(755,root,root) %ghost %{_libdir}/libtinfow.so.6
 
 %{_datadir}/tabset
 
@@ -449,7 +473,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/html/ncurses-intro.html
 %attr(755,root,root) %{_bindir}/ncurses5-config
-%attr(755,root,root) %{_bindir}/ncursesw5-config
+%attr(755,root,root) %{_bindir}/ncursesw6-config
 %attr(755,root,root) %{_libdir}/libcurses.so
 %attr(755,root,root) %{_libdir}/libncurses.so
 %attr(755,root,root) %{_libdir}/libtinfo.so
@@ -557,6 +581,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc Ada95/{README,TODO}
 %attr(755,root,root) %{_bindir}/adacurses-config
+%attr(755,root,root) %{_bindir}/adacursesw-config
 %{_libdir}/gcc/*/*/adainclude/*
 %{_libdir}/gcc/*/*/adalib/*
 %endif
