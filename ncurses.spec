@@ -16,7 +16,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.7
-Release:	8
+Release:	9
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -433,12 +433,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %dir %{_datadir}/terminfo
 %{_datadir}/terminfo/E
-%dir %{_datadir}/terminfo/[dklsvx]
+%dir %{_datadir}/terminfo/[dgklprsvx]
 
 %{_datadir}/terminfo/d/dumb
+%{_datadir}/terminfo/g/gnome*
 %{_datadir}/terminfo/k/klone+color
 %{_datadir}/terminfo/k/konsole*
 %{_datadir}/terminfo/l/linux*
+%{_datadir}/terminfo/p/putty*
+%{_datadir}/terminfo/r/rxvt*
 %{_datadir}/terminfo/s/screen*
 %{_datadir}/terminfo/v/vt100
 %{_datadir}/terminfo/v/vt220
@@ -459,9 +462,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/terminfo/[1-9ALMNPQXa-ce-jm-rt-uwz]
 %{_datadir}/terminfo/[dklsvx]/*
 %exclude %{_datadir}/terminfo/d/dumb
+%exclude %{_datadir}/terminfo/g/gnome*
 %exclude %{_datadir}/terminfo/k/klone+color
 %exclude %{_datadir}/terminfo/k/konsole*
 %exclude %{_datadir}/terminfo/l/linux*
+%exclude %{_datadir}/terminfo/p/putty*
+%exclude %{_datadir}/terminfo/r/rxvt*
 %exclude %{_datadir}/terminfo/s/screen*
 %exclude %{_datadir}/terminfo/v/vt100
 %exclude %{_datadir}/terminfo/v/vt220
