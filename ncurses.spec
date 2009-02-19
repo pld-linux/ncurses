@@ -16,7 +16,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.7
-Release:	9
+Release:	8
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -370,7 +370,7 @@ cd obj-$t
 	--with-ada-include=%{_libdir}/gcc/$gcc_target/$gcc_version/adainclude/ \
 	--with-ada-objects=%{_libdir}/gcc/$gcc_target/$gcc_version/adalib/ \
 	`[ "$t" != "widec" ] && echo --with-termlib=tinfo` \
-	`[ "$t" = "widec" ] && echo --with-termlib=tinfow --enable-widec --enable-ext-colors --includedir=%{_includedir}w`
+	`[ "$t" = "widec" ] && echo --with-termlib=tinfow --enable-widec --includedir=%{_includedir}w`
 
 %{__make}
 
@@ -425,9 +425,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /%{_lib}/libtinfo.so.*.*
 %attr(755,root,root) %ghost /%{_lib}/libtinfo.so.5
 %attr(755,root,root) %{_libdir}/libncursesw.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libncursesw.so.6
+%attr(755,root,root) %ghost %{_libdir}/libncursesw.so.5
 %attr(755,root,root) %{_libdir}/libtinfow.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libtinfow.so.6
+%attr(755,root,root) %ghost %{_libdir}/libtinfow.so.5
 
 %{_datadir}/tabset
 
@@ -479,7 +479,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/html/ncurses-intro.html
 %attr(755,root,root) %{_bindir}/ncurses5-config
-%attr(755,root,root) %{_bindir}/ncursesw6-config
+%attr(755,root,root) %{_bindir}/ncursesw5-config
 %attr(755,root,root) %{_libdir}/libcurses.so
 %attr(755,root,root) %{_libdir}/libncurses.so
 %attr(755,root,root) %{_libdir}/libtinfo.so
@@ -587,7 +587,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc Ada95/{README,TODO}
 %attr(755,root,root) %{_bindir}/adacurses-config
-%attr(755,root,root) %{_bindir}/adacursesw-config
 %{_libdir}/gcc/*/*/adainclude/*
 %{_libdir}/gcc/*/*/adalib/*
 %endif
