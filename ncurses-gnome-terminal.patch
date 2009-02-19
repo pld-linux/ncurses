@@ -1,0 +1,12 @@
+--- ncurses-5.6/misc/terminfo.src.orig	2006-12-30 17:02:42.371293084 +0100
++++ ncurses-5.6/misc/terminfo.src	2006-12-30 17:04:19.372820886 +0100
+@@ -3404,7 +3404,8 @@
+ #	it hangs in tack after running function-keys test.
+ gnome-rh72|GNOME Terminal,
+ 	bce, km@,
+-	civis=\E[?25l, cnorm=\E[?25h, kdch1=\E[3~, kf1=\EOP,
++	civis=\E[?25l, cnorm=\E[?25h, kbs=\177, khome=\E[1~, kend=\E[4~,
++	kdch1=\E[3~, kf1=\EOP,
+ 	kf2=\EOQ, kf3=\EOR, kf4=\EOS, rmam=\E[?7l,
+ 	sgr=\E[0%?%p6%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;m%?%p9%t\016%e\017%;,
+ 	sgr0=\E[0m\017, smam=\E[?7h, tbc@, use=xterm-color,

@@ -1,0 +1,29 @@
+--- ncurses-5.6/misc/terminfo.src.orig	2006-12-30 16:57:06.000124384 +0100
++++ ncurses-5.6/misc/terminfo.src	2006-12-30 16:59:12.647341598 +0100
+@@ -2741,7 +2741,7 @@
+ # "resize -s"), though it does not pass SIGWINCH to the application if the
+ # user resizes the window with the mouse.
+ teraterm2.3|Tera Term Pro,
+-	km, xon@,
++	xon@,
+ 	ncv#43, vt@,
+ 	acsc=+\020\,\021-\030.^Y0\333`\004a\261f\370g\361h\260i\316j\331k\277l\332m\300n\305o~p\304q\304r\304s_t\303u\264v\301w\302x\263y\363z\362{\343|\330}\234~\376,
+ 	blink=\E[5m, bold=\E[1m, civis=\E[?25l, clear=\E[H\E[J,
+@@ -2893,7 +2893,7 @@
+ # (khome/kend do not actually work in X11R5 or X11R6, but many people use this
+ # for compatibility with other emulators).
+ xterm-r6|xterm-old|xterm X11R6 version,
+-	OTbs, am, km, mir, msgr, xenl,
++	OTbs, am, mir, msgr, xenl,
+ 	cols#80, it#8, lines#24,
+ 	acsc=``aaffggiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
+ 	bel=^G, bold=\E[1m, clear=\E[H\E[2J, cr=^M,
+@@ -4138,7 +4138,7 @@
+ #
+ # tested with screen 3.09.08
+ screen|VT 100/ANSI X3.64 virtual terminal,
+-	OTbs, OTpt, am, km, mir, msgr, xenl, G0,
++	OTbs, OTpt, am, mir, msgr, xenl, G0,
+ 	colors#8, cols#80, it#8, lines#24, pairs#64,
+ 	acsc=++\,\,--..00``aaffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
+ 	bel=^G, blink=\E[5m, bold=\E[1m, cbt=\E[Z, civis=\E[?25l,
