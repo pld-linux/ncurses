@@ -16,7 +16,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.7
-Release:	7
+Release:	8
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -437,7 +437,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_datadir}/terminfo/d/dumb
 %{_datadir}/terminfo/k/klone+color
-%{_datadir}/terminfo/k/konsole
+%{_datadir}/terminfo/k/konsole*
 %{_datadir}/terminfo/l/linux*
 %{_datadir}/terminfo/s/screen*
 %{_datadir}/terminfo/v/vt100
