@@ -16,7 +16,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.7
-Release:	9
+Release:	10
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -381,7 +381,7 @@ done
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{/%{_lib},%{_mandir}}
 
-for t in widec narrowc; do
+for t in narrowc widec; do
 %{__make} -C obj-$t install \
 	INSTALL_PREFIX=$RPM_BUILD_ROOT
 done
