@@ -303,7 +303,7 @@ Summary:	Header files for develop Ada95 ncurses based application
 Summary(pl.UTF-8):	Pliki nagłówkowe do biblioteki Ada95 ncurses
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
-%requires_eq	gcc-ada
+%{?with_ada:%requires_eq	gcc-ada}
 
 %description ada-devel
 This package includes the header files and libraries necessary to
