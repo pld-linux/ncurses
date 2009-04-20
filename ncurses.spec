@@ -371,8 +371,8 @@ cd obj-$t
 	--with-ada-include=%{_libdir}/gcc/$gcc_target/$gcc_version/adainclude/ \
 	--with-ada-objects=%{_libdir}/gcc/$gcc_target/$gcc_version/adalib/ \
 	`[ "$t" = "narrowc" ] && echo --with-termlib=tinfo` \
-	`[ "$t" = "wideclowcolor" ] && echo --with-termlib=tinfow --enable-widec --enable-ext-colors --includedir=%{_includedir}wlc` \
-	`[ "$t" = "widec" ] && echo --with-termlib=tinfow --enable-widec --disable-ext-colors --includedir=%{_includedir}w`
+	`[ "$t" = "wideclowcolor" ] && echo --with-termlib=tinfow --enable-widec --disable-ext-colors --includedir=%{_includedir}wlc` \
+	`[ "$t" = "widec" ] && echo --with-termlib=tinfow --enable-widec --enable-ext-colors --includedir=%{_includedir}w`
 
 %{__make}
 
