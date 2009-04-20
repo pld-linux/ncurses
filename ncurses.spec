@@ -347,36 +347,7 @@ gcc_version=$(gcc -dumpversion)
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO -D_FILE_OFFSET_BITS=64"
 cp -f /usr/share/automake/config.sub .
 
-# build ABI5 wide library first
-install -d obj-widec-ABI5
-cd obj-widec-ABI5
-../%configure \
-	--with-install-prefix=$RPM_BUILD_ROOT \
-	--with-normal \
-	--with-shared \
-	--with%{!?with_ada:out}-ada \
-	--with%{!?with_cxx:out}-cxx \
-	--with%{!?with_cxx:out}-cxx-binding \
-	--with%{!?debug:out}-debug \
-	--with%{!?with_gpm:out}-gpm \
-	--without-profile \
-	--with-termlib \
-	--with-largefile \
-	--disable-lp64 \
-	--with-chtype='long' \
-	--with-mmask-t='long' \
-	--with-manpage-aliases \
-	--with-manpage-format=normal \
-	--without-manpage-symlinks \
-	--with-ada-include=%{_libdir}/gcc/$gcc_target/$gcc_version/adainclude/ \
-	--with-ada-objects=%{_libdir}/gcc/$gcc_target/$gcc_version/adalib/ \
-	--with-termlib=tinfow --enable-widec --includedir=%{_includedir}w
-
-%{__make}
-
-cd ..
-
-for t in narrowc widec; do
+for t in narrowc wideclowcolor widec; do
 install -d obj-$t
 cd obj-$t
 ../%configure \
@@ -399,8 +370,9 @@ cd obj-$t
 	--without-manpage-symlinks \
 	--with-ada-include=%{_libdir}/gcc/$gcc_target/$gcc_version/adainclude/ \
 	--with-ada-objects=%{_libdir}/gcc/$gcc_target/$gcc_version/adalib/ \
-	`[ "$t" != "widec" ] && echo --with-termlib=tinfo` \
-	`[ "$t" = "widec" ] && echo --with-termlib=tinfow --enable-widec --enable-ext-colors --includedir=%{_includedir}w`
+	`[ "$t" = "narrowc" ] && echo --with-termlib=tinfo` \
+	`[ "$t" = "wideclowcolor" ] && echo --with-termlib=tinfow --enable-widec --enable-ext-colors --includedir=%{_includedir}wlc` \
+	`[ "$t" = "widec" ] && echo --with-termlib=tinfow --enable-widec --disable-ext-colors --includedir=%{_includedir}w`
 
 %{__make}
 
@@ -426,7 +398,7 @@ ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD
 ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
 ln -sf libncursesw.so $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
 
-cp -a obj-widec-ABI5/lib/lib*w.so.5* $RPM_BUILD_ROOT%{_libdir}
+cp -a obj-wideclowcolor/lib/lib*w.so.5* $RPM_BUILD_ROOT%{_libdir}
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
