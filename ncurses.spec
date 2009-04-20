@@ -374,7 +374,7 @@ cd obj-$t
 	`[ "$t" = "wideclowcolor" ] && echo --with-termlib=tinfow --enable-widec --disable-ext-colors --includedir=%{_includedir}wlc` \
 	`[ "$t" = "widec" ] && echo --with-termlib=tinfow --enable-widec --enable-ext-colors --includedir=%{_includedir}w`
 
-%{__make}
+%{__make} -j1
 
 cd ..
 done
