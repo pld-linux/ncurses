@@ -347,7 +347,11 @@ gcc_version=$(gcc -dumpversion)
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO -D_FILE_OFFSET_BITS=64"
 cp -f /usr/share/automake/config.sub .
 
+%if "%{pld_release}" == "ti"
+for t in narrowc widec; do
+%else
 for t in narrowc wideclowcolor widec; do
+%endif
 install -d obj-$t
 cd obj-$t
 ../%configure \
@@ -370,9 +374,14 @@ cd obj-$t
 	--without-manpage-symlinks \
 	--with-ada-include=%{_libdir}/gcc/$gcc_target/$gcc_version/adainclude/ \
 	--with-ada-objects=%{_libdir}/gcc/$gcc_target/$gcc_version/adalib/ \
+%if "%{pld_release}" == "ti"
+	`[ "$t" != "widec" ] && echo --with-termlib=tinfo` \
+	`[ "$t" = "widec" ] && echo --with-termlib=tinfow --enable-widec --includedir=%{_includedir}w`
+%else
 	`[ "$t" = "narrowc" ] && echo --with-termlib=tinfo` \
 	`[ "$t" = "wideclowcolor" ] && echo --with-termlib=tinfow --enable-widec --disable-ext-colors --includedir=%{_includedir}wlc` \
 	`[ "$t" = "widec" ] && echo --with-termlib=tinfow --enable-widec --enable-ext-colors --includedir=%{_includedir}w`
+%endif
 
 %{__make} -j1
 
@@ -383,7 +392,11 @@ done
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{/%{_lib},%{_mandir}}
 
+%if "%{pld_release}" == "ti"
+for t in widec narrowc; do
+%else
 for t in narrowc widec; do
+%endif
 %{__make} -C obj-$t install \
 	INSTALL_PREFIX=$RPM_BUILD_ROOT
 done
@@ -398,7 +411,9 @@ ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD
 ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
 ln -sf libncursesw.so $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
 
+%if "%{pld_release}" != "ti"
 cp -a obj-wideclowcolor/lib/lib*w.so.5* $RPM_BUILD_ROOT%{_libdir}
+%endif
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
@@ -430,10 +445,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost /%{_lib}/libtinfo.so.5
 %attr(755,root,root) %{_libdir}/libncursesw.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libncursesw.so.5
+%if "%{pld_release}" != "ti"
 %attr(755,root,root) %ghost %{_libdir}/libncursesw.so.6
+%endif
 %attr(755,root,root) %{_libdir}/libtinfow.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libtinfow.so.5
+%if "%{pld_release}" != "ti"
 %attr(755,root,root) %ghost %{_libdir}/libtinfow.so.6
+%endif
 
 %{_datadir}/tabset
 
@@ -485,7 +504,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/html/ncurses-intro.html
 %attr(755,root,root) %{_bindir}/ncurses5-config
+%if "%{pld_release}" == "ti"
+%attr(755,root,root) %{_bindir}/ncursesw5-config
+%else
 %attr(755,root,root) %{_bindir}/ncursesw6-config
+%endif
 %attr(755,root,root) %{_libdir}/libcurses.so
 %attr(755,root,root) %{_libdir}/libncurses.so
 %attr(755,root,root) %{_libdir}/libtinfo.so
@@ -529,6 +552,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files ext
 %defattr(644,root,root,755)
+%if "%{pld_release}" == "ti"
+%attr(755,root,root) %{_libdir}/libform.so.*
+%attr(755,root,root) %{_libdir}/libmenu.so.*
+%attr(755,root,root) %{_libdir}/libpanel.so.*
+%attr(755,root,root) %{_libdir}/libformw.so.*
+%attr(755,root,root) %{_libdir}/libmenuw.so.*
+%attr(755,root,root) %{_libdir}/libpanelw.so.*
+%else
 %attr(755,root,root) %{_libdir}/libform.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libform.so.[56]
 %attr(755,root,root) %{_libdir}/libmenu.so.*.*
@@ -541,6 +572,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libmenuw.so.[56]
 %attr(755,root,root) %{_libdir}/libpanelw.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libpanelw.so.[56]
+%endif
 
 %files ext-devel
 %defattr(644,root,root,755)
