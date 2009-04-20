@@ -16,7 +16,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.7
-Release:	10
+Release:	11
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -346,6 +346,36 @@ gcc_target=$(gcc -dumpmachine)
 gcc_version=$(gcc -dumpversion)
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO -D_FILE_OFFSET_BITS=64"
 cp -f /usr/share/automake/config.sub .
+
+# build ABI5 wide library first
+install -d obj-widec-ABI5
+cd obj-widec-ABI5
+../%configure \
+	--with-install-prefix=$RPM_BUILD_ROOT \
+	--with-normal \
+	--with-shared \
+	--with%{!?with_ada:out}-ada \
+	--with%{!?with_cxx:out}-cxx \
+	--with%{!?with_cxx:out}-cxx-binding \
+	--with%{!?debug:out}-debug \
+	--with%{!?with_gpm:out}-gpm \
+	--without-profile \
+	--with-termlib \
+	--with-largefile \
+	--disable-lp64 \
+	--with-chtype='long' \
+	--with-mmask-t='long' \
+	--with-manpage-aliases \
+	--with-manpage-format=normal \
+	--without-manpage-symlinks \
+	--with-ada-include=%{_libdir}/gcc/$gcc_target/$gcc_version/adainclude/ \
+	--with-ada-objects=%{_libdir}/gcc/$gcc_target/$gcc_version/adalib/ \
+	--with-termlib=tinfow --enable-widec --includedir=%{_includedir}w
+
+%{__make}
+
+cd ..
+
 for t in narrowc widec; do
 install -d obj-$t
 cd obj-$t
@@ -396,6 +426,8 @@ ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD
 ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
 ln -sf libncursesw.so $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
 
+cp -a obj-widec-ABI5/lib/lib*w.so.5* $RPM_BUILD_ROOT%{_libdir}
+
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
 %clean
@@ -425,8 +457,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /%{_lib}/libtinfo.so.*.*
 %attr(755,root,root) %ghost /%{_lib}/libtinfo.so.5
 %attr(755,root,root) %{_libdir}/libncursesw.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libncursesw.so.5
 %attr(755,root,root) %ghost %{_libdir}/libncursesw.so.6
 %attr(755,root,root) %{_libdir}/libtinfow.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libtinfow.so.5
 %attr(755,root,root) %ghost %{_libdir}/libtinfow.so.6
 
 %{_datadir}/tabset
@@ -523,12 +557,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files ext
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libform.so.*
-%attr(755,root,root) %{_libdir}/libmenu.so.*
-%attr(755,root,root) %{_libdir}/libpanel.so.*
-%attr(755,root,root) %{_libdir}/libformw.so.*
-%attr(755,root,root) %{_libdir}/libmenuw.so.*
-%attr(755,root,root) %{_libdir}/libpanelw.so.*
+%attr(755,root,root) %{_libdir}/libform.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libform.so.[56]
+%attr(755,root,root) %{_libdir}/libmenu.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmenu.so.[56]
+%attr(755,root,root) %{_libdir}/libpanel.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libpanel.so.[56]
+%attr(755,root,root) %{_libdir}/libformw.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libformw.so.[56]
+%attr(755,root,root) %{_libdir}/libmenuw.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmenuw.so.[56]
+%attr(755,root,root) %{_libdir}/libpanelw.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libpanelw.so.[56]
 
 %files ext-devel
 %defattr(644,root,root,755)
