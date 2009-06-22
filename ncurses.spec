@@ -5,6 +5,10 @@
 #		  		# (this is neccessary to build ncurses linked with uClibc).
 %bcond_without	gpm		# build without (dynamically loadable) libgpm support
 #
+%ifarch sparc64
+%undefine with_ada
+%endif
+
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
