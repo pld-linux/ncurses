@@ -1,4 +1,3 @@
-#
 # Conditional build:
 %bcond_without	ada		# do not build Ada95 bindings
 %bcond_without	cxx		# do not build C++ ncurses bindings and demo programs
@@ -20,7 +19,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.7
-Release:	15
+Release:	16
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -488,6 +487,10 @@ cp -a obj-wideclowcolor/lib/lib*w.so.5* $RPM_BUILD_ROOT%{_libdir}
 %endif
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
+
+# FIXME: should be fixed properly
+# fix too many w's
+sed -i -e 's/tinfoww/tinfow/' $RPM_BUILD_ROOT%{_bindir}/ncurses*-config
 
 %clean
 rm -rf $RPM_BUILD_ROOT
