@@ -488,6 +488,11 @@ cp -a obj-wideclowcolor/lib/lib*w.so.5* $RPM_BUILD_ROOT%{_libdir}
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
+rm $RPM_BUILD_ROOT%{_libdir}/libcurses.a
+rm $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
+rm $RPM_BUILD_ROOT%{_libdir}/terminfo
+rm $RPM_BUILD_ROOT%{_mandir}/README.ncurses-non-english-man-pages
+
 # FIXME: should be fixed properly
 # fix too many w's
 sed -i -e 's/tinfoww/tinfow/' $RPM_BUILD_ROOT%{_bindir}/ncurses*-config
