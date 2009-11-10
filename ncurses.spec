@@ -19,7 +19,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.7
-Release:	16
+Release:	17
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -77,6 +77,13 @@ Patch45:	%{name}-5.7-20090905.patch.gz
 Patch46:	%{name}-5.7-20090906.patch.gz
 Patch47:	%{name}-5.7-20090912.patch.gz
 Patch48:	%{name}-5.7-20090919.patch.gz
+Patch49:	ncurses-5.7-20090927.patch.gz
+Patch50:	ncurses-5.7-20091003.patch.gz
+Patch51:	ncurses-5.7-20091010.patch.gz
+Patch52:	ncurses-5.7-20091017.patch.gz
+Patch53:	ncurses-5.7-20091024.patch.gz
+Patch54:	ncurses-5.7-20091031.patch.gz
+Patch55:	ncurses-5.7-20091107.patch.gz
 
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -401,6 +408,13 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %patch46 -p1
 %patch47 -p1
 %patch48 -p1
+%patch49 -p1
+%patch50 -p1
+%patch51 -p1
+%patch52 -p1
+%patch53 -p1
+%patch54 -p1
+%patch55 -p1
 
 %patch100 -p1
 %patch101 -p1
@@ -490,7 +504,6 @@ bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
 rm $RPM_BUILD_ROOT%{_libdir}/libcurses.a
 rm $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
-rm $RPM_BUILD_ROOT%{_libdir}/terminfo
 rm $RPM_BUILD_ROOT%{_mandir}/README.ncurses-non-english-man-pages
 
 # FIXME: should be fixed properly
