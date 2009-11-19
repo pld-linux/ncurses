@@ -19,7 +19,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.7
-Release:	17
+Release:	18
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -489,8 +489,10 @@ done
 ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
 mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.* $RPM_BUILD_ROOT/%{_lib}
+mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfow.so.6* $RPM_BUILD_ROOT/%{_lib}
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.* $RPM_BUILD_ROOT/%{_lib}
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libtinfo.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libtinfo.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libtinfow.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libcurses.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libncurses.so
 ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
@@ -536,6 +538,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost /%{_lib}/libncurses.so.5
 %attr(755,root,root) /%{_lib}/libtinfo.so.*.*
 %attr(755,root,root) %ghost /%{_lib}/libtinfo.so.5
+%attr(755,root,root) /%{_lib}/libtinfow.so.*.*
+%attr(755,root,root) %ghost /%{_lib}/libtinfow.so.6
 %attr(755,root,root) %{_libdir}/libncursesw.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libncursesw.so.5
 %if "%{pld_release}" != "ti"
@@ -543,9 +547,6 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 %attr(755,root,root) %{_libdir}/libtinfow.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libtinfow.so.5
-%if "%{pld_release}" != "ti"
-%attr(755,root,root) %ghost %{_libdir}/libtinfow.so.6
-%endif
 
 %{_datadir}/tabset
 
