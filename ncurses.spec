@@ -91,9 +91,6 @@ Patch102:	%{name}-meta.patch
 Patch103:	%{name}-xterm-home-end.patch
 Patch104:	%{name}-mouse_trafo-warning.patch
 Patch105:	%{name}-gnome-terminal.patch
-# not sure about this one, now all xterms have kbs defined (to ^H, not \177)
-# and only XTerm.ad.pl sets backspace to \177 instead of ^H
-Patch106:	%{name}-xterm-kbs.patch
 # disable rain demo; triggers gcc bug: http://gcc.gnu.org/bugzilla/show_bug.cgi?id=14998
 Patch107:	%{name}-no-rain-demo.patch
 URL:		http://dickey.his.com/ncurses/ncurses.html
@@ -422,7 +419,6 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %patch103 -p1
 %patch104 -p1
 %patch105 -p1
-%patch106 -p1
 %patch107 -p1
 
 %build
