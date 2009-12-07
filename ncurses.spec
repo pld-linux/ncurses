@@ -19,7 +19,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.7
-Release:	21
+Release:	22
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -513,7 +513,7 @@ rm $RPM_BUILD_ROOT%{_mandir}/README.ncurses-non-english-man-pages
 
 # FIXME: should be fixed properly
 # fix too many w's
-sed -i -e 's/tinfoww/tinfow/' $RPM_BUILD_ROOT%{_bindir}/ncurses*-config
+sed -i -e 's/tinfoww/tinfow/' $RPM_BUILD_ROOT%{_bindir}/ncurses*-config $RPM_BUILD_ROOT%{_pkgconfigdir}/*.pc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
