@@ -19,7 +19,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.7
-Release:	20
+Release:	21
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -426,8 +426,9 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %build
 unset TERMINFO || :
 gcc_target=$(gcc -dumpmachine)
-gcc_version=$(gcc -dumpversion)
+gcc_version=%{cc_version}
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO -D_FILE_OFFSET_BITS=64"
+export PKG_CONFIG_LIBDIR=%{_libdir}/pkgconfig
 cp -f /usr/share/automake/config.sub .
 
 %if "%{pld_release}" == "ti"
@@ -450,6 +451,7 @@ cd obj-$t
 	--with-termlib \
 	--with-largefile \
 	--disable-lp64 \
+	--enable-pc-files \
 	--with-chtype='long' \
 	--with-mmask-t='long' \
 	--with-manpage-aliases \
@@ -633,6 +635,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}w/termcap.h
 %{_includedir}w/tic.h
 %{_includedir}w/unctrl.h
+%{_pkgconfigdir}/*.pc
+
 %{_mandir}/man3/*
 %exclude %{_mandir}/man3/form*
 %exclude %{_mandir}/man3/menu*
