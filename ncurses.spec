@@ -1,3 +1,4 @@
+#
 # Conditional build:
 %bcond_without	ada		# do not build Ada95 bindings
 %bcond_without	cxx		# do not build C++ ncurses bindings and demo programs
@@ -488,25 +489,26 @@ done
 
 ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
-mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.* $RPM_BUILD_ROOT/%{_lib}
-mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.* $RPM_BUILD_ROOT/%{_lib}
 %if "%{pld_release}" != "ti"
 mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfow.so.6* $RPM_BUILD_ROOT/%{_lib}
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncursesw.so.6* $RPM_BUILD_ROOT/%{_lib}
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libtinfow.so.6*.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libtinfow.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libncursesw.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
 %else
 mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfow.so.5* $RPM_BUILD_ROOT/%{_lib}
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncursesw.so.5* $RPM_BUILD_ROOT/%{_lib}
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libtinfow.so.5*.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libtinfow.so.5.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.5.*) $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.5.*) $RPM_BUILD_ROOT%{_libdir}/libncursesw.so
 %endif
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libtinfo.so.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
+mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.* $RPM_BUILD_ROOT/%{_lib}
+mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.* $RPM_BUILD_ROOT/%{_lib}
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libtinfo.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libcurses.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libncurses.so
 
 ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
-ln -sf libncursesw.so $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
 
 %if "%{pld_release}" != "ti"
 cp -a obj-wideclowcolor/lib/lib*w.so.5* $RPM_BUILD_ROOT%{_libdir}
