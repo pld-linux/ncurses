@@ -20,7 +20,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.7
-Release:	23
+Release:	24
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -85,6 +85,20 @@ Patch52:	%{name}-5.7-20091017.patch.gz
 Patch53:	%{name}-5.7-20091024.patch.gz
 Patch54:	%{name}-5.7-20091031.patch.gz
 Patch55:	%{name}-5.7-20091107.patch.gz
+Patch56:	ncurses-5.7-20091114.patch.gz
+Patch57:	ncurses-5.7-20091121.patch.gz
+Patch58:	ncurses-5.7-20091128.patch.gz
+Patch59:	ncurses-5.7-20091205.patch.gz
+Patch60:	ncurses-5.7-20091212.patch.gz
+Patch61:	ncurses-5.7-20091219.patch.gz
+Patch62:	ncurses-5.7-20091226.patch.gz
+Patch63:	ncurses-5.7-20091227.patch.gz
+Patch64:	ncurses-5.7-20100102.patch.gz
+Patch65:	ncurses-5.7-20100109.patch.gz
+Patch66:	ncurses-5.7-20100116.patch.gz
+Patch67:	ncurses-5.7-20100123.patch.gz
+Patch68:	ncurses-5.7-20100130.patch.gz
+Patch69:	ncurses-5.7-20100206.patch.gz
 
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -415,6 +429,20 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %patch53 -p1
 %patch54 -p1
 %patch55 -p1
+%patch56 -p1
+%patch57 -p1
+%patch58 -p1
+%patch59 -p1
+%patch60 -p1
+%patch61 -p1
+%patch62 -p1
+%patch63 -p1
+%patch64 -p1
+%patch65 -p1
+%patch66 -p1
+%patch67 -p1
+%patch68 -p1
+%patch69 -p1
 
 %patch100 -p1
 %patch101 -p1
