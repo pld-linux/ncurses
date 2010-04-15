@@ -20,7 +20,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.7
-Release:	26
+Release:	27
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -497,8 +497,12 @@ cd obj-$t
 	--without-profile \
 	--with-termlib \
 	--with-largefile \
+	--with-ospeed=unsigned \
 	--disable-lp64 \
+	--enable-hard-tabs \
+	--enable-xmc-glitch \
 	--enable-pc-files \
+	--enable-colorfgbg \
 	--with-chtype='long' \
 	--with-mmask-t='long' \
 	--with-manpage-aliases \
