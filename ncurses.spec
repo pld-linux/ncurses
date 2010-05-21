@@ -511,7 +511,6 @@ cd obj-$t
 	--enable-xmc-glitch \
 	--enable-pc-files \
 	--enable-colorfgbg \
-	--enable-pthreads-eintr \
 	--with-chtype='long' \
 	--with-mmask-t='long' \
 	--with-manpage-aliases \
