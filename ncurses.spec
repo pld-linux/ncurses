@@ -44,7 +44,11 @@ Patch105:	%{name}-gnome-terminal.patch
 Patch107:	%{name}-no-rain-demo.patch
 URL:		http://dickey.his.com/ncurses/ncurses.html
 BuildRequires:	automake
-%{?with_ada:BuildRequires:	gcc-ada}
+%if %{with ada}
+BuildRequires:	gcc-ada
+# https://bugzilla.redhat.com/show_bug.cgi?id=613407
+BuildRequires:	libgnat-static
+%endif
 %{?with_gpm:BuildRequires:	gpm-devel}
 %{?with_cxx:BuildRequires:	libstdc++-devel}
 %{?with_ada:BuildRequires:	m4}
