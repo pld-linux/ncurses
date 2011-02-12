@@ -10,9 +10,11 @@ diff -urN ncurses-5.4.org/Ada95/samples/Makefile.in ncurses-5.4/Ada95/samples/Ma
  
  TOUR_OBJS    =	tour.o sample.o sample-curses_demo.o sample-explanation.o 	\
  		sample-form_demo.o sample-function_key_setting.o 		\
-@@ -109,7 +109,7 @@
- 	ncurses2-flushinp_test.o
+--- ncurses-5.7/Ada95/samples/Makefile.in~	2011-02-12 19:24:43.508139857 +0100
++++ ncurses-5.7/Ada95/samples/Makefile.in	2011-02-12 19:25:25.864985106 +0100
+@@ -92,7 +92,7 @@
  
+ PROGS        = tour ncurses
  
 -all ::  tour$x rain$x ncurses$x
 +all ::  tour$x ncurses$x
