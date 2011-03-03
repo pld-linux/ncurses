@@ -19,20 +19,17 @@ Summary(ru.UTF-8):	ncurses - новая библиотека управлени�
 Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
-Version:	5.7
-Release:	32
+Version:	5.8
+Release:	0.1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
-# Source0-md5:	cce05daf61a64501ef6cd8da1f727ec6
+# Source0-md5:	20ed3fa7599937f0ca268d9088837a64
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 
 # source: ftp://dickey.his.com/ncurses/5.7/
-Patch0:		patch-5.7-20110108.sh.gz
-Patch1:		ncurses-5.7-20110115.patch.gz
-Patch2:		ncurses-5.7-20110122.patch.gz
-Patch3:		ncurses-5.7-20110205.patch.gz
+#Patch0:		patch-5.7-20110108.sh.gz
 
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -311,10 +308,6 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 
 %prep
 %setup -q
-zcat %{PATCH0} | /bin/sh - || exit 1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %patch100 -p1
 %patch101 -p1
