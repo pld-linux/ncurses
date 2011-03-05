@@ -43,7 +43,8 @@ URL:		http://dickey.his.com/ncurses/ncurses.html
 BuildRequires:	automake
 %if %{with ada}
 BuildRequires:	gcc-ada
-# https://bugzilla.redhat.com/show_bug.cgi?id=613407
+# gnat bug: https://bugzilla.redhat.com/show_bug.cgi?id=613407
+# gcc patch: https://bugzilla.redhat.com/attachment.cgi?id=435931
 BuildRequires:	libgnat-static
 %endif
 %{?with_gpm:BuildRequires:	gpm-devel}
