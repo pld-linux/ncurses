@@ -1,23 +1,11 @@
-diff -urN ncurses-5.4.org/Ada95/samples/Makefile.in ncurses-5.4/Ada95/samples/Makefile.in
---- ncurses-5.4.org/Ada95/samples/Makefile.in	2005-08-21 23:00:52.884875000 +0200
-+++ ncurses-5.4/Ada95/samples/Makefile.in	2005-08-21 23:01:21.119582984 +0200
-@@ -89,7 +89,7 @@
+--- ncurses-5.9/Ada95/samples/Makefile.in~	2011-03-29 01:45:08.000000000 +0200
++++ ncurses-5.9/Ada95/samples/Makefile.in	2011-06-25 15:05:18.869032587 +0200
+@@ -99,7 +99,7 @@
  CARGS        =-cargs $(ADAFLAGS)
- LARGS        =-largs @TEST_ARG2@ $(LD_FLAGS) -lAdaCurses
+ LARGS        =-largs -L../lib -lAdaCurses @TEST_ARG2@ $(LD_FLAGS) @TEST_LIBS2@
  
--PROGS        = tour rain ncurses
-+PROGS        = tour ncurses
+-PROGS        = tour$x ncurses$x @USE_GNAT_SIGINT@ rain$x 
++PROGS        = tour$x ncurses$x @USE_GNAT_SIGINT@
  
- TOUR_OBJS    =	tour.o sample.o sample-curses_demo.o sample-explanation.o 	\
- 		sample-form_demo.o sample-function_key_setting.o 		\
---- ncurses-5.7/Ada95/samples/Makefile.in~	2011-02-12 19:24:43.508139857 +0100
-+++ ncurses-5.7/Ada95/samples/Makefile.in	2011-02-12 19:25:25.864985106 +0100
-@@ -92,7 +92,7 @@
- 
- PROGS        = tour ncurses
- 
--all ::  tour$x rain$x ncurses$x
-+all ::  tour$x ncurses$x
+ all ::  $(PROGS)
  	@echo made $@
- 
- sources :

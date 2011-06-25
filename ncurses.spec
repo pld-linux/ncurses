@@ -19,17 +19,36 @@ Summary(ru.UTF-8):	ncurses - новая библиотека управлени�
 Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
-Version:	5.8
-Release:	4
+Version:	5.9
+Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
-# Source0-md5:	20ed3fa7599937f0ca268d9088837a64
+# Source0-md5:	8cb9c412e5f2d96bc6f459aa8c6282a1
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 
-# source: ftp://dickey.his.com/ncurses/5.8/
-#Patch0:		
+# source: ftp://dickey.his.com/ncurses/5.9/
+Patch0:		ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110409.patch.gz
+# Patch0-md5:	c26b6e57a553d1589c351fd975db715e
+Patch1:		ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110416.patch.gz
+# Patch1-md5:	0cd0a279dae5cb10c1f39a6663620f64
+Patch2:		ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110423.patch.gz
+# Patch2-md5:	5cfe7668aeb60e7d49411171cf7a3794
+Patch3:		ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110430.patch.gz
+# Patch3-md5:	279b7bc2ee75fd87c203a06f33da7f28
+Patch4:		ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110507.patch.gz
+# Patch4-md5:	0b49ef1f095782b7ec11443bf65807f6
+Patch5:		ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110514.patch.gz
+# Patch5-md5:	9259e608ede1cda1be0121ce9ebc09b3
+Patch6:		ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110521.patch.gz
+# Patch6-md5:	02df6dc377fca5aa657bf433f557f369
+Patch7:		ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110528.patch.gz
+# Patch7-md5:	8f76dfdda995d28db6aa81df400acfc8
+Patch8:		ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110604.patch.gz
+# Patch8-md5:	9096cf2939126cf846879805fcacf54f
+Patch9:		ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110611.patch.gz
+# Patch9-md5:	e015ed8feda52fdb42175972bbae524c
 
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -309,6 +328,16 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
 
 %patch100 -p1
 %patch101 -p1
