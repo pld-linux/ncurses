@@ -20,7 +20,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.9
-Release:	2
+Release:	3
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -372,7 +372,6 @@ cd obj-$t
 	--with%{!?debug:out}-debug \
 	--with%{!?with_gpm:out}-gpm \
 	--without-profile \
-	--with-termlib \
 	--with-largefile \
 	--with-ospeed=unsigned \
 	--disable-lp64 \
@@ -391,9 +390,8 @@ cd obj-$t
 	`[ "$t" != "widec" ] && echo --with-termlib=tinfo` \
 	`[ "$t" = "widec" ] && echo --with-termlib=tinfow --enable-widec --includedir=%{_includedir}w`
 %else
-	`[ "$t" = "narrowc" ] && echo --with-termlib=tinfo` \
-	`[ "$t" = "wideclowcolor" ] && echo --with-termlib=tinfow --enable-widec --disable-ext-colors --includedir=%{_includedir}wlc` \
-	`[ "$t" = "widec" ] && echo --with-termlib=tinfow --enable-widec --enable-ext-colors --includedir=%{_includedir}w`
+	`[ "$t" = "wideclowcolor" ] && echo --enable-widec --disable-ext-colors --includedir=%{_includedir}wlc` \
+	`[ "$t" = "widec" ] && echo --enable-widec --enable-ext-colors --includedir=%{_includedir}w`
 %endif
 
 %{__make} -j1
@@ -417,9 +415,8 @@ done
 ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
 %if "%{pld_release}" != "ti"
-mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfow.so.6* $RPM_BUILD_ROOT/%{_lib}
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncursesw.so.6* $RPM_BUILD_ROOT/%{_lib}
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libtinfow.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libncursesw.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
 %else
@@ -429,9 +426,8 @@ ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libtinfow.so.5.*) $RPM_BUILD_
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.5.*) $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.5.*) $RPM_BUILD_ROOT%{_libdir}/libncursesw.so
 %endif
-mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.* $RPM_BUILD_ROOT/%{_lib}
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.* $RPM_BUILD_ROOT/%{_lib}
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libtinfo.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libcurses.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libncurses.so
 
@@ -446,10 +442,6 @@ bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 rm $RPM_BUILD_ROOT%{_libdir}/libcurses.a
 rm $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
 rm $RPM_BUILD_ROOT%{_mandir}/README.ncurses-non-english-man-pages
-
-# FIXME: should be fixed properly
-# fix too many w's
-sed -i -e 's/tinfoww/tinfow/' $RPM_BUILD_ROOT%{_bindir}/ncurses*-config $RPM_BUILD_ROOT%{_pkgconfigdir}/*.pc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -479,15 +471,9 @@ rm -rf $RPM_BUILD_ROOT
 %if "%{pld_release}" != "ti"
 %attr(755,root,root) %ghost /%{_lib}/libncursesw.so.6
 %endif
-%attr(755,root,root) /%{_lib}/libtinfo.so.*.*
-%attr(755,root,root) %ghost /%{_lib}/libtinfo.so.5
-%attr(755,root,root) /%{_lib}/libtinfow.so.*.*
 %if "%{pld_release}" != "ti"
-%attr(755,root,root) %ghost /%{_lib}/libtinfow.so.6
 %attr(755,root,root) %{_libdir}/libncursesw.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libncursesw.so.5
-%attr(755,root,root) %{_libdir}/libtinfow.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libtinfow.so.5
 %else
 %attr(755,root,root) %ghost /%{_lib}/libtinfow.so.5
 %attr(755,root,root) %ghost /%{_lib}/libncursesw.so.5
@@ -589,9 +575,7 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libncurses.a
-%{_libdir}/libtinfo.a
 %{_libdir}/libncursesw.a
-%{_libdir}/libtinfow.a
 
 %files ext
 %defattr(644,root,root,755)
