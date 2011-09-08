@@ -20,7 +20,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.9
-Release:	3
+Release:	4
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -49,6 +49,26 @@ Patch8:		ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110604.patch.gz
 # Patch8-md5:	9096cf2939126cf846879805fcacf54f
 Patch9:		ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110611.patch.gz
 # Patch9-md5:	e015ed8feda52fdb42175972bbae524c
+Patch10:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110625.patch.gz
+# Patch10-md5:	aef165913af8c4429ea6952ada251050
+Patch11:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110626.patch.gz
+# Patch11-md5:	8b142ba05d78a4ecf544bd332aca0e89
+Patch12:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110702.patch.gz
+# Patch12-md5:	82c3c02925e43fa229a474a6b0bff5b1
+Patch13:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110716.patch.gz
+# Patch13-md5:	cd4d1a529ac4c7bc651d098b25103080
+Patch14:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110723.patch.gz
+# Patch14-md5:	41cc27d25b5af10aa44b961ec8e0c4c1
+Patch15:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110730.patch.gz
+# Patch15-md5:	ca003e277018cfe72a1c3952423b0c48
+Patch16:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110807.patch.gz
+# Patch16-md5:	ebe7c70030af0fe49c6573e43a78f7d8
+Patch17:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110813.patch.gz
+# Patch17-md5:	2766fb18a0d63837558ceae3b499ae01
+Patch18:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110820.patch.gz
+# Patch18-md5:	420ba8a3afeb6bf1309536194499d965
+Patch19:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20110903.patch.gz
+# Patch19-md5:	2f63ea871e1895adaf7a9135c2936c4e
 
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -338,6 +358,16 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
 
 %patch100 -p1
 %patch101 -p1
