@@ -20,7 +20,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.9
-Release:	4
+Release:	5
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -417,8 +417,7 @@ cd obj-$t
 	--with-ada-include=%{_libdir}/gcc/$gcc_target/$gcc_version/adainclude/ \
 	--with-ada-objects=%{_libdir}/gcc/$gcc_target/$gcc_version/adalib/ \
 %if "%{pld_release}" == "ti"
-	`[ "$t" != "widec" ] && echo --with-termlib=tinfo` \
-	`[ "$t" = "widec" ] && echo --with-termlib=tinfow --enable-widec --includedir=%{_includedir}w`
+	`[ "$t" = "widec" ] && echo --enable-widec --includedir=%{_includedir}w`
 %else
 	`[ "$t" = "wideclowcolor" ] && echo --enable-widec --disable-ext-colors --includedir=%{_includedir}wlc` \
 	`[ "$t" = "widec" ] && echo --enable-widec --enable-ext-colors --includedir=%{_includedir}w`
@@ -450,9 +449,8 @@ ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUIL
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libncursesw.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
 %else
-mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfow.so.5* $RPM_BUILD_ROOT/%{_lib}
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncursesw.so.5* $RPM_BUILD_ROOT/%{_lib}
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libtinfow.so.5.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.5.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.5.*) $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.5.*) $RPM_BUILD_ROOT%{_libdir}/libncursesw.so
 %endif
@@ -505,7 +503,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libncursesw.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libncursesw.so.5
 %else
-%attr(755,root,root) %ghost /%{_lib}/libtinfow.so.5
 %attr(755,root,root) %ghost /%{_lib}/libncursesw.so.5
 %endif
 
