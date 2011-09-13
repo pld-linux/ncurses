@@ -501,6 +501,11 @@ rm -rf $RPM_BUILD_ROOT
 %if "%{pld_release}" != "ti"
 %attr(755,root,root) %ghost /%{_lib}/libncursesw.so.6
 %endif
+%if "%{pld_release}" == "ti"
+%attr(755,root,root) /%{_lib}/libtinfo.so.*.*
+%attr(755,root,root) %ghost /%{_lib}/libtinfo.so.5
+%attr(755,root,root) /%{_lib}/libtinfow.so.*.*
+%endif
 %if "%{pld_release}" != "ti"
 %attr(755,root,root) %{_libdir}/libncursesw.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libncursesw.so.5
