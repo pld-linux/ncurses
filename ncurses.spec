@@ -20,7 +20,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.9
-Release:	5
+Release:	6
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -446,18 +446,20 @@ ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
 %if "%{pld_release}" != "ti"
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncursesw.so.6* $RPM_BUILD_ROOT/%{_lib}
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libncursesw.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
 %else
 mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfow.so.5* $RPM_BUILD_ROOT/%{_lib}
+mv -f $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.* $RPM_BUILD_ROOT/%{_lib}
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncursesw.so.5* $RPM_BUILD_ROOT/%{_lib}
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libtinfo.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libtinfow.so.5.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.5.*) $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.5.*) $RPM_BUILD_ROOT%{_libdir}/libncursesw.so
 %endif
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.* $RPM_BUILD_ROOT/%{_lib}
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libcurses.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libncurses.so
 
@@ -611,6 +613,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libncurses.a
 %{_libdir}/libncursesw.a
+%if "%{pld_release}" == "ti"
+%{_libdir}/libtinfo.a
+%{_libdir}/libtinfow.a
+%endif
 
 %files ext
 %defattr(644,root,root,755)
