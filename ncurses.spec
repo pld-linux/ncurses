@@ -20,7 +20,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.9
-Release:	9
+Release:	10
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -87,7 +87,6 @@ Patch27:	ftp://dickey.his.com/ncurses/5.9/%{name}-5.9-20111022.patch.gz
 # Patch27-md5:	89a820ab5eae53ead7a6e66e6fdd1cec
 Patch28:	ftp://dickey.his.com/ncurses/5.9/%{name}-5.9-20111030.patch.gz
 # Patch28-md5:	815b149dca4306d51306211f13f7d0a4
-
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
 Patch102:	%{name}-meta.patch
@@ -96,19 +95,31 @@ Patch104:	%{name}-mouse_trafo-warning.patch
 Patch105:	%{name}-gnome-terminal.patch
 # disable rain demo; triggers gcc bug: http://gcc.gnu.org/bugzilla/show_bug.cgi?id=14998
 Patch107:	%{name}-no-rain-demo.patch
+Patch108:	%{name}-fix-nonunicode-breakage.patch
 URL:		http://dickey.his.com/ncurses/ncurses.html
 BuildRequires:	automake
 %if %{with ada}
 BuildRequires:	gcc-ada
 # gnat bug: https://bugzilla.redhat.com/show_bug.cgi?id=613407
 # gcc patch: https://bugzilla.redhat.com/attachment.cgi?id=435931
-BuildRequires:	libgnat-static
+# seems worker around when using gcc 4.6.2? --q
+#BuildRequires:	libgnat-static
 %endif
 %{?with_gpm:BuildRequires:	gpm-devel}
 %{?with_cxx:BuildRequires:	libstdc++-devel}
 %{?with_ada:BuildRequires:	m4}
 BuildRequires:	pkgconfig
 BuildRequires:	sharutils
+# for compatibility with old PLD packages
+%ifarch %{x8664} ppc64 sparc64 s390x
+Provides:	libtinfo.so.5()(64bit)
+Provides:	libtinfow.so.5()(64bit)
+Provides:	libtinfow.so.6()(64bit)
+%else
+Provides:	libtinfo.so.5
+Provides:	libtinfow.so.5
+Provides:	libtinfow.so.6
+%endif
 Obsoletes:	libncurses5
 Conflicts:	terminfo < 5.4-0.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -403,6 +414,7 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %patch104 -p1
 %patch105 -p1
 %patch107 -p1
+%patch108 -p1
 
 %build
 unset TERMINFO || :
@@ -469,13 +481,18 @@ ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD
 
 ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
 
-cp -a obj-wideclowcolor/lib/lib*w.so.5* $RPM_BUILD_ROOT%{_libdir}
+# binary compatibility for packages using libncursesw.so.5 (without ext-colors)
+cp -a obj-wideclowcolor/lib/libncursesw.so.5* $RPM_BUILD_ROOT%{_libdir}
+# binary compatibility for packages usign libtinfo.so.5/libtinfow.so.5/libtinfow.so.6
+ln -sf $(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.5.*) $RPM_BUILD_ROOT/%{_lib}/libtinfo.so.5
+ln -sf $(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT/%{_lib}/libtinfow.so.6
+ln -sf $(basename $RPM_BUILD_ROOT%{_libdir}/libncursesw.so.5.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so.5
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
-rm $RPM_BUILD_ROOT%{_libdir}/libcurses.a
-rm $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
-rm $RPM_BUILD_ROOT%{_mandir}/README.ncurses-non-english-man-pages
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libcurses.a
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
+%{__rm} $RPM_BUILD_ROOT%{_mandir}/README.ncurses-non-english-man-pages
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -505,6 +522,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost /%{_lib}/libncursesw.so.6
 %attr(755,root,root) %{_libdir}/libncursesw.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libncursesw.so.5
+%attr(755,root,root) /%{_lib}/libtinfo.so.5
+%attr(755,root,root) /%{_lib}/libtinfow.so.6
+%attr(755,root,root) %{_libdir}/libtinfow.so.5
 
 %{_datadir}/tabset
 
@@ -527,7 +547,19 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/terminfo/v/vt52
 %{_datadir}/terminfo/x/xterm*
 
-%{_mandir}/man[157]/*
+%{_mandir}/man1/captoinfo.1m*
+%{_mandir}/man1/clear.1*
+%{_mandir}/man1/infocmp.1m*
+%{_mandir}/man1/infotocap.1m*
+%{_mandir}/man1/reset.1*
+%{_mandir}/man1/tabs.1*
+%{_mandir}/man1/tic.1m*
+%{_mandir}/man1/toe.1m*
+%{_mandir}/man1/tput.1*
+%{_mandir}/man1/tset.1*
+%{_mandir}/man5/term.5*
+%{_mandir}/man5/terminfo.5*
+%{_mandir}/man7/term.7*
 %lang(fi) %{_mandir}/fi/man1/*
 %lang(fr) %{_mandir}/fr/man1/*
 %lang(hu) %{_mandir}/hu/man1/*
@@ -587,13 +619,201 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}w/termcap.h
 %{_includedir}w/tic.h
 %{_includedir}w/unctrl.h
-%{_pkgconfigdir}/*.pc
-
-%{_mandir}/man3/*
-%exclude %{_mandir}/man3/form*
-%exclude %{_mandir}/man3/menu*
-%exclude %{_mandir}/man3/panel*
-%lang(pl) %{_mandir}/pl/man3/*
+%{_pkgconfigdir}/ncurses.pc
+%{_pkgconfigdir}/ncursesw.pc
+%{_mandir}/man1/ncurses5-config.1*
+%{_mandir}/man1/ncursesw6-config.1*
+%{_mandir}/man3/BC.3x*
+%{_mandir}/man3/COLORS.3x*
+%{_mandir}/man3/COLOR_PAIR.3x*
+%{_mandir}/man3/COLOR_PAIRS.3x*
+%{_mandir}/man3/COLS.3x*
+%{_mandir}/man3/ESCDELAY.3x*
+%{_mandir}/man3/LINES.3x*
+%{_mandir}/man3/PAIR_NUMBER.3x*
+%{_mandir}/man3/PC.3x*
+%{_mandir}/man3/SP.3x*
+%{_mandir}/man3/TABSIZE.3x*
+%{_mandir}/man3/UP.3x*
+%{_mandir}/man3/_nc_*.3x*
+%{_mandir}/man3/_trace*.3x*
+%{_mandir}/man3/acs_map.3x*
+%{_mandir}/man3/add*.3x*
+%{_mandir}/man3/assume_default_colors*.3x*
+%{_mandir}/man3/attr*.3x*
+%{_mandir}/man3/baudrate*.3x*
+%{_mandir}/man3/beep*.3x*
+%{_mandir}/man3/bkgd*.3x*
+%{_mandir}/man3/bkgrnd*.3x*
+%{_mandir}/man3/bool*.3x*
+%{_mandir}/man3/border*.3x*
+%{_mandir}/man3/box*.3x*
+%{_mandir}/man3/can_change_color*.3x*
+%{_mandir}/man3/cbreak*.3x*
+%{_mandir}/man3/ceiling_panel.3x*
+%{_mandir}/man3/chgat.3x*
+%{_mandir}/man3/clear*.3x*
+%{_mandir}/man3/clrto*.3x*
+%{_mandir}/man3/color_*.3x*
+%{_mandir}/man3/copywin.3x*
+%{_mandir}/man3/cur_term.3x*
+%{_mandir}/man3/curs_*.3x*
+%{_mandir}/man3/curscr.3x*
+%{_mandir}/man3/curses_version.3x*
+%{_mandir}/man3/def_*.3x*
+%{_mandir}/man3/default_colors.3x*
+%{_mandir}/man3/define_key*.3x*
+%{_mandir}/man3/del_curterm*.3x*
+%{_mandir}/man3/delay_output*.3x*
+%{_mandir}/man3/delch.3x*
+%{_mandir}/man3/deleteln.3x*
+%{_mandir}/man3/delscreen.3x*
+%{_mandir}/man3/delwin.3x*
+%{_mandir}/man3/derwin.3x*
+%{_mandir}/man3/doupdate*.3x*
+%{_mandir}/man3/dupwin.3x*
+%{_mandir}/man3/echo*.3x*
+%{_mandir}/man3/endwin*.3x*
+%{_mandir}/man3/erase*.3x*
+%{_mandir}/man3/filter*.3x*
+%{_mandir}/man3/flash*.3x*
+%{_mandir}/man3/flushinp*.3x*
+%{_mandir}/man3/get*.3x*
+%{_mandir}/man3/ground_panel.3x*
+%{_mandir}/man3/halfdelay*.3x*
+%{_mandir}/man3/has_*.3x*
+%{_mandir}/man3/hline*.3x*
+%{_mandir}/man3/idcok.3x*
+%{_mandir}/man3/idlok.3x*
+%{_mandir}/man3/immedok.3x*
+%{_mandir}/man3/in_*.3x*
+%{_mandir}/man3/inch*.3x*
+%{_mandir}/man3/init_color*.3x*
+%{_mandir}/man3/init_pair*.3x*
+%{_mandir}/man3/initscr.3x*
+%{_mandir}/man3/innstr.3x*
+%{_mandir}/man3/innwstr.3x*
+%{_mandir}/man3/ins*.3x*
+%{_mandir}/man3/intrflush*.3x*
+%{_mandir}/man3/inwstr.3x*
+%{_mandir}/man3/is_*.3x*
+%{_mandir}/man3/isendwin*.3x*
+%{_mandir}/man3/key*.3x*
+%{_mandir}/man3/kill*.3x*
+%{_mandir}/man3/leaveok.3x*
+%{_mandir}/man3/legacy_coding.3x*
+%{_mandir}/man3/longname.3x*
+%{_mandir}/man3/mcprint*.3x*
+%{_mandir}/man3/meta.3x*
+%{_mandir}/man3/mouse*.3x*
+%{_mandir}/man3/move.3x*
+%{_mandir}/man3/mv*.3x*
+%{_mandir}/man3/napms*.3x*
+%{_mandir}/man3/ncurses.3x*
+%{_mandir}/man3/new_prescr.3x*
+%{_mandir}/man3/newpad*.3x*
+%{_mandir}/man3/newscr.3x*
+%{_mandir}/man3/newterm*.3x*
+%{_mandir}/man3/newwin*.3x*
+%{_mandir}/man3/nl*.3x*
+%{_mandir}/man3/no*.3x*
+%{_mandir}/man3/num*.3x*
+%{_mandir}/man3/ospeed.3x*
+%{_mandir}/man3/overlay.3x*
+%{_mandir}/man3/overwrite.3x*
+%{_mandir}/man3/pair_content*.3x*
+%{_mandir}/man3/pecho*.3x*
+%{_mandir}/man3/pnoutrefresh.3x*
+%{_mandir}/man3/prefresh.3x*
+%{_mandir}/man3/printw.3x*
+%{_mandir}/man3/put*.3x*
+%{_mandir}/man3/qiflush*.3x*
+%{_mandir}/man3/raw*.3x*
+%{_mandir}/man3/redrawwin.3x*
+%{_mandir}/man3/refresh.3x*
+%{_mandir}/man3/reset_*.3x*
+%{_mandir}/man3/resetty*.3x*
+%{_mandir}/man3/resize_term*.3x*
+%{_mandir}/man3/resizeterm*.3x*
+%{_mandir}/man3/restartterm*.3x*
+%{_mandir}/man3/ripoffline*.3x*
+%{_mandir}/man3/savetty*.3x*
+%{_mandir}/man3/scanw.3x*
+%{_mandir}/man3/scr_*.3x*
+%{_mandir}/man3/scrl.3x*
+%{_mandir}/man3/scroll.3x*
+%{_mandir}/man3/scroll*.3x*
+%{_mandir}/man3/set_curterm*.3x*
+%{_mandir}/man3/set_escdelay*.3x*
+%{_mandir}/man3/set_tabsize*.3x*
+%{_mandir}/man3/set_term.3x*
+%{_mandir}/man3/setcchar.3x*
+%{_mandir}/man3/setscrreg.3x*
+%{_mandir}/man3/setsyx.3x*
+%{_mandir}/man3/setterm.3x*
+%{_mandir}/man3/setupterm.3x*
+%{_mandir}/man3/slk_*.3x*
+%{_mandir}/man3/stand*.3x*
+%{_mandir}/man3/start_color*.3x*
+%{_mandir}/man3/stdscr.3x*
+%{_mandir}/man3/str*.3x*
+%{_mandir}/man3/subpad.3x*
+%{_mandir}/man3/subwin.3x*
+%{_mandir}/man3/syncok.3x*
+%{_mandir}/man3/term*.3x*
+%{_mandir}/man3/tget*.3x*
+%{_mandir}/man3/tgoto.3x*
+%{_mandir}/man3/tiget*.3x*
+%{_mandir}/man3/timeout.3x*
+%{_mandir}/man3/tiparm.3x*
+%{_mandir}/man3/touchline.3x*
+%{_mandir}/man3/touchwin.3x*
+%{_mandir}/man3/tparm.3x*
+%{_mandir}/man3/tputs*.3x*
+%{_mandir}/man3/trace.3x*
+%{_mandir}/man3/ttytype.3x*
+%{_mandir}/man3/typeahead*.3x*
+%{_mandir}/man3/unctrl*.3x*
+%{_mandir}/man3/unget*.3x*
+%{_mandir}/man3/untouchwin.3x*
+%{_mandir}/man3/use_*.3x*
+%{_mandir}/man3/vid*.3x*
+%{_mandir}/man3/vline*.3x*
+%{_mandir}/man3/vw*.3x*
+%{_mandir}/man3/wadd*.3x*
+%{_mandir}/man3/wattr*.3x*
+%{_mandir}/man3/wbkgd*.3x*
+%{_mandir}/man3/wbkgrnd*.3x*
+%{_mandir}/man3/wborder*.3x*
+%{_mandir}/man3/wchgat.3x*
+%{_mandir}/man3/wclear.3x*
+%{_mandir}/man3/wclrto*.3x*
+%{_mandir}/man3/wcolor_set.3x*
+%{_mandir}/man3/wcursyncup.3x*
+%{_mandir}/man3/wdel*.3x*
+%{_mandir}/man3/wecho*.3x*
+%{_mandir}/man3/wenclose.3x*
+%{_mandir}/man3/werase.3x*
+%{_mandir}/man3/wget*.3x*
+%{_mandir}/man3/whline*.3x*
+%{_mandir}/man3/win*.3x*
+%{_mandir}/man3/wmouse_trafo.3x*
+%{_mandir}/man3/wmove.3x*
+%{_mandir}/man3/wnoutrefresh.3x*
+%{_mandir}/man3/wprintw.3x*
+%{_mandir}/man3/wredrawln.3x*
+%{_mandir}/man3/wrefresh.3x*
+%{_mandir}/man3/wresize.3x*
+%{_mandir}/man3/wscanw.3x*
+%{_mandir}/man3/wscrl.3x*
+%{_mandir}/man3/wsetscrreg.3x*
+%{_mandir}/man3/wstand*.3x*
+%{_mandir}/man3/wsync*.3x*
+%{_mandir}/man3/wtimeout.3x*
+%{_mandir}/man3/wtouchln.3x*
+%{_mandir}/man3/wunctrl*.3x*
+%{_mandir}/man3/wvline*.3x*
+%lang(pl) %{_mandir}/pl/man3/ncurses.3x*
 
 %files static
 %defattr(644,root,root,755)
@@ -629,9 +849,67 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}w/form.h
 %{_includedir}w/menu.h
 %{_includedir}w/panel.h
-%{_mandir}/man3/form*
-%{_mandir}/man3/menu*
-%{_mandir}/man3/panel*
+%{_pkgconfigdir}/form.pc
+%{_pkgconfigdir}/formw.pc
+%{_pkgconfigdir}/menu.pc
+%{_pkgconfigdir}/menuw.pc
+%{_pkgconfigdir}/panel.pc
+%{_pkgconfigdir}/panelw.pc
+%{_mandir}/man3/TYPE_ALNUM.3x*
+%{_mandir}/man3/TYPE_ALPHA.3x*
+%{_mandir}/man3/TYPE_ENUM.3x*
+%{_mandir}/man3/TYPE_INTEGER.3x*
+%{_mandir}/man3/TYPE_IPV4.3x*
+%{_mandir}/man3/TYPE_NUMERIC.3x*
+%{_mandir}/man3/TYPE_REGEXP.3x*
+%{_mandir}/man3/bottom_panel.3x*
+%{_mandir}/man3/current_field.3x*
+%{_mandir}/man3/current_item.3x*
+%{_mandir}/man3/data_ahead.3x*
+%{_mandir}/man3/data_behind.3x*
+%{_mandir}/man3/del_panel.3x*
+%{_mandir}/man3/dup_field.3x*
+%{_mandir}/man3/dynamic_field_info.3x*
+%{_mandir}/man3/field_*.3x*
+%{_mandir}/man3/form*.3x*
+%{_mandir}/man3/free_*.3x*
+%{_mandir}/man3/hide_panel.3x*
+%{_mandir}/man3/item_*.3x*
+%{_mandir}/man3/link_field*.3x*
+%{_mandir}/man3/menu*.3x*
+%{_mandir}/man3/mitem_*.3x*
+%{_mandir}/man3/move_field.3x*
+%{_mandir}/man3/move_panel.3x*
+%{_mandir}/man3/new_field*.3x*
+%{_mandir}/man3/new_form*.3x*
+%{_mandir}/man3/new_item.3x*
+%{_mandir}/man3/new_menu*.3x*
+%{_mandir}/man3/new_page.3x*
+%{_mandir}/man3/new_panel.3x*
+%{_mandir}/man3/panel*.3x*
+%{_mandir}/man3/pos_form_cursor.3x*
+%{_mandir}/man3/pos_menu_cursor.3x*
+%{_mandir}/man3/post_form.3x*
+%{_mandir}/man3/post_menu.3x*
+%{_mandir}/man3/replace_panel.3x*
+%{_mandir}/man3/scale_form.3x*
+%{_mandir}/man3/scale_menu.3x*
+%{_mandir}/man3/set_current_field.3x*
+%{_mandir}/man3/set_current_item.3x*
+%{_mandir}/man3/set_field*.3x*
+%{_mandir}/man3/set_form_*.3x*
+%{_mandir}/man3/set_item_*.3x*
+%{_mandir}/man3/set_max_field.3x*
+%{_mandir}/man3/set_menu_*.3x*
+%{_mandir}/man3/set_new_page.3x*
+%{_mandir}/man3/set_panel_userptr.3x*
+%{_mandir}/man3/set_top_row.3x*
+%{_mandir}/man3/show_panel.3x*
+%{_mandir}/man3/top_panel.3x*
+%{_mandir}/man3/top_row.3x*
+%{_mandir}/man3/unpost_form.3x*
+%{_mandir}/man3/unpost_menu.3x*
+%{_mandir}/man3/update_panels*.3x*
 
 %files ext-static
 %defattr(644,root,root,755)
@@ -660,6 +938,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}w/cursesw.h
 %{_includedir}w/etip.h
 %{_includedir}w/cursslk.h
+%{_pkgconfigdir}/ncurses++.pc
+%{_pkgconfigdir}/ncurses++w.pc
 
 %files c++-static
 %defattr(644,root,root,755)
@@ -673,6 +953,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc Ada95/{README,TODO}
 %attr(755,root,root) %{_bindir}/adacurses-config
 %attr(755,root,root) %{_bindir}/adacursesw-config
-%{_libdir}/gcc/*/*/adainclude/*
-%{_libdir}/gcc/*/*/adalib/*
+%{_libdir}/gcc/*/*/adainclude/*.ad[bs]
+%{_libdir}/gcc/*/*/adalib/libAdaCurses.a
+%{_mandir}/man1/adacurses-config.1*
+%{_mandir}/man1/adacurses.1*
+%{_mandir}/man1/adacursesw-config.1*
 %endif
