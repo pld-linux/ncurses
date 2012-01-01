@@ -20,7 +20,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.9
-Release:	10
+Release:	11
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -110,16 +110,6 @@ BuildRequires:	gcc-ada
 %{?with_ada:BuildRequires:	m4}
 BuildRequires:	pkgconfig
 BuildRequires:	sharutils
-# for compatibility with old PLD packages
-%ifarch %{x8664} ppc64 sparc64 s390x
-Provides:	libtinfo.so.5()(64bit)
-Provides:	libtinfow.so.5()(64bit)
-Provides:	libtinfow.so.6()(64bit)
-%else
-Provides:	libtinfo.so.5
-Provides:	libtinfow.so.5
-Provides:	libtinfow.so.6
-%endif
 Obsoletes:	libncurses5
 Conflicts:	terminfo < 5.4-0.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -471,8 +461,6 @@ done
 ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncursesw.so.6* $RPM_BUILD_ROOT/%{_lib}
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libncursesw.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.* $RPM_BUILD_ROOT/%{_lib}
@@ -483,10 +471,6 @@ ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
 
 # binary compatibility for packages using libncursesw.so.5 (without ext-colors)
 cp -a obj-wideclowcolor/lib/libncursesw.so.5* $RPM_BUILD_ROOT%{_libdir}
-# binary compatibility for packages usign libtinfo.so.5/libtinfow.so.5/libtinfow.so.6
-ln -sf $(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.5.*) $RPM_BUILD_ROOT/%{_lib}/libtinfo.so.5
-ln -sf $(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT/%{_lib}/libtinfow.so.6
-ln -sf $(basename $RPM_BUILD_ROOT%{_libdir}/libncursesw.so.5.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so.5
 
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
@@ -522,9 +506,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost /%{_lib}/libncursesw.so.6
 %attr(755,root,root) %{_libdir}/libncursesw.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libncursesw.so.5
-%attr(755,root,root) /%{_lib}/libtinfo.so.5
-%attr(755,root,root) /%{_lib}/libtinfow.so.6
-%attr(755,root,root) %{_libdir}/libtinfow.so.5
 
 %{_datadir}/tabset
 
@@ -593,10 +574,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/ncursesw6-config
 %attr(755,root,root) %{_libdir}/libcurses.so
 %attr(755,root,root) %{_libdir}/libncurses.so
-%attr(755,root,root) %{_libdir}/libtinfo.so
 %attr(755,root,root) %{_libdir}/libcursesw.so
 %attr(755,root,root) %{_libdir}/libncursesw.so
-%attr(755,root,root) %{_libdir}/libtinfow.so
 %dir %{_includedir}
 %{_includedir}/curses.h
 %{_includedir}/eti.h
