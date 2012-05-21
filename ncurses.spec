@@ -20,7 +20,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.9
-Release:	11
+Release:	12
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -502,6 +502,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %post	ext -p /sbin/ldconfig
 %postun	ext -p /sbin/ldconfig
+
+%triggerpostun %{name} < 5.9-3
+# rpm seems to remove them as those was %ghosts in ncurses < 5.9-3
+# despite existing now as normal files/symlinks
+ln -sf /%{_lib}/libncurses.so.5.* /%{_lib}/libtinfo.so.5
+ln -sf /%{_lib}/libncursesw.so.6.* /%{_lib}/libtinfow.so.6
+ln -sf %{_libdir}/libncursesw.so.5.* %{_libdir}/libtinfow.so.5
 
 %files
 %defattr(644,root,root,755)
