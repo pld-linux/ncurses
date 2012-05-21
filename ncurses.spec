@@ -503,7 +503,7 @@ rm -rf $RPM_BUILD_ROOT
 %post	ext -p /sbin/ldconfig
 %postun	ext -p /sbin/ldconfig
 
-%triggerpostun %{name} < 5.9-3
+%triggerpostun -- %{name} < 5.9-3
 # rpm seems to remove them as those was %ghosts in ncurses < 5.9-3
 # despite existing now as normal files/symlinks
 ln -sf /%{_lib}/libncurses.so.5.* /%{_lib}/libtinfo.so.5
