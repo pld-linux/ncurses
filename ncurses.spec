@@ -20,7 +20,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.9
-Release:	16
+Release:	17
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -749,7 +749,6 @@ exit 0
 %{_mandir}/man3/scanw.3x*
 %{_mandir}/man3/scr_*.3x*
 %{_mandir}/man3/scrl.3x*
-%{_mandir}/man3/scroll.3x*
 %{_mandir}/man3/scroll*.3x*
 %{_mandir}/man3/set_curterm*.3x*
 %{_mandir}/man3/set_escdelay*.3x*
