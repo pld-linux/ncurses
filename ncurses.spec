@@ -20,7 +20,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.9
-Release:	18
+Release:	19
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -81,6 +81,24 @@ Patch24:	ftp://dickey.his.com/ncurses/5.9/%{name}-5.9-20121201.patch.gz
 # Patch24-md5:	0a89add847ff9e43c5f99eaa677b5eaa
 Patch25:	ftp://dickey.his.com/ncurses/5.9/%{name}-5.9-20121208.patch.gz
 # Patch25-md5:	2c7a522807d9253138679f14eb2e693b
+Patch26:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20121215.patch.gz
+# Patch26-md5:	ed250b707e8270169bcf21533a362468
+Patch27:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20121222.patch.gz
+# Patch27-md5:	297e341ae7e3a09033e91de848e6f723
+Patch28:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20121229.patch.gz
+# Patch28-md5:	762ddc8539c0bf07be3688e0eca7781e
+Patch29:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20130105.patch.gz
+# Patch29-md5:	93981da71a5d3e3c7c9077e03297cf22
+Patch30:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20130112.patch.gz
+# Patch30-md5:	d7978571a4675477a3e98e542b20c2f0
+Patch31:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20130119.patch.gz
+# Patch31-md5:	aa40c0dc6da9f8fd9feae7d1789b92f0
+Patch32:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20130126.patch.gz
+# Patch32-md5:	73a4a971feb694e626558e732362bcfb
+Patch33:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20130202.patch.gz
+# Patch33-md5:	cabea79e04fd2ef3a52964eb8e82f730
+Patch34:	ftp://dickey.his.com/ncurses/5.9/ncurses-5.9-20130209.patch.gz
+# Patch34-md5:	f94a173644ede1b357a50ef42d7ae91e
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
 Patch102:	%{name}-meta.patch
@@ -397,6 +415,15 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %patch23 -p1
 %patch24 -p1
 %patch25 -p1
+%patch26 -p1
+%patch27 -p1
+%patch28 -p1
+%patch29 -p1
+%patch30 -p1
+%patch31 -p1
+%patch32 -p1
+%patch33 -p1
+%patch34 -p1
 
 %patch100 -p1
 %patch101 -p1
