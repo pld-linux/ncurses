@@ -20,7 +20,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	5.9
-Release:	24
+Release:	30
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
@@ -73,8 +73,6 @@ Provides:	libtinfow.so.6
 Obsoletes:	libncurses5
 Conflicts:	terminfo < 5.4-0.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_includedir	%{_prefix}/include/ncurses
 
 %description
 The curses library routines give the user a terminal-independent
@@ -373,11 +371,11 @@ cd obj-$t
 	--with-mmask-t='long' \
 	--with-manpage-aliases \
 	--with-manpage-format=normal \
-	--without-manpage-symlinks \
 	--with-ada-include=%{_libdir}/gcc/$gcc_target/$gcc_version/adainclude/ \
 	--with-ada-objects=%{_libdir}/gcc/$gcc_target/$gcc_version/adalib/ \
-	`[ "$t" = "wideclowcolor" ] && echo --enable-widec --disable-ext-colors --includedir=%{_includedir}wlc` \
-	`[ "$t" = "widec" ] && echo --enable-widec --enable-ext-colors --includedir=%{_includedir}w`
+	`[ "$t" = "wideclowcolor" ] && echo --enable-widec --disable-ext-colors` \
+	`[ "$t" = "widec" ] && echo --enable-widec --enable-ext-colors` \
+	--without-manpage-symlinks
 
 %{__make} -j1
 
@@ -393,16 +391,23 @@ for t in narrowc widec; do
 	INSTALL_PREFIX=$RPM_BUILD_ROOT
 done
 
+mkdir $RPM_BUILD_ROOT%{_includedir}/ncurses{,w}
+for l in $RPM_BUILD_ROOT%{_includedir}/*.h; do
+	ln -s ../$(basename $l) $RPM_BUILD_ROOT%{_includedir}/ncurses
+	ln -s ../$(basename $l) $RPM_BUILD_ROOT%{_includedir}/ncursesw
+done
+
 ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncursesw.so.6* $RPM_BUILD_ROOT/%{_lib}
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
+
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libncursesw.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.* $RPM_BUILD_ROOT/%{_lib}
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libcurses.so
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libncurses.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libcurses.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libncurses.so
 
 ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
 
@@ -530,7 +535,6 @@ exit 0
 %attr(755,root,root) %{_libdir}/libcursesw.so
 %attr(755,root,root) %{_libdir}/libncursesw.so
 %attr(755,root,root) %{_libdir}/libtinfow.so
-%dir %{_includedir}
 %{_includedir}/curses.h
 %{_includedir}/eti.h
 %{_includedir}/nc_tparm.h
@@ -541,17 +545,28 @@ exit 0
 %{_includedir}/termcap.h
 %{_includedir}/tic.h
 %{_includedir}/unctrl.h
-%dir %{_includedir}w
-%{_includedir}w/curses.h
-%{_includedir}w/eti.h
-%{_includedir}w/nc_tparm.h
-%{_includedir}w/ncurses.h
-%{_includedir}w/ncurses_dll.h
-%{_includedir}w/term.h
-%{_includedir}w/term_entry.h
-%{_includedir}w/termcap.h
-%{_includedir}w/tic.h
-%{_includedir}w/unctrl.h
+%dir %{_includedir}/ncurses
+%{_includedir}/ncurses/curses.h
+%{_includedir}/ncurses/eti.h
+%{_includedir}/ncurses/nc_tparm.h
+%{_includedir}/ncurses/ncurses.h
+%{_includedir}/ncurses/ncurses_dll.h
+%{_includedir}/ncurses/term.h
+%{_includedir}/ncurses/term_entry.h
+%{_includedir}/ncurses/termcap.h
+%{_includedir}/ncurses/tic.h
+%{_includedir}/ncurses/unctrl.h
+%dir %{_includedir}/ncursesw
+%{_includedir}/ncursesw/curses.h
+%{_includedir}/ncursesw/eti.h
+%{_includedir}/ncursesw/nc_tparm.h
+%{_includedir}/ncursesw/ncurses.h
+%{_includedir}/ncursesw/ncurses_dll.h
+%{_includedir}/ncursesw/term.h
+%{_includedir}/ncursesw/term_entry.h
+%{_includedir}/ncursesw/termcap.h
+%{_includedir}/ncursesw/tic.h
+%{_includedir}/ncursesw/unctrl.h
 %{_pkgconfigdir}/ncurses.pc
 %{_pkgconfigdir}/ncursesw.pc
 %{_mandir}/man1/ncurses5-config.1*
@@ -778,9 +793,9 @@ exit 0
 %{_includedir}/form.h
 %{_includedir}/menu.h
 %{_includedir}/panel.h
-%{_includedir}w/form.h
-%{_includedir}w/menu.h
-%{_includedir}w/panel.h
+%{_includedir}/ncurses*/form.h
+%{_includedir}/ncurses*/menu.h
+%{_includedir}/ncurses*/panel.h
 %{_pkgconfigdir}/form.pc
 %{_pkgconfigdir}/formw.pc
 %{_pkgconfigdir}/menu.pc
@@ -863,13 +878,20 @@ exit 0
 %{_includedir}/cursesw.h
 %{_includedir}/etip.h
 %{_includedir}/cursslk.h
-%{_includedir}w/cursesapp.h
-%{_includedir}w/cursesf.h
-%{_includedir}w/cursesm.h
-%{_includedir}w/cursesp.h
-%{_includedir}w/cursesw.h
-%{_includedir}w/etip.h
-%{_includedir}w/cursslk.h
+%{_includedir}/ncurses/cursesapp.h
+%{_includedir}/ncurses/cursesf.h
+%{_includedir}/ncurses/cursesm.h
+%{_includedir}/ncurses/cursesp.h
+%{_includedir}/ncurses/cursesw.h
+%{_includedir}/ncurses/etip.h
+%{_includedir}/ncurses/cursslk.h
+%{_includedir}/ncursesw/cursesapp.h
+%{_includedir}/ncursesw/cursesf.h
+%{_includedir}/ncursesw/cursesm.h
+%{_includedir}/ncursesw/cursesp.h
+%{_includedir}/ncursesw/cursesw.h
+%{_includedir}/ncursesw/etip.h
+%{_includedir}/ncursesw/cursslk.h
 %{_pkgconfigdir}/ncurses++.pc
 %{_pkgconfigdir}/ncurses++w.pc
 
