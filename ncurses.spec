@@ -4,11 +4,13 @@
 %bcond_without	cxx		# do not build C++ ncurses bindings and demo programs
 #				# (this is neccessary to build ncurses linked with uClibc).
 %bcond_without	gpm		# build without (dynamically loadable) libgpm support
-#
+
 %ifarch sparc64
 %undefine with_ada
 %endif
 
+%define	basever	5.9
+%define	patchlevel	20130525
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -19,23 +21,22 @@ Summary(ru.UTF-8):	ncurses - новая библиотека управлени�
 Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
-Version:	5.9
-Release:	30
+Version:	%{basever}.%{patchlevel}
+Release:	1
 License:	distributable
 Group:		Libraries
-Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
+Source0:	ftp://dickey.his.com/ncurses/%{name}-%{basever}.tar.gz
 # Source0-md5:	8cb9c412e5f2d96bc6f459aa8c6282a1
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
-
 # source: ftp://dickey.his.com/ncurses/5.9/
-Patch0:		ftp://dickey.his.com/ncurses/5.9/%{name}-5.9-20130504-patch.sh.bz2
+Patch0:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130504-patch.sh.bz2
 # Patch0-md5:	328966f1daa16c045b16a22d1b0020ec
-Patch1:		ftp://dickey.his.com/ncurses/5.9/%{name}-5.9-20130511.patch.gz
+Patch1:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130511.patch.gz
 # Patch1-md5:	090c30bb83e286e9cea22ad62c6136ff
-Patch2:		ftp://dickey.his.com/ncurses/5.9/%{name}-5.9-20130518.patch.gz
+Patch2:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130518.patch.gz
 # Patch2-md5:	3300610567774c441bd4a014db76db11
-Patch3:		ftp://dickey.his.com/ncurses/5.9/%{name}-5.9-20130525.patch.gz
+Patch3:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130525.patch.gz
 # Patch3-md5:	c35aa6d8d6dc3a0620904045b5a8f6bc
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -324,7 +325,7 @@ Ten pakiet zawiera pliki nagłówkowe i biblioteki potrzebne do
 tworzenia aplikacji używających ncurses w języku Ada95.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{basever}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
