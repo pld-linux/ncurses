@@ -10,7 +10,7 @@
 %endif
 
 %define	basever	5.9
-%define	patchlevel	20130525
+%define	patchlevel	20130816
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -38,6 +38,24 @@ Patch2:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130518.patch.gz
 # Patch2-md5:	3300610567774c441bd4a014db76db11
 Patch3:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130525.patch.gz
 # Patch3-md5:	c35aa6d8d6dc3a0620904045b5a8f6bc
+Patch4:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130608.patch.gz
+# Patch4-md5:	7d05e562085055466e4b25c7098c5242
+Patch5:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130615.patch.gz
+# Patch5-md5:	a9c7114a801a5176c64941da4bee2e4d
+Patch6:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130622.patch.gz
+# Patch6-md5:	ce16d6b9d41749a368fa5ddc237ad93a
+Patch7:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130706.patch.gz
+# Patch7-md5:	906c7aeb4c60fdcb0426d5d86937735f
+Patch8:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130713.patch.gz
+# Patch8-md5:	0e542db5a3b6d832203d350ec273aaef
+Patch9:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130720.patch.gz
+# Patch9-md5:	3a6be27672d10ddf29e12483ea83f846
+Patch10:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130727.patch.gz
+# Patch10-md5:	a6a72d5b6b74ad92ac351df981fed46b
+Patch11:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130805.patch.gz
+# Patch11-md5:	b26c73ec2465e0bddf0a57d9ce3ffb88
+Patch12:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130816.patch.gz
+# Patch12-md5:	a281c29f4f4a468aa06f627f4e81a6ba
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
 Patch102:	%{name}-meta.patch
@@ -325,11 +343,21 @@ Ten pakiet zawiera pliki nagłówkowe i biblioteki potrzebne do
 tworzenia aplikacji używających ncurses w języku Ada95.
 
 %prep
-%setup -q -n %{name}-%{basever}
+%setup -qc
+mv %{name}-%{basever}/* .
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
 
 %patch100 -p1
 %patch101 -p1
