@@ -22,7 +22,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	%{basever}.%{patchlevel}
-Release:	2
+Release:	3
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{basever}.tar.gz
@@ -50,11 +50,11 @@ Patch8:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130713.patch.gz
 # Patch8-md5:	0e542db5a3b6d832203d350ec273aaef
 Patch9:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130720.patch.gz
 # Patch9-md5:	3a6be27672d10ddf29e12483ea83f846
-Patch10:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130727.patch.gz
+Patch10:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130727.patch.gz
 # Patch10-md5:	a6a72d5b6b74ad92ac351df981fed46b
-Patch11:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130805.patch.gz
+Patch11:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130805.patch.gz
 # Patch11-md5:	b26c73ec2465e0bddf0a57d9ce3ffb88
-Patch12:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130816.patch.gz
+Patch12:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130816.patch.gz
 # Patch12-md5:	a281c29f4f4a468aa06f627f4e81a6ba
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -172,6 +172,9 @@ Summary(pt_BR.UTF-8):	Base de dados terminfo para terminais adicionais (menos us
 Group:		Applications/Terminal
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	ncurses-extraterms
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description -n terminfo
 This package contains complete terminfo database. If you just use the
