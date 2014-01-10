@@ -188,9 +188,9 @@ terminales más usados ya están en el paquete principal ncurses.
 
 %description -n terminfo -l pl.UTF-8
 Pakiet ten zawiera kompletną bazę terminfo. Jeżeli używasz terminali
-linux, console, xterm, vt100 prawdopodobnie nie bedziesz potrzebował
-tego pakietu gdyż definicje tych terminali są włączone w pakiet
-ncurses.
+linux, console, xterm, vt100, vt102 prawdopodobnie nie bedziesz
+potrzebował tego pakietu gdyż definicje tych terminali są włączone w
+pakiet ncurses.
 
 %description -n terminfo -l pt_BR.UTF-8
 Base de dados terminfo para terminais extras. As definições dos
@@ -512,6 +512,7 @@ exit 0
 %{_datadir}/terminfo/r/rxvt*
 %{_datadir}/terminfo/s/screen*
 %{_datadir}/terminfo/v/vt100
+%{_datadir}/terminfo/v/vt102
 %{_datadir}/terminfo/v/vt220
 %{_datadir}/terminfo/v/vt220-8
 %{_datadir}/terminfo/v/vt52
@@ -551,6 +552,7 @@ exit 0
 %exclude %{_datadir}/terminfo/r/rxvt*
 %exclude %{_datadir}/terminfo/s/screen*
 %exclude %{_datadir}/terminfo/v/vt100
+%exclude %{_datadir}/terminfo/v/vt102
 %exclude %{_datadir}/terminfo/v/vt220
 %exclude %{_datadir}/terminfo/v/vt220-8
 %exclude %{_datadir}/terminfo/v/vt52
