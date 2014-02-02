@@ -10,7 +10,7 @@
 %endif
 
 %define	basever	5.9
-%define	patchlevel	20130816
+%define	patchlevel	20140201
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -22,7 +22,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	%{basever}.%{patchlevel}
-Release:	4
+Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{basever}.tar.gz
@@ -56,6 +56,47 @@ Patch11:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130805.patch.gz
 # Patch11-md5:	b26c73ec2465e0bddf0a57d9ce3ffb88
 Patch12:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130816.patch.gz
 # Patch12-md5:	a281c29f4f4a468aa06f627f4e81a6ba
+Patch13:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130824.patch.gz
+# Patch13-md5:	a97a0becc40a207fcdf1b26136173ae1
+Patch14:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130831.patch.gz
+# Patch14-md5:	220acd1ec0a5f20b4e81d115f6eef4cb
+Patch15:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130907.patch.gz
+# Patch15-md5:	673e77a50186c440a58f51447ae6de22
+Patch16:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130921.patch.gz
+# Patch16-md5:	3fde14466b29297ebc9e31d2125e9ce1
+Patch17:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130928.patch.gz
+# Patch17-md5:	cc16893f35aae9ad7e1d91a6752f574b
+Patch18:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131005.patch.gz
+# Patch18-md5:	c5207136cee214a229eda295286f81c7
+Patch19:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131012.patch.gz
+# Patch19-md5:	d2287af475e753da549940dbfedff36c
+Patch20:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131014.patch.gz
+# Patch20-md5:	8f9cfcf4827fd10f68b4d58018c239b3
+Patch21:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131019.patch.gz
+# Patch21-md5:	02a29abd02555d1e87244f2562cf49fa
+Patch22:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131027.patch.gz
+# Patch22-md5:	07e984c5ac8ff1354966ba04b758428d
+Patch23:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131102.patch.gz
+# Patch23-md5:	363605be63ee516c90a182cb66ad69e9
+Patch24:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131110.patch.gz
+# Patch24-md5:	ee3c82536ebe83549146ab9e5106b8e0
+Patch25:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131116.patch.gz
+# Patch25-md5:	e28805d20eb6853d27118cf5d8765783
+Patch26:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131123.patch.gz
+# Patch26-md5:	49608076e697412dd8b6adddef869a94
+Patch27:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131207.patch.gz
+# Patch27-md5:	24b581aac7ec6b543fe34d5e55609069
+Patch28:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131214.patch.gz
+# Patch28-md5:	923cf2fa12ac93b58aaa984f2a4da7da
+Patch29:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131221.patch.gz
+# Patch29-md5:	89c9ba403d85457b841d2f141da29ef3
+Patch30:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140118.patch.gz
+# Patch30-md5:	03ecd1abcf9444ef5b645f6ddc36c97d
+Patch31:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140125.patch.gz
+# Patch31-md5:	62286302a64dbad3ab40c02f7e317ab8
+Patch32:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140201.patch.gz
+# Patch32-md5:	6e4a4244881812ae1ae10cb9c8f22aaa
+
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
 Patch102:	%{name}-meta.patch
@@ -361,6 +402,26 @@ mv %{name}-%{basever}/* .
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
+%patch27 -p1
+%patch28 -p1
+%patch29 -p1
+%patch30 -p1
+%patch31 -p1
+%patch32 -p1
 
 %patch100 -p1
 %patch101 -p1
