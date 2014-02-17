@@ -10,7 +10,7 @@
 %endif
 
 %define	basever	5.9
-%define	patchlevel	20140209
+%define	patchlevel	20140215
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -98,6 +98,8 @@ Patch32:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140201.patch.gz
 # Patch32-md5:	6e4a4244881812ae1ae10cb9c8f22aaa
 Patch33:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140209.patch.gz
 # Patch33-md5:	1434aa15b368854bca845e0fc0975bb8
+Patch34:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140215.patch.gz
+# Patch34-md5:	0f4fda90aa8cba80a0ce5690a3f6202b
 
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -425,6 +427,7 @@ mv %{name}-%{basever}/* .
 %patch31 -p1
 %patch32 -p1
 %patch33 -p1
+%patch34 -p1
 
 %patch100 -p1
 %patch101 -p1
