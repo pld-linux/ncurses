@@ -10,7 +10,7 @@
 %endif
 
 %define	basever	5.9
-%define	patchlevel	20140329
+%define	patchlevel	20140609
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -22,7 +22,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	%{basever}.%{patchlevel}
-Release:	2
+Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{basever}.tar.gz
@@ -114,6 +114,22 @@ Patch40:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140323.patch.gz
 # Patch40-md5:	24fbdef991dd67b2557177e453efd572
 Patch41:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140329.patch.gz
 # Patch41-md5:	e7a772214088ca55185cd2230df2e9ee
+Patch42:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140412.patch.gz
+# Patch42-md5:	49762dfcdeb3f5da933319f58b9b4f18
+Patch43:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140419.patch.gz
+# Patch43-md5:	ec3760d2142cd0106a20db17a356a8cf
+Patch44:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140426.patch.gz
+# Patch44-md5:	b5df540a93b170ff946724b3a02125a2
+Patch45:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140503.patch.gz
+# Patch45-md5:	9885526f6f734e001ed6f55cd39a9feb
+Patch46:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140510.patch.gz
+# Patch46-md5:	bc591f4e1bf5dbf785b8c4c4eb5afce3
+Patch47:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140524.patch.gz
+# Patch47-md5:	b35022e923b354b95325e7f5f817c989
+Patch48:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140607.patch.gz
+# Patch48-md5:	ddfe11b9ed9477c785849c1b606d90dd
+Patch49:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140609.patch.gz
+# Patch49-md5:	769c45c1317021c471dd5036e7c172db
 
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -449,6 +465,15 @@ mv %{name}-%{basever}/* .
 %patch39 -p1
 %patch40 -p1
 %patch41 -p1
+%patch42 -p1
+%patch43 -p1
+%patch44 -p1
+%patch45 -p1
+%patch46 -p1
+%patch47 -p1
+rm -f Ada95/src/library.gpr Ada95/src/library.gpr.sed
+%patch48 -p1
+%patch49 -p1
 
 %patch100 -p1
 %patch101 -p1
