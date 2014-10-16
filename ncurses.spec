@@ -10,7 +10,7 @@
 %endif
 
 %define	basever	5.9
-%define	patchlevel	20140609
+%define	patchlevel	20141011
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
