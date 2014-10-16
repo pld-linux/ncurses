@@ -30,106 +30,66 @@ Source0:	ftp://dickey.his.com/ncurses/%{name}-%{basever}.tar.gz
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 # source: ftp://dickey.his.com/ncurses/5.9/
-Patch0:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130504-patch.sh.bz2
-# Patch0-md5:	328966f1daa16c045b16a22d1b0020ec
-Patch1:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130511.patch.gz
-# Patch1-md5:	090c30bb83e286e9cea22ad62c6136ff
-Patch2:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130518.patch.gz
-# Patch2-md5:	3300610567774c441bd4a014db76db11
-Patch3:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130525.patch.gz
-# Patch3-md5:	c35aa6d8d6dc3a0620904045b5a8f6bc
-Patch4:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130608.patch.gz
-# Patch4-md5:	7d05e562085055466e4b25c7098c5242
-Patch5:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130615.patch.gz
-# Patch5-md5:	a9c7114a801a5176c64941da4bee2e4d
-Patch6:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130622.patch.gz
-# Patch6-md5:	ce16d6b9d41749a368fa5ddc237ad93a
-Patch7:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130706.patch.gz
-# Patch7-md5:	906c7aeb4c60fdcb0426d5d86937735f
-Patch8:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130713.patch.gz
-# Patch8-md5:	0e542db5a3b6d832203d350ec273aaef
-Patch9:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130720.patch.gz
-# Patch9-md5:	3a6be27672d10ddf29e12483ea83f846
-Patch10:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130727.patch.gz
-# Patch10-md5:	a6a72d5b6b74ad92ac351df981fed46b
-Patch11:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130805.patch.gz
-# Patch11-md5:	b26c73ec2465e0bddf0a57d9ce3ffb88
-Patch12:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130816.patch.gz
-# Patch12-md5:	a281c29f4f4a468aa06f627f4e81a6ba
-Patch13:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130824.patch.gz
-# Patch13-md5:	a97a0becc40a207fcdf1b26136173ae1
-Patch14:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130831.patch.gz
-# Patch14-md5:	220acd1ec0a5f20b4e81d115f6eef4cb
-Patch15:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130907.patch.gz
-# Patch15-md5:	673e77a50186c440a58f51447ae6de22
-Patch16:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130921.patch.gz
-# Patch16-md5:	3fde14466b29297ebc9e31d2125e9ce1
-Patch17:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20130928.patch.gz
-# Patch17-md5:	cc16893f35aae9ad7e1d91a6752f574b
-Patch18:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131005.patch.gz
-# Patch18-md5:	c5207136cee214a229eda295286f81c7
-Patch19:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131012.patch.gz
-# Patch19-md5:	d2287af475e753da549940dbfedff36c
-Patch20:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131014.patch.gz
-# Patch20-md5:	8f9cfcf4827fd10f68b4d58018c239b3
-Patch21:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131019.patch.gz
-# Patch21-md5:	02a29abd02555d1e87244f2562cf49fa
-Patch22:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131027.patch.gz
-# Patch22-md5:	07e984c5ac8ff1354966ba04b758428d
-Patch23:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131102.patch.gz
-# Patch23-md5:	363605be63ee516c90a182cb66ad69e9
-Patch24:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131110.patch.gz
-# Patch24-md5:	ee3c82536ebe83549146ab9e5106b8e0
-Patch25:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131116.patch.gz
-# Patch25-md5:	e28805d20eb6853d27118cf5d8765783
-Patch26:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131123.patch.gz
-# Patch26-md5:	49608076e697412dd8b6adddef869a94
-Patch27:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131207.patch.gz
-# Patch27-md5:	24b581aac7ec6b543fe34d5e55609069
-Patch28:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131214.patch.gz
-# Patch28-md5:	923cf2fa12ac93b58aaa984f2a4da7da
-Patch29:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20131221.patch.gz
-# Patch29-md5:	89c9ba403d85457b841d2f141da29ef3
-Patch30:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140118.patch.gz
-# Patch30-md5:	03ecd1abcf9444ef5b645f6ddc36c97d
-Patch31:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140125.patch.gz
-# Patch31-md5:	62286302a64dbad3ab40c02f7e317ab8
-Patch32:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140201.patch.gz
-# Patch32-md5:	6e4a4244881812ae1ae10cb9c8f22aaa
-Patch33:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140209.patch.gz
-# Patch33-md5:	1434aa15b368854bca845e0fc0975bb8
-Patch34:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140215.patch.gz
-# Patch34-md5:	0f4fda90aa8cba80a0ce5690a3f6202b
-Patch35:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140222.patch.gz
-# Patch35-md5:	3d7c0755b91f3d459b4d3ee166e04b38
-Patch36:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140301.patch.gz
-# Patch36-md5:	780780cdebc25b7eeaccd05ca75406cf
-Patch37:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140308.patch.gz
-# Patch37-md5:	845b17958a5a9a1b079ca79cf86d6acc
-Patch38:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140315.patch.gz
-# Patch38-md5:	1ddb1fbc5b301506e0522cc1364579b7
-Patch39:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140322.patch.gz
-# Patch39-md5:	e8af8722ca80e2c7693d07a1cb475235
-Patch40:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140323.patch.gz
-# Patch40-md5:	24fbdef991dd67b2557177e453efd572
-Patch41:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140329.patch.gz
-# Patch41-md5:	e7a772214088ca55185cd2230df2e9ee
-Patch42:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140412.patch.gz
-# Patch42-md5:	49762dfcdeb3f5da933319f58b9b4f18
-Patch43:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140419.patch.gz
-# Patch43-md5:	ec3760d2142cd0106a20db17a356a8cf
-Patch44:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140426.patch.gz
-# Patch44-md5:	b5df540a93b170ff946724b3a02125a2
-Patch45:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140503.patch.gz
-# Patch45-md5:	9885526f6f734e001ed6f55cd39a9feb
-Patch46:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140510.patch.gz
-# Patch46-md5:	bc591f4e1bf5dbf785b8c4c4eb5afce3
-Patch47:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140524.patch.gz
-# Patch47-md5:	b35022e923b354b95325e7f5f817c989
-Patch48:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140607.patch.gz
-# Patch48-md5:	ddfe11b9ed9477c785849c1b606d90dd
-Patch49:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140609.patch.gz
-# Patch49-md5:	769c45c1317021c471dd5036e7c172db
+Patch0:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140308-patch.sh.bz2
+# Patch0-md5:	8bd412a9c9ac97a2c504780ae87aa5d8
+Patch1:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140315.patch.gz
+# Patch1-md5:	1ddb1fbc5b301506e0522cc1364579b7
+Patch2:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140322.patch.gz
+# Patch2-md5:	e8af8722ca80e2c7693d07a1cb475235
+Patch3:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140323.patch.gz
+# Patch3-md5:	24fbdef991dd67b2557177e453efd572
+Patch4:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140329.patch.gz
+# Patch4-md5:	e7a772214088ca55185cd2230df2e9ee
+Patch5:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140412.patch.gz
+# Patch5-md5:	49762dfcdeb3f5da933319f58b9b4f18
+Patch6:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140419.patch.gz
+# Patch6-md5:	ec3760d2142cd0106a20db17a356a8cf
+Patch7:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140426.patch.gz
+# Patch7-md5:	b5df540a93b170ff946724b3a02125a2
+Patch8:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140503.patch.gz
+# Patch8-md5:	9885526f6f734e001ed6f55cd39a9feb
+Patch9:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140510.patch.gz
+# Patch9-md5:	bc591f4e1bf5dbf785b8c4c4eb5afce3
+Patch10:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140524.patch.gz
+# Patch10-md5:	b35022e923b354b95325e7f5f817c989
+Patch11:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140607.patch.gz
+# Patch11-md5:	ddfe11b9ed9477c785849c1b606d90dd
+Patch12:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140609.patch.gz
+# Patch12-md5:	769c45c1317021c471dd5036e7c172db
+Patch13:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140614.patch.gz
+# Patch13-md5:	13db4a8a7c62b4d825707c12e855dc57
+Patch14:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140621.patch.gz
+# Patch14-md5:	f6f582b7e76a9c1fedde3aafe6849f76
+Patch15:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140629.patch.gz
+# Patch15-md5:	65aa63ff4072642110f80542b3d9f885
+Patch16:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140705.patch.gz
+# Patch16-md5:	b5d3a9365a777e1ba0809edbca8fdebd
+Patch17:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140712.patch.gz
+# Patch17-md5:	9b97478790d5d6a539e6a4c0f9865ac6
+Patch18:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140719.patch.gz
+# Patch18-md5:	9bb67f50b2a08c8f2e1b909f68592ce8
+Patch19:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140726.patch.gz
+# Patch19-md5:	e45bdb82f2b3d03b5c42b85bf8f45365
+Patch20:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140802.patch.gz
+# Patch20-md5:	3afc2b4dd4afc2061705dd5ad3827e6b
+Patch21:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140809.patch.gz
+# Patch21-md5:	745c7b4660cc6a8b2982bfaefecb2184
+Patch22:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140816.patch.gz
+# Patch22-md5:	5aac11e74427728fa7a69d50fcdc6b6d
+Patch23:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140823.patch.gz
+# Patch23-md5:	a947c90441a6d1b2c8b3ce479938366c
+Patch24:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140831.patch.gz
+# Patch24-md5:	c44d667bacb27a46630e09ece9065468
+Patch25:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140906.patch.gz
+# Patch25-md5:	ff6b277fa958cccd9f74b403250bd0cf
+Patch26:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140913.patch.gz
+# Patch26-md5:	92433359cf3bf4d202212a2832b2521f
+Patch27:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140920.patch.gz
+# Patch27-md5:	70f40973fe4d96a58fb5b635be662bd5
+Patch28:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140927.patch.gz
+# Patch28-md5:	649bd0ca7a2912b1b128b2073774f679
+Patch29:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141011.patch.gz
+# Patch29-md5:	17e081953c7b54f12a53cd897a4edb60
 
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -434,6 +394,7 @@ mv %{name}-%{basever}/* .
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+rm -f Ada95/src/library.gpr*
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
@@ -453,27 +414,6 @@ mv %{name}-%{basever}/* .
 %patch27 -p1
 %patch28 -p1
 %patch29 -p1
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
-%patch34 -p1
-%patch35 -p1
-%patch36 -p1
-%patch37 -p1
-%patch38 -p1
-%patch39 -p1
-%patch40 -p1
-%patch41 -p1
-%patch42 -p1
-%patch43 -p1
-%patch44 -p1
-%patch45 -p1
-%patch46 -p1
-%patch47 -p1
-rm -f Ada95/src/library.gpr Ada95/src/library.gpr.sed
-%patch48 -p1
-%patch49 -p1
 
 %patch100 -p1
 %patch101 -p1
