@@ -458,8 +458,9 @@ cd obj-$t
 	--with-manpage-format=normal \
 	--with-ada-include=%{_libdir}/gcc/$gcc_target/$gcc_version/adainclude/ \
 	--with-ada-objects=%{_libdir}/gcc/$gcc_target/$gcc_version/adalib/ \
-	`[ "$t" = "wideclowcolor" ] && echo --enable-widec --disable-ext-colors` \
-	`[ "$t" = "widec" ] && echo --enable-widec --enable-ext-colors` \
+	`[ "$t" = "narrowc" ] && echo --includedir=%{_includedir}/ncursesn` \
+	`[ "$t" = "wideclowcolor" ] && echo --enable-widec --disable-ext-colors --includedir=%{_includedir}/ncurseswlc` \
+	`[ "$t" = "widec" ] && echo --enable-widec --enable-ext-colors --includedir=%{_includedir}/ncursesw` \
 	--without-manpage-symlinks
 
 %{__make} -j1
@@ -476,37 +477,55 @@ for t in narrowc widec; do
 	INSTALL_PREFIX=$RPM_BUILD_ROOT
 done
 
-mkdir $RPM_BUILD_ROOT%{_includedir}/ncurses{,w}
-for l in $RPM_BUILD_ROOT%{_includedir}/*.h; do
-	ln -s ../$(basename $l) $RPM_BUILD_ROOT%{_includedir}/ncurses
-	ln -s ../$(basename $l) $RPM_BUILD_ROOT%{_includedir}/ncursesw
+# make ncursesw headers available also as default and ncurses/*.h headers
+mkdir $RPM_BUILD_ROOT%{_includedir}/ncurses
+for l in $RPM_BUILD_ROOT%{_includedir}/ncursesw/*.h; do
+	bl=$(basename $l)
+	ln -s ../ncursesw/$bl $RPM_BUILD_ROOT%{_includedir}/ncurses/$bl
+	ln -s ncursesw/$bl $RPM_BUILD_ROOT%{_includedir}/$bl
 done
+%{__rm} -r $RPM_BUILD_ROOT%{_includedir}/ncursesn
 
 ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
+# used by /{bin,sbin} programs
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncursesw.so.6* $RPM_BUILD_ROOT/%{_lib}
-
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
+# adjust symlinks for libncursesw.so.6 in /%{_lib}
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libncursesw.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
-mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.* $RPM_BUILD_ROOT/%{_lib}
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libcurses.so
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libncurses.so
 
-ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
-
+# libncurses.so.5 for legacy programs
+mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.5* $RPM_BUILD_ROOT/%{_lib}
 # binary compatibility for packages using libncursesw.so.5 (without ext-colors)
 cp -a obj-wideclowcolor/lib/libncursesw.so.5* $RPM_BUILD_ROOT%{_libdir}
-# binary compatibility for packages usign libtinfo.so.5/libtinfow.so.5/libtinfow.so.6
+# binary compatibility for packages using libtinfo.so.5/libtinfow.so.5/libtinfow.so.6
 ln -sf $(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.5.*) $RPM_BUILD_ROOT/%{_lib}/libtinfo.so.5
 ln -sf $(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT/%{_lib}/libtinfow.so.6
 ln -sf $(basename $RPM_BUILD_ROOT%{_libdir}/libncursesw.so.5.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so.5
 
+# force ncursesw also for legacy -lncurses/-lcurses/-ltinfo linking
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libcurses.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libncurses.so
+# force wide ext libraries
+ln -sf $(basename $RPM_BUILD_ROOT%{_libdir}/libformw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libform.so
+ln -sf $(basename $RPM_BUILD_ROOT%{_libdir}/libmenuw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libmenu.so
+ln -sf $(basename $RPM_BUILD_ROOT%{_libdir}/libpanelw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libpanel.so
+
+# similarly for static linking
+ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
+ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libtinfow.a
+ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libncurses.a
+ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libcurses.a
+ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libtinfo.a
+ln -sf libformw.a $RPM_BUILD_ROOT%{_libdir}/libform.a
+ln -sf libmenuw.a $RPM_BUILD_ROOT%{_libdir}/libmenu.a
+ln -sf libpanelw.a $RPM_BUILD_ROOT%{_libdir}/libpanel.a
+ln -sf libncurses++w.a $RPM_BUILD_ROOT%{_libdir}/libncurses++.a
+
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libcurses.a
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
 %{__rm} $RPM_BUILD_ROOT%{_mandir}/README.ncurses-non-english-man-pages
 
 %clean
@@ -545,6 +564,7 @@ exit 0
 %attr(755,root,root) %ghost /%{_lib}/libncursesw.so.6
 %attr(755,root,root) %{_libdir}/libncursesw.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libncursesw.so.5
+# compatibility symlinks
 %attr(755,root,root) /%{_lib}/libtinfo.so.5
 %attr(755,root,root) /%{_lib}/libtinfow.so.6
 %attr(755,root,root) %{_libdir}/libtinfow.so.5
@@ -851,23 +871,27 @@ exit 0
 
 %files static
 %defattr(644,root,root,755)
+%{_libdir}/libcurses.a
 %{_libdir}/libncurses.a
+%{_libdir}/libtinfo.a
+%{_libdir}/libcursesw.a
 %{_libdir}/libncursesw.a
+%{_libdir}/libtinfow.a
 
 %files ext
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libform.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libform.so.[56]
+%attr(755,root,root) %ghost %{_libdir}/libform.so.5
 %attr(755,root,root) %{_libdir}/libmenu.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmenu.so.[56]
+%attr(755,root,root) %ghost %{_libdir}/libmenu.so.5
 %attr(755,root,root) %{_libdir}/libpanel.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libpanel.so.[56]
+%attr(755,root,root) %ghost %{_libdir}/libpanel.so.5
 %attr(755,root,root) %{_libdir}/libformw.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libformw.so.[56]
+%attr(755,root,root) %ghost %{_libdir}/libformw.so.6
 %attr(755,root,root) %{_libdir}/libmenuw.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmenuw.so.[56]
+%attr(755,root,root) %ghost %{_libdir}/libmenuw.so.6
 %attr(755,root,root) %{_libdir}/libpanelw.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libpanelw.so.[56]
+%attr(755,root,root) %ghost %{_libdir}/libpanelw.so.6
 
 %files ext-devel
 %defattr(644,root,root,755)
@@ -880,9 +904,12 @@ exit 0
 %{_includedir}/form.h
 %{_includedir}/menu.h
 %{_includedir}/panel.h
-%{_includedir}/ncurses*/form.h
-%{_includedir}/ncurses*/menu.h
-%{_includedir}/ncurses*/panel.h
+%{_includedir}/ncurses/form.h
+%{_includedir}/ncurses/menu.h
+%{_includedir}/ncurses/panel.h
+%{_includedir}/ncursesw/form.h
+%{_includedir}/ncursesw/menu.h
+%{_includedir}/ncursesw/panel.h
 %{_pkgconfigdir}/form.pc
 %{_pkgconfigdir}/formw.pc
 %{_pkgconfigdir}/menu.pc
