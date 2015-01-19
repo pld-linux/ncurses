@@ -10,7 +10,7 @@
 %endif
 
 %define	basever	5.9
-%define	patchlevel	20141115
+%define	patchlevel	20150117
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -22,7 +22,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	%{basever}.%{patchlevel}
-Release:	2
+Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{basever}.tar.gz
@@ -98,6 +98,24 @@ Patch32:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141101.patch.gz
 # Patch32-md5:	e0644cdbb30184f3a424674d1480ce94
 Patch33:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141115.patch.gz
 # Patch33-md5:	8fd3f6de88bec7a8afaa35d2e8c3ffb5
+Patch34:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141129.patch.gz
+# Patch34-md5:	a3fd7e0cd2285dfcd47e43a6990b11d6
+Patch35:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141206.patch.gz
+# Patch35-md5:	ba576465adfa4d9fadd2a1e4be5f0524
+Patch36:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141213.patch.gz
+# Patch36-md5:	5b4cb12b7482133b2ce4d89ba8773200
+Patch37:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141220.patch.gz
+# Patch37-md5:	793509c4f50168f6e152dca7fc9d91e5
+Patch38:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141221.patch.gz
+# Patch38-md5:	0456dd738ecf3e58a0dc5d71efbd776f
+Patch39:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141227.patch.gz
+# Patch39-md5:	8be86a8ff3da664b06a2b04ffc41318f
+Patch40:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20150103.patch.gz
+# Patch40-md5:	b5c653dbe82b7464a36ecc2e89b40da1
+Patch41:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20150110.patch.gz
+# Patch41-md5:	e662f8fd07bcb57fac68d9b05559929e
+Patch42:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20150117.patch.gz
+# Patch42-md5:	dcadc2d0b2bcc22f5546d5e02f51c26c
 
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -422,6 +440,19 @@ rm -f Ada95/src/library.gpr*
 %patch27 -p1
 %patch28 -p1
 %patch29 -p1
+%patch30 -p1
+%patch31 -p1
+%patch32 -p1
+%patch33 -p1
+%patch34 -p1
+%patch35 -p1
+%patch36 -p1
+%patch37 -p1
+%patch38 -p1
+%patch39 -p1
+%patch40 -p1
+%patch41 -p1
+%patch42 -p1
 
 %patch100 -p1
 %patch101 -p1
