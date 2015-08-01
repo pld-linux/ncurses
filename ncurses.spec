@@ -1,11 +1,11 @@
 #
 # Conditional build:
-%bcond_without	ada		# do not build Ada95 bindings
+%bcond_with	ada		# do not build Ada95 bindings
 %bcond_without	cxx		# do not build C++ ncurses bindings and demo programs
 #				# (this is neccessary to build ncurses linked with uClibc).
 %bcond_without	gpm		# build without (dynamically loadable) libgpm support
 
-%ifarch sparc64
+%ifarch sparc64 x32
 %undefine with_ada
 %endif
 
@@ -22,7 +22,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	%{basever}.%{patchlevel}
-Release:	3
+Release:	4
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{basever}.tar.gz
