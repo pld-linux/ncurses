@@ -9,8 +9,6 @@
 %undefine with_ada
 %endif
 
-%define	basever	5.9
-%define	patchlevel	20150117
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -21,102 +19,14 @@ Summary(ru.UTF-8):	ncurses - новая библиотека управлени�
 Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
-Version:	%{basever}.%{patchlevel}
-Release:	4
+Version:	6.0
+Release:	0.1
 License:	distributable
 Group:		Libraries
-Source0:	ftp://dickey.his.com/ncurses/%{name}-%{basever}.tar.gz
-# Source0-md5:	8cb9c412e5f2d96bc6f459aa8c6282a1
+Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
+# Source0-md5:	ee13d052e1ead260d7c28071f46eefb1
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
-# source: ftp://dickey.his.com/ncurses/5.9/
-Patch0:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140308-patch.sh.bz2
-# Patch0-md5:	8bd412a9c9ac97a2c504780ae87aa5d8
-Patch1:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140315.patch.gz
-# Patch1-md5:	1ddb1fbc5b301506e0522cc1364579b7
-Patch2:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140322.patch.gz
-# Patch2-md5:	e8af8722ca80e2c7693d07a1cb475235
-Patch3:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140323.patch.gz
-# Patch3-md5:	24fbdef991dd67b2557177e453efd572
-Patch4:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140329.patch.gz
-# Patch4-md5:	e7a772214088ca55185cd2230df2e9ee
-Patch5:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140412.patch.gz
-# Patch5-md5:	49762dfcdeb3f5da933319f58b9b4f18
-Patch6:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140419.patch.gz
-# Patch6-md5:	ec3760d2142cd0106a20db17a356a8cf
-Patch7:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140426.patch.gz
-# Patch7-md5:	b5df540a93b170ff946724b3a02125a2
-Patch8:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140503.patch.gz
-# Patch8-md5:	9885526f6f734e001ed6f55cd39a9feb
-Patch9:		ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140510.patch.gz
-# Patch9-md5:	bc591f4e1bf5dbf785b8c4c4eb5afce3
-Patch10:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140524.patch.gz
-# Patch10-md5:	b35022e923b354b95325e7f5f817c989
-Patch11:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140607.patch.gz
-# Patch11-md5:	ddfe11b9ed9477c785849c1b606d90dd
-Patch12:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140609.patch.gz
-# Patch12-md5:	769c45c1317021c471dd5036e7c172db
-Patch13:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140614.patch.gz
-# Patch13-md5:	13db4a8a7c62b4d825707c12e855dc57
-Patch14:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140621.patch.gz
-# Patch14-md5:	f6f582b7e76a9c1fedde3aafe6849f76
-Patch15:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140629.patch.gz
-# Patch15-md5:	65aa63ff4072642110f80542b3d9f885
-Patch16:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140705.patch.gz
-# Patch16-md5:	b5d3a9365a777e1ba0809edbca8fdebd
-Patch17:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140712.patch.gz
-# Patch17-md5:	9b97478790d5d6a539e6a4c0f9865ac6
-Patch18:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140719.patch.gz
-# Patch18-md5:	9bb67f50b2a08c8f2e1b909f68592ce8
-Patch19:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140726.patch.gz
-# Patch19-md5:	e45bdb82f2b3d03b5c42b85bf8f45365
-Patch20:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140802.patch.gz
-# Patch20-md5:	3afc2b4dd4afc2061705dd5ad3827e6b
-Patch21:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140809.patch.gz
-# Patch21-md5:	745c7b4660cc6a8b2982bfaefecb2184
-Patch22:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140816.patch.gz
-# Patch22-md5:	5aac11e74427728fa7a69d50fcdc6b6d
-Patch23:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140823.patch.gz
-# Patch23-md5:	a947c90441a6d1b2c8b3ce479938366c
-Patch24:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140831.patch.gz
-# Patch24-md5:	c44d667bacb27a46630e09ece9065468
-Patch25:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140906.patch.gz
-# Patch25-md5:	ff6b277fa958cccd9f74b403250bd0cf
-Patch26:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140913.patch.gz
-# Patch26-md5:	92433359cf3bf4d202212a2832b2521f
-Patch27:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140920.patch.gz
-# Patch27-md5:	70f40973fe4d96a58fb5b635be662bd5
-Patch28:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20140927.patch.gz
-# Patch28-md5:	649bd0ca7a2912b1b128b2073774f679
-Patch29:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141011.patch.gz
-# Patch29-md5:	17e081953c7b54f12a53cd897a4edb60
-Patch30:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141018.patch.gz
-# Patch30-md5:	eb676c1321f2964a9cb6d18dcfdc1a19
-Patch31:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141025.patch.gz
-# Patch31-md5:	52c96fc7ec949b3c6e7fc765260eaaa4
-Patch32:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141101.patch.gz
-# Patch32-md5:	e0644cdbb30184f3a424674d1480ce94
-Patch33:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141115.patch.gz
-# Patch33-md5:	8fd3f6de88bec7a8afaa35d2e8c3ffb5
-Patch34:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141129.patch.gz
-# Patch34-md5:	a3fd7e0cd2285dfcd47e43a6990b11d6
-Patch35:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141206.patch.gz
-# Patch35-md5:	ba576465adfa4d9fadd2a1e4be5f0524
-Patch36:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141213.patch.gz
-# Patch36-md5:	5b4cb12b7482133b2ce4d89ba8773200
-Patch37:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141220.patch.gz
-# Patch37-md5:	793509c4f50168f6e152dca7fc9d91e5
-Patch38:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141221.patch.gz
-# Patch38-md5:	0456dd738ecf3e58a0dc5d71efbd776f
-Patch39:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20141227.patch.gz
-# Patch39-md5:	8be86a8ff3da664b06a2b04ffc41318f
-Patch40:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20150103.patch.gz
-# Patch40-md5:	b5c653dbe82b7464a36ecc2e89b40da1
-Patch41:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20150110.patch.gz
-# Patch41-md5:	e662f8fd07bcb57fac68d9b05559929e
-Patch42:	ftp://dickey.his.com/ncurses/5.9/%{name}-%{basever}-20150117.patch.gz
-# Patch42-md5:	dcadc2d0b2bcc22f5546d5e02f51c26c
-
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
 Patch102:	%{name}-meta.patch
@@ -140,16 +50,6 @@ BuildRequires:	gcc-ada
 %{?with_ada:BuildRequires:	m4}
 BuildRequires:	pkgconfig
 BuildRequires:	sharutils
-# for compatibility with old PLD packages
-%ifarch %{x8664} ppc64 sparc64 s390x
-Provides:	libtinfo.so.5()(64bit)
-Provides:	libtinfow.so.5()(64bit)
-Provides:	libtinfow.so.6()(64bit)
-%else
-Provides:	libtinfo.so.5
-Provides:	libtinfow.so.5
-Provides:	libtinfow.so.6
-%endif
 Obsoletes:	libncurses5
 Conflicts:	terminfo < 5.4-0.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -407,53 +307,7 @@ Ten pakiet zawiera pliki nagłówkowe i biblioteki potrzebne do
 tworzenia aplikacji używających ncurses w języku Ada95.
 
 %prep
-%setup -qc
-mv %{name}-%{basever}/* .
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-rm -f Ada95/src/library.gpr*
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch28 -p1
-%patch29 -p1
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
-%patch34 -p1
-%patch35 -p1
-%patch36 -p1
-%patch37 -p1
-%patch38 -p1
-%patch39 -p1
-%patch40 -p1
-%patch41 -p1
-%patch42 -p1
-
+%setup -q
 %patch100 -p1
 %patch101 -p1
 %patch102 -p1
@@ -499,7 +353,7 @@ cd obj-$t
 	--with-ada-objects=%{_libdir}/gcc/$gcc_target/$gcc_version/adalib/ \
 	`[ "$t" = "narrowc" ] && echo --includedir=%{_includedir}/ncursesn` \
 	`[ "$t" = "wideclowcolor" ] && echo --enable-widec --disable-ext-colors --includedir=%{_includedir}/ncurseswlc` \
-	`[ "$t" = "widec" ] && echo --enable-widec --enable-ext-colors --includedir=%{_includedir}/ncursesw` \
+	`[ "$t" = "widec" ] && echo --enable-widec --enable-ext-colors --enable-ext-mouse --includedir=%{_includedir}/ncursesw` \
 	--without-manpage-symlinks
 
 %{__make} -j1
@@ -530,21 +384,10 @@ ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 # used by /{bin,sbin} programs
 mv -f $RPM_BUILD_ROOT%{_libdir}/libncursesw.so.6* $RPM_BUILD_ROOT/%{_lib}
 # adjust symlinks for libncursesw.so.6 in /%{_lib}
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libncursesw.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
 
-# libncurses.so.5 for legacy programs
-mv -f $RPM_BUILD_ROOT%{_libdir}/libncurses.so.5* $RPM_BUILD_ROOT/%{_lib}
-# binary compatibility for packages using libncursesw.so.5 (without ext-colors)
-cp -a obj-wideclowcolor/lib/libncursesw.so.5* $RPM_BUILD_ROOT%{_libdir}
-# binary compatibility for packages using libtinfo.so.5/libtinfow.so.5/libtinfow.so.6
-ln -sf $(basename $RPM_BUILD_ROOT/%{_lib}/libncurses.so.5.*) $RPM_BUILD_ROOT/%{_lib}/libtinfo.so.5
-ln -sf $(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT/%{_lib}/libtinfow.so.6
-ln -sf $(basename $RPM_BUILD_ROOT%{_libdir}/libncursesw.so.5.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so.5
-
 # force ncursesw also for legacy -lncurses/-lcurses/-ltinfo linking
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libcurses.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libncurses.so
 # force wide ext libraries
@@ -554,10 +397,8 @@ ln -sf $(basename $RPM_BUILD_ROOT%{_libdir}/libpanelw.so.6.*) $RPM_BUILD_ROOT%{_
 
 # similarly for static linking
 ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libcursesw.a
-ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libtinfow.a
 ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libncurses.a
 ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libcurses.a
-ln -sf libncursesw.a $RPM_BUILD_ROOT%{_libdir}/libtinfo.a
 ln -sf libformw.a $RPM_BUILD_ROOT%{_libdir}/libform.a
 ln -sf libmenuw.a $RPM_BUILD_ROOT%{_libdir}/libmenu.a
 ln -sf libpanelw.a $RPM_BUILD_ROOT%{_libdir}/libpanel.a
@@ -576,14 +417,6 @@ rm -rf $RPM_BUILD_ROOT
 %post	ext -p /sbin/ldconfig
 %postun	ext -p /sbin/ldconfig
 
-%triggerpostun -- %{name} < 5.9-3
-# rpm seems to remove them as those was %ghosts in ncurses < 5.9-3
-# despite existing now as normal files/symlinks
-ln -sf /%{_lib}/libncurses.so.5.* /%{_lib}/libtinfo.so.5
-ln -sf /%{_lib}/libncursesw.so.6.* /%{_lib}/libtinfow.so.6
-ln -sf %{_libdir}/libncursesw.so.5.* %{_libdir}/libtinfow.so.5
-exit 0
-
 %files
 %defattr(644,root,root,755)
 %doc ANNOUNCE README
@@ -597,16 +430,10 @@ exit 0
 %attr(755,root,root) %{_bindir}/toe
 %attr(755,root,root) %{_bindir}/tput
 %attr(755,root,root) %{_bindir}/tset
-%attr(755,root,root) /%{_lib}/libncurses.so.*.*
-%attr(755,root,root) %ghost /%{_lib}/libncurses.so.5
+%attr(755,root,root) %{_libdir}/libncurses.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libncurses.so.6
 %attr(755,root,root) /%{_lib}/libncursesw.so.*.*
 %attr(755,root,root) %ghost /%{_lib}/libncursesw.so.6
-%attr(755,root,root) %{_libdir}/libncursesw.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libncursesw.so.5
-# compatibility symlinks
-%attr(755,root,root) /%{_lib}/libtinfo.so.5
-%attr(755,root,root) /%{_lib}/libtinfow.so.6
-%attr(755,root,root) %{_libdir}/libtinfow.so.5
 
 %{_datadir}/tabset
 
@@ -673,14 +500,12 @@ exit 0
 %files devel
 %defattr(644,root,root,755)
 %doc doc/html/ncurses-intro.html
-%attr(755,root,root) %{_bindir}/ncurses5-config
+%attr(755,root,root) %{_bindir}/ncurses6-config
 %attr(755,root,root) %{_bindir}/ncursesw6-config
 %attr(755,root,root) %{_libdir}/libcurses.so
 %attr(755,root,root) %{_libdir}/libncurses.so
-%attr(755,root,root) %{_libdir}/libtinfo.so
 %attr(755,root,root) %{_libdir}/libcursesw.so
 %attr(755,root,root) %{_libdir}/libncursesw.so
-%attr(755,root,root) %{_libdir}/libtinfow.so
 %{_includedir}/curses.h
 %{_includedir}/eti.h
 %{_includedir}/nc_tparm.h
@@ -715,7 +540,7 @@ exit 0
 %{_includedir}/ncursesw/unctrl.h
 %{_pkgconfigdir}/ncurses.pc
 %{_pkgconfigdir}/ncursesw.pc
-%{_mandir}/man1/ncurses5-config.1*
+%{_mandir}/man1/ncurses6-config.1*
 %{_mandir}/man1/ncursesw6-config.1*
 %{_mandir}/man3/BC.3x*
 %{_mandir}/man3/COLORS.3x*
@@ -912,19 +737,17 @@ exit 0
 %defattr(644,root,root,755)
 %{_libdir}/libcurses.a
 %{_libdir}/libncurses.a
-%{_libdir}/libtinfo.a
 %{_libdir}/libcursesw.a
 %{_libdir}/libncursesw.a
-%{_libdir}/libtinfow.a
 
 %files ext
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libform.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libform.so.5
+%attr(755,root,root) %ghost %{_libdir}/libform.so.6
 %attr(755,root,root) %{_libdir}/libmenu.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmenu.so.5
+%attr(755,root,root) %ghost %{_libdir}/libmenu.so.6
 %attr(755,root,root) %{_libdir}/libpanel.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libpanel.so.5
+%attr(755,root,root) %ghost %{_libdir}/libpanel.so.6
 %attr(755,root,root) %{_libdir}/libformw.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libformw.so.6
 %attr(755,root,root) %{_libdir}/libmenuw.so.*.*
