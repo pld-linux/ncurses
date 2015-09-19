@@ -1,9 +1,8 @@
 #
 # Conditional build:
-%bcond_with	ada		# do not build Ada95 bindings
-%bcond_without	cxx		# do not build C++ ncurses bindings and demo programs
-#				# (this is neccessary to build ncurses linked with uClibc).
-%bcond_without	gpm		# build without (dynamically loadable) libgpm support
+%bcond_without	ada		# Ada95 bindings
+%bcond_without	cxx		# C++ ncurses bindings and demo programs [disable when using uClibc]
+%bcond_without	gpm		# (dynamically loadable) libgpm support
 
 %ifarch sparc64 x32
 %undefine with_ada
@@ -13,7 +12,7 @@ Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
 Summary(fr.UTF-8):	La bibliothéque de contrôle de terminal curses
-Summary(pl.UTF-8):	Biblioteki do kontrolowania terminala
+Summary(pl.UTF-8):	Biblioteki do sterowania terminalem
 Summary(pt_BR.UTF-8):	Biblioteca de controle de terminal curses
 Summary(ru.UTF-8):	ncurses - новая библиотека управления терминалами
 Summary(tr.UTF-8):	Terminal kontrol kitaplığı
@@ -50,7 +49,6 @@ BuildRequires:	gcc-ada
 %{?with_ada:BuildRequires:	m4}
 BuildRequires:	pkgconfig
 BuildRequires:	sharutils
-Obsoletes:	libncurses5
 Conflicts:	terminfo < 5.4-0.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -324,37 +322,36 @@ gcc_version=%{cc_version}
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO -D_FILE_OFFSET_BITS=64"
 cp -f /usr/share/automake/config.sub .
 
-for t in narrowc wideclowcolor widec; do
+for t in narrowc widec; do
 install -d obj-$t
 cd obj-$t
 ../%configure \
 	--with-install-prefix=$RPM_BUILD_ROOT \
-	--with-normal \
-	--with-shared \
+	--with-pkg-config-libdir=%{_pkgconfigdir} \
+	--with-ada-include=%{_libdir}/gcc/$gcc_target/$gcc_version/adainclude/ \
+	--with-ada-objects=%{_libdir}/gcc/$gcc_target/$gcc_version/adalib/ \
 	--with%{!?with_ada:out}-ada \
 	--with%{!?with_cxx:out}-cxx \
 	--with%{!?with_cxx:out}-cxx-binding \
 	--with%{!?debug:out}-debug \
 	--with%{!?with_gpm:out}-gpm \
-	--without-profile \
 	--with-largefile \
-	--with-ospeed=unsigned \
-	--disable-lp64 \
-	--enable-hard-tabs \
-	--enable-xmc-glitch \
-	--enable-pc-files \
-	--with-pkg-config-libdir=%{_pkgconfigdir} \
-	--enable-colorfgbg \
-	--with-chtype='long' \
-	--with-mmask-t='long' \
 	--with-manpage-aliases \
 	--with-manpage-format=normal \
-	--with-ada-include=%{_libdir}/gcc/$gcc_target/$gcc_version/adainclude/ \
-	--with-ada-objects=%{_libdir}/gcc/$gcc_target/$gcc_version/adalib/ \
+	--without-manpage-symlinks \
+	--with-normal \
+	--with-ospeed=unsigned \
+	--without-profile \
+	--with-shared \
+	--with-chtype='long' \
+	--with-mmask-t='long' \
+	--disable-lp64 \
+	--enable-colorfgbg \
+	--enable-hard-tabs \
+	--enable-pc-files \
+	--enable-xmc-glitch \
 	`[ "$t" = "narrowc" ] && echo --includedir=%{_includedir}/ncursesn` \
-	`[ "$t" = "wideclowcolor" ] && echo --enable-widec --disable-ext-colors --includedir=%{_includedir}/ncurseswlc` \
 	`[ "$t" = "widec" ] && echo --enable-widec --enable-ext-colors --enable-ext-mouse --includedir=%{_includedir}/ncursesw` \
-	--without-manpage-symlinks
 
 %{__make} -j1
 
@@ -386,10 +383,12 @@ mv -f $RPM_BUILD_ROOT%{_libdir}/libncursesw.so.6* $RPM_BUILD_ROOT/%{_lib}
 # adjust symlinks for libncursesw.so.6 in /%{_lib}
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libncursesw.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libtinfow.so
 
 # force ncursesw also for legacy -lncurses/-lcurses/-ltinfo linking
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libcurses.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libncurses.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so
 # force wide ext libraries
 ln -sf $(basename $RPM_BUILD_ROOT%{_libdir}/libformw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libform.so
 ln -sf $(basename $RPM_BUILD_ROOT%{_libdir}/libmenuw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libmenu.so
@@ -504,8 +503,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/ncursesw6-config
 %attr(755,root,root) %{_libdir}/libcurses.so
 %attr(755,root,root) %{_libdir}/libncurses.so
+%attr(755,root,root) %{_libdir}/libtinfo.so
 %attr(755,root,root) %{_libdir}/libcursesw.so
 %attr(755,root,root) %{_libdir}/libncursesw.so
+%attr(755,root,root) %{_libdir}/libtinfow.so
 %{_includedir}/curses.h
 %{_includedir}/eti.h
 %{_includedir}/nc_tparm.h
@@ -881,11 +882,11 @@ rm -rf $RPM_BUILD_ROOT
 %files ada-devel
 %defattr(644,root,root,755)
 %doc Ada95/{README,TODO}
-%attr(755,root,root) %{_bindir}/adacurses-config
-%attr(755,root,root) %{_bindir}/adacursesw-config
+%attr(755,root,root) %{_bindir}/adacurses6-config
+%attr(755,root,root) %{_bindir}/adacursesw6-config
 %{_libdir}/gcc/*/*/adainclude/*.ad[bs]
 %{_libdir}/gcc/*/*/adalib/libAdaCurses.a
-%{_mandir}/man1/adacurses-config.1*
 %{_mandir}/man1/adacurses.1*
-%{_mandir}/man1/adacursesw-config.1*
+%{_mandir}/man1/adacurses6-config.1*
+%{_mandir}/man1/adacursesw6-config.1*
 %endif
