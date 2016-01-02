@@ -8,6 +8,8 @@
 %undefine with_ada
 %endif
 
+%define	basever	6.0
+%define	patchlevel	20151128
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -18,41 +20,41 @@ Summary(ru.UTF-8):	ncurses - новая библиотека управлени�
 Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
-Version:	6.0
-Release:	3
+Version:	%{basever}.%{patchlevel}
+Release:	1
 License:	distributable
 Group:		Libraries
-Source0:	ftp://dickey.his.com/ncurses/%{name}-%{version}.tar.gz
+Source0:	ftp://dickey.his.com/ncurses/%{name}-%{basever}.tar.gz
 # Source0-md5:	ee13d052e1ead260d7c28071f46eefb1
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
-Patch0:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{version}-20150810.patch.gz
+Patch0:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20150810.patch.gz
 # Patch0-md5:	2addb3f87c533dc7c7c52afaf62abc79
-Patch1:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{version}-20150815.patch.gz
+Patch1:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20150815.patch.gz
 # Patch1-md5:	4db32fa467507f087c4d54f12770e399
-Patch2:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{version}-20150822.patch.gz
+Patch2:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20150822.patch.gz
 # Patch2-md5:	b591a06ea10fe00b320e9b5aecf939ec
-Patch3:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{version}-20150905.patch.gz
+Patch3:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20150905.patch.gz
 # Patch3-md5:	9f12c80f9b99afab25f0ebbb3ada3d05
-Patch4:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{version}-20150912.patch.gz
+Patch4:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20150912.patch.gz
 # Patch4-md5:	f11c2a5381ac75ddd1afd4a5cc6baa60
-Patch5:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{version}-20150919.patch.gz
+Patch5:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20150919.patch.gz
 # Patch5-md5:	c25d0b997c37395b243da3ee68013471
-Patch6:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{version}-20150926.patch.gz
+Patch6:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20150926.patch.gz
 # Patch6-md5:	e9059272b061ddd78d0e27fc84b3e9da
-Patch7:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{version}-20151010.patch.gz
+Patch7:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20151010.patch.gz
 # Patch7-md5:	eaee1c3b67f2189921efd7d336d412f1
-Patch8:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{version}-20151017.patch.gz
+Patch8:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20151017.patch.gz
 # Patch8-md5:	746bb7a761dcf895a08871285b96f769
-Patch9:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{version}-20151024.patch.gz
+Patch9:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20151024.patch.gz
 # Patch9-md5:	d86fd80f87f12951dadf3a9abc834397
-Patch10:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{version}-20151101.patch.gz
+Patch10:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20151101.patch.gz
 # Patch10-md5:	ad7fd777cbd6860ee8072334b2ed253f
-Patch11:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{version}-20151107.patch.gz
+Patch11:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20151107.patch.gz
 # Patch11-md5:	1fffd21c5dc95acbe7c750d88ab9e5b9
-Patch12:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{version}-20151121.patch.gz
+Patch12:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20151121.patch.gz
 # Patch12-md5:	d0cd4fc89d80cc6dde53bfecccc99e91
-Patch13:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{version}-20151128.patch.gz
+Patch13:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20151128.patch.gz
 # Patch13-md5:	7cec35c9fe1d5e67f766e18b06b952d3
 Patch100:	%{name}-screen_hpa_fix.patch
 Patch101:	%{name}-xterm_hpa_fix.patch
@@ -333,7 +335,8 @@ Ten pakiet zawiera pliki nagłówkowe i biblioteki potrzebne do
 tworzenia aplikacji używających ncurses w języku Ada95.
 
 %prep
-%setup -q
+%setup -qc
+mv %{name}-%{basever}/* .
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
