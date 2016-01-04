@@ -78,7 +78,6 @@ BuildRequires:	gcc-ada
 %{?with_cxx:BuildRequires:	libstdc++-devel}
 %{?with_ada:BuildRequires:	m4}
 BuildRequires:	pkgconfig
-BuildRequires:	sharutils
 Conflicts:	terminfo < 5.4-0.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
