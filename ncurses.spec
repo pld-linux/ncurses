@@ -21,7 +21,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	%{basever}.%{patchlevel}
-Release:	1
+Release:	2
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{basever}.tar.gz
@@ -460,6 +460,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %post	ext -p /sbin/ldconfig
 %postun	ext -p /sbin/ldconfig
+
+%triggerpostun -p /sbin/ldconfig -- %{name} < 6.0.20151128-2
 
 %files
 %defattr(644,root,root,755)
