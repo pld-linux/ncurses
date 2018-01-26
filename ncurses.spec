@@ -9,7 +9,7 @@
 %endif
 
 %define	basever	6.0
-%define	patchlevel	20160528
+%define	patchlevel	20180121
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -21,26 +21,46 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	%{basever}.%{patchlevel}
-Release:	5
+Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://dickey.his.com/ncurses/%{name}-%{basever}.tar.gz
 # Source0-md5:	ee13d052e1ead260d7c28071f46eefb1
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
-Patch0:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20160423-patch.sh.bz2
-# Patch0-md5:	11359aad640c0b34c59bd984ca901905
-Patch1:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20160507.patch.gz
-# Patch1-md5:	5417059149e9d845ee4c4300baf01bdc
-Patch2:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20160514.patch.gz
-# Patch2-md5:	22a52731756a0f4e40fb7f7876a0af91
-Patch3:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20160521.patch.gz
-# Patch3-md5:	8e6fda0369ef8b20e4295c17e768b2b5
-Patch4:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20160528.patch.gz
-# Patch4-md5:	6a7a17b7ecac5e1e8f723adcdeafdde8
-Patch100:	%{name}-screen_hpa_fix.patch
-Patch101:	%{name}-xterm_hpa_fix.patch
-Patch102:	%{name}-meta.patch
+Patch0:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20170930-patch.sh.bz2
+# Patch0-md5:	7464fb8d8dcb7e1a1251551e453b104b
+Patch1:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171007.patch.gz
+# Patch1-md5:	a358533f5545be3e60cfbf430168564c
+Patch2:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171014.patch.gz
+# Patch2-md5:	57610f81ea8dffa02cd8dc272957fc53
+Patch3:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171021.patch.gz
+# Patch3-md5:	834dcb143f997df7778ee82ace86c468
+Patch4:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171028.patch.gz
+# Patch4-md5:	ea95cd7a532eefaab4661095e00c88fa
+Patch5:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171104.patch.gz
+# Patch5-md5:	2b5d359a716a2f7a47fc66bf01b2102f
+Patch6:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171111.patch.gz
+# Patch6-md5:	b1da6a558ad99c65558427b75b4bcf94
+Patch7:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171118.patch.gz
+# Patch7-md5:	a6be396b5749e7da0d90cd675ca49558
+Patch8:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171125.patch.gz
+# Patch8-md5:	194337ea48226e62b2a553d5ddfcc7aa
+Patch9:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171209.patch.gz
+# Patch9-md5:	604527ccf01bb1350148fcf382e9105a
+Patch10:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171216.patch.gz
+# Patch10-md5:	ae1300b60d8faf462a62fde7dd8a1a94
+Patch11:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171223.patch.gz
+# Patch11-md5:	bf92c0b11fc73b745dd18857769528c4
+Patch12:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171230.patch.gz
+# Patch12-md5:	ca8de9f174616c8d6d6fc69a5cabe563
+Patch13:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20180106.patch.gz
+# Patch13-md5:	f0ba0d56f135ea3aae96628f28056f4c
+Patch14:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20180120.patch.gz
+# Patch14-md5:	caaaa75068005ad10c936b739dc8bc05
+Patch15:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20180121.patch.gz
+# Patch15-md5:	b9f0b7c7f52e364ba54416b535bd4ade
+
 Patch103:	%{name}-xterm-home-end.patch
 
 Patch105:	%{name}-gnome-terminal.patch
@@ -322,10 +342,18 @@ mv %{name}-%{basever}/* .
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
 
-%patch100 -p1
-%patch101 -p1
-%patch102 -p1
 %patch103 -p1
 
 %patch105 -p1
@@ -485,8 +513,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/toe.1m*
 %{_mandir}/man1/tput.1*
 %{_mandir}/man1/tset.1*
+%{_mandir}/man5/scr_dump.5*
 %{_mandir}/man5/term.5*
 %{_mandir}/man5/terminfo.5*
+%{_mandir}/man5/user_caps.5*
 %{_mandir}/man7/term.7*
 %lang(fi) %{_mandir}/fi/man1/*
 %lang(fr) %{_mandir}/fr/man1/*
@@ -577,6 +607,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/_nc_*.3x*
 %{_mandir}/man3/_trace*.3x*
 %{_mandir}/man3/acs_map.3x*
+%{_mandir}/man3/alloc_pair.3x*
+%{_mandir}/man3/alloc_pair_sp.3*x
 %{_mandir}/man3/add*.3x*
 %{_mandir}/man3/assume_default_colors*.3x*
 %{_mandir}/man3/attr*.3x*
@@ -615,6 +647,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/endwin*.3x*
 %{_mandir}/man3/erase*.3x*
 %{_mandir}/man3/filter*.3x*
+%{_mandir}/man3/find_pair.3x*
+%{_mandir}/man3/find_pair_sp.3x*
 %{_mandir}/man3/flash*.3x*
 %{_mandir}/man3/flushinp*.3x*
 %{_mandir}/man3/get*.3x*
@@ -642,6 +676,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/leaveok.3x*
 %{_mandir}/man3/legacy_coding.3x*
 %{_mandir}/man3/longname.3x*
+%{_mandir}/man3/longname_sp.3x*
 %{_mandir}/man3/mcprint*.3x*
 %{_mandir}/man3/meta.3x*
 %{_mandir}/man3/mouse*.3x*
@@ -798,13 +833,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/menuw.pc
 %{_pkgconfigdir}/panel.pc
 %{_pkgconfigdir}/panelw.pc
-%{_mandir}/man3/TYPE_ALNUM.3x*
-%{_mandir}/man3/TYPE_ALPHA.3x*
-%{_mandir}/man3/TYPE_ENUM.3x*
-%{_mandir}/man3/TYPE_INTEGER.3x*
-%{_mandir}/man3/TYPE_IPV4.3x*
-%{_mandir}/man3/TYPE_NUMERIC.3x*
-%{_mandir}/man3/TYPE_REGEXP.3x*
 %{_mandir}/man3/bottom_panel.3x*
 %{_mandir}/man3/current_field.3x*
 %{_mandir}/man3/current_item.3x*
@@ -813,10 +841,20 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/del_panel.3x*
 %{_mandir}/man3/dup_field.3x*
 %{_mandir}/man3/dynamic_field_info.3x*
+%{_mandir}/man3/extended_color_content.3x*
+%{_mandir}/man3/extended_color_content_sp.3x*
+%{_mandir}/man3/extended_pair_content.3x*
+%{_mandir}/man3/extended_pair_content_sp.3x*
+%{_mandir}/man3/extended_slk_color.3x*
+%{_mandir}/man3/extended_slk_color_sp.3x*
 %{_mandir}/man3/field_*.3x*
 %{_mandir}/man3/form*.3x*
 %{_mandir}/man3/free_*.3x*
 %{_mandir}/man3/hide_panel.3x*
+%{_mandir}/man3/init_extended_color.3x*
+%{_mandir}/man3/init_extended_color_sp.3x*
+%{_mandir}/man3/init_extended_pair.3x*
+%{_mandir}/man3/init_extended_pair_sp.3x*
 %{_mandir}/man3/item_*.3x*
 %{_mandir}/man3/link_field*.3x*
 %{_mandir}/man3/menu*.3x*
@@ -828,6 +866,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/new_item.3x*
 %{_mandir}/man3/new_menu*.3x*
 %{_mandir}/man3/new_page.3x*
+%{_mandir}/man3/new_pair.3x*
 %{_mandir}/man3/new_panel.3x*
 %{_mandir}/man3/panel*.3x*
 %{_mandir}/man3/pos_form_cursor.3x*
@@ -850,6 +889,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/show_panel.3x*
 %{_mandir}/man3/top_panel.3x*
 %{_mandir}/man3/top_row.3x*
+%{_mandir}/man3/TYPE_ALNUM.3x*
+%{_mandir}/man3/TYPE_ALPHA.3x*
+%{_mandir}/man3/TYPE_ENUM.3x*
+%{_mandir}/man3/TYPE_INTEGER.3x*
+%{_mandir}/man3/TYPE_IPV4.3x*
+%{_mandir}/man3/TYPE_NUMERIC.3x*
+%{_mandir}/man3/TYPE_REGEXP.3x*
+%{_mandir}/man3/unfocus_current_field.3x*
 %{_mandir}/man3/unpost_form.3x*
 %{_mandir}/man3/unpost_menu.3x*
 %{_mandir}/man3/update_panels*.3x*
@@ -905,7 +952,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/adacursesw6-config
 %{_libdir}/gcc/*/*/adainclude/*.ad[bs]
 %{_libdir}/gcc/*/*/adalib/libAdaCurses.a
-%{_mandir}/man1/adacurses.1*
+%{_mandir}/man1/adacurses6.1*
 %{_mandir}/man1/adacurses6-config.1*
+%{_mandir}/man1/adacursesw6.1*
 %{_mandir}/man1/adacursesw6-config.1*
 %endif
