@@ -24,48 +24,14 @@ Version:	%{basever}.%{patchlevel}
 Release:	1
 License:	distributable
 Group:		Libraries
-Source0:	ftp://dickey.his.com/ncurses/%{name}-%{basever}.tar.gz
-# Source0-md5:	ee13d052e1ead260d7c28071f46eefb1
+Source0:	ftp://ftp.invisible-island.net/ncurses/current/%{name}-%{basever}-%{patchlevel}.tgz
+# Source0-md5:	837f06e0d9cfcb83419ea7da5e3052f8
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
-Patch0:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20170930-patch.sh.bz2
-# Patch0-md5:	7464fb8d8dcb7e1a1251551e453b104b
-Patch1:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171007.patch.gz
-# Patch1-md5:	a358533f5545be3e60cfbf430168564c
-Patch2:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171014.patch.gz
-# Patch2-md5:	57610f81ea8dffa02cd8dc272957fc53
-Patch3:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171021.patch.gz
-# Patch3-md5:	834dcb143f997df7778ee82ace86c468
-Patch4:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171028.patch.gz
-# Patch4-md5:	ea95cd7a532eefaab4661095e00c88fa
-Patch5:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171104.patch.gz
-# Patch5-md5:	2b5d359a716a2f7a47fc66bf01b2102f
-Patch6:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171111.patch.gz
-# Patch6-md5:	b1da6a558ad99c65558427b75b4bcf94
-Patch7:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171118.patch.gz
-# Patch7-md5:	a6be396b5749e7da0d90cd675ca49558
-Patch8:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171125.patch.gz
-# Patch8-md5:	194337ea48226e62b2a553d5ddfcc7aa
-Patch9:		ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171209.patch.gz
-# Patch9-md5:	604527ccf01bb1350148fcf382e9105a
-Patch10:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171216.patch.gz
-# Patch10-md5:	ae1300b60d8faf462a62fde7dd8a1a94
-Patch11:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171223.patch.gz
-# Patch11-md5:	bf92c0b11fc73b745dd18857769528c4
-Patch12:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20171230.patch.gz
-# Patch12-md5:	ca8de9f174616c8d6d6fc69a5cabe563
-Patch13:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20180106.patch.gz
-# Patch13-md5:	f0ba0d56f135ea3aae96628f28056f4c
-Patch14:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20180120.patch.gz
-# Patch14-md5:	caaaa75068005ad10c936b739dc8bc05
-Patch15:	ftp://dickey.his.com/ncurses/6.0/%{name}-%{basever}-20180121.patch.gz
-# Patch15-md5:	b9f0b7c7f52e364ba54416b535bd4ade
-
-Patch103:	%{name}-xterm-home-end.patch
-
-Patch105:	%{name}-gnome-terminal.patch
+Patch100:	%{name}-xterm-home-end.patch
+Patch101:	%{name}-gnome-terminal.patch
 # disable rain demo; triggers gcc bug: http://gcc.gnu.org/bugzilla/show_bug.cgi?id=14998
-Patch107:	%{name}-no-rain-demo.patch
+Patch102:	%{name}-no-rain-demo.patch
 URL:		http://dickey.his.com/ncurses/ncurses.html
 BuildRequires:	automake
 %if %{with ada}
@@ -335,29 +301,10 @@ Ten pakiet zawiera pliki nagłówkowe i biblioteki potrzebne do
 tworzenia aplikacji używających ncurses w języku Ada95.
 
 %prep
-%setup -qc
-mv %{name}-%{basever}/* .
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-
-%patch103 -p1
-
-%patch105 -p1
-%patch107 -p1
+%setup -q -n %{name}-%{basever}-%{patchlevel}
+%patch100 -p1
+%patch101 -p1
+%patch102 -p1
 
 %build
 unset TERMINFO || :
