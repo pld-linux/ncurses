@@ -556,7 +556,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/_trace*.3x*
 %{_mandir}/man3/acs_map.3x*
 %{_mandir}/man3/alloc_pair.3x*
-%{_mandir}/man3/alloc_pair_sp.3*x
+%{_mandir}/man3/alloc_pair_sp.3x*
 %{_mandir}/man3/add*.3x*
 %{_mandir}/man3/assume_default_colors*.3x*
 %{_mandir}/man3/attr*.3x*
