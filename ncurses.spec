@@ -21,7 +21,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	%{basever}.%{patchlevel}
-Release:	1
+Release:	2
 License:	distributable
 Group:		Libraries
 Source0:	ftp://ftp.invisible-island.net/ncurses/current/%{name}-%{basever}-%{patchlevel}.tgz
@@ -433,8 +433,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %dir %{_datadir}/terminfo
 %{_datadir}/terminfo/E
-%dir %{_datadir}/terminfo/[cdgklprsvx]
+%dir %{_datadir}/terminfo/[acdgklprsvx]
 
+%{_datadir}/terminfo/a/ansi
 %{_datadir}/terminfo/c/cygwin*
 %{_datadir}/terminfo/d/dumb
 %{_datadir}/terminfo/g/gnome*
@@ -477,6 +478,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_datadir}/terminfo/[1-9ALMNPQXa-ce-jm-rt-uwz]
 %{_datadir}/terminfo/[dklsvx]/*
+%exclude %{_datadir}/terminfo/a/ansi
 %exclude %{_datadir}/terminfo/c/cygwin*
 %exclude %{_datadir}/terminfo/d/dumb
 %exclude %{_datadir}/terminfo/g/gnome*
