@@ -45,6 +45,7 @@ BuildRequires:	gcc-ada
 %{?with_cxx:BuildRequires:	libstdc++-devel}
 %{?with_ada:BuildRequires:	m4}
 BuildRequires:	pkgconfig
+Conflicts:	slang-libs < 1:2.3.1a-2
 Conflicts:	terminfo < 5.4-0.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -127,7 +128,6 @@ Summary(pt_BR.UTF-8):	Base de dados terminfo para terminais adicionais (menos us
 Group:		Applications/Terminal
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	ncurses-extraterms
-Conflicts:	slang-libs < 1:2.3.1a-2
 %if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
 %endif
