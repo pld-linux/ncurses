@@ -1,11 +1,11 @@
---- ncurses-5.9/Ada95/samples/Makefile.in~	2011-03-29 01:45:08.000000000 +0200
-+++ ncurses-5.9/Ada95/samples/Makefile.in	2011-06-25 15:05:18.869032587 +0200
-@@ -99,7 +99,7 @@
- CARGS        =-cargs $(ADAFLAGS)
- LARGS        =-largs -L../lib -lAdaCurses @TEST_ARG2@ $(LD_FLAGS) @TEST_LIBS2@
+--- ncurses-6.1-20191026/Ada95/samples/Makefile.in~	2019-09-08 02:01:38.000000000 +0200
++++ ncurses-6.1-20191026/Ada95/samples/Makefile.in	2019-10-28 18:30:23.507868923 +0100
+@@ -105,7 +105,7 @@ THISLIB		= sample
+ CARGS		= -cargs $(ADAFLAGS)
+ LARGS		= -largs -L../lib -l@ADA_LIBNAME@ @TEST_ARG2@ $(LD_FLAGS) @TEST_LIBS2@
  
--PROGS        = tour$x ncurses$x @USE_GNAT_SIGINT@ rain$x 
-+PROGS        = tour$x ncurses$x @USE_GNAT_SIGINT@
+-PROGS		= tour$x ncurses$x @USE_GNAT_SIGINT@ rain$x 
++PROGS		= tour$x ncurses$x @USE_GNAT_SIGINT@
  
  all ::  $(PROGS)
  	@echo made $@
