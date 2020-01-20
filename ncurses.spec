@@ -9,7 +9,7 @@
 %endif
 
 %define	basever	6.1
-%define	patchlevel	20191123
+%define	patchlevel	20200118
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -25,7 +25,7 @@ Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://ftp.invisible-island.net/ncurses/current/%{name}-%{basever}-%{patchlevel}.tgz
-# Source0-md5:	8891e41331532f6b7f64ea0c1760cfb0
+# Source0-md5:	e0ac9b5fc62d94f0ebcb94a6b39b798e
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 Patch100:	%{name}-xterm-home-end.patch
@@ -581,6 +581,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/curs_*.3x*
 %{_mandir}/man3/curscr.3x*
 %{_mandir}/man3/curses_version.3x*
+%{_mandir}/man3/curses_trace.3x*
 %{_mandir}/man3/def_*.3x*
 %{_mandir}/man3/default_colors.3x*
 %{_mandir}/man3/define_key*.3x*
@@ -596,6 +597,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/echo*.3x*
 %{_mandir}/man3/endwin*.3x*
 %{_mandir}/man3/erase*.3x*
+%{_mandir}/man3/exit_curses.3x*
+%{_mandir}/man3/exit_terminfo.3x*
 %{_mandir}/man3/filter*.3x*
 %{_mandir}/man3/find_pair.3x*
 %{_mandir}/man3/find_pair_sp.3x*
