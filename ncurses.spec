@@ -21,7 +21,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	%{basever}.%{patchlevel}
-Release:	3
+Release:	4
 License:	distributable
 Group:		Libraries
 Source0:	ftp://ftp.invisible-island.net/ncurses/current/%{name}-%{basever}-%{patchlevel}.tgz
@@ -32,6 +32,7 @@ Patch100:	%{name}-xterm-home-end.patch
 Patch101:	%{name}-gnome-terminal.patch
 # disable rain demo; triggers gcc bug: http://gcc.gnu.org/bugzilla/show_bug.cgi?id=14998
 Patch102:	%{name}-no-rain-demo.patch
+Patch103:	gcc10.patch
 URL:		http://dickey.his.com/ncurses/ncurses.html
 BuildRequires:	automake
 %if %{with ada}
@@ -306,6 +307,7 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %patch100 -p1
 %patch101 -p1
 %patch102 -p1
+%patch103 -p1
 
 %build
 unset TERMINFO || :
