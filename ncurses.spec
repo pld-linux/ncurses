@@ -8,8 +8,8 @@
 %undefine with_ada
 %endif
 
-%define	basever	6.1
-%define	patchlevel	20200118
+%define	basever	6.2
+%define	patchlevel	20200822
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -21,22 +21,19 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	%{basever}.%{patchlevel}
-Release:	5
+Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://ftp.invisible-island.net/ncurses/current/%{name}-%{basever}-%{patchlevel}.tgz
-# Source0-md5:	e0ac9b5fc62d94f0ebcb94a6b39b798e
+# Source0-md5:	54d3f5aaeafb3b7755db7399d753ce06
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 Patch100:	%{name}-xterm-home-end.patch
 Patch101:	%{name}-gnome-terminal.patch
-# disable rain demo; triggers gcc bug: http://gcc.gnu.org/bugzilla/show_bug.cgi?id=14998
-Patch102:	%{name}-no-rain-demo.patch
-Patch103:	gcc10.patch
 URL:		http://dickey.his.com/ncurses/ncurses.html
 BuildRequires:	automake
 %if %{with ada}
-BuildRequires:	gcc-ada
+BuildRequires:	gcc-ada >= 6:4.1.0
 # gnat bug: https://bugzilla.redhat.com/show_bug.cgi?id=613407
 # gcc patch: https://bugzilla.redhat.com/attachment.cgi?id=435931
 # seems worker around when using gcc 4.6.2? --q
@@ -129,7 +126,7 @@ Summary(pt_BR.UTF-8):	Base de dados terminfo para terminais adicionais (menos us
 Group:		Applications/Terminal
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	ncurses-extraterms
-%if "%{_rpmversion}" >= "5"
+%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
 %endif
 
@@ -306,8 +303,6 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %setup -q -n %{name}-%{basever}-%{patchlevel}
 %patch100 -p1
 %patch101 -p1
-%patch102 -p1
-%patch103 -p1
 
 %build
 unset TERMINFO || :
@@ -373,7 +368,7 @@ done
 ln -sf ../l/linux $RPM_BUILD_ROOT%{_datadir}/terminfo/c/console
 
 # used by /{bin,sbin} programs
-mv -f $RPM_BUILD_ROOT%{_libdir}/libncursesw.so.6* $RPM_BUILD_ROOT/%{_lib}
+%{__mv} $RPM_BUILD_ROOT%{_libdir}/libncursesw.so.6* $RPM_BUILD_ROOT/%{_lib}
 # adjust symlinks for libncursesw.so.6 in /%{_lib}
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libncursesw.so
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libncursesw.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libcursesw.so
