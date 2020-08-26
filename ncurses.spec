@@ -601,6 +601,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/find_pair_sp.3x*
 %{_mandir}/man3/flash*.3x*
 %{_mandir}/man3/flushinp*.3x*
+%{_mandir}/man3/free_pair.3x*
+%{_mandir}/man3/free_pair_sp.3x*
 %{_mandir}/man3/get*.3x*
 %{_mandir}/man3/ground_panel.3x*
 %{_mandir}/man3/halfdelay*.3x*
@@ -799,7 +801,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/extended_slk_color_sp.3x*
 %{_mandir}/man3/field_*.3x*
 %{_mandir}/man3/form*.3x*
-%{_mandir}/man3/free_*.3x*
+%{_mandir}/man3/free_field*.3x*
+%{_mandir}/man3/free_form.3x*
+%{_mandir}/man3/free_item.3x*
+%{_mandir}/man3/free_menu.3x*
 %{_mandir}/man3/hide_panel.3x*
 %{_mandir}/man3/init_extended_color.3x*
 %{_mandir}/man3/init_extended_color_sp.3x*
