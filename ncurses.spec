@@ -309,7 +309,6 @@ unset TERMINFO || :
 gcc_target=$(gcc -dumpmachine)
 gcc_version=%{cc_version}
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO -D_FILE_OFFSET_BITS=64"
-cp -f /usr/share/automake/config.sub .
 
 for t in narrowc widec; do
 install -d obj-$t
