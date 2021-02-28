@@ -126,9 +126,7 @@ Summary(pt_BR.UTF-8):	Base de dados terminfo para terminais adicionais (menos us
 Group:		Applications/Terminal
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	ncurses-extraterms
-%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
-%endif
 
 %description -n terminfo
 This package contains complete terminfo database. If you just use the
