@@ -21,7 +21,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	%{basever}.%{patchlevel}
-Release:	1
+Release:	2
 License:	distributable
 Group:		Libraries
 Source0:	ftp://ftp.invisible-island.net/ncurses/current/%{name}-%{basever}-%{patchlevel}.tgz
@@ -389,6 +389,9 @@ ln -sf libmenuw.a $RPM_BUILD_ROOT%{_libdir}/libmenu.a
 ln -sf libpanelw.a $RPM_BUILD_ROOT%{_libdir}/libpanel.a
 ln -sf libncurses++w.a $RPM_BUILD_ROOT%{_libdir}/libncurses++.a
 
+# debian compatibility link
+ln -sf $(basename $RPM_BUILD_ROOT%{_libdir}/libncurses.so.6.*) $RPM_BUILD_ROOT%{_libdir}/libtinfo.so.6
+
 bzip2 -dc %{SOURCE1} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
 %{__rm} $RPM_BUILD_ROOT%{_mandir}/README.ncurses-non-english-man-pages
@@ -422,6 +425,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libncurses.so.6
 %attr(755,root,root) /%{_lib}/libncursesw.so.*.*
 %attr(755,root,root) %ghost /%{_lib}/libncursesw.so.6
+%attr(755,root,root) %{_libdir}/libtinfo.so.6
 
 %{_datadir}/tabset
 
