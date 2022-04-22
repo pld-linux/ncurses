@@ -9,7 +9,7 @@
 %endif
 
 %define	basever	6.3
-%define	patchlevel	20211120
+%define	patchlevel	20220416
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -25,11 +25,10 @@ Release:	3
 License:	distributable
 Group:		Libraries
 Source0:	ftp://ftp.invisible-island.net/ncurses/current/%{name}-%{basever}-%{patchlevel}.tgz
-# Source0-md5:	08bba583e9dcb8600c468812c070284b
+# Source0-md5:	56140f950e0774ee44ba50f470991ce4
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 Patch100:	%{name}-xterm-home-end.patch
-Patch101:	%{name}-gnome-terminal.patch
 URL:		http://dickey.his.com/ncurses/ncurses.html
 BuildRequires:	automake
 %if %{with ada}
@@ -300,7 +299,6 @@ tworzenia aplikacji używających ncurses w języku Ada95.
 %prep
 %setup -q -n %{name}-%{basever}-%{patchlevel}
 %patch100 -p1
-%patch101 -p1
 
 %build
 unset TERMINFO || :
