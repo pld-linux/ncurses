@@ -21,7 +21,7 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	%{basever}.%{patchlevel}
-Release:	3
+Release:	4
 License:	distributable
 Group:		Libraries
 Source0:	ftp://ftp.invisible-island.net/ncurses/current/%{name}-%{basever}-%{patchlevel}.tgz
