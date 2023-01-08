@@ -156,8 +156,8 @@ Summary(ru.UTF-8):	Хедеры и библиотеки для разработ�
 Summary(uk.UTF-8):	Хедери та бібліотеки для розробки програм з ncurses
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Obsoletes:	libncurses5-devel
-Obsoletes:	libtermcap-devel
+Obsoletes:	libncurses5-devel < 6
+Obsoletes:	libtermcap-devel < 2.1
 
 %description devel
 This package includes the header files and libraries necessary to
