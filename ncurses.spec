@@ -24,7 +24,7 @@ Version:	%{basever}.%{patchlevel}
 Release:	3
 License:	distributable
 Group:		Libraries
-Source0:	ftp://ftp.invisible-island.net/ncurses/current/%{name}-%{basever}-%{patchlevel}.tgz
+Source0:	https://invisible-island.net/archives/ncurses/current/%{name}-%{basever}-%{patchlevel}.tgz
 # Source0-md5:	ca9c8143ad5f097dd0bfff4e07cec054
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
