@@ -9,7 +9,7 @@
 %endif
 
 %define	basever	6.4
-%define	patchlevel	20230114
+%define	patchlevel	20231001
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -21,11 +21,11 @@ Summary(tr.UTF-8):	Terminal kontrol kitaplığı
 Summary(uk.UTF-8):	ncurses - нова бібліотека керування терміналами
 Name:		ncurses
 Version:	%{basever}.%{patchlevel}
-Release:	3
+Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	https://invisible-island.net/archives/ncurses/current/%{name}-%{basever}-%{patchlevel}.tgz
-# Source0-md5:	ca9c8143ad5f097dd0bfff4e07cec054
+# Source0-md5:	83d8f8249dd9b1337ab95c62fa3b9239
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 Patch100:	%{name}-xterm-home-end.patch
@@ -505,35 +505,29 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libtinfow.so
 %{_includedir}/curses.h
 %{_includedir}/eti.h
-%{_includedir}/nc_tparm.h
 %{_includedir}/ncurses.h
 %{_includedir}/ncurses_dll.h
 %{_includedir}/term.h
 %{_includedir}/term_entry.h
 %{_includedir}/termcap.h
-%{_includedir}/tic.h
 %{_includedir}/unctrl.h
 %dir %{_includedir}/ncurses
 %{_includedir}/ncurses/curses.h
 %{_includedir}/ncurses/eti.h
-%{_includedir}/ncurses/nc_tparm.h
 %{_includedir}/ncurses/ncurses.h
 %{_includedir}/ncurses/ncurses_dll.h
 %{_includedir}/ncurses/term.h
 %{_includedir}/ncurses/term_entry.h
 %{_includedir}/ncurses/termcap.h
-%{_includedir}/ncurses/tic.h
 %{_includedir}/ncurses/unctrl.h
 %dir %{_includedir}/ncursesw
 %{_includedir}/ncursesw/curses.h
 %{_includedir}/ncursesw/eti.h
-%{_includedir}/ncursesw/nc_tparm.h
 %{_includedir}/ncursesw/ncurses.h
 %{_includedir}/ncursesw/ncurses_dll.h
 %{_includedir}/ncursesw/term.h
 %{_includedir}/ncursesw/term_entry.h
 %{_includedir}/ncursesw/termcap.h
-%{_includedir}/ncursesw/tic.h
 %{_includedir}/ncursesw/unctrl.h
 %{_pkgconfigdir}/ncurses.pc
 %{_pkgconfigdir}/ncursesw.pc
@@ -544,13 +538,20 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/COLOR_PAIR.3x*
 %{_mandir}/man3/COLOR_PAIRS.3x*
 %{_mandir}/man3/COLS.3x*
+%{_mandir}/man3/ERR.3x*
 %{_mandir}/man3/ESCDELAY.3x*
+%{_mandir}/man3/FALSE.3x*
 %{_mandir}/man3/LINES.3x*
+%{_mandir}/man3/NCURSES_SCREEN_CB.3x*
+%{_mandir}/man3/NCURSES_WINDOW_CB.3x*
+%{_mandir}/man3/OK.3x*
 %{_mandir}/man3/PAIR_NUMBER.3x*
 %{_mandir}/man3/PC.3x*
 %{_mandir}/man3/SP.3x*
 %{_mandir}/man3/TABSIZE.3x*
+%{_mandir}/man3/TRUE.3x*
 %{_mandir}/man3/UP.3x*
+%{_mandir}/man3/WINDOW.3x*
 %{_mandir}/man3/_nc_*.3x*
 %{_mandir}/man3/_trace*.3x*
 %{_mandir}/man3/acs_map.3x*
@@ -568,8 +569,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/box*.3x*
 %{_mandir}/man3/can_change_color*.3x*
 %{_mandir}/man3/cbreak*.3x*
+%{_mandir}/man3/cchar_t*.3x*
 %{_mandir}/man3/ceiling_panel.3x*
 %{_mandir}/man3/chgat.3x*
+%{_mandir}/man3/chtype.3x*
 %{_mandir}/man3/clear*.3x*
 %{_mandir}/man3/clrto*.3x*
 %{_mandir}/man3/color_*.3x*
@@ -577,6 +580,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/cur_term.3x*
 %{_mandir}/man3/curs_*.3x*
 %{_mandir}/man3/curscr.3x*
+%{_mandir}/man3/curses.3x*
 %{_mandir}/man3/curses_version.3x*
 %{_mandir}/man3/curses_trace.3x*
 %{_mandir}/man3/def_*.3x*
@@ -691,6 +695,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/tiget*.3x*
 %{_mandir}/man3/timeout.3x*
 %{_mandir}/man3/tiparm.3x*
+%{_mandir}/man3/tiparm_s.3x*
+%{_mandir}/man3/tiscan_s.3x*
 %{_mandir}/man3/touchline.3x*
 %{_mandir}/man3/touchwin.3x*
 %{_mandir}/man3/tparm.3x*
@@ -908,8 +914,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/adacursesw6-config
 %{_libdir}/gcc/*/*/adainclude/*.ad[bs]
 %{_libdir}/gcc/*/*/adalib/libAdaCurses.a
-%{_mandir}/man1/adacurses6.1*
 %{_mandir}/man1/adacurses6-config.1*
-%{_mandir}/man1/adacursesw6.1*
 %{_mandir}/man1/adacursesw6-config.1*
 %endif
