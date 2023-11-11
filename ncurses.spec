@@ -9,7 +9,7 @@
 %endif
 
 %define	basever	6.4
-%define	patchlevel	20231001
+%define	patchlevel	20231104
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -25,7 +25,7 @@ Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	https://invisible-island.net/archives/ncurses/current/%{name}-%{basever}-%{patchlevel}.tgz
-# Source0-md5:	83d8f8249dd9b1337ab95c62fa3b9239
+# Source0-md5:	c0cf34a1feac3cfb06a43e9d6af40504
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 Patch100:	%{name}-xterm-home-end.patch
@@ -335,7 +335,7 @@ cd obj-$t
 	--enable-hard-tabs \
 	--enable-pc-files \
 	--enable-xmc-glitch \
-	`[ "$t" = "narrowc" ] && echo --includedir=%{_includedir}/ncursesn` \
+	`[ "$t" = "narrowc" ] && echo --disable-widec --disable-ext-colors --disable-ext-mouse --includedir=%{_includedir}/ncursesn` \
 	`[ "$t" = "widec" ] && echo --enable-widec --enable-ext-colors --enable-ext-mouse --includedir=%{_includedir}/ncursesw` \
 
 %{__make} -j1
