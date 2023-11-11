@@ -29,7 +29,7 @@ Source0:	https://invisible-island.net/archives/ncurses/current/%{name}-%{basever
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 Patch100:	%{name}-xterm-home-end.patch
-URL:		http://dickey.his.com/ncurses/ncurses.html
+URL:		https://invisible-island.net/ncurses/
 BuildRequires:	automake
 %if %{with ada}
 BuildRequires:	gcc-ada >= 6:4.1.0
