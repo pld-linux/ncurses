@@ -9,7 +9,7 @@
 %endif
 
 %define	basever	6.4
-%define	patchlevel	20231104
+%define	patchlevel	20231217
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -25,7 +25,7 @@ Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	https://invisible-island.net/archives/ncurses/current/%{name}-%{basever}-%{patchlevel}.tgz
-# Source0-md5:	c0cf34a1feac3cfb06a43e9d6af40504
+# Source0-md5:	ec8477604f0cf95bffccb71c282eebd2
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 Patch100:	%{name}-xterm-home-end.patch
@@ -535,8 +535,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/ncursesw6-config.1*
 %{_mandir}/man3/BC.3x*
 %{_mandir}/man3/COLORS.3x*
+%{_mandir}/man3/COLOR_BLACK.3x*
+%{_mandir}/man3/COLOR_BLUE.3x*
+%{_mandir}/man3/COLOR_CYAN.3x*
+%{_mandir}/man3/COLOR_GREEN.3x*
+%{_mandir}/man3/COLOR_MAGENTA.3x*
 %{_mandir}/man3/COLOR_PAIR.3x*
 %{_mandir}/man3/COLOR_PAIRS.3x*
+%{_mandir}/man3/COLOR_RED.3x*
+%{_mandir}/man3/COLOR_WHITE.3x*
+%{_mandir}/man3/COLOR_YELLOW.3x*
 %{_mandir}/man3/COLS.3x*
 %{_mandir}/man3/ERR.3x*
 %{_mandir}/man3/ESCDELAY.3x*
