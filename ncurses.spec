@@ -9,7 +9,7 @@
 %endif
 
 %define	basever	6.4
-%define	patchlevel	20231217
+%define	patchlevel	20231230
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -25,7 +25,7 @@ Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	https://invisible-island.net/archives/ncurses/current/%{name}-%{basever}-%{patchlevel}.tgz
-# Source0-md5:	ec8477604f0cf95bffccb71c282eebd2
+# Source0-md5:	e7c009df5bf9f32eafa5840b62cb93f9
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 Patch100:	%{name}-xterm-home-end.patch
@@ -555,6 +555,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/OK.3x*
 %{_mandir}/man3/PAIR_NUMBER.3x*
 %{_mandir}/man3/PC.3x*
+%{_mandir}/man3/SCREEN.3x*
 %{_mandir}/man3/SP.3x*
 %{_mandir}/man3/TABSIZE.3x*
 %{_mandir}/man3/TRUE.3x*
@@ -687,6 +688,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/setcchar.3x*
 %{_mandir}/man3/setscrreg.3x*
 %{_mandir}/man3/setsyx.3x*
+%{_mandir}/man3/setterm.3x*
 %{_mandir}/man3/setupterm.3x*
 %{_mandir}/man3/slk_*.3x*
 %{_mandir}/man3/stand*.3x*
