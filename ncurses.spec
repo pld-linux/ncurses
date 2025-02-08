@@ -43,6 +43,7 @@ BuildRequires:	gcc-ada >= 6:4.1.0
 %{?with_ada:BuildRequires:	m4}
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
+BuildRequires:	rpmbuild(macros) >= 2.043
 Conflicts:	slang-libs < 1:2.3.1a-2
 Conflicts:	terminfo < 5.4-0.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
