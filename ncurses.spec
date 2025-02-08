@@ -9,7 +9,7 @@
 %endif
 
 %define	basever	6.5
-%define	patchlevel	20240817
+%define	patchlevel	20250201
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -25,7 +25,7 @@ Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	https://invisible-island.net/archives/ncurses/current/%{name}-%{basever}-%{patchlevel}.tgz
-# Source0-md5:	4659115a83ebc721868e424707f766d2
+# Source0-md5:	b55f0c371d0f0577c80c745cdbc40498
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 Patch100:	%{name}-xterm-home-end.patch
@@ -307,10 +307,11 @@ gcc_target=$(gcc -dumpmachine)
 gcc_version=%{cc_version}
 CFLAGS="%{rpmcflags} -DPURE_TERMINFO -D_FILE_OFFSET_BITS=64"
 
+%define configuredir ..
 for t in narrowc widec; do
 install -d obj-$t
 cd obj-$t
-../%configure \
+%configure \
 	--with-install-prefix=$RPM_BUILD_ROOT \
 	--with-pkg-config-libdir=%{_pkgconfigdir} \
 	--with-ada-include=%{_libdir}/gcc/$gcc_target/$gcc_version/adainclude/ \
@@ -533,7 +534,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/ncursesw.pc
 %{_mandir}/man1/ncurses6-config.1*
 %{_mandir}/man1/ncursesw6-config.1*
+%{_mandir}/man3/A_COLOR.3x*
 %{_mandir}/man3/BC.3x*
+%{_mandir}/man3/CCHARW_MAX.3x*
 %{_mandir}/man3/COLORS.3x*
 %{_mandir}/man3/COLOR_BLACK.3x*
 %{_mandir}/man3/COLOR_BLUE.3x*
@@ -550,6 +553,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/ESCDELAY.3x*
 %{_mandir}/man3/FALSE.3x*
 %{_mandir}/man3/LINES.3x*
+%{_mandir}/man3/MEVENT.3x
 %{_mandir}/man3/NCURSES_SCREEN_CB.3x*
 %{_mandir}/man3/NCURSES_WINDOW_CB.3x*
 %{_mandir}/man3/OK.3x*
@@ -644,6 +648,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/longname_sp.3x*
 %{_mandir}/man3/mcprint*.3x*
 %{_mandir}/man3/meta.3x*
+%{_mandir}/man3/mmask_t.3x*
 %{_mandir}/man3/mouse*.3x*
 %{_mandir}/man3/move.3x*
 %{_mandir}/man3/mv*.3x*
@@ -688,6 +693,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/setcchar.3x*
 %{_mandir}/man3/setscrreg.3x*
 %{_mandir}/man3/setsyx.3x*
+%{_mandir}/man3/settchar.3x*
 %{_mandir}/man3/setterm.3x*
 %{_mandir}/man3/setupterm.3x*
 %{_mandir}/man3/slk_*.3x*
