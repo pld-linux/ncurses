@@ -157,7 +157,7 @@ Summary(pt_BR.UTF-8):	Bibliotecas de desenvolvimento para ncurses
 Summary(ru.UTF-8):	Хедеры и библиотеки для разработки программ с ncurses
 Summary(uk.UTF-8):	Хедери та бібліотеки для розробки програм з ncurses
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 Obsoletes:	libncurses5-devel < 6
 Obsoletes:	libtermcap-devel < 2.1
 
@@ -193,7 +193,7 @@ Summary(pt_BR.UTF-8):	Bibliotecas estáticas para desenvolvimento com ncurses
 Summary(ru.UTF-8):	Статические библиотеки для разработки программ с ncurses
 Summary(uk.UTF-8):	Статичні бібліотеки для розробки програм з ncurses
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-devel%{?_isa} = %{version}-%{release}
 
 %description static
 This package includes the static libraries necessary to develop
@@ -220,7 +220,7 @@ Bibliotecas estáticas para desenvolvimento com ncurses.
 Summary:	Additional ncurses libraries
 Summary(pl.UTF-8):	Dodatkowe biblioteki ncurses
 Group:		Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description ext
 This package contains addidion ncurses libraries like libforms,
@@ -235,8 +235,8 @@ z ncurses.
 Summary:	Header files for additional ncurses libraries
 Summary(pl.UTF-8):	Pliki nagłówkowe dodatkowych bibliotek ncurses
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
-Requires:	%{name}-ext = %{version}-%{release}
+Requires:	%{name}-devel%{?_isa} = %{version}-%{release}
+Requires:	%{name}-ext%{?_isa} = %{version}-%{release}
 
 %description ext-devel
 Header files for additional ncurses libraries (form, menu, panel).
@@ -248,7 +248,7 @@ Pliki nagłówkowe dodatkowych bibliotek ncurses (form, menu, panel).
 Summary:	Static versions of additional ncurses libraries
 Summary(pl.UTF-8):	Statyczne wersje dodatkowych bibliotek ncurses
 Group:		Development/Libraries
-Requires:	%{name}-ext-devel = %{version}-%{release}
+Requires:	%{name}-ext-devel%{?_isa} = %{version}-%{release}
 
 %description ext-static
 Static versions of additional ncurses libraries (form, menu, panel).
@@ -260,7 +260,7 @@ Statyczne wersje dodatkowych bibliotek ncurses (form, menu, panel).
 Summary:	Header files for develop C++ ncurses based application
 Summary(pl.UTF-8):	Pliki nagłówkowe do biblioteki C++ ncurses
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-devel%{?_isa} = %{version}-%{release}
 
 %description c++-devel
 This package includes the header files and libraries necessary to
@@ -274,7 +274,7 @@ z wykorzystaniem biblioteki c++-ncurses.
 Summary:	Static libraries for C++ ncurses
 Summary(pl.UTF-8):	Biblioteki statyczne C++ ncurses
 Group:		Development/Libraries
-Requires:	%{name}-c++-devel = %{version}-%{release}
+Requires:	%{name}-c++-devel%{?_isa} = %{version}-%{release}
 
 %description c++-static
 This package includes the static libraries necessary to develop
@@ -287,7 +287,7 @@ Pakiet ten zawiera biblioteki statyczne C++ ncurses.
 Summary:	Header files for develop Ada95 ncurses based application
 Summary(pl.UTF-8):	Pliki nagłówkowe do biblioteki Ada95 ncurses
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-devel%{?_isa} = %{version}-%{release}
 %{?with_ada:%requires_eq	gcc-ada}
 
 %description ada-devel
