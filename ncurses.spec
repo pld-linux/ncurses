@@ -9,7 +9,7 @@
 %endif
 
 %define	basever	6.6
-%define	patchlevel	20260214
+%define	patchlevel	20260404
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -25,7 +25,7 @@ Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	https://invisible-island.net/archives/ncurses/current/%{name}-%{basever}-%{patchlevel}.tgz
-# Source0-md5:	e437e864f2bed76c51968005c549d84a
+# Source0-md5:	9f182cb99d7f5a49791dddfb55ed6feb
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 Patch100:	%{name}-xterm-home-end.patch
@@ -432,7 +432,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %dir %{_datadir}/terminfo
 %{_datadir}/terminfo/E
-%dir %{_datadir}/terminfo/[acdgklprsvx]
+%dir %{_datadir}/terminfo/[acdgklprstvx]
 
 %{_datadir}/terminfo/a/ansi
 %{_datadir}/terminfo/c/cygwin*
@@ -444,6 +444,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/terminfo/p/putty*
 %{_datadir}/terminfo/r/rxvt*
 %{_datadir}/terminfo/s/screen*
+%{_datadir}/terminfo/t/tmux*
 %{_datadir}/terminfo/v/vt100
 %{_datadir}/terminfo/v/vt102
 %{_datadir}/terminfo/v/vt220
@@ -487,6 +488,7 @@ rm -rf $RPM_BUILD_ROOT
 %exclude %{_datadir}/terminfo/p/putty*
 %exclude %{_datadir}/terminfo/r/rxvt*
 %exclude %{_datadir}/terminfo/s/screen*
+%exclude %{_datadir}/terminfo/t/tmux*
 %exclude %{_datadir}/terminfo/v/vt100
 %exclude %{_datadir}/terminfo/v/vt102
 %exclude %{_datadir}/terminfo/v/vt220
