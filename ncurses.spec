@@ -9,7 +9,7 @@
 %endif
 
 %define	basever	6.6
-%define	patchlevel	20260404
+%define	patchlevel	20260509
 Summary:	curses terminal control library
 Summary(de.UTF-8):	curses-Terminal-Control-Library
 Summary(es.UTF-8):	Biblioteca de control de terminal curses
@@ -25,7 +25,7 @@ Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	https://invisible-island.net/archives/ncurses/current/%{name}-%{basever}-%{patchlevel}.tgz
-# Source0-md5:	9f182cb99d7f5a49791dddfb55ed6feb
+# Source0-md5:	254463e066ccc1bbacb09f81df6d41fb
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source1-md5:	3b05ee835dc20c306e9af2a9d3fbf1f1
 Patch100:	%{name}-xterm-home-end.patch
